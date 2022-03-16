@@ -1,0 +1,473 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://shortbol.org/v2#" xmlns:ns1="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:ns2="http://www.w3.org/ns/prov#" xmlns:ns3="http://purl.org/dc/terms/">
+   <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#hydrogen/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:displayId>hydrogen</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#hydrogen"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#l_ribulose/1">
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>l_ribulose</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_ribulose"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#AraB/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>AraB</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#AraB"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#ribulokinase/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#ribulokinase"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>ribulokinase</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#rib5p_4_epimerase/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:displayId>rib5p_4_epimerase</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#rib5p_4_epimerase"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#l_arabinose/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose"/>
+    <sbol:displayId>l_arabinose</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#l_arabinose_isomerase/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_isomerase"/>
+    <sbol:displayId>l_arabinose_isomerase</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#AraA/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#AraA"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>AraA</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#Xyl5p/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>Xyl5p</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#Xyl5p"/>
+  </sbol:ComponentDefinition>
+  <sbol:ModuleDefinition rdf:about="http://shortbol.org/v2#l_arabinose_pathway/1">
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/pentose_phosphate_pathway_fc/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/pentose_phosphate_pathway_fc"/>
+        <sbol:displayId>pentose_phosphate_pathway_fc</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pentose_phosphate_pathway/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>rib5p_fc</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#rib5p/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:version>1</sbol:version>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/l_ribulose_reactant/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/l_ribulose_reactant"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>l_ribulose_reactant</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ribulokinase_modifier/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ribulokinase_modifier"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000019"/>
+            <sbol:displayId>ribulokinase_modifier</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ribulokinase_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ATP_reactant/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ATP_fc/1"/>
+            <sbol:displayId>ATP_reactant</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ATP_reactant"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/rib5p_product/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/rib5p_product"/>
+            <sbol:displayId>rib5p_product</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/hydrogen_product/1">
+            <sbol:displayId>hydrogen_product</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/hydrogen_product"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/hydrogen_fc/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>l_ribulose_conversion</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ADP_product/1">
+            <sbol:displayId>ADP_product</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_conversion/ADP_product"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ADP_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#AraA/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>AraA_fc</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#l_ribulose/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_fc"/>
+        <sbol:displayId>l_ribulose_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#Xyl5p/1"/>
+        <sbol:displayId>Xyl5p_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/ribulokinase_fc/1">
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ribulokinase_fc"/>
+        <sbol:displayId>ribulokinase_fc</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#ribulokinase/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_arabinose_reactant/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_arabinose_reactant"/>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
+            <sbol:displayId>l_arabinose_reactant</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>l_arabinose_conversion</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_ribulose_product/1">
+            <sbol:displayId>l_ribulose_product</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_ribulose_product"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_ribulose_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_arabinose_isomerase_modifier/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_isomerase_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000019"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>l_arabinose_isomerase_modifier</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_conversion/l_arabinose_isomerase_modifier"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_isomerase_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#l_arabinose_isomerase/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_isomerase_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>l_arabinose_isomerase_fc</sbol:displayId>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_AraD_fc_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_AraD_fc_i_participation_promoter"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc/1"/>
+            <sbol:displayId>AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_AraD_fc_i_participation_promoter</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:displayId>AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_rib5p_4_epimerase_fc_i_product/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc/AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_rib5p_4_epimerase_fc_i_product"/>
+            <sbol:displayId>AraD_fc_i_genetic_production_with_rib5p_4_epimerase_fc_rib5p_4_epimerase_fc_i_product</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_4_epimerase_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/hydrogen_fc/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/hydrogen_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#hydrogen/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>hydrogen_fc</sbol:displayId>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_l_arabinose_isomerase_fc_i_product/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_isomerase_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_l_arabinose_isomerase_fc_i_product"/>
+            <sbol:displayId>AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_l_arabinose_isomerase_fc_i_product</sbol:displayId>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc</sbol:displayId>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_AraA_fc_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:displayId>AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_AraA_fc_i_participation_promoter</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc_AraA_fc_i_participation_promoter"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraA_fc_i_genetic_production_with_l_arabinose_isomerase_fc"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/1">
+        <sbol:displayId>rib5p_conversion</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion"/>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/rib5p_4_epimerase_modifier/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/rib5p_4_epimerase_modifier"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_4_epimerase_fc/1"/>
+            <sbol:displayId>rib5p_4_epimerase_modifier</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000019"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/Xyl5p_product/1">
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/Xyl5p_product"/>
+            <sbol:displayId>Xyl5p_product</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/rib5p_reactant/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_fc/1"/>
+            <sbol:displayId>rib5p_reactant</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_conversion/rib5p_reactant"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway"/>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/l_arabinose_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#l_arabinose/1"/>
+        <sbol:displayId>l_arabinose_fc</sbol:displayId>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:displayId>l_arabinose_pathway</sbol:displayId>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/rib5p_4_epimerase_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#rib5p_4_epimerase/1"/>
+        <sbol:displayId>rib5p_4_epimerase_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/rib5p_4_epimerase_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc/AraB_fc_i_genetic_production_with_ribulokinase_fc_ribulokinase_fc_i_product/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ribulokinase_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc/AraB_fc_i_genetic_production_with_ribulokinase_fc_ribulokinase_fc_i_product"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>AraB_fc_i_genetic_production_with_ribulokinase_fc_ribulokinase_fc_i_product</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:displayId>AraB_fc_i_genetic_production_with_ribulokinase_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc/AraB_fc_i_genetic_production_with_ribulokinase_fc_AraB_fc_i_participation_promoter/1">
+            <sbol:displayId>AraB_fc_i_genetic_production_with_ribulokinase_fc_AraB_fc_i_participation_promoter</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc_i_genetic_production_with_ribulokinase_fc/AraB_fc_i_genetic_production_with_ribulokinase_fc_AraB_fc_i_participation_promoter"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/ADP_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#ADP/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ADP_fc"/>
+        <sbol:displayId>ADP_fc</sbol:displayId>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc/1">
+        <sbol:displayId>AraD_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraD_fc"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#AraD/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/ATP_fc/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/ATP_fc"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#ATP/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>ATP_fc</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc/1">
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_Xyl5p_fc_i_stimulator/1">
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_Xyl5p_fc_i_stimulator"/>
+            <sbol:displayId>Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_Xyl5p_fc_i_stimulator</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_pentose_phosphate_pathway_fc_i_stimulated/1">
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_pentose_phosphate_pathway_fc_i_stimulated</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc/Xyl5p_fc_i_stimulation_with_pentose_phosphate_pathway_fc_pentose_phosphate_pathway_fc_i_stimulated"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/pentose_phosphate_pathway_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#AraB/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#l_arabinose_pathway/AraB_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>AraB_fc</sbol:displayId>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+  </sbol:ModuleDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#rib5p/1">
+    <sbol:displayId>rib5p</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#rib5p"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#AraD/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>AraD</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#AraD"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#ATP/1">
+    <sbol:displayId>ATP</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#ATP"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#ADP/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#ADP"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
+    <sbol:displayId>ADP</sbol:displayId>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pentose_phosphate_pathway/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pentose_phosphate_pathway"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>pentose_phosphate_pathway</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pentose_phosphate_pathway/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pentose_phosphate_pathway"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>pentose_phosphate_pathway</sbol:displayId>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

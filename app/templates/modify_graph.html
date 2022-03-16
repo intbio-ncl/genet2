@@ -1,0 +1,184 @@
+{% extends "base.html" %} {% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <h1>Admin Panel</h1>
+    </div>
+    <br>
+    <div class="row">
+        {% if upload_graph %}
+        <div class="col-md">
+            <div class="card search-result">
+                <div class="card-body">
+                    <h2>Add New Graph</h2>
+                    {% if err_string%}
+                    <h5>
+                        <font color="red">ERROR: </font><br>{{err_string}}
+                    </h5>
+                    {% endif %}
+                    {% if success%}
+                    <h5>
+                        Graph Successfully added.
+                    </h5>
+                    {% endif %}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('submit_upload_graph')">Upload</button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('submit_paste_graph')">Paste</button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('submit_sbh_graph')">Synbiohub ID</button>
+                    </div>
+                    <div id="submit_forms">
+                        <br>
+                        {% if err %}
+                        <h5>
+                            <font color="red">ERROR: </font><br>{{err}}
+                        </h5>
+                        {% endif %}
+                        {% if upload_graph %}
+                        <div id="submit_upload_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ upload_graph.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ upload_graph.upload.label(for="upload") }}<br>
+                                    {{ upload_graph.upload(class="form-control-file") }}<br>
+                                    {% for error in upload_graph.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload_graph.file_type.label(for="file_type") }}
+                                    {{ upload_graph.file_type(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload_graph.mode.label(for="mode") }}
+                                    {{ upload_graph.mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ upload_graph.submit_upload(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+        
+                        {% if paste_graph %}
+                        <div id="submit_paste_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ paste_graph.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ paste_graph.paste.label(for="paste") }}<br>
+                                    {{ paste_graph.paste(rows=10,cols=55) }}<br>
+                                    {% for error in paste_graph.paste.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ paste_graph.file_type.label(for="file_type") }}
+                                    {{ paste_graph.file_type(class="form-control") }}
+                                    <br>
+                                <div class="form-group">
+                                    {{ paste_graph.mode.label(for="mode") }}
+                                    {{ paste_graph.mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                </div>
+                                {{ paste_graph.submit_paste(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+        
+                        {% if sbh_graph %}
+                        <div id="submit_sbh_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ sbh_graph.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ sbh_graph.pmid.label(for="pmid") }}<br>
+                                    {{ sbh_graph.pmid(rows=2,cols=50) }}<br>
+                                    {% for error in sbh_graph.pmid.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ sbh_graph.mode.label(for="mode") }}
+                                    {{ sbh_graph.mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ sbh_graph.submit_sbh(class="btn btn-secondary") }}
+                            </form>
+                        </div>
+                        {% endif %}
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        <div class="col-md">
+            <div class="card search-result">
+                <h2>Remove Graph</h2>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+
+        {% if purge_graph %}
+        <div class="col-md">
+            <div class="card search-result">
+                <h2>Purge Graph</h2>
+                <div class="card-body">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('submit_remove_graph')">Purge Graph</button>
+                    </div>
+                    <div id="submit_remove_graph">
+                        <h5>Are you sure? This option resets the graph.</h5>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {{ purge_graph.hidden_tag() }}
+                            {{ purge_graph.purge_graph(class="btn btn-secondary") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if cf_true %}
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="staticBackdropLabel">Potential Connection</h2>
+            </div>
+            <div class="modal-body">
+                <p>We have found external data we could pull into your design to improve visualisation. Would you like
+                    us to integrate this before proceding?</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-5">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ cf_true.hidden_tag() }}
+                                {{ cf_true.cft_submit() }}
+                            </form>
+                        </div>
+                        <div class="col-5">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ cf_false.hidden_tag() }}
+                                {{ cf_false.cff_submit() }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        {% endif %}
+{% endblock %}

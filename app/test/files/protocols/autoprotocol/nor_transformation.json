@@ -1,0 +1,171 @@
+{
+  "instructions": [
+    {
+      "instructions": [
+        {
+          "instructions": [
+            {
+              "op": "dispense",
+              "object": "reaction-intermediate-proto-clones",
+              "columns": [
+                {
+                  "column": 0,
+                  "volume": "37.5:microliter"
+                }
+              ],
+              "reagent_source": "compotent-cells-ecoli/0",
+              "step_size": "0.5:microliter"
+            },
+            {
+              "op": "seal",
+              "object": "reaction-intermediate-proto-clones",
+              "type": "ultra-clear"
+            },
+            {
+              "op": "spin",
+              "object": "reaction-intermediate-proto-clones",
+              "acceleration": "10000:g",
+              "duration": "5:second"
+            }
+          ],
+          "refs": {
+            "compotent-cells-ecoli": {
+              "new": "micro-2.0",
+              "discard": true
+            },
+            "reaction-intermediate-proto-clones": {
+              "new": "96-pcr",
+              "discard": true
+            }
+          },
+          "op": "PrepareCells",
+          "type": "Protocol"
+        },
+        {
+          "instructions": [
+            {
+              "op": "thermocycle",
+              "object": "reaction-intermediate-proto-clones",
+              "groups": [
+                {
+                  "cycles": 1,
+                  "steps": [
+                    {
+                      "temperature": "0:celsius",
+                      "duration": "2:minute"
+                    }
+                  ]
+                }
+              ],
+              "volume": "10:microliter"
+            },
+            {
+              "op": "thermocycle",
+              "object": "reaction-intermediate-proto-clones",
+              "groups": [
+                {
+                  "cycles": 1,
+                  "steps": [
+                    {
+                      "temperature": "42:celsius",
+                      "duration": "1:minute"
+                    }
+                  ]
+                }
+              ],
+              "volume": "10:microliter"
+            },
+            {
+              "op": "thermocycle",
+              "object": "reaction-intermediate-proto-clones",
+              "groups": [
+                {
+                  "cycles": 1,
+                  "steps": [
+                    {
+                      "temperature": "0:celsius",
+                      "duration": "2:minute"
+                    }
+                  ]
+                }
+              ],
+              "volume": "10:microliter"
+            }
+          ],
+          "refs": {
+            "reaction-intermediate-proto-clones": {
+              "new": "96-pcr",
+              "discard": true,
+              "cover": "ultra-clear"
+            }
+          },
+          "op": "HeatShock",
+          "type": "Protocol"
+        },
+        {
+          "instructions": [
+            {
+              "op": "unseal",
+              "object": "reaction-intermediate-proto-clones"
+            },
+            {
+              "op": "dispense",
+              "object": "culture-plate",
+              "columns": [
+                {
+                  "column": 0,
+                  "volume": "37.5:microliter"
+                }
+              ],
+              "reagent_source": "reaction-intermediate-proto-clones/0",
+              "step_size": "0.5:microliter"
+            },
+            {
+              "op": "dispense",
+              "object": "culture-plate",
+              "columns": [
+                {
+                  "column": 0,
+                  "volume": "950:microliter"
+                }
+              ],
+              "reagent_source": "growth-media/0",
+              "step_size": "0.5:microliter"
+            },
+            {
+              "op": "incubate",
+              "object": "culture-plate",
+              "where": "warm_37",
+              "duration": "12:hour",
+              "shaking": false,
+              "co2_percent": 0
+            }
+          ],
+          "refs": {
+            "reaction-intermediate-proto-clones": {
+              "new": "96-pcr",
+              "discard": true,
+              "cover": "ultra-clear"
+            },
+            "culture-plate": {
+              "new": "micro-2.0",
+              "discard": true
+            },
+            "growth-media": {
+              "new": "micro-2.0",
+              "discard": true
+            }
+          },
+          "op": "OutGrowth",
+          "type": "Protocol"
+        }
+      ],
+      "refs": {},
+      "op": "Transformation",
+      "type": "Protocol"
+    }
+  ],
+  "refs": {},
+  "op": "Master",
+  "type": "Protocol"
+}

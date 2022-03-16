@@ -1,0 +1,65 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ModuleDefinition rdf:about="http://shortbol.org/v2#TetR_inverter/1">
+    <sbol:version>1</sbol:version>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#TetR_inverter/TetR_fc/1">
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#TetR/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>TetR_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter/TetR_fc"/>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#TetR_inverter/LacI_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#LacI/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter/LacI_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>LacI_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc/TetR_fc_i_inhibition_with_LacI_fc_LacI_fc_i_inhibited/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#TetR_inverter/LacI_fc/1"/>
+            <sbol:displayId>TetR_fc_i_inhibition_with_LacI_fc_LacI_fc_i_inhibited</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc/TetR_fc_i_inhibition_with_LacI_fc_LacI_fc_i_inhibited"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc/TetR_fc_i_inhibition_with_LacI_fc_TetR_fc_i_inhibitor/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#TetR_inverter/TetR_fc/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>TetR_fc_i_inhibition_with_LacI_fc_TetR_fc_i_inhibitor</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc/TetR_fc_i_inhibition_with_LacI_fc_TetR_fc_i_inhibitor"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:displayId>TetR_fc_i_inhibition_with_LacI_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter/TetR_fc_i_inhibition_with_LacI_fc"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:displayId>TetR_inverter</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR_inverter"/>
+  </sbol:ModuleDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#TetR/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#TetR"/>
+    <sbol:displayId>TetR</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#LacI/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#LacI"/>
+    <sbol:displayId>LacI</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

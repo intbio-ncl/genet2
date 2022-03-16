@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+html body {
+    background-color: #F8F8F8;
+}
+
+.search-result {
+    background-color: #ffffff;
+}
+
+#submit_upload_graph{
+    display:none;
+}
+#submit_paste_graph{
+    display:none;
+}
+#submit_sbh_graph{
+    display:none;
+}
+#submit_remove_graph{
+    display:none;
+}

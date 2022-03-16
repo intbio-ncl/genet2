@@ -1,0 +1,31 @@
+[
+   {
+      "selector":":selected",
+      "style":{
+         "background-color":"white",
+         "border-width":2,
+         "border-color":"black",
+         "label":"data(label)",
+         "z-index":9999
+      }
+   },
+   {
+      "selector":"node",
+      "style":{
+         "content":"data(label)",
+         "height":"data(size)",
+         "width":"data(size)",
+         "font-size":8,
+         "color": "#181A18"
+      }
+   },
+   {
+      "selector":"edge",
+      "style":{
+         "content":"data(label)",
+         "mid-target-arrow-color":"grey",
+         "mid-target-arrow-shape":"triangle",
+         "font-size":8
+      }
+   }
+]
