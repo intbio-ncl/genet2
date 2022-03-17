@@ -91,6 +91,13 @@ def _meets_requirements(equiv_classes,parent_class,properties):
     else:
         return False
 
+def _derive_graph_name(graph):
+    graph_names = graph.get_graph_names()
+    graph_name = 1
+    while str(graph_name) in graph_names:
+        graph_name += 1
+    return str(graph_name)
+
 def get_name(subject):
     split_subject = _split(subject)
     if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():

@@ -10,6 +10,7 @@ mode_choices = [('ignore','Ignore (Duplicate nodes are not added).'),
                 ('merge','Merge (Duplicate nodes properties are merged).'),
                 ("duplicate",'Duplicate (Duplicate Nodes are added to the graph).'),
                 ('overwrite','Overwrite (New nodes overwrite older duplicate nodes).')]
+                
 class UploadForm(FlaskForm):
     class Meta:
         csrf = False
@@ -26,12 +27,14 @@ class UploadGraphForm(UploadForm):
     class Meta:
         csrf = False
     file_type = SelectField("Datatype",choices=graph_choices)
+    graph_name = TextAreaField('Graph Name (Optional)')
     mode = SelectField("Integration Mode",choices=mode_choices)
 
 class PasteGraphForm(PasteForm):
     class Meta:
         csrf = False
     file_type = SelectField("Datatype",choices=graph_choices)
+    graph_name = TextAreaField('Graph Name (Optional)')
     mode = SelectField("Integration Mode",choices=mode_choices)
 
 class SynbioGraphForm(FlaskForm):
@@ -39,6 +42,7 @@ class SynbioGraphForm(FlaskForm):
         csrf = False
     submit_sbh = SubmitField('Submit')
     pmid = TextAreaField('ID',validators=[validators.InputRequired()])
+    graph_name = TextAreaField('Graph Name (Optional)')
     mode = SelectField("Integration Mode",choices=mode_choices)
 
 class PurgeGraphForm(FlaskForm):
@@ -54,13 +58,12 @@ class ConnectorFormFalse(FlaskForm):
         csrf = False
     cff_submit = SubmitField('No')
 
-class RemoveGraphForm(FlaskForm):
-    class Meta:
-        csrf = False
-    submit = SubmitField('Remove')
+def add_remove_graph_form(choices,**kwargs):
+    class RemoveGraphForm(FlaskForm):
+        class Meta:
+            csrf = False
+        submit = SubmitField('Remove')
+    setattr(RemoveGraphForm, "graphs",SelectField("Graph Name",choices=[(c,c) for c in choices])) 
+    return RemoveGraphForm(**kwargs)
 
-def add_remove_graph_form(choices):
-    f = RemoveGraphForm()
-    f.graphs = SelectField("Graph Names",choices = [(c,c) for c in choices])
-    return f
 

@@ -27,6 +27,7 @@ server.config['SESSION_FILE_THRESHOLD'] = 100
 server.config['SECRET_KEY'] = "Secret"
 server.config['SESSION_FILE_DIR'] = os.path.join(root_dir, "flask_sessions")
 
+
 @server.route('/', methods=['GET', 'POST'])
 @server.route('/index', methods=['GET', 'POST'])
 def index():
@@ -45,48 +46,54 @@ def modify_graph():
     if "visual_filename" in session.keys():
         add_graph_fn = session["visual_filename"]
         mode = session["add_graph_mode"]
+        g_name = session["graph_name"]
     if upload_graph.validate_on_submit():
         add_graph_fn = form_handlers.handle_upload(
             upload_graph, session["session_dir"])
         mode = upload_graph.mode.data
+        g_name = upload_graph.graph_name.data
     elif paste_graph.validate_on_submit():
         add_graph_fn = form_handlers.handle_paste(
             paste_graph, session["session_dir"])
         mode = paste_graph.mode.data
+        g_name = paste_graph.graph_name.data
     elif sbh_graph.validate_on_submit():
         add_graph_fn = form_handlers.handle_synbiohub(
             sbh_graph, session["session_dir"], sbol_connector)
         mode = sbh_graph.mode.data
+        g_name = sbh_graph.graph_name.data
         if add_graph_fn is None:
             err_string = "Unable to find record."
     elif purge_graph.validate_on_submit():
         design_graph.purge()
 
     if add_graph_fn is not None:
-        return _add_graph(add_graph_fn,mode)
+        return _add_graph(add_graph_fn, mode, g_name)
 
-    return render_template('modify_graph.html', upload_graph=upload_graph, 
-                            paste_graph=paste_graph, sbh_graph=sbh_graph,
-                            purge_graph=purge_graph,err_string=err_string)
+    return render_template('modify_graph.html', upload_graph=upload_graph,
+                           paste_graph=paste_graph, sbh_graph=sbh_graph,
+                           purge_graph=purge_graph, remove_graph=remove_graph,
+                           err_string=err_string)
 
 @server.before_request
 def before_request_func():
-    if session.get("uid") is None :
+    if session.get("uid") is None:
         session['uid'] = str(uuid.uuid4())
     if session.get("session_dir") is None:
         session['session_dir'] = os.path.join(sessions_dir, session['uid'])
     try:
-        os.makedirs(os.path.join(sessions_dir,session['uid']))
+        os.makedirs(os.path.join(sessions_dir, session['uid']))
     except FileExistsError:
         pass
 
-def _add_graph(fn,mode):
+def _add_graph(fn, mode, g_name):
     cf_true = forms.ConnectorFormTrue()
     cf_false = forms.ConnectorFormFalse()
     upload_graph = forms.UploadGraphForm()
     purge_graph = forms.PurgeGraphForm()
     paste_graph = forms.PasteGraphForm()
     sbh_graph = forms.SynbioGraphForm()
+    remove_graph = forms.add_remove_graph_form(design_graph.get_graph_names())
     if cf_true.cft_submit.data:
         orig_filename = fn
         graph = sbol_connector.connect(fn)
@@ -96,26 +103,29 @@ def _add_graph(fn,mode):
         os.remove(orig_filename)
         del session["visual_filename"]
         del session["add_graph_mode"]
+        del session["graph_name"]
 
     elif cf_false.cff_submit.data:
         fn = session["visual_filename"]
         del session["visual_filename"]
         del session["add_graph_mode"]
+        del session["graph_name"]
 
     elif sbol_connector.can_connect(fn):
         session["visual_filename"] = fn
         session["add_graph_mode"] = mode
         return render_template('modify_graph.html', upload_graph=upload_graph,
                                paste_graph=paste_graph, sbh_graph=sbh_graph,
-                               purge_graph=purge_graph,cf_true=cf_true, cf_false=cf_false)
-                               
+                               purge_graph=purge_graph, remove_graph=remove_graph,
+                               cf_true=cf_true, cf_false=cf_false)
+
     elif not os.path.isfile(fn):
         return render_template('modify_graph.html', upload_graph=upload_graph,
-                                paste_graph=paste_graph, sbh_graph=sbh_graph,
-                                purge_graph=purge_graph)
+                               paste_graph=paste_graph, sbh_graph=sbh_graph,
+                               purge_graph=purge_graph, remove_graph=remove_graph)
 
-    design_graph.add_graph(fn,mode=mode)
+    design_graph.add_graph(fn, mode=mode, name=g_name)
     os.remove(fn)
     return render_template('modify_graph.html', upload_graph=upload_graph,
-                            paste_graph=paste_graph, sbh_graph=sbh_graph, 
-                            purge_graph=purge_graph,success=True)
+                           paste_graph=paste_graph, sbh_graph=sbh_graph,
+                           purge_graph=purge_graph, remove_graph=remove_graph, success=True)

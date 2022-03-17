@@ -43,6 +43,9 @@ class GraphObject:
     def add_property(self,key,value):
         self.properties[key] = value
 
+    def remove_property(self,k):
+        del self.properties[k]
+        
 def _get_name(subject):
     split_subject = _split(subject)
     if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():

@@ -1,5 +1,6 @@
 import sys
 import os
+import copy
 sys.path.insert(0, os.path.join(".."))
 sys.path.insert(0, os.path.join("..",".."))
 sys.path.insert(0, os.path.join("..","..",".."))
@@ -8,7 +9,7 @@ from app.graph.nv_graph import NVGraph
 from app.graph.converter.design.utility.graph import SBOLGraph
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
-test_fn = os.path.join(curr_dir,"..","files","output.xml")
+test_fn = os.path.join(curr_dir,"..","files","nor_full.xml")
 class TestGraph(unittest.TestCase):
     def setUp(self):
         self._wrapper = NVGraph()
@@ -18,6 +19,7 @@ class TestGraph(unittest.TestCase):
         self._wrapper.add_graph(test_fn)
 
     def tearDown(self):
+        return
         self._wrapper.purge()
         if len(self._backup) > 0:
             for edge in self._backup:
@@ -152,6 +154,10 @@ class TestGraph(unittest.TestCase):
         n.add_property(**props[0])
         v.add_property(**props[1])
         e.add_property(**props[2])
+        n_props = copy.deepcopy(n.get_properties())
+        v_props = copy.deepcopy(v.get_properties())
+        e_props = copy.deepcopy(e.get_properties())
+        
         self._wrapper.add_edge(n=n,v=v,e=e,mode="merge")
         self._wrapper.submit()
 
@@ -167,10 +173,9 @@ class TestGraph(unittest.TestCase):
         p_e_props = p_e.get_properties()
         p_n_props = p_n.get_properties()
         p_v_props = p_v.get_properties()
-
-        self.assertEqual(e.get_properties(),p_e_props)
-        self.assertEqual(v.get_properties(),p_v_props)
-        self.assertEqual(n.get_properties(),p_n_props)
+        self.assertEqual(e_props,p_e_props)
+        self.assertEqual(v_props,p_v_props)
+        self.assertEqual(n_props,p_n_props)
 
     def test_add_graph_duplicate(self):
         pre_nodes = self._wrapper.get_all_nodes()
@@ -224,3 +229,21 @@ class TestGraph(unittest.TestCase):
         self._wrapper.add_graph(test_fn,mode="overwrite")
         self._wrapper.add_graph(test_fn,mode="duplicate")
         self._wrapper.add_graph(test_fn,mode="merge")
+
+    def test_get_graph_names(self):
+        self._wrapper.purge()
+        self._wrapper.add_graph(test_fn)
+        self.assertEqual(len(self._wrapper.get_graph_names()),1)
+
+        self._wrapper.add_graph(test_fn,mode="duplicate")
+        self.assertEqual(len(self._wrapper.get_graph_names()),2)
+
+        self._wrapper.add_graph(test_fn,mode="overwrite")
+        self.assertEqual(len(self._wrapper.get_graph_names()),2)
+
+        self._wrapper.add_graph(test_fn,mode="merge")
+        self.assertEqual(len(self._wrapper.get_graph_names()),3)
+
+
+
+        

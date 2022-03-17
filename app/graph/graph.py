@@ -7,6 +7,7 @@ from app.graph.graph_objects.edge import Edge
 from app.graph.model.model import ModelGraph
 from app.graph.converter.handler import convert
 
+
 class Graph:
     def __init__(self):
         self.driver = GraphDatabase.driver(
@@ -15,16 +16,19 @@ class Graph:
         self._settings = SettingsManager(self)
         self._model = ModelGraph()
 
-    def add_node(self, *args, mode="ignore",**kwargs):
+    def add_node(self, *args, mode="ignore", **kwargs):
         n = self._node(args, kwargs)
         if self.qry_builder.is_node_staged(n):
             self.qry_builder.update_node(n)
             return n
         q_node = self.node_query(n)
-        if mode != "duplicate" and q_node != []: 
+        if mode != "duplicate" and q_node != []:
             q_node = q_node[0]
             self.qry_builder.add_existing_node(q_node)
-            if mode == "merge" and q_node.get_properties() != n.get_properties():
+            q_node_props = q_node.get_properties()
+            n_props = n.get_properties().copy()
+            if mode == "merge" and q_node_props != n_props:
+                n = self._remove_props(n,q_node_props,n_props)
                 self.qry_builder.add_node_update(n)
             elif mode == "overwrite" and q_node.get_properties() != n.get_properties():
                 self.qry_builder.add_remove(n)
@@ -32,19 +36,22 @@ class Graph:
             self.qry_builder.add_node(n)
         return n
 
-    def add_edge(self, n, v, e, mode="ignore",**kwargs):
-        n = self.add_node(n,mode=mode)
-        v = self.add_node(v,mode=mode)
+    def add_edge(self, n, v, e, mode="ignore", **kwargs):
+        n = self.add_node(n, mode=mode)
+        v = self.add_node(v, mode=mode)
         e = self._edge(n, v, e, kwargs)
         if self.qry_builder.is_edge_staged(e):
             self.qry_builder.update_edge(e)
             return e
 
         q_edge = self.edge_query(e=e)
-        if mode != "duplicate" and q_edge != []: 
+        if mode != "duplicate" and q_edge != []:
             q_edge = q_edge[0]
             self.qry_builder.add_existing_edge(q_edge)
-            if mode == "merge" and q_edge.get_properties() != e.get_properties():
+            q_edge_props = q_edge.get_properties()
+            n_props = e.get_properties().copy()
+            if mode == "merge" and q_edge_props != n_props:
+                e = self._remove_props(e,q_edge_props,n_props)
                 self.qry_builder.add_edge_update(e)
             elif mode == "overwrite" and q_edge.get_properties() != e.get_properties():
                 self.qry_builder.add_remove(e)
@@ -56,9 +63,8 @@ class Graph:
         qry_str = self.qry_builder.generate()
         self._run(qry_str)
 
-    def add_graph(self, filename,mode="ignore"):
-        print(mode)
-        return convert(self,filename,mode)
+    def add_graph(self, filename, mode="ignore", name=""):
+        return convert(self, filename, mode, name)
 
     def purge(self):
         return self._run(self.qry_builder.purge())
@@ -72,14 +78,18 @@ class Graph:
                 results.append(self._node(v.labels, props))
         return results
 
-    def contains_node(self,node):
+    def contains_node(self, node):
         return self.node_query(node.get_labels()) != []
 
-    def contains_edge(self,edge):
-        return self.edge_query(n=edge.n,v=edge.v,e=edge.get_labels()) != []
+    def contains_edge(self, edge):
+        return self.edge_query(n=edge.n, v=edge.v, e=edge.get_labels()) != []
 
     def edge_query(self, n=None, v=None, e=None, n_props={}, v_props={}, e_props={}):
-        if isinstance(e,Edge):
+        if isinstance(e, Edge):
+            if n is None:
+                n = e.n
+            if v is None:
+                v = e.v
             e = e.get_labels()
         qry = self.qry_builder.edge_query(n, v, e, n_props, v_props, e_props)
         results = []
@@ -99,6 +109,9 @@ class Graph:
 
     def get_all_edges(self):
         return self.edge_query()
+
+    def get_graph_names(self):
+        return list(set([c for sublist in self._run(self.qry_builder.get_property(prop="graph_name")) for c in sublist["p.graph_name"]]))
 
     def count_edges(self):
         result = self._run(self.qry_builder.count_edges())
@@ -182,7 +195,7 @@ class Graph:
             res.append(self._edge(self._node(n.labels, n_props),
                                   self._node(v.labels, v_props), edge.type, e_props))
         return res
-        
+
     def _run(self, cypher_str):
         try:
             with self.driver.session() as s_graphDB:
@@ -197,11 +210,28 @@ class Graph:
         return props
 
     def _node(self, labels, properties):
-        if len(labels) == 1 and isinstance(list(labels)[0],Node):
+        if len(labels) == 1 and isinstance(list(labels)[0], Node):
             return labels[0]
         return Node(self, list(labels), **properties)
 
     def _edge(self, n, v, e, properties):
-        if isinstance(e,Edge):
+        if isinstance(e, Edge):
             return e
         return Edge(self, n, v, e, **properties)
+
+    def _remove_props(self,node,old_props,new_props):
+        for k,v in new_props.items():
+            if k in old_props:
+                if isinstance(v,list):
+                    ind = 0
+                    while ind < len(v):
+                        item = v[ind]
+                        if item in old_props[k]:
+                            v.pop(ind)
+                        else:
+                            ind +=1
+                    if len(v) == 0:
+                        node.remove_property(k)
+                elif old_props[k] == v:
+                    node.remove_property(k)
+        return node

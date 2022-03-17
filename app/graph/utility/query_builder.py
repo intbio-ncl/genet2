@@ -4,54 +4,39 @@ from app.graph.graph_objects.node import Node
 class QueryBuilder:
     def __init__(self):
         self.index = 1
-        self.existing_nodes = {}
-        self.staged_nodes = {}
-        self.existing_edges = {}
-        self.staged_edges = {}
-        self.update_nodes = []
-        self.update_edges = []
         self.removals = []
 
-    def add_node(self, node):
-        self.staged_nodes[node] = self.index
-        self.index += 1
+        self.create_nodes = {}
+        self.create_edges = {}
+        self.match_nodes = {}
+        self.match_edges = {}
+        self.where_nodes = {}
+        self.set_nodes = []
+        self.set_edges = []
+        
 
     def is_node_staged(self, n):
-        return n in self.staged_nodes
-
-    def add_existing_node(self, node):
-        self.existing_nodes[node] = self.index
-        self.index += 1
+        return n in self.create_nodes
 
     def update_node(self, node):
         pass
-        #n2 = self.staged_nodes[node]
-        # n2.update(node)
-
-    def add_node_update(self, node):
-        self.update_nodes.append(node)
-
-    def add_edge(self, edge):
-        self.staged_edges[edge] = self.index
-        self.index += 1
 
     def is_edge_staged(self, edge):
-        return edge in self.staged_edges
+        return edge in self.create_edges
 
     def update_edge(self, edge):
         #n2 = self.staged_nodes[node]
         # n2.update(node)
         pass
 
-    def add_edge_update(self, edge):
-        self.update_edges.append(edge)
-
-    def add_existing_edge(self, edge):
-        self.existing_edges[edge] = self.index
+# ------------------------- CREATE ------------------------------
+    def add_node(self, node):
+        self.create_nodes[node] = self.index
         self.index += 1
 
-    def add_remove(self, item):
-        self.removals.append(item)
+    def add_edge(self, edge):
+        self.create_edges[edge] = self.index
+        self.index += 1
 
     def generate_node(self, node, index):
         qry_str = f'(n{index}:{self.list_to_query(node.get_labels())} {{'
@@ -61,116 +46,180 @@ class QueryBuilder:
 
     def generate_edge(self, edge, index):
         def _derive_node(node):
-            if node in self.staged_nodes:
-                return self.staged_nodes[node]
-            elif edge.v in self.existing_nodes:
-                return self.existing_nodes[node]
+            if node in self.create_nodes:
+                return self.create_nodes[node]
+            elif edge.v in self.match_nodes:
+                return self.match_nodes[node]
         n = _derive_node(edge.n)
         v = _derive_node(edge.v)
         return f"""(`n{n}`)-[r{index}:{self.list_to_query(edge.get_labels())} {{{self.dict_to_query(edge.get_properties())}}}]->(`n{v}`)"""
 
-    def generate_node_match(self, node, index):
-        where = "WHERE "
+# ------------------------- MATCH ------------------------------
+    def add_existing_node(self, node):
+        self.match_nodes[node] = self.index
+        self.where_nodes[node] = self.index
+        self.index += 1
+    
+    def add_existing_edge(self, edge):
+        self.match_edges[edge] = self.index
+        self.index += 1
+
+    def node_match(self, node, index):
+        return f"""(n{index} {{{self.dict_to_query(node.get_properties())}}})\n"""
+
+    def edge_match(self, edge, index):
+        if edge.n in self.match_nodes:
+            n = f'n{self.match_nodes[edge.n]}'
+        else:
+            n = f'n{":" + str(edge.n)} {{{self.dict_to_query(edge.n.get_properties())}}}'
+        if edge.v in self.match_nodes:
+            v = f'v{self.match_nodes[edge.v]}'
+        else:
+            v = f'v{":" + str(edge.v)} {{{self.dict_to_query(edge.v.get_properties())}}}'
+
+        e = ":" + ""+"|".join(["`" + e + "`" for e in edge.get_labels()])
+        n = f'({n})'
+        e = f'[e{index}{e} {{{self.dict_to_query(edge.get_properties())}}}]'
+        v = f'({v})'
+        return f"""{n}-{e}->{v}\n"""
+# ------------------------- WHERE ------------------------------
+    def node_where(self,node,index):
+        where = ""
         labels = node.get_labels()
         for c_index, i in enumerate(labels):
             where += f'n{index}:`{i}`'
             if c_index < len(labels) - 1:
                 where += " OR "
-        return f"""MATCH (n{index} {{{self.dict_to_query(node.get_properties())}}}) {where}\n"""
+        return where + "\n"
+
+# ------------------------- SET ------------------------------
+    def add_node_update(self, node):
+        if node not in self.set_nodes:
+            self.set_nodes.append(node)
+
+    def add_edge_update(self, edge):
+        if edge not in self.set_edges:
+            self.set_edges.append(edge)
 
     def generate_update_node(self, n):
-        set = "SET "
-        index = self.existing_nodes[n]
+        set = ""
+        index = self.match_nodes[n]
         n_id = f'n{index}'
         props = n.get_properties()
         for c_index, (k, v) in enumerate(props.items()):
-            set += f'{n_id}.`{k}` = "{v}"'
+            if isinstance(v, list):
+                for ele in v:
+                    set += f' {n_id}.`{k}` =  {n_id}.`{k}` + "{ele}",'
+                set = set[:-1]
+            else:
+                set += f' {n_id}.`{k}` = "{v}"'
             if c_index < len(props) - 1:
-                set += ", "
+                set += ",\n "
             else:
                 set += "\n"
+        set = set[:-1]
         return set
 
-    def generate_edge_match(self, edge, index):
-        n = ":" + str(edge.n)
-        v = ":" + str(edge.v)
-        e = ":" + ""+"|".join(["`" + e + "`" for e in edge.get_labels()])
-        n = f'(n{n} {{{self.dict_to_query(edge.n.get_properties())}}})'
-        e = f'[e{index}{e} {{{self.dict_to_query(edge.get_properties())}}}]'
-        v = f'(v{v} {{{self.dict_to_query(edge.v.get_properties())}}})'
-        return f"""MATCH {n}-{e}->{v}\n"""
-
     def generate_update_edge(self, n):
-        set = "SET "
-        index = self.existing_edges[n]
+        set = ""
+        index = self.match_edges[n]
         n_id = f'e{index}'
         props = n.get_properties()
         for c_index, (k, v) in enumerate(props.items()):
-            set += f'{n_id}.`{k}` = "{v}"'
+            if isinstance(v, list):
+                for ele in v:
+                    set += f' {n_id}.`{k}` =  {n_id}.`{k}` + "{ele}",'
+                set = set[:-1]
+            else:
+                set += f' {n_id}.`{k}` = "{v}"'
             if c_index < len(props) - 1:
-                set += ", "
+                set += ",\n "
             else:
                 set += "\n"
         return set
 
+
+# ------------------------- REMOVE ------------------------------
+    def add_remove(self, item):
+        self.removals.append(item)
+
     def generate_removal(self, item):
-        if item in self.existing_nodes:
-            return f'SET n{self.existing_nodes[item]} = {{{ self.dict_to_query(item.get_properties())}}} \n'
-        if item in self.existing_edges:
-            return f'SET e{self.existing_edges[item]} = {{{self.dict_to_query(item.get_properties())}}}\n'
+        if item in self.match_nodes:
+            return f'SET n{self.match_nodes[item]} = {{{ self.dict_to_query(item.get_properties())}}} \n'
+        if item in self.match_edges:
+            return f'SET e{self.match_edges[item]} = {{{self.dict_to_query(item.get_properties())}}}\n'
+
 
     def generate(self):
         qry_str = ""
-        if (len(self.staged_nodes) + len(self.staged_edges) +
-           len(self.update_nodes) + len(self.update_edges) +
-           len(self.removals) == 0):
-            return qry_str
+        if len(self.match_nodes) + len(self.match_edges) > 0:
+            for node, index in self.match_nodes.items():
+                if (node in self.create_nodes
+                    or node in self.set_nodes
+                        or node in self.removals):
+                    qry_str += self.node_match(node, index)
+                    qry_str += ","
 
-        for node, index in self.existing_nodes.items():
-            if (node in self.staged_nodes
-            or node in self.update_nodes
-            or node in self.removals):
-                qry_str += self.generate_node_match(node, index)
+            for edge, index in self.match_edges.items():
+                if (edge in self.create_edges
+                    or edge in self.set_edges
+                        or edge in self.removals):
+                    qry_str += self.edge_match(edge, index)
+                    qry_str += ","
+            if len(qry_str) > 0:
+                qry_str = "MATCH\n" + qry_str
+                qry_str = qry_str[:-1]
+                qry_str += "WHERE\n"
+                for node, index in self.where_nodes.items():
+                    if (node in self.create_nodes
+                        or node in self.set_nodes
+                            or node in self.removals):
+                        qry_str += self.node_where(node, index)
+                        qry_str += " AND "
+                qry_str = qry_str[:-4]
 
-        for edge, index in self.existing_edges.items():
-            if (edge in self.staged_edges 
-            or edge in self.update_edges 
-            or edge in self.removals):
-                qry_str += self.generate_edge_match(edge, index)
-
-        for node in self.update_nodes:
-            qry_str += self.generate_update_node(node)
-
-        for edge in self.update_edges:
-            qry_str += self.generate_update_edge(edge)
+        if len(self.set_nodes) + len(self.set_edges) > 0:
+            qry_str += "SET\n"
+            for node in self.set_nodes:
+                qry_str += self.generate_update_node(node)
+                qry_str += ","
+            qry_str = qry_str[:-1]
+            if len(self.set_edges) > 0:
+                qry_str += ","
+            for edge in self.set_edges:
+                qry_str += self.generate_update_edge(edge)
+                qry_str += ","
+            qry_str = qry_str[:-1]
 
         for r in self.removals:
             qry_str += self.generate_removal(r)
 
-        if len(self.staged_nodes) + len(self.staged_edges) > 0:
+        if len(self.create_nodes) + len(self.create_edges) > 0:
             qry_str += "CREATE "
-            for iter_index, (node, index) in enumerate(self.staged_nodes.items()):
+            for iter_index, (node, index) in enumerate(self.create_nodes.items()):
                 qry_str += self.generate_node(node, index)
-                if iter_index < len(self.staged_nodes) - 1:
+                if iter_index < len(self.create_nodes) - 1:
                     qry_str += ","
                 qry_str += "\n"
 
-            if len(self.staged_edges) > 0 and len(self.staged_nodes) > 0:
+            if len(self.create_edges) > 0:
                 qry_str += ","
-            for iter_index, (edge, index) in enumerate(self.staged_edges.items()):
+            for iter_index, (edge, index) in enumerate(self.create_edges.items()):
                 qry_str += self.generate_edge(edge, index)
-                if iter_index < len(self.staged_edges) - 1:
+                if iter_index < len(self.create_edges) - 1:
                     qry_str += ","
                 qry_str += "\n"
 
-        self.existing_nodes.clear()
-        self.existing_edges.clear()
-        self.staged_edges.clear()
-        self.staged_nodes.clear()
-        self.update_nodes.clear()
-        self.update_edges.clear()
+        self.create_nodes.clear()
+        self.create_edges.clear()
+        self.match_nodes.clear()
+        self.match_edges.clear()
+        self.where_nodes.clear()
+        self.set_nodes.clear()
+        self.set_edges.clear()
         self.removals.clear()
         self.index = 1
+        print(qry_str)
         return qry_str
 
     def purge(self):
@@ -221,6 +270,9 @@ class QueryBuilder:
 
     def count_edges(self):
         return "MATCH (n)-[r]->() RETURN COUNT(r)"
+
+    def get_property(self, n=None, prop=""):
+        return f"""MATCH (p{":" + n if n else ""}) RETURN p.{prop}"""
 
     def shortest_path(self, source, dest):
         if isinstance(source, Node):
@@ -284,7 +336,8 @@ class QueryBuilder:
     def dict_to_query(self, items):
         f_str = ""
         for index, (k, v) in enumerate(items.items()):
-            f_str += f'`{k}`:"{v}"'
+            v = v if isinstance(v, list) else f'"{v}"'
+            f_str += f'`{k}`: {v}'
             if index != len(items) - 1:
                 f_str += ","
         return f_str
