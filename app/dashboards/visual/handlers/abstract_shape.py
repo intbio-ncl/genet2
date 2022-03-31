@@ -23,11 +23,11 @@ class AbstractNodeShapeHandler:
         counter = 0
         for node in self._builder.v_nodes():
             obj_type = self._builder.get_rdf_type(node)
-            if obj_type is None:
+            if obj_type == []:
                 shape = shape_map["no_type"]
                 obj_type = "No Type"
             else:
-                obj_type = _get_name(obj_type[1]["key"])
+                obj_type = "-".join([_get_name(n) for n in obj_type[0].v.get_labels()])
                 if obj_type in shape_map.keys():
                     shape = shape_map[obj_type]
                 else:
@@ -41,28 +41,28 @@ class AbstractNodeShapeHandler:
         return node_shapes
 
     def circle(self):
-        return [{"standard" : "circle"} for node in self._builder.v_nodes]
+        return [{"standard" : "circle"} for node in self._builder.v_nodes()]
         
     def square(self):
-        return [{"standard" : "square"} for node in self._builder.v_nodes]
+        return [{"standard" : "square"} for node in self._builder.v_nodes()]
         
     def triangle(self):
-        return [{"standard" : "triangle"} for node in self._builder.v_nodes]
+        return [{"standard" : "triangle"} for node in self._builder.v_nodes()]
         
     def rectangle(self):
-        return [{"standard" : "rectangle"} for node in self._builder.v_nodes]
+        return [{"standard" : "rectangle"} for node in self._builder.v_nodes()]
         
     def diamond(self):
-        return [{"standard" : "diamond"} for node in self._builder.v_nodes]
+        return [{"standard" : "diamond"} for node in self._builder.v_nodes()]
         
     def hexagon(self):
-        return [{"standard" : "hexagon"} for node in self._builder.v_nodes]
+        return [{"standard" : "hexagon"} for node in self._builder.v_nodes()]
         
     def octagon(self):
-        return [{"standard" : "octagon"} for node in self._builder.v_nodes]
+        return [{"standard" : "octagon"} for node in self._builder.v_nodes()]
         
     def vee(self):
-        return [{"standard" : "vee"} for node in self._builder.v_nodes]
+        return [{"standard" : "vee"} for node in self._builder.v_nodes()]
         
 class AbstractEdgeShapeHandler:
     def __init__(self):

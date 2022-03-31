@@ -4,11 +4,14 @@ import uuid
 from flask import Flask
 from flask import session
 from flask import render_template
+from flask import redirect
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 from app.utility import forms
 from app.utility import form_handlers
 from app.utility.sbol_connector.connector import SBOLConnector
-from app.graph.graph import Graph
+from app.graphs.neo_graph.nv_graph import NVGraph
+from app.dashboards.design import DesignDash
 
 root_dir = "app"
 static_dir = 'assets'
@@ -17,8 +20,12 @@ sessions_dir = os.path.join(root_dir, "sessions")
 
 server = Flask(__name__, static_folder=static_dir,
                template_folder=template_dir)
-
-design_graph = Graph()
+design_graph = NVGraph()
+design_dash = DesignDash(__name__,server,design_graph)
+design_dash.app.enable_dev_tools(debug=True)
+app = DispatcherMiddleware(server, {
+    design_dash.pathname : design_dash.app.server,
+})
 sbol_connector = SBOLConnector()
 
 server.config['SESSION_PERMANENT'] = True
@@ -40,7 +47,7 @@ def modify_graph():
     paste_graph = forms.PasteGraphForm()
     sbh_graph = forms.SynbioGraphForm()
     purge_graph = forms.PurgeGraphForm()
-    remove_graph = forms.add_remove_graph_form([])
+    remove_graph = forms.add_remove_graph_form(design_graph.get_graph_names())
     add_graph_fn = None
     err_string = None
     if "visual_filename" in session.keys():
@@ -66,6 +73,9 @@ def modify_graph():
             err_string = "Unable to find record."
     elif purge_graph.validate_on_submit():
         design_graph.purge()
+    elif remove_graph.validate_on_submit():
+        design_graph.remove_graph(remove_graph.graphs.data)
+
 
     if add_graph_fn is not None:
         return _add_graph(add_graph_fn, mode, g_name)
@@ -74,6 +84,10 @@ def modify_graph():
                            paste_graph=paste_graph, sbh_graph=sbh_graph,
                            purge_graph=purge_graph, remove_graph=remove_graph,
                            err_string=err_string)
+
+@server.route('/visualiser', methods=['GET', 'POST'])
+def visualiser():
+    return redirect(design_dash.pathname)
 
 @server.before_request
 def before_request_func():

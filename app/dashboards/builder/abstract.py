@@ -4,51 +4,36 @@ import re
 
 
 class AbstractBuilder:
-    def __init__(self, graph):
+    def __init__(self, graph,view_class):
         self._graph = graph
-        self.view = self._graph
+        self.view = view_class()
         self.connect_label = "key"
 
-    @property
     def nodes(self):
-        return self._graph.nodes
+        return self._graph.get_all_nodes()
 
-    @property
     def edges(self):
-        return self._graph.edges
+        return self._graph.get_all_edges()
 
-    @property
     def v_nodes(self):
-        return self.view.nodes
+        return self.view.nodes()
 
-    @property
-    def v_edges(self):
-        return self.view.edges
+    def v_edges(self,n=None):
+        return self.view.edges(n)
 
-    @property
-    def graph(self):
-        return self.view
+    def in_edges(self, n=None):
+        return self.view.in_edges(n)
 
-    def get_node_data(self, node_id):
-        node_id = self._resolve_subject(node_id)
-        try:
-            return self.nodes[node_id]
-        except KeyError:
-            pass
-        try:
-            return self.v_nodes[node_id]
-        except KeyError:
-            return None
+    def out_edges(self, n=None):
+        return self.view.out_edges(n)
 
-    def get_next_index(self):
-        return max([i for i in self._graph.nodes])
+    def get_rdf_type(self, node=None):
+        return self._graph.edge_query(n=node,e=RDF.type)
 
-    def in_edges(self, node=None, keys=False):
-        return self.view.in_edges(node, keys=keys)
 
-    def out_edges(self, node=None, keys=False):
-        return self.view.out_edges(node, keys=keys)
-
+    def set_full_view(self):
+        self.view = self._view_h.full()
+        
     def set_network_mode(self):
         self.view = self._mode_h.network()
 
@@ -57,9 +42,6 @@ class AbstractBuilder:
 
     def set_union_mode(self):
         self.view = self._mode_h.union()
-
-    def set_full_view(self):
-        self.view = self._view_h.full()
 
     def set_node_difference_mode(self):
         self.view = self._mode_h.node_difference()
@@ -73,82 +55,24 @@ class AbstractBuilder:
     def set_edge_intersection_mode(self):
         self.view = self._mode_h.edge_intersection()
 
-    def sub_graph(self, edges=[], node_attrs={}, new_graph=None):
+    def sub_graph(self, edges=[], new_graph=None):
         if not new_graph:
             new_graph = nx.MultiDiGraph()
-            new_graph.add_edges_from(edges)
-            for k, v in node_attrs.items():
-                new_graph.add_node(k, **v)
-        new_graph = self._graph.__class__(new_graph)
-        new_graph.igc = self._graph.igc
+            for e in edges:
+                n = e.n
+                v = e.v
+                e_key = "-".join(e.get_labels())
+                n.add_property("key","-".join(n.get_labels()))
+                v.add_property("key","-".join(v.get_labels()))
+                new_graph.add_node(n.id,**n.get_properties())
+                new_graph.add_node(v.id,**v.get_properties())
+                new_graph.add_edge(n.id,v.id,e_key,**e.get_properties())
+        new_graph = self.view.__class__(new_graph)
         return new_graph
 
-    def get_rdf_type(self, subject):
-        subject = self._resolve_subject(subject)
-        return self._graph.get_rdf_type(subject)
+    def view_number_map(self,ret_max=False,edges=False):
+        return self.view.graph_name_map(ret_max=ret_max,edges=edges)
 
-    def get_internal_graphs(self, create_graphs=True, keys_as_ids=False,key="key"):
-        if create_graphs:
-            graphs = [nx.MultiDiGraph() for index in range(0, self._graph.igc)]
-        else:
-            graphs = [({}, []) for index in range(0, self._graph.igc)]
-        seens = {}
-        for n, v, e, k in self.edges(keys=True, data=True):
-            n_data = self.nodes[n]
-            v_data = self.nodes[v]
-
-            assert(n_data["graph_number"] ==
-                   v_data["graph_number"] == k["graph_number"])
-            cg = graphs[k["graph_number"]-1]
-
-            if n_data[self.connect_label] in seens:
-                n = seens[n_data[self.connect_label]]
-            else:
-                if keys_as_ids:
-                    n = n_data[key]
-                seens[n_data[self.connect_label]] = n
-            if v_data[self.connect_label] in seens:
-                v = seens[v_data[self.connect_label]]
-            else:
-                if keys_as_ids:
-                    v = v_data[key]
-                seens[v_data[self.connect_label]] = v
-
-            if create_graphs:
-                cg.add_node(n, **n_data)
-                cg.add_node(v, **v_data)
-                cg.add_edge(n, v, e, **k)
-            else:
-                if n in cg[0]:
-                    cg[0][n].update(n_data)
-                else:
-                    cg[0][n] = n_data
-
-                if v in cg[0]:
-                    cg[0][v].update(v_data)
-                else:
-                    cg[0][v] = v_data
-                cg[1].append((n_data[self.connect_label], v_data[self.connect_label], e, k))
-        return graphs
-    """
-    def add_view_graph_numbers(self):
-        '''
-        Goal: For each n,v,e in graph get the graph number.
-        Nodes already have gns. However, there will likely be duplicates.
-        Can't assume edge will be in main graph.
-        '''
-        for n, v, e, k in self.v_edges(keys=True, data=True):
-            n_data = self.nodes[n]
-            v_data = self.nodes[v]
-            print(n_data)
-            print(v_data)
-            print(e)
-            print(k)
-            print("\n\n")
-            graph_number = []
-            k["graph_number"] = graph_number
-    """
-            
     def get_namespace(self, uri):
         split_subject = _split(uri)
         if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
@@ -157,34 +81,21 @@ class AbstractBuilder:
             name = split_subject[-1]
         return uri.split(name)[0]
 
-    def resolve_list(self, list_id):
+    def resolve_list(self, list_node):
         elements = []
-        list_id = self._resolve_subject(list_id)
-        next_id = list_id
+        next_node = list_node
         while True:
-            res = self._graph.search((next_id, None, None))
-            f = [c[1] for c in res if c[2] == RDF.first]
-            r = [c[1] for c in res if c[2] == RDF.rest]
+            res = self._graph.edge_query(n=next_node)
+            f = [c for c in res if str(RDF.first) in c.get_labels()]
+            r = [c for c in res if str(RDF.rest) in c.get_labels()]
             if len(f) != 1 or len(r) != 1:
-                raise ValueError(f'{list_id} is a malformed list.')
+                raise ValueError(f'{list_node} is a malformed list.')
             elements.append(f[0])
-            r, r_data = r[0]
-            if r_data["key"] == RDF.nil:
+            r = r[0]
+            if str(RDF.nil) in r.v.get_labels():
                 break
-            next_id = r
+            next_node = r.v
         return elements
-
-    def _resolve_subject(self, subject):
-        if subject in self._graph:
-            return subject
-        if subject in self.view:
-            key = self.view.nodes[subject]["key"]
-            for n, data in self._graph.nodes(data=True):
-                if data["key"] == key:
-                    return n
-            else:
-                return subject
-        raise ValueError(f'{subject} Not in either graph or viewgraph.')
 
 
 def _split(uri):

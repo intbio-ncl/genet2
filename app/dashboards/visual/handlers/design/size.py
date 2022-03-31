@@ -1,4 +1,4 @@
-from visual.handlers.abstract_size import AbstractSizeHandler
+from app.dashboards.visual.handlers.abstract_size import AbstractSizeHandler
 class SizeHandler(AbstractSizeHandler):
     def __init__(self,builder):
         super().__init__(builder)
@@ -7,10 +7,10 @@ class SizeHandler(AbstractSizeHandler):
 
     def hierarchy(self):
         sizes = []
-        for node,data in self._builder.v_nodes(data=True):
-            if self._builder.get_rdf_type(node) is None:
-                for n in [m[0] for m in self._builder.in_edges(node)]:
-                    d = self._builder.get_entity_depth(n)
+        for node in self._builder.v_nodes():
+            if self._builder.get_rdf_type(node) == []:
+                for n in self._builder.in_edges(node):
+                    d = self._builder.get_entity_depth(n.v)
                     if d != 0:
                         break
             else:

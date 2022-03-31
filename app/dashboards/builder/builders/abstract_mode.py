@@ -1,8 +1,9 @@
 from collections import Counter
 from itertools import chain
 import re
-
-from rdflib import URIRef 
+import networkx as nx
+from app.graphs.graph_objects.node import Node
+from app.graphs.graph_objects.edge import Edge
 
 class AbstractModeBuilder:
     def __init__(self,builder):
@@ -10,34 +11,21 @@ class AbstractModeBuilder:
     
     def tree(self):
         tree_edges = []
-        node_attrs = {}
         seen = []
-        if len(self._builder.v_nodes) == 0:
-            return self._builder.sub_graph(tree_edges,node_attrs)
+        v_nodes = [*self._builder.v_nodes()]
+        if len(v_nodes) == 0:
+            return self._builder.sub_graph(tree_edges)
             
-        max_key = max([node for node in self._builder.v_nodes])
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            try:
-                node_attrs[v] = self._builder.nodes[v]
-            except KeyError:
-                node_attrs[v] = self._builder.v_nodes[v]
-
-            try:
-                node_attrs[n] = self._builder.nodes[n]
-            except KeyError:
-                node_attrs[n] = self._builder.v_nodes[n]
-
-            v_copy = v
-            if v in seen:
-                max_key +=1
-                v = max_key
-                node_attrs[v] = self._builder.nodes[v_copy]
-                seen.append(v)
+        for edge in self._builder.v_edges():
+            if edge in seen:
+                new_n = edge.n.duplicate()
+                new_v = edge.v.duplicate()
+                new_e = Edge(new_n,new_v,edge.get_labels(),**edge.get_properties())
+                tree_edges.append(new_e)
             else:
-                seen.append(v)
-            edge = self._create_edge_dict(e,**k)
-            tree_edges.append((n,v,e,edge))       
-        tree_graph = self._builder.sub_graph(tree_edges,node_attrs)
+                seen.append(edge)
+            tree_edges.append(edge)       
+        tree_graph = self._builder.sub_graph(tree_edges)
         return tree_graph
 
     def network(self):
@@ -45,142 +33,128 @@ class AbstractModeBuilder:
 
     def union(self):
         edges = []
-        node_attrs = {}
         seens = {}
-        key = self._builder.connect_label        
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            n_data = self._builder.v_nodes[n]
-            v_data = self._builder.v_nodes[v]
-            if n_data[key] in seens:
-                n = seens[n_data[key]]
+        def swap(node):
+            if node in seens:
+                node = seens[node]
             else:
-                seens[n_data[key]] = n
-
-            if v_data[key] in seens:
-                v = seens[v_data[key]]
-            else:
-                seens[v_data[key]] = v
-
-            node_attrs[n] = n_data
-            node_attrs[v] = v_data
-
-            edge = self._create_edge_dict(e,**k)
-            edges.append((n,v,e,edge))      
-        return self._builder.sub_graph(edges,node_attrs)
+                seens[node] = node
+            return node
+        for edge in self._builder.v_edges():
+            edge.n = swap(edge.n)
+            edge.v = swap(edge.v)            
+            edges.append(edge)
+        return self._builder.sub_graph(edges)
 
     def node_intersection(self):
+        '''
+        Check if the number of occurances of a node is equal to number of graphs.
+        '''
         edges = []
-        node_attrs = {}
+        gn_map,all_names = self._builder.view_number_map(ret_max=True)
         seens = {}
-        key = self._builder.connect_label
-        i_graphs = self._builder.get_internal_graphs(keys_as_ids=True,key=key)
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            n_data = self._builder.v_nodes[n]
-            v_data = self._builder.v_nodes[v]
-            for graph in i_graphs:
-                if n_data[key] not in graph:
-                    break
-                if v_data[key] not in graph:
-                    break            
+        def valid(node):
+            assert(node in gn_map)
+            agn = gn_map[node]
+            if len(agn) == len(all_names):
+                return True
+            return False
+
+        def swap(node):
+            if node in seens:
+                node = seens[node]
             else:
-                if n_data[key] in seens:
-                    n = seens[n_data[key]]
-                else:
-                    seens[n_data[key]] = n
+                seens[node] = node
+            return node
 
-                if v_data[key] in seens:
-                    v = seens[v_data[key]]
-                else:
-                    seens[v_data[key]] = v
-
-                node_attrs[n] = n_data
-                node_attrs[v] = v_data
-                edge = self._create_edge_dict(e,**k)
-                edges.append((n,v,e,edge))
-        return self._builder.sub_graph(edges,node_attrs)
+        for edge in self._builder.v_edges():
+            if edge not in edges and valid(edge.n) and valid(edge.v):
+                edge.n = swap(edge.n)
+                edge.v = swap(edge.v)
+                edges.append(edge)
+        return self._builder.sub_graph(edges)
 
     def edge_intersection(self):
         edges = []
-        node_attrs = {}
-        seens = []
-        key = self._builder.connect_label
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            n_data = self._builder.v_nodes[n]
-            v_data = self._builder.v_nodes[v]
-            pattern = (n_data[key],e,v_data[key])
-            if pattern in seens:
-                continue
-            res = self._builder.view.search(pattern,label_key=key)
-            if len(res) >= self._builder.view.igc:
-                node_attrs[n] = self._builder.v_nodes[n]
-                node_attrs[v] = self._builder.v_nodes[v]
-                edge = self._create_edge_dict(e,**k)
-                edges.append((n,v,e,edge))
-            seens.append(pattern)
-        return self._builder.sub_graph(edges,node_attrs)
-
-    def node_difference(self,use_edges=False):
-        edges = []
-        node_attrs = {}
+        gn_map,all_names = self._builder.view_number_map(ret_max=True,edges=True)
         seens = {}
-        key = self._builder.connect_label
-        i_graphs = self._builder.get_internal_graphs(keys_as_ids=True)
-        if use_edges:
-            counter = Counter(chain.from_iterable(set([(x.nodes[k][key],x.nodes[v][key],e) for k,v,e in x.edges(keys=True)]) for x in i_graphs))
-        else:
-            counter = Counter(chain.from_iterable(set(x) for x in i_graphs))
+        def valid(item):
+            assert(item in gn_map)
+            agn = gn_map[item]
+            if len(agn) == len(all_names):
+                return True
+            return False
 
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            n_data = self._builder.v_nodes[n]
-            v_data = self._builder.v_nodes[v]
-            if use_edges:
-                count = counter[(n_data[key],v_data[key],e)]
+        def swap(node):
+            if node in seens:
+                node = seens[node]
             else:
-                count = counter[n_data[key]]
-            if count > 1:
-                continue
-            if counter[v_data[key]] > 1:
-                continue
+                seens[node] = node
+            return node
 
-            if n_data[key] in seens:
-                n = seens[n_data[key]]
+        for edge in self._builder.v_edges():
+            if edge not in edges and valid(edge):
+                edge.n = swap(edge.n)
+                edge.v = swap(edge.v)
+                edges.append(edge)
+        return self._builder.sub_graph(edges)
+
+    def node_difference(self):
+        '''
+        Check if the number of occurances of a node is equal to 1.
+        '''
+        edges = []
+        gn_map = self._builder.view_number_map()
+        seens = {}
+        def valid(node):
+            assert(node in gn_map)
+            agn = gn_map[node]
+            if len(agn) == 1:
+                return True
+            return False
+
+        def swap(node):
+            if node in seens:
+                node = seens[node]
             else:
-                seens[n_data[key]] = n
+                seens[node] = node
+            return node
 
-            if v_data[key] in seens:
-                v = seens[v_data[key]]
-            else:
-                seens[v_data[key]] = v
-
-            node_attrs[n] = n_data
-            node_attrs[v] = v_data
-            edge = self._create_edge_dict(e,**k)
-            edges.append((n,v,e,edge))
-        return self._builder.sub_graph(edges,node_attrs)
+        for edge in self._builder.v_edges():
+            if edge not in edges and valid(edge.n) and valid(edge.v):
+                edge.n = swap(edge.n)
+                edge.v = swap(edge.v)
+                edges.append(edge)
+        return self._builder.sub_graph(edges)
         
     def edge_difference(self):
         edges = []
-        node_attrs = {}
-        seens = []
-        key = self._builder.connect_label
-        for n,v,e,k in self._builder.v_edges(keys=True,data=True):
-            n_data = self._builder.v_nodes[n]
-            v_data = self._builder.v_nodes[v]
-            pattern = (n_data[key],e,v_data[key])
-            if pattern in seens:
-                continue
-            res = self._builder.view.search(pattern,label_key=key)
-            if len(res) == 1:
-                node_attrs[n] = self._builder.v_nodes[n]
-                node_attrs[v] = self._builder.v_nodes[v]
-                edge = self._create_edge_dict(e,**k)
-                edges.append((n,v,e,edge))
-            seens.append(pattern)
-        return self._builder.sub_graph(edges,node_attrs)
+        gn_map = self._builder.view_number_map(edges=True)
+        seens = {}
+        def valid(item):
+            assert(item in gn_map)
+            agn = gn_map[item]
+            if len(agn) == 1:
+                return True
+            return False
+
+        def swap(node):
+            if node in seens:
+                node = seens[node]
+            else:
+                seens[node] = node
+            return node
+
+        for edge in self._builder.v_edges():
+            if edge not in edges and valid(edge):
+                edge.n = swap(edge.n)
+                edge.v = swap(edge.v)
+                edges.append(edge)
+        return self._builder.sub_graph(edges)
 
     def _create_edge_dict(self,key,weight=1,**kwargs):
         edge = {'weight': weight, 
-                'display_name': self._get_name(str(key))}
+                'name': self._get_name(str(key))}
         edge.update(kwargs)
         return edge
 

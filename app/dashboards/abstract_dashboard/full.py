@@ -3,9 +3,10 @@ from inspect import signature, getargspec
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from dash import callback_context
-from dashboard.abstract.utility.callback_structs import *
-from visual.abstract import AbstractVisual
-from dashboard.abstract.abstract import AbstractDash
+
+from app.dashboards.abstract_dashboard.utility.callback_structs import *
+from app.dashboards.visual.abstract import AbstractVisual
+from app.dashboards.abstract_dashboard.abstract import AbstractDash
 
 
 assets_ignore = '.*bootstrap.*'
@@ -16,24 +17,12 @@ class FullDash(AbstractDash):
         super().__init__(visualiser, name, server, pathname, assets_ignore=assets_ignore)
         self._build_app(visualiser)
 
-    def _load_graph(self):
-        figure, legend = self.visualiser.build(graph_id=graph_id, legend=True)
-        graph_div = self.create_div(update_outputs["graph_id"].component_id, [
-                                    figure], className="col")
-        legend = self.create_div(update_outputs["legend_id"].component_id, self.create_legend(
-            legend), className="col sidebar")
-        self.replace(graph_div[0])
-        self.replace(legend[0])
-        container = self.create_div(
-            "row-main", self.children, className="row flex-nowrap no-gutters")
-        self.app.layout = self.create_div(
-            "main", container, className="container-fluid")[0]
 
     def _build_app(self, visualiser):
         # Add Options
         form_elements, identifiers, maps = self._create_form_elements(
             visualiser, id_prefix=id_prefix)
-        self._create_manual_toolbar()
+
 
         del maps["cyto_preset"]
         preset_identifiers, identifiers, preset_output, preset_state = self._generate_inputs_outputs(
@@ -43,14 +32,18 @@ class FullDash(AbstractDash):
         preset_inputs.update(preset_identifiers)
         preset_outputs.update(preset_output)
 
-        form_div = self.create_div(
-            graph_type_outputs["id"].component_id, form_elements)
-        self.create_sidebar(
-            not_modifier_identifiers["sidebar_id"], "Options", form_div, add=True, className="col sidebar")
-        self.app.layout = self.create_div(
-            "main", self.children, className="content")[0]
+        manual = self._create_manual_toolbar()
+        form_div = self.create_div(graph_type_outputs["id"].component_id, form_elements)
+        options = self.create_sidebar(not_modifier_identifiers["sidebar_id"], "Options", form_div, className="col sidebar")
+        figure, legend = self.visualiser.build(graph_id=graph_id, legend=True)
+        graph = self.create_div(update_outputs["graph_id"].component_id, [figure], className="col")
+        legend = self.create_legend(legend)
+        legend = self.create_div(update_outputs["legend_id"].component_id,legend, className="col sidebar")
+        elements = options+graph+legend+manual
+        container = self.create_div("row-main", elements, className="row flex-nowrap no-gutters")
+        self.app.layout = self.create_div("main", container, className="container-fluid")[0]
 
-        for sf in visualiser._builder._graph.get_save_formats():
+        for sf in visualiser._builder.view.get_save_formats():
             export_modal_inputs[sf] = Input(sf, "n_clicks")
 
         # Bind the callbacks
@@ -328,8 +321,8 @@ class FullDash(AbstractDash):
         edges = builder.view.edges(keys=True)
 
         e_cols = [{"name": k, "id": k} for k in ["node", "edge", "vertex"]]
-        e_data = [{"node": builder.view.nodes[n]["display_name"], "edge":e,
-                   "vertex": builder.view.nodes[v]["display_name"]} for n, v, e in edges]
+        e_data = [{"node": builder.view.nodes[n]["name"], "edge":e,
+                   "vertex": builder.view.nodes[v]["name"]} for n, v, e in edges]
         n_cols = [{"name": k, "id": k} for k in ["Node", "Degree", "Pagerank", "Degree Centrality",
                                                  "Closeness Centrality", "Betweenness Centrality", "Is Isolated",
                                                  "Number Of Cliques", "Clustering", "Square Clustering"]]
@@ -342,7 +335,7 @@ class FullDash(AbstractDash):
         clustering = view.clustering()
         square_clustering = view.square_clustering()
         for node, data in nodes:
-            nd = {"Node": data["display_name"]}
+            nd = {"Node": data["name"]}
             nd["Degree"] = view.degree(node)
             nd["Pagerank"] = pagerank[node]
             nd["Degree Centrality"] = degree_centrality[node]
@@ -483,7 +476,7 @@ class FullDash(AbstractDash):
         docstring = []
         variable_input_list_map = OrderedDict()
         for k, v in options.items():
-            display_name = self._beautify_name(k)
+            name = self._beautify_name(k)
             identifier = id_prefix + "_" + k
             element = []
 
@@ -493,14 +486,14 @@ class FullDash(AbstractDash):
                 default_val = int((min_v + max_v) / 2)
                 step = 1
 
-                element += (self.create_heading_6("", display_name) +
+                element += (self.create_heading_6("", name) +
                             self.create_slider(identifier, min_v, max_v, default_val=default_val, step=step))
                 identifiers[k] = Input(identifier, "value")
                 variable_input_list_map[identifier] = [min_v, max_v]
 
             elif isinstance(v, dict):
                 removal_words = removal_words + \
-                    [word for word in display_name.split(" ")]
+                    [word for word in name.split(" ")]
                 inputs = []
                 default_button = None
                 for k1, v1 in v.items():
@@ -513,10 +506,10 @@ class FullDash(AbstractDash):
 
                 variable_input_list_map[identifier] = [
                     l["value"] for l in inputs]
-                element = (self.create_heading_6(k, display_name) +
+                element = (self.create_heading_6(k, name) +
                            self.create_radio_item(identifier, inputs, value=default_button))
                 identifiers[k] = Input(identifier, "value")
-                docstring += self._build_docstring(display_name, v)
+                docstring += self._build_docstring(name, v)
 
             breaker = self.create_horizontal_row(False)
             elements = elements + \
@@ -563,7 +556,7 @@ class FullDash(AbstractDash):
                                           className="export_img_button")
             exports += self.create_line_break()
         exports += self.create_heading_4("export_data_heading", "Data Export")
-        for sf in visualiser._builder._graph.get_save_formats():
+        for sf in visualiser._builder.view.get_save_formats():
             export_modal_inputs[sf] = Input(sf, "n_clicks")
         for e_input in export_modal_inputs.values():
             if e_input.component_id == "close_export":
@@ -697,8 +690,8 @@ class FullDash(AbstractDash):
 
         children += self.create_button(
             man_tool_inputs["close_man"].component_id, name="Close", className="export_img_button")
-        self.create_sidebar(man_tool_outputs["id"].component_id, "Manual Options",
-                            children, add=True, className="col sidebar", hidden="True")
+        return self.create_sidebar(man_tool_outputs["id"].component_id, "Manual Options",
+                            children, className="col sidebar")
 
 
 def _derive_form(form):

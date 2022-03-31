@@ -5,10 +5,7 @@ class AbstractViewBuilder:
         self._builder = builder
 
     def full(self):
-        return self._builder._graph
-
-    def _build_edge_attr(self,key):
-        return {"display_name" : self._get_name(key)}
+        return self._builder.sub_graph(self._builder.edges())
 
     def _get_name(self,subject):
         split_subject = self._split(subject)

@@ -1,4 +1,4 @@
-from visual.handlers.abstract_shape import AbstractNodeShapeHandler,AbstractEdgeShapeHandler
+from app.dashboards.visual.handlers.abstract_shape import AbstractNodeShapeHandler,AbstractEdgeShapeHandler
 
 class ShapeHandler:
     def __init__(self,builder):

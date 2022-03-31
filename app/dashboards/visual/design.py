@@ -2,30 +2,26 @@ import os
 
 import dash_cytoscape as cyto
 cyto.load_extra_layouts()
-from builder.design import DesignBuilder
-from visual.abstract import AbstractVisual
-
-from visual.handlers.design.layout import LayoutHandler
-from visual.handlers.design.label import LabelHandler
-from visual.handlers.design.color import ColorHandler
-from visual.handlers.design.size import SizeHandler
-from visual.handlers.design.shape import ShapeHandler
+from app.dashboards.builder.design import DesignBuilder
+from app.dashboards.visual.abstract import AbstractVisual
+from app.dashboards.visual.handlers.design.layout import LayoutHandler
+from app.dashboards.visual.handlers.design.label import LabelHandler
+from app.dashboards.visual.handlers.design.color import ColorHandler
+from app.dashboards.visual.handlers.design.size import SizeHandler
+from app.dashboards.visual.handlers.design.shape import ShapeHandler
 
 default_stylesheet_fn = os.path.join(os.path.dirname(os.path.realpath(__file__)),"default_stylesheet.txt")
 
 class DesignVisual(AbstractVisual):
-    def __init__(self,model,is_multiple,graph=None):
-        super().__init__(is_multiple=is_multiple)
-        self._builder = DesignBuilder(model,graph)
+    def __init__(self,graph):
+        super().__init__()
+        self._builder = DesignBuilder(graph)
         self._layout_h = LayoutHandler()
         self._label_h = LabelHandler(self._builder)
         self._color_h = ColorHandler(self._builder)
         self._size_h = SizeHandler(self._builder)
         self._shape_h = ShapeHandler(self._builder)
         self.set_concentric_layout()
-
-    def _load_graph(self,fn):
-        return self._builder.load(fn)
 
     # ---------------------- Preset ------------------------------------
     def set_hierarchy_preset(self):
@@ -276,15 +272,6 @@ class DesignVisual(AbstractVisual):
             return self._color_h.edge.hierarchy()
         else:
             self.edge_color = self.add_hierarchy_edge_color
-
-    def add_interaction_edge_color(self):
-        '''
-        Color for each Interaction predicate.
-        '''
-        if self.edge_color == self.add_interaction_edge_color:
-            return self._color_h.edge.interaction()
-        else:
-            self.edge_color = self.add_interaction_edge_color
 
     # ---------------------- Node Size ----------------------
     def add_hierarchy_node_size(self):

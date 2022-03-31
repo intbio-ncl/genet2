@@ -1,6 +1,6 @@
 import re 
 
-from builder.builders.abstract_mode import AbstractModeBuilder
+from app.dashboards.builder.builders.abstract_mode import AbstractModeBuilder
 
 class ModeBuilder(AbstractModeBuilder):
     def __init__(self,builder):

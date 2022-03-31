@@ -1,4 +1,4 @@
-from visual.handlers.abstract_label import AbstractNodeLabelHandler , AbstractEdgeLabelHandler
+from app.dashboards.visual.handlers.abstract_label import AbstractNodeLabelHandler , AbstractEdgeLabelHandler
 
 class LabelHandler:
     def __init__(self,builder):

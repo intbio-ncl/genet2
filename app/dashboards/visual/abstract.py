@@ -1,17 +1,13 @@
 import os
-import sys
-import inspect
 import json
-import types
 import dash_cytoscape as cyto
-from visual.multiple_graph_methods import abstract_methods
 cyto.load_extra_layouts()
 
 default_stylesheet_fn = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), "default_stylesheet.txt")
 
 class AbstractVisual:
-    def __init__(self, graph=None, is_multiple=False):
+    def __init__(self):
         self.view = self.set_full_graph_view
         self.mode = self.set_network_mode
         self.node_text = self.add_node_no_labels
@@ -22,12 +18,6 @@ class AbstractVisual:
         self.node_shape = self.set_circle_node_shape
         self.edge_shape = self.set_straight_edge_shape
         self.stylesheet = []
-
-        if is_multiple:
-            for name,func in inspect.getmembers(sys.modules[abstract_methods.__name__]):
-                if name.startswith("__"):
-                    continue
-                setattr(self, name, types.MethodType(func, self))
 
     def copy_settings(self):
         current_settings = [
@@ -70,6 +60,72 @@ class AbstractVisual:
             self._builder.set_tree_mode()
         else:
             self.mode = self.set_tree_mode
+
+    def set_union_mode(self):
+        '''
+        Only for multiple graph visualisation. 
+        Connects graphs by merging duplicate nodes between graphs.
+        '''
+        if self.mode == self.set_union_mode:
+            self._builder.set_union_mode()
+        else:
+            self.mode = self.set_union_mode
+
+
+    def set_node_difference_mode(self):
+        '''
+        Only for multiple graph visualisation. 
+        Visualised the difference between Graphs. 
+        I.e. where common nodes are removed. 
+        Differs from edge_different as graph will become connected i.e. common nodes are 
+        merged and edges between rest are linked to unique nodes.
+        '''
+        if self.mode == self.set_node_difference_mode:
+            self._builder.set_node_difference_mode()
+        else:
+            self.mode = self.set_node_difference_mode
+
+
+    def set_edge_difference_mode(self):
+        '''
+        Only for multiple graph visualisation. 
+        Visualised the difference between Graphs. 
+        I.e. where common nodes and edges are removed. 
+        Differs from node_difference as graphs will still be 
+        disconnected and only edges will be removed that are common.
+        '''
+        if self.mode == self.set_edge_difference_mode:
+            self._builder.set_edge_difference_mode()
+        else:
+            self.mode = self.set_edge_difference_mode
+
+
+    def set_node_intersection_mode(self):
+        '''
+        Only for multiple graph visualisation. 
+        Visualised the intersection between Graphs. 
+        I.e. where non common nodes are removed. 
+        Result is a merged graph with all edges of 
+        common nodes attached.
+        '''
+        if self.mode == self.set_node_intersection_mode:
+            self._builder.set_node_intersection_mode()
+        else:
+            self.mode = self.set_node_intersection_mode
+
+
+    def set_edge_intersection_mode(self):
+        '''
+        Only for multiple graph visualisation. 
+        Visualised the intersection between Graphs. 
+        I.e. where only common edges are maintained.
+        Similar to node intersection but takes edge between nodes into 
+        account opposed to each node individually.
+        '''
+        if self.mode == self.set_edge_intersection_mode:
+            self._builder.set_edge_intersection_mode()
+        else:
+            self.mode = self.set_edge_intersection_mode
 
 # ---------------------- Pick a layout ----------------------
     def _set_layout(self, obj):
@@ -267,6 +323,15 @@ class AbstractVisual:
         else:
             self.node_color = self.add_rdf_type_node_color
 
+    def set_graph_name_node_color(self):
+        '''
+        All node colors pertain to the name 
+        of the source graph when loaded.
+        '''
+        if self.node_color == self.set_graph_name_node_color:
+            return self._color_h.node.graph_name()
+        else:
+            self.node_color = self.set_graph_name_node_color
     # ---------------------- Edge Color ----------------------
 
     def add_standard_edge_color(self):
@@ -286,6 +351,16 @@ class AbstractVisual:
             return self._color_h.edge.nv_type()
         else:
             self.edge_color = self.add_type_edge_color
+
+    def set_graph_name_edge_color(self):
+        '''
+        All edge colors pertain to the name 
+        of the source graph when loaded.
+        '''
+        if self.edge_color == self.set_graph_name_edge_color:
+            return self._color_h.edge.graph_name()
+        else:
+            self.edge_color = self.set_graph_name_edge_color
 
     # ---------------------- Node Size ----------------------
     def add_standard_node_size(self):
@@ -485,6 +560,19 @@ class AbstractVisual:
         else:
             self.edge_shape = self.set_segments_edge_shape
 
+    def set_key_connect(self):
+        '''
+        Connects nodes and edges based on full URI
+        '''
+        self._builder.connect_label = "key"
+
+
+    def set_name_connect(self):
+        '''
+        Connects nodes and edges based on display name
+        '''
+        self._builder.connect_label = "name"
+
     def build(self, graph_id="cytoscape_graph", legend=False, width=80, height=100):
         stylesheet = self._build_default_stylesheet()
         nodes = []
@@ -503,7 +591,7 @@ class AbstractVisual:
 
         if self.layout is not None:
             layout = self.layout.build()
-        for index, (node, label) in enumerate(self._builder.view.nodes(data=True)):
+        for index, node in enumerate(self._builder.view.nodes()):
             text = node_text[index]
             color_key = list(node_color[index].keys())[0]
             shape = node_shapes[index]
@@ -517,11 +605,10 @@ class AbstractVisual:
                 node_selectors.append(color_key)
             nodes.append(node)
 
-        for index, (n, v) in enumerate(self._builder.view.edges()):
+        for index, edge in enumerate(self._builder.view.edges()):
             color_key = list(edge_color[index].keys())[0]
             e_color = edge_color[index][color_key]
-            edge, e_style = self._build_edge(
-                n, v, edge_text[index], color_key, e_color, edge_shape)
+            edge, e_style = self._build_edge(edge, edge_text[index], color_key, e_color, edge_shape)
             if color_key not in edge_selectors:
                 stylesheet.append(e_style)
                 edge_selectors.append(color_key)
@@ -543,13 +630,13 @@ class AbstractVisual:
 
     def _build_node(self, n, label, size, c_key, color, shape):
         class_str = f'top-center {c_key} {shape}'
-        node = {'data': {'id': n, 'label': label, "size": size},
+        node = {'data': {'id': n.id, 'label': label, "size": size},
                 'classes': class_str}
         style = {"selector": "." + c_key, "style": {"background-color": color}}
         return node, style
 
-    def _build_edge(self, n, v, label, c_key, color, edge_shape):
-        edge = {'data': {'source': n, 'target': v, 'label': label},
+    def _build_edge(self, edge, label, c_key, color, edge_shape):
+        edge = {'data': {'source': edge.n.id, 'target': edge.v.id, 'label': label},
                 'classes': f'center-right {c_key}'}
         style = {"selector": "." + c_key, "style": {"line-color": color,
                                                     'curve-style': edge_shape,

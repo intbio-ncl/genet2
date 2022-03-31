@@ -1,6 +1,6 @@
 import re
 
-from visual.handlers.color_producer import ColorPicker
+from app.dashboards.visual.handlers.color_producer import ColorPicker
 
 color_picker = ColorPicker()
 class AbstractNodeColorHandler:
@@ -13,16 +13,28 @@ class AbstractNodeColorHandler:
 
     def rdf_type(self):
         colors = []
-        for node,data in self._builder.v_nodes(data=True):
-            if self._builder.get_rdf_type(node) is not None:
+        for node in self._builder.v_nodes():
+            if self._builder.get_rdf_type(node) != []:
                 color = {"rdf_type" : self._color_picker[0]}
             else:
                 color = {"no_type" : self._color_picker[1]}
             colors.append(color)
         return colors
 
-    def graph_number(self):
-        return [{f'{data["graph_number"]}' : self._color_picker[data["graph_number"]]} for node,data in self._builder.v_nodes(data=True)]
+    def graph_name(self):
+        colors = []
+        seens = {}
+        index = 0
+        for node in self._builder.v_nodes():
+            gn = frozenset(node["graph_name"])
+            if gn in seens :
+                color = seens[gn]
+            else:
+                color = self._color_picker[index]
+                index += 1
+                seens[gn] = color
+            colors.append({"-".join(gn):color}  )
+        return colors
     
 class AbstractEdgeColorHandler:
     def __init__(self,builder):
@@ -30,17 +42,33 @@ class AbstractEdgeColorHandler:
         self._color_picker = color_picker
 
     def standard(self):
-        return [{"standard" : "#888"} for e in self._builder.v_edges]
+        return [{"standard" : "#888"} for e in self._builder.v_edges()]
     
     def nv_type(self):
         colors = []
         col_map = {}
         col_index = 0
-        for n,v,k in self._builder.v_edges(keys=True):
-            if k not in col_map.keys():
-                col_map[k] = self._color_picker[col_index]
+        for edge in self._builder.v_edges():
+            edge = "-".join([_get_name(l) for l in edge.get_labels()])
+            if edge not in col_map:
+                col_map[edge] = self._color_picker[col_index]
                 col_index +=1
-            colors.append({_get_name(k):col_map[k]})
+            colors.append({edge:col_map[edge]})
+        return colors
+
+    def graph_name(self):
+        colors = []
+        seens = {}
+        index = 0
+        for edge in self._builder.v_edges():
+            gn = frozenset(edge["graph_name"])
+            if gn in seens :
+                color = seens[gn]
+            else:
+                color = self._color_picker[index]
+                index += 1
+                seens[gn] = color
+            colors.append({"-".join(gn):color}  )
         return colors
     
 def _get_name(subject):

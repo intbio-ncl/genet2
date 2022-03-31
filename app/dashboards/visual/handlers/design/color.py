@@ -1,6 +1,6 @@
 import re
-from visual.handlers.abstract_color import AbstractNodeColorHandler
-from visual.handlers.abstract_color import AbstractEdgeColorHandler
+from app.dashboards.visual.handlers.abstract_color import AbstractNodeColorHandler
+from app.dashboards.visual.handlers.abstract_color import AbstractEdgeColorHandler
 
 class ColorHandler():
     def __init__(self,builder):
@@ -13,14 +13,14 @@ class ColorHandler():
         
         def type(self):
             colors = []
-            col_map = {None : {"No_Role" : self._color_picker[0]}}
+            col_map = {None : {"No_Type" : self._color_picker[0]}}
             col_index = len(col_map)
             for n in self._builder.v_nodes():
                 rdf_type = self._builder.get_rdf_type(n)
-                if rdf_type is None:
+                if rdf_type ==[]:
                     colors.append(col_map[None])
                 else:
-                    name = _get_name(rdf_type[1]["key"])
+                    name = "-".join([_get_name(t) for t in rdf_type[0].v.get_labels()])
                     if name not in col_map.keys():
                         col_map[name] = self._color_picker[col_index]
                         col_index += 1
@@ -42,26 +42,26 @@ class ColorHandler():
             shade_map = {}
             col_index = len(col_map)
 
-            mg = self._builder._model_graph
+            mg = self._builder._graph.model
             pe_id = mg.identifiers.objects.physical_entity
             c_id = mg.identifiers.objects.conceptual_entity
             pe_code = mg.get_class_code(pe_id)
             c_code = mg.get_class_code(c_id)
-            pe_derived = [d[1]["key"] for d in mg.get_child_classes([pe_code,c_code])]
+            pe_derived = [str(d[1]["key"]) for d in mg.get_child_classes([pe_code,c_code])]
             for d in pe_derived:
                 name = _get_name(d)
                 col_map[name] = self._color_picker[col_index]
                 col_index += 1
             for n in self._builder.v_nodes():
                 n_type = self._builder.get_rdf_type(n)
-                if n_type is None:
+                if n_type == []:
                     colors.append(col_map[None])
                     continue
-                n_type = n_type[1]["key"]
-                name = _get_name(n_type)
+                n_type = n_type[0].v
+                name = "-".join([_get_name(n) for n in n_type.get_labels()])
                 if name not in col_map.keys():
-                    n_t_code = mg.get_class_code(n_type)
-                    for b in [i[1]["key"] for i in mg.get_bases(n_t_code)]:
+                    n_t_code = mg.get_class_code(n_type.get_labels()[0])
+                    for b in [str(i[1]["key"]) for i in mg.get_bases(n_t_code)]:
                         if b in pe_derived:
                             base = b
                             p_col = col_map[_get_name(b)]
@@ -81,11 +81,10 @@ class ColorHandler():
         def hierarchy(self):
             colors = []
             colors_map = _init_hierarchy_map(self)
-            for n,data in self._builder.v_nodes(data=True):
-                key = data["key"]
-                if key not in colors_map.keys():
-                    for o in [c[0] for c in self._builder.in_edges(n)]:
-                        o = self._builder.nodes[o]["key"]
+            for node in self._builder.v_nodes():
+                if node not in colors_map.keys():
+                    for o in self._builder.in_edges(node):
+                        o = o.n
                         if o in colors_map.keys():
                             color,depth = colors_map[o]
                             colors.append({depth : color})
@@ -93,7 +92,7 @@ class ColorHandler():
                     else:
                         colors.append({"Non-Hierarchical" : colors_map[None]})
                 else:
-                    color,depth = colors_map[key]
+                    color,depth = colors_map[node]
                     colors.append({depth : color})
             return colors
 
@@ -104,12 +103,10 @@ class ColorHandler():
         def hierarchy(self):
             colors = []
             color_map = _init_hierarchy_map(self)
-            for n,v,k in self._builder.v_edges(keys=True):
-                n_data = self._builder.v_nodes[n]
-                key = n_data["key"]
-                if key not in color_map.keys():
-                    for o in [c[0] for c in self._builder.in_edges(n)]:
-                        o = self._builder.nodes[o]["key"]
+            for edge in self._builder.v_edges():
+                if edge.n not in color_map.keys():
+                    for o in self._builder.in_edges(edge.n):
+                        o = o.n
                         if o in color_map.keys():
                             color,depth = color_map[o]
                             colors.append({f'Depth-{depth}' : color})
@@ -117,7 +114,7 @@ class ColorHandler():
                     else:
                         colors.append({"Non-Hierarchical" : color_map[None]})
                 else:
-                    color,depth = color_map[key]
+                    color,depth = color_map[edge.n]
                     colors.append({f"Depth-{depth}" : color})
             return colors
 
@@ -130,16 +127,17 @@ def _init_hierarchy_map(handler):
     def _handle_branch(root_node,cur_col,cur_depth):
         child_color = handler._color_picker.increase_shade(cur_col)
         cur_depth +=1
-        for child,data in [c[0] for c in handler._builder.get_children(root_node)]:
+        for child in handler._builder.get_children(root_node):
+            child = child.v
             depth_str = f'{_get_name(true_root)}-Depth-{cur_depth}'
-            colors_map[data["key"]] = (child_color,depth_str)
+            colors_map[child] = (child_color,depth_str)
             _handle_branch(child,child_color,cur_depth)
 
-    for rn,data in handler._builder.get_root_entities():
+    for rn in handler._builder.get_root_entities():
         root_index +=1
-        true_root = data["key"]
+        true_root = rn.get_labels()[0]
         depth_str = f'{_get_name(true_root)}-Depth-0'
-        colors_map[true_root] = handler._color_picker[root_index],depth_str
+        colors_map[rn] = handler._color_picker[root_index],depth_str
         root_color = handler._color_picker[root_index]
         _handle_branch(rn,root_color,0)
     return colors_map

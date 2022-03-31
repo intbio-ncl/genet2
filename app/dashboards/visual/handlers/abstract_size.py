@@ -10,7 +10,7 @@ class AbstractSizeHandler:
     def class_type(self):
         node_sizes = []
         for node in self._builder.v_nodes():
-            if self._builder.get_rdf_type(node) is None:
+            if self._builder.get_rdf_type(node) == []:
                 node_sizes.append(self._standard_node_size/2)
             else:
                 node_sizes.append(self._standard_node_size)
@@ -19,7 +19,7 @@ class AbstractSizeHandler:
     def centrality(self):
         node_sizes = []
         for node in self._builder.v_nodes():
-            node_size = 1 + len(self._builder.in_edges(node)) + len(self._builder.out_edges(node))
+            node_size = 1 + len([*self._builder.in_edges(node)]) + len([*self._builder.out_edges(node)])
             node_size = int((node_size * self._standard_node_size) / 4)
             if node_size > 100:
                 node_size = 100
@@ -31,7 +31,7 @@ class AbstractSizeHandler:
     def in_centrality(self):
         node_sizes = []
         for node in self._builder.v_nodes():
-            node_size = 1 + len(self._builder.in_edges(node))
+            node_size = 1 + len([*self._builder.in_edges(node)])
             node_size = int((node_size * self._standard_node_size) / 2)
             if node_size > 100:
                 node_size = 100
@@ -43,7 +43,7 @@ class AbstractSizeHandler:
     def out_centrality(self):
         node_sizes = []
         for node in self._builder.v_nodes():
-            node_size = 1 + len(self._builder.out_edges(node))
+            node_size = 1 + len([*self._builder.out_edges(node)])
             node_size = int((node_size * self._standard_node_size) / 2)
             if node_size > 100:
                 node_size = 100

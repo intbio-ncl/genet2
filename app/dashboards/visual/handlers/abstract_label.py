@@ -1,60 +1,66 @@
 import re
-from rdflib import URIRef,Literal,RDF
 
+# Note the two len() you could add a num_nodes func (Performance)
 class AbstractNodeLabelHandler:
     def __init__(self,builder):
         self._builder = builder
 
     def none(self):
-        return [None] * len(self._builder.v_nodes())
+        return [None] * len([*self._builder.v_nodes()])
     
     def adjacency(self):
         node_text = []
-        for node in self._builder.v_nodes:
-            num_in = len(self._builder.in_edges(node))
-            num_out = len(self._builder.out_edges(node)) 
+        for node in self._builder.v_nodes():
+            num_in = len([*self._builder.in_edges(node)])
+            num_out = len([*self._builder.out_edges(node)])
             node_text.append(f"# IN: {str(num_in)}, # OUT: {str(num_out)}")
         return node_text
 
     def name(self):
         names = []
-        for node,data in self._builder.v_nodes(data=True):
-            names.append(data["display_name"])
+        for node in self._builder.v_nodes():
+            names.append("-".join([_get_name(l) for l in node.get_labels()]))
         return names
 
     def class_type(self):
         node_text = []
-        for node,data in self._builder.v_nodes(data=True):
-            key = data["key"]
+        for node in self._builder.v_nodes():
+            props = node.get_properties()
             n_type = self._builder.get_rdf_type(node)
-            if n_type is not None:
-                node_text.append(_get_name(n_type[1]["key"]))
-            elif isinstance(key,Literal):
+            if n_type != []:
+                node_text.append("-".join([_get_name(n) for n in n_type[0].v.get_labels()]))
+            elif props["type"] == "Literal":
                 node_text.append("Literal")
-            elif isinstance(key,URIRef):
+            elif props["type"] == "URI":
                 node_text.append("Identifier")
             else:
                 node_text.append("?")
         return node_text
         
     def uri(self):
-        return [data["key"] for n,data in self._builder.v_nodes(data=True)]
+        names = []
+        for node in self._builder.v_nodes():
+            names.append("-".join([l for l in node.get_labels()]))
+        return names
 
 class AbstractEdgeLabelHandler:
     def __init__(self,builder):
         self._builder = builder
         
     def none(self):
-        return [None] * len(self._builder.v_edges())
+        return [None] * len([*self._builder.v_edges()])
 
     def name(self):
         edge_names = []
-        for edge in self._builder.v_edges(data=True):
-            edge_names.append(edge[2]["display_name"])
+        for edge in self._builder.v_edges():
+            edge_names.append("-".join([_get_name(e) for e in edge.get_labels()]))
         return edge_names
 
     def uri(self):
-        return [edge[2] for edge in self._builder.v_edges(keys=True)]
+        names = []
+        for node in self._builder.v_edges():
+            names.append("-".join([l for l in node.get_labels()]))
+        return names
 
 def _get_name(subject):
     split_subject = _split(subject)
