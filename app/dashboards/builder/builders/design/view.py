@@ -65,6 +65,7 @@ class ViewBuilder(AbstractViewBuilder):
     def interaction(self):
         edges = []
         for interaction in self._builder.get_interaction():
+            print(interaction)
             int_subj = interaction.n
             int_obj = interaction.v
             inputs, outputs = self._builder.get_interaction_io(int_subj)
@@ -73,6 +74,7 @@ class ViewBuilder(AbstractViewBuilder):
             for inp in inputs:
                 for out in outputs:
                     edges.append(Edge(inp.v, out.v, int_obj.get_labels(),**int_obj.get_properties()))
+            print("\n\n")
         return self._builder.sub_graph(edges)
 
     def interaction_genetic(self):

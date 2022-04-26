@@ -70,6 +70,7 @@ class DesignBuilder(AbstractBuilder):
                     continue
                 labels.append(l)
             model_code = [self._graph.model.get_class_code(l) for l in labels]
+            print(f'E: {edge}')
             for d in [d[1] for d in self._graph.model.search((model_code,d_predicate,None))]:
                 d,d_data = d
                 if d_data["key"] == i_predicate:

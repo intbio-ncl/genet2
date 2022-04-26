@@ -131,3 +131,4 @@ dmypy.json
 
 app/sessions/*
 app/utility/sbol_connector/interfaces/hubs/*.xml
+app/utility/sbol_connector/interfaces/hubs/*/*.xml
