@@ -8,7 +8,6 @@ default_stylesheet_fn = os.path.join(os.path.dirname(
 
 class AbstractVisual:
     def __init__(self):
-        self.view = self.set_full_graph_view
         self.mode = self.set_network_mode
         self.node_text = self.add_node_no_labels
         self.edge_text = self.add_edge_no_labels
@@ -573,13 +572,17 @@ class AbstractVisual:
         '''
         self._builder.connect_label = "name"
 
-    def build(self, graph_id="cytoscape_graph", legend=False, width=80, height=100):
+    def build(self, graph_id="cytoscape_graph", legend=False,datatable=False, width=80, height=100):
+        rets = []
         stylesheet = self._build_default_stylesheet()
         nodes = []
         edges = []
         node_selectors = []
         edge_selectors = []
-        self.view()
+        if datatable:
+            dt = self.view(True)
+        else:
+            self.view()
         self.mode()
         node_color = self.node_color()
         node_shapes = self.node_shape()
@@ -620,13 +623,14 @@ class AbstractVisual:
                                 elements=nodes + edges,
                                 stylesheet=stylesheet,
                                 responsive=True)
-
+        rets.append(figure)
         self.stylesheet = stylesheet
         if legend:
             legend_dict = self._build_legend(node_color, edge_color)
-            return figure, legend_dict
-
-        return figure
+            rets.append(legend_dict)
+        if datatable:
+            rets.append(dt)
+        return rets
 
     def _build_node(self, n, label, size, c_key, color, shape):
         class_str = f'top-center {c_key} {shape}'

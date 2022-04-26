@@ -1,13 +1,14 @@
 import networkx as nx
 from rdflib import RDF
 import re
-
+from app.dashboards.builder.builders.cypher.view import ViewBuilder
+from app.dashboards.builder.builders.cypher.mode import ModeBuilder
 
 class AbstractBuilder:
-    def __init__(self, graph,view_class):
+    def __init__(self, graph):
         self._graph = graph
-        self.view = view_class()
-        self.connect_label = "key"
+        self._view_h = ViewBuilder(self)
+        self._mode_h = ModeBuilder(self)
 
     def nodes(self):
         return self._graph.get_all_nodes()

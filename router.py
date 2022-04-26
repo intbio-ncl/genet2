@@ -12,6 +12,7 @@ from app.utility import form_handlers
 from app.utility.sbol_connector.connector import SBOLConnector
 from app.graphs.neo_graph.nv_graph import NVGraph
 from app.dashboards.design import DesignDash
+from app.dashboards.cypher import CypherDash
 
 root_dir = "app"
 static_dir = 'assets'
@@ -23,8 +24,13 @@ server = Flask(__name__, static_folder=static_dir,
 design_graph = NVGraph()
 design_dash = DesignDash(__name__,server,design_graph)
 design_dash.app.enable_dev_tools(debug=True)
+cypher_graph = NVGraph()
+cypher_graph = CypherDash(__name__,server,design_graph)
+cypher_graph.app.enable_dev_tools(debug=True)
+
 app = DispatcherMiddleware(server, {
     design_dash.pathname : design_dash.app.server,
+    cypher_graph.pathname: cypher_graph.app.server
 })
 sbol_connector = SBOLConnector()
 
@@ -89,6 +95,10 @@ def modify_graph():
 def visualiser():
     return redirect(design_dash.pathname)
 
+@server.route('/cypher', methods=['GET', 'POST'])
+def cypher():
+    return redirect(cypher_dash.pathname)
+
 @server.before_request
 def before_request_func():
     if session.get("uid") is None:
@@ -128,6 +138,7 @@ def _add_graph(fn, mode, g_name):
     elif sbol_connector.can_connect(fn):
         session["visual_filename"] = fn
         session["add_graph_mode"] = mode
+        session["graph_name"] = g_name
         return render_template('modify_graph.html', upload_graph=upload_graph,
                                paste_graph=paste_graph, sbh_graph=sbh_graph,
                                purge_graph=purge_graph, remove_graph=remove_graph,

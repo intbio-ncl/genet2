@@ -1,8 +1,10 @@
-from hashlib import new
+from abc import ABC
 from neo4j import GraphDatabase
+from neo4j.data import Record
+from neo4j.graph import Node as NeoNode
+from neo4j.graph import Relationship
 
 from app.graphs.neo_graph.utility.query_builder import QueryBuilder
-from app.graphs.neo_graph.utility.settings import SettingsManager
 from app.graphs.neo_graph.model.model import ModelGraph
 from app.graphs.neo_graph.converter.handler import convert
 from app.graphs.graph_objects.node import Node
@@ -12,10 +14,35 @@ modes = ["ignore","merge","duplicate","overwrite"]
 class Graph:
     def __init__(self):
         self.driver = GraphDatabase.driver(
-            "bolt://localhost:7687", auth=("neo4j", "radeon12300"))
+            "bolt://localhost:7687", auth=("neo4j", "Radeon12300"))
         self.qry_builder = QueryBuilder()
-        self._settings = SettingsManager(self)
         self.model = ModelGraph()
+
+    def run_query(self,cypher_str):
+        results = []
+        def _node(item):
+            properties = dict(item).copy()
+            properties["id"] = item.id
+            return self._node(item.labels,properties)
+
+        for r in self._run(cypher_str):
+            if isinstance(r,Record):
+                record = {}
+                for k,v in r.items():
+                    if isinstance(v,NeoNode):
+                        record[k] = _node(v)
+                    elif isinstance(v,Relationship):
+                        n = _node(v.start_node)
+                        n1 = _node(v.end_node)
+                        e_props = self._go_dict(v)
+                        record[k] = self._edge(n,n1, v.type, e_props)
+                    else:
+                        record[k] = v
+                results.append(record)
+            else:
+                raise ValueError(type(v))
+        return results
+
 
     def add_node(self, *args, mode="ignore", **kwargs):
         n = self._node(args, kwargs)

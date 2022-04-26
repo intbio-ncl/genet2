@@ -60,7 +60,7 @@ save_map = {
 
 
 
-class AbstractGraph:
+class ViewGraph:
     def __init__(self, graph=None):
         self._graph = graph if graph else nx.MultiDiGraph()
 
@@ -174,7 +174,13 @@ class AbstractGraph:
 
     def remove_isolated_nodes(self):
         self._graph.remove_nodes_from(list(nx.isolates(self._graph)))
-    
+
+    def generate(self, d_type):
+        try:
+            return save_map[d_type](self._graph)
+        except KeyError:
+            return
+            
     def graph_name_map(self,ret_max=False,edges=False):
         gn_map = {}
         all_graphs = []
@@ -198,7 +204,7 @@ class AbstractGraph:
 
     @resolve_node
     def degree(self, node):
-        return self.graph.degree(node)
+        return self._graph.degree(node)
 
     @resolve_node
     def bfs(self, source):
@@ -221,126 +227,126 @@ class AbstractGraph:
             yield Edge(n,v,e,**k)
 
     def node_connectivity(self):
-        return nx.node_connectivity(self.graph)
+        return nx.node_connectivity(self._graph)
 
     def degree_assortativity_coefficient(self):
-        return nx.degree_assortativity_coefficient(self.graph)
+        return nx.degree_assortativity_coefficient(self._graph)
 
     def triangles(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return len(nx.triangles(g))
 
     def transitivity(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.transitivity(g)
 
     def average_clustering(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.average_clustering(g)
 
     def is_at_free(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.is_at_free(g)
 
     def is_bipartite(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.is_bipartite(g)
 
     def has_bridges(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.has_bridges(g)
 
     def is_chordal(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.is_chordal(g)
 
     def graph_number_of_cliques(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.graph_number_of_cliques(g)
 
     def is_strongly_connected(self):
-        return nx.is_strongly_connected(self.graph)
+        return nx.is_strongly_connected(self._graph)
 
     def number_strongly_connected_components(self):
-        return nx.number_strongly_connected_components(self.graph)
+        return nx.number_strongly_connected_components(self._graph)
 
     def is_weakly_connected(self):
-        return nx.is_weakly_connected(self.graph)
+        return nx.is_weakly_connected(self._graph)
 
     def number_weakly_connected_components(self):
-        return nx.number_weakly_connected_components(self.graph)
+        return nx.number_weakly_connected_components(self._graph)
 
     def is_attracting_component(self):
-        return nx.is_attracting_component(self.graph)
+        return nx.is_attracting_component(self._graph)
 
     def number_attracting_components(self):
-        return nx.number_attracting_components(self.graph)
+        return nx.number_attracting_components(self._graph)
 
     def diameter(self):
         try:
-            return nx.diameter(self.graph)
+            return nx.diameter(self._graph)
         except nx.NetworkXError:
             return -1
 
     def radius(self):
         try:
-            return nx.radius(self.graph)
+            return nx.radius(self._graph)
         except nx.NetworkXError:
             return -1
 
     def is_eulerian(self):
-        return nx.is_eulerian(self.graph)
+        return nx.is_eulerian(self._graph)
 
     def is_semieulerian(self):
-        return nx.is_semieulerian(self.graph)
+        return nx.is_semieulerian(self._graph)
 
     def is_aperiodic(self):
-        return nx.is_aperiodic(self.graph)
+        return nx.is_aperiodic(self._graph)
 
     def is_biconnected(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.is_biconnected(g)
 
     def is_tree(self):
-        return nx.is_tree(self.graph)
+        return nx.is_tree(self._graph)
 
     def is_forest(self):
-        return nx.is_forest(self.graph)
+        return nx.is_forest(self._graph)
 
     def is_arborescence(self):
-        return nx.is_arborescence(self.graph)
+        return nx.is_arborescence(self._graph)
 
     def is_branching(self):
-        return nx.is_branching(self.graph)
+        return nx.is_branching(self._graph)
 
     def pagerank(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.pagerank(g)
 
     def degree_centrality(self):
-        return nx.degree_centrality(self.graph)
+        return nx.degree_centrality(self._graph)
 
     def closeness_centrality(self):
-        return nx.closeness_centrality(self.graph)
+        return nx.closeness_centrality(self._graph)
 
     def betweenness_centrality(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.betweenness_centrality(g)
 
     def number_of_cliques(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.number_of_cliques(g)
 
     def clustering(self):
-        g = nx.Graph(self.graph)
+        g = nx.Graph(self._graph)
         return nx.clustering(g)
 
     def square_clustering(self):
-        return nx.square_clustering(self.graph)
+        return nx.square_clustering(self._graph)
 
     @resolve_node
     def is_isolate(self, node):
-        return nx.is_isolate(self.graph, node)
+        return nx.is_isolate(self._graph, node)
 
     def _get_name(self, subject):
         split_subject = self._split(subject)

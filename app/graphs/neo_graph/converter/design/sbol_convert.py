@@ -6,6 +6,18 @@ from app.graphs.neo_graph.converter.utility import map_to_nv, get_name, _derive_
 accepted_file_types = ['xml', 'ttl', 'sbol', 'rdf']
 
 
+'''
+1. For each object in data-file (Generally any physical or conceptual entity such as Biological parts or interactions.)
+2. Get all properties by mining semantic labels or pre-known keywords.
+2. Query internal data-model with properties to find internal objects that match.
+3. Add node of object and node of object-type with edge between.
+4. Match any properties of object with properties encoded within the data model.
+5. If the property links two objects create edge between.
+6. Else add node of property and edge between.
+'''
+
+
+
 def convert(filename, neo_graph, mode, graph_name):
     sbol_graph = SBOLGraph(filename)
     model_graph = neo_graph.model

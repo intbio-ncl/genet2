@@ -219,3 +219,11 @@ details {
 .modal-content {
     width: max-content;
 }
+
+.ms-n5 {
+    margin-left: -40px;
+}
+
+#cypher-graph{
+    height: 75vh;
+}

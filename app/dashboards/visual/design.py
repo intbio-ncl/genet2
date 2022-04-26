@@ -15,6 +15,7 @@ default_stylesheet_fn = os.path.join(os.path.dirname(os.path.realpath(__file__))
 class DesignVisual(AbstractVisual):
     def __init__(self,graph):
         super().__init__()
+        self.view = self.set_full_graph_view
         self._builder = DesignBuilder(graph)
         self._layout_h = LayoutHandler()
         self._label_h = LabelHandler(self._builder)

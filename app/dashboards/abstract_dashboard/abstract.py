@@ -1,11 +1,11 @@
 
 import dash
-import dash_core_components as dcc
+from dash import dcc
 import dash_bootstrap_components as dbc
-import dash_html_components as html
+from dash import html
 import dash_daq as daq
 import dash_bio as dashbio
-import dash_table
+from dash import dash_table
 
 external_scripts = [
     {
@@ -137,6 +137,20 @@ class AbstractDash:
 
     def create_input(self, identifier, value=None, add=False, **kwargs):
         input_l = dcc.Input(id=identifier, value=value, **kwargs)
+        if add:
+            return self._create_element(input_l)
+        else:
+            return [input_l]
+
+    def create_i(self,identifier,add=False,**kwargs):
+        input_l = html.I(id=identifier,**kwargs)
+        if add:
+            return self._create_element(input_l)
+        else:
+            return [input_l]
+
+    def create_span(self,identifier,children,add=False,**kwargs):
+        input_l = html.Span(id=identifier,children=children,**kwargs)
         if add:
             return self._create_element(input_l)
         else:
@@ -312,7 +326,9 @@ class AbstractDash:
             selected_rows=[],
             page_action="native",
             page_current=0,
-            page_size=10)
+            page_size=20,
+            style_cell={'textAlign': 'left'},
+            style_table={'overflowX': 'auto'})
         if add:
             return self._create_element(table)
         else:

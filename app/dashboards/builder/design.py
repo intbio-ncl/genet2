@@ -3,7 +3,7 @@ import types
 
 from rdflib import RDF
 
-from app.graphs.viewgraph.design import DesignGraph 
+from app.graphs.viewgraph.viewgraph import ViewGraph 
 from app.dashboards.builder.abstract import AbstractBuilder
 from app.dashboards.builder.builders.design.view import ViewBuilder
 from app.dashboards.builder.builders.design.mode import ModeBuilder
@@ -31,7 +31,9 @@ def _add_object(obj,subject):
 
 class DesignBuilder(AbstractBuilder):
     def __init__(self,graph):
-        super().__init__(graph,DesignGraph)
+        super().__init__(graph)
+        self.view = ViewGraph()
+        self.connect_label = "key"
         self._view_h = ViewBuilder(self)
         self._mode_h = ModeBuilder(self)
         for predicate in self._graph.model.identifiers.predicates:
@@ -94,8 +96,6 @@ class DesignBuilder(AbstractBuilder):
             if self.get_parents(entity.n) == []:
                 roots.append(entity.n)
         return roots
-
-
 
     def set_pruned_view(self):
         self.view = self._view_h.pruned()

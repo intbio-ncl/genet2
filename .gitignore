@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+app/sessions/*
+app/utility/sbol_connector/interfaces/hubs/*.xml

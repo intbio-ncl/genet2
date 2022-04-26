@@ -66,3 +66,8 @@ background_color_outputs = {"graph": Output("content", "style"),
 
 label_color_input = Input('label-picker', 'value')
 label_color_output = Output(graph_id, "stylesheet")
+
+cypher_input = {"submit": Input("submit_cypher", "n_clicks")}
+cypher_output = {"graph_id": Output("graph_content", "children"),
+                 "datatable_id": Output("datatable","children")}
+cypher_state = State("query", "value")

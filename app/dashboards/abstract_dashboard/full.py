@@ -203,8 +203,8 @@ class FullDash(AbstractDash):
             builder = self.visualiser._builder
 
             cards = self.create_heading_4("", "General Information")
-            card = self.create_card("Node Count", len(builder.view.nodes))
-            card += self.create_card("Edge Count", len(builder.view.edges))
+            card = self.create_card("Node Count", len([*builder.view.nodes()]))
+            card += self.create_card("Edge Count", len([*builder.view.edges()]))
             cards += self.create_cards("", card)
             cards += self.create_horizontal_row()
 
@@ -317,12 +317,11 @@ class FullDash(AbstractDash):
 
     def _generate_node_edge_tables(self, builder):
         view = builder.view
-        nodes = builder.view.nodes(data=True)
-        edges = builder.view.edges(keys=True)
+        nodes = builder.view.nodes()
+        edges = builder.view.edges()
 
         e_cols = [{"name": k, "id": k} for k in ["node", "edge", "vertex"]]
-        e_data = [{"node": builder.view.nodes[n]["name"], "edge":e,
-                   "vertex": builder.view.nodes[v]["name"]} for n, v, e in edges]
+        e_data = [{"node": e.n.name, "edge":e.name,"vertex": e.v.name} for e in edges]
         n_cols = [{"name": k, "id": k} for k in ["Node", "Degree", "Pagerank", "Degree Centrality",
                                                  "Closeness Centrality", "Betweenness Centrality", "Is Isolated",
                                                  "Number Of Cliques", "Clustering", "Square Clustering"]]
@@ -334,17 +333,17 @@ class FullDash(AbstractDash):
         number_cliques = view.number_of_cliques()
         clustering = view.clustering()
         square_clustering = view.square_clustering()
-        for node, data in nodes:
-            nd = {"Node": data["name"]}
-            nd["Degree"] = view.degree(node)
-            nd["Pagerank"] = pagerank[node]
-            nd["Degree Centrality"] = degree_centrality[node]
-            nd["Closeness Centrality"] = closeness_centrality[node]
-            nd["Betweenness Centrality"] = betweenness_centrality[node]
-            nd["Is Isolated"] = view.is_isolate(node)
-            nd["Number Of Cliques"] = number_cliques[node]
-            nd["Clustering"] = clustering[node]
-            nd["Square Clustering"] = square_clustering[node]
+        for node in nodes:
+            nd = {"Node": node.name}
+            nd["Degree"] = view.degree(node.id)
+            nd["Pagerank"] = pagerank[node.id]
+            nd["Degree Centrality"] = degree_centrality[node.id]
+            nd["Closeness Centrality"] = closeness_centrality[node.id]
+            nd["Betweenness Centrality"] = betweenness_centrality[node.id]
+            nd["Is Isolated"] = view.is_isolate(node.id)
+            nd["Number Of Cliques"] = number_cliques[node.id]
+            nd["Clustering"] = clustering[node.id]
+            nd["Square Clustering"] = square_clustering[node.id]
             n_data.append(nd)
         return n_cols, n_data, e_cols, e_data
 
