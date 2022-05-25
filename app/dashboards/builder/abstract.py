@@ -1,14 +1,10 @@
 import networkx as nx
 from rdflib import RDF
 import re
-from app.dashboards.builder.builders.cypher.view import ViewBuilder
-from app.dashboards.builder.builders.cypher.mode import ModeBuilder
 
 class AbstractBuilder:
     def __init__(self, graph):
         self._graph = graph
-        self._view_h = ViewBuilder(self)
-        self._mode_h = ModeBuilder(self)
 
     def nodes(self):
         return self._graph.get_all_nodes()
@@ -27,10 +23,6 @@ class AbstractBuilder:
 
     def out_edges(self, n=None):
         return self.view.out_edges(n)
-
-    def get_rdf_type(self, node=None):
-        return self._graph.edge_query(n=node,e=RDF.type)
-
 
     def set_full_view(self):
         self.view = self._view_h.full()
@@ -62,11 +54,10 @@ class AbstractBuilder:
             for e in edges:
                 n = e.n
                 v = e.v
-                e_key = "-".join(e.get_labels())
-                n.add_property("key","-".join(n.get_labels()))
-                v.add_property("key","-".join(v.get_labels()))
-                new_graph.add_node(n.id,**n.get_properties())
-                new_graph.add_node(v.id,**v.get_properties())
+
+                e_key = e.get_type()
+                new_graph.add_node(n.id,key=n.get_key(),type=n.get_type(),**n.get_properties())
+                new_graph.add_node(v.id,key=v.get_key(),type=v.get_type(),**v.get_properties())
                 new_graph.add_edge(n.id,v.id,e_key,**e.get_properties())
         new_graph = self.view.__class__(new_graph)
         return new_graph
@@ -87,8 +78,8 @@ class AbstractBuilder:
         next_node = list_node
         while True:
             res = self._graph.edge_query(n=next_node)
-            f = [c for c in res if str(RDF.first) in c.get_labels()]
-            r = [c for c in res if str(RDF.rest) in c.get_labels()]
+            f = [c for c in res if str(RDF.first) in c.get_type()]
+            r = [c for c in res if str(RDF.rest) in c.get_type()]
             if len(f) != 1 or len(r) != 1:
                 raise ValueError(f'{list_node} is a malformed list.')
             elements.append(f[0])

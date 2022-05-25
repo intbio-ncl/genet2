@@ -140,7 +140,16 @@ class ModelGraph:
                 return True
         return False
 
-
+    def are_classes(self,uris):
+        ret_map = []
+        for uri in uris:
+            try:
+                self.get_class_code(uri)
+            except Exception:
+                ret_map.append(False)
+                continue
+            ret_map.append(True)
+        return ret_map
 
     def get_bases(self,class_id):
         bases = []
@@ -306,6 +315,9 @@ class ModelGraph:
         r_value = [c[1:] for c in res if c[2] in vals]
         assert(len(r_value) == 1)
         return [r_property[1]["key"],r_value[0]]
+
+    def interaction_predicates(self):
+        return [n[0] for n in self.search((None,self.identifiers.predicates.direction,None))]
 
     def _get_name(self, subject):
         split_subject = self._split(subject)

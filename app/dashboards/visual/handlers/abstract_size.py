@@ -10,7 +10,7 @@ class AbstractSizeHandler:
     def class_type(self):
         node_sizes = []
         for node in self._builder.v_nodes():
-            if self._builder.get_rdf_type(node) == []:
+            if node.get_type() == "None":
                 node_sizes.append(self._standard_node_size/2)
             else:
                 node_sizes.append(self._standard_node_size)

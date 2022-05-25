@@ -22,12 +22,12 @@ class AbstractNodeShapeHandler:
         shape_map = {"no_type" : default_shape}
         counter = 0
         for node in self._builder.v_nodes():
-            obj_type = self._builder.get_rdf_type(node)
-            if obj_type == []:
+            obj_type = node.get_type()
+            if obj_type == "None":
                 shape = shape_map["no_type"]
                 obj_type = "No Type"
             else:
-                obj_type = "-".join([_get_name(n) for n in obj_type[0].v.get_labels()])
+                obj_type = _get_name(node.get_type())
                 if obj_type in shape_map.keys():
                     shape = shape_map[obj_type]
                 else:

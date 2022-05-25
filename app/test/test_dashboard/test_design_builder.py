@@ -559,6 +559,19 @@ class TestModes(unittest.TestCase):
         self.assertEqual(len(post_nodes),0)
         self.assertEqual(len(post_edges),0)
 
+    def test_get_graph_info(self):
+        gn = "test1"
+        try:
+            self._wrapper.drop_project(gn)
+        except ValueError:
+            pass
+        
+        self.builder.project_preset(gn,"hierarchy")
+        self.builder.set_projection_view(gn)
+        nodes,edges = self.builder.get_project_info()
+
+        self._wrapper.drop_project(gn)
+        
 def diff(list1,list2):
     diff = []
     for n,v,e in list1:

@@ -71,3 +71,32 @@ cypher_input = {"submit": Input("submit_cypher", "n_clicks")}
 cypher_output = {"graph_id": Output("graph_content", "children"),
                  "datatable_id": Output("datatable","children")}
 cypher_state = State("query", "value")
+
+
+project_load_input = Input("project_load_input","value")
+project_load_output = {"graph_id": Output("graph_content", "children"),
+                       "datatable": Output("datatable","children"),
+                       "info" : Output("info","children"),
+                       "procs" : Output("procedures","style")}
+plo_inp_box = []
+
+project_inp = {"raw_submit" : Input("raw_submit","n_clicks"),
+                  "preset_submit" : Input("preset_submit","n_clicks"),
+                  "native_submit" : Input("native_submit","n_clicks")}
+project_out = {"vis_input" : Output(project_load_input.component_id,"options"),
+                      "message" : Output("project_message","children")}
+project_states = {"raw_input" : State("raw_input" , "value"),
+                  "native_name" : State("native_name" , "value"),
+                  "node" : State("node" , "value"),
+                  "edge" : State("edge" , "value"),
+                  "node_properties" : State("node_propertie" , "value"),
+                  "edge_properties" : State("edge_propertie" , "value"),
+                  "preset_name" : State("preset_name" , "value"),
+                  "preset_graph" : State("preset_graph" , "value")}
+
+
+procedure_input = []
+procedure_state = []
+procedure_output = [Output("procedure_table","children")]
+
+

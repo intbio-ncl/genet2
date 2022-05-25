@@ -84,11 +84,9 @@ class TestLabels(unittest.TestCase):
             def _run_tests(view):
                 labels = self.visual.add_node_name_labels()
                 nodes = [*view.nodes()]
-
                 self.assertEqual(len(labels), len(nodes))
                 for index,node in enumerate(nodes):
-                    for l in node.get_labels():
-                        self.assertIn(_get_name(l),labels[index])
+                    self.assertEqual(_get_name(node.get_key()),labels[index])
             view = self.visual._builder.view
             _run_tests(view)
             self.visual.set_hierarchy_view()
@@ -105,10 +103,10 @@ class TestLabels(unittest.TestCase):
                 self.assertEqual(len(labels), len(nodes))
                 for index,node in enumerate(nodes):
                     props = node.get_properties()
-                    n_type = self.visual._builder.get_rdf_type(node)
+                    n_type = node.get_type()
                     if n_type !=[]:
                         actual_type = labels[index]
-                        expected_type = _get_name("-".join([_get_name(n) for n in n_type[0].v.get_labels()]))
+                        expected_type = _get_name(n_type)
                         self.assertEqual(expected_type,actual_type)
                     elif props["type"] == "URI":
                         self.assertEqual(labels[index], "Identifier")
@@ -132,15 +130,13 @@ class TestLabels(unittest.TestCase):
 
                 self.assertEqual(len(labels), len(nodes))
                 for index,node in enumerate(nodes):
-                    for l in node.get_labels():
-                        self.assertIn(l,labels[index])
+                    self.assertEqual(node.get_key(),labels[index])
             view = self.visual._builder.view
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
             view = self.visual._builder.view
             _run_tests(view)
-
 
     class TestEdge(unittest.TestCase):
 
@@ -184,7 +180,7 @@ class TestLabels(unittest.TestCase):
                 edges = [*view.edges()]
                 self.assertEqual(len(labels), len(edges))
                 for index,edge in enumerate(edges):
-                    self.assertEqual("-".join(_get_name(n) for n in edge.get_labels()), labels[index])
+                    self.assertEqual(_get_name(edge.get_type()), labels[index])
             view = self.visual._builder.view
             _run_tests(view)
             self.visual.set_hierarchy_view()
@@ -200,9 +196,8 @@ class TestLabels(unittest.TestCase):
                 edges = [*view.edges()]
 
                 self.assertEqual(len(labels), len(edges))
-                for index,node in enumerate(edges):
-                    for l in node.get_labels():
-                        self.assertIn(l,labels[index])
+                for index,edge in enumerate(edges):
+                    self.assertIn(edge.get_type(),labels[index])
             view = self.visual._builder.view
             _run_tests(view)
             self.visual.set_hierarchy_view()
@@ -255,7 +250,7 @@ class TestColor(unittest.TestCase):
                 nodes = [*view.nodes()]
                 self.assertEqual(len(colors), len(nodes))
                 for index,node in enumerate(nodes):
-                    if self.visual._builder.get_rdf_type(node) == []:
+                    if node.get_type() == "None":
                         self.assertEqual(colors[index], {"no_type" : self._color_list[1]} )
                     else:
                         self.assertEqual(colors[index], {"rdf_type" :  self._color_list[0]} )
@@ -277,14 +272,14 @@ class TestColor(unittest.TestCase):
                 self.assertEqual(len(colors), len(nodes))
                 for index,node in enumerate(nodes):
                     color = colors[index]
-                    rdf_type = self.visual._builder.get_rdf_type(node) 
-                    if rdf_type == []:
+                    rdf_type = node.get_type()
+                    if rdf_type == "None":
                         self.assertEqual(color, {"No_Type" : self._color_list[0]} )
                     else:
                         color = colors[index]
                         key = list(color.keys())[0]
                         val = list(color.values())[0]
-                        self.assertIn(key,rdf_type[0].v.get_labels()[0])
+                        self.assertEqual(key,_get_name(rdf_type))
                         self.assertIn(val,self._color_list)
 
             run_tests(view)
@@ -303,16 +298,15 @@ class TestColor(unittest.TestCase):
                 nodes = [*view.nodes()]
                 self.assertEqual(len(colors), len(nodes))
                 for index,node in enumerate(nodes):
-                    print(node,colors[index])
                     color = colors[index]
-                    rdf_type = self.visual._builder.get_rdf_type(node) 
-                    if rdf_type == []:
+                    rdf_type = node.get_type()
+                    if rdf_type == "None":
                         self.assertEqual(color, {"No_Role" : self._color_list[0]} )
                     else:
                         color = colors[index]
                         key = list(color.keys())[0]
                         val = list(color.values())[0]
-                        self.assertIn(key,"-".join(n for n in rdf_type[0].v.get_labels()))
+                        self.assertEqual(key,_get_name(rdf_type))
                         self.assertIn(val,self._color_list)
 
             run_tests(view)
@@ -338,7 +332,6 @@ class TestColor(unittest.TestCase):
             view = self.visual._builder.view
             run_tests(view)
 
-        
     class TestEdge(unittest.TestCase):
 
         def setUp(self):
@@ -389,7 +382,7 @@ class TestColor(unittest.TestCase):
                 self.assertEqual(len(colors), len(edges))
                 for index,edge in enumerate(edges):
                     color = colors[index]
-                    labs = str(edge.get_labels())
+                    labs = edge.get_type()
                     if labs in mapper:
                         self.assertEqual(color,mapper[labs])
                     else:
@@ -473,11 +466,11 @@ class TestShape(unittest.TestCase):
             nodes = [*view.nodes()]
             self.assertEqual(len(shapes), len(nodes))
             for index,node in enumerate(nodes):
-                n_type = self.visual._builder.get_rdf_type(node)
-                if n_type == []:
+                n_type = node.get_type()
+                if n_type == "None":
                     expected_shape = {"No Type" : shape_map["no_type"]}
                 else:
-                    n_type = "-".join([_get_name(n) for n in n_type[0].v.get_labels()])
+                    n_type = _get_name(node.get_type())
                     if n_type not in shape_map.keys():
                         shape_map[n_type] = shapes_l[counter]
                         if counter == len(shapes_l) - 1:
@@ -540,7 +533,7 @@ class TestSize(unittest.TestCase):
             self.assertEqual(len(sizes),len(nodes))  
             for index,node in enumerate(nodes):
                 node_size = node_sizes[index]
-                if self.visual._builder.get_rdf_type(node) == []:
+                if node.get_type() == "None":
                     self.assertEqual(node_size,self.standard_node_size/2)
                 else:
                     self.assertEqual(node_size,self.standard_node_size)
@@ -610,7 +603,7 @@ class TestSize(unittest.TestCase):
             self.assertEqual(len(sizes),len(nodes))  
             for index,node in enumerate(nodes):
                 node_size = node_sizes[index]
-                if self.visual._builder.get_rdf_type(node) == []:
+                if node.get_type() == None:
                     pass
                 else:
                     depth = self.visual._builder.get_entity_depth(node)

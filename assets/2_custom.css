@@ -33,8 +33,7 @@ details {
     transition: max-height 0.2s ease-out;
 }
 
-.sub_graph,
-.accordian {
+.sub_graph{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: 20px;
     padding: 20px;
@@ -48,10 +47,6 @@ details {
 
 .sub_graph {
     max-width: 66%;
-}
-
-.accordian {
-    max-width: 33%;
 }
 
 .navbar-custom {
@@ -87,7 +82,6 @@ details {
     font-weight: bold;
     color: #fff;
 }
-
 .info-tip {
     position: relative;
     width: 25%;

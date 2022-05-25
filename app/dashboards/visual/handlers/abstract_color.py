@@ -14,7 +14,8 @@ class AbstractNodeColorHandler:
     def rdf_type(self):
         colors = []
         for node in self._builder.v_nodes():
-            if self._builder.get_rdf_type(node) != []:
+            print(node,node.get_type())
+            if node.get_type() != "None":
                 color = {"rdf_type" : self._color_picker[0]}
             else:
                 color = {"no_type" : self._color_picker[1]}
@@ -49,7 +50,7 @@ class AbstractEdgeColorHandler:
         col_map = {}
         col_index = 0
         for edge in self._builder.v_edges():
-            edge = "-".join([_get_name(l) for l in edge.get_labels()])
+            edge = _get_name(edge.get_type())
             if edge not in col_map:
                 col_map[edge] = self._color_picker[col_index]
                 col_index +=1

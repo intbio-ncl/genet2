@@ -36,7 +36,8 @@ class Operations:
                     qry_str += k()
             else:
                 qry_str += k(v)
-
+        if qry_str == "":
+            return qry_str
         if not any(ext in qry_str for ext in update_clauses):
             qry_str += f' RETURN {code}{self.index}'
         return qry_str
@@ -180,13 +181,12 @@ class EdgeOperations(Operations):
         qry += v_op.match() + "\n"
         qry += "CREATE"
         qry += f'(n{self.n_index})'
-        qry += f'-[r{self.index}:{self.list_to_query(self.graph_object.get_labels())} {{{self.get_properties()}}}]->'
+        qry += f'-[r{self.index}:{"`"+self.graph_object.get_type()+"`"} {{{self.get_properties()}}}]->'
         qry += f'(n{self.v_index})'
         return qry
 
     def match(self):
-        e = ":" + "" + \
-            "|".join(["`" + e + "`" for e in self.graph_object.get_labels()])
+        e = f': `{self.graph_object.get_type()}`'
 
         n_op = NodeOperations(self.graph_object.n, self.n_index)
         v_op = NodeOperations(self.graph_object.v, self.v_index)
