@@ -26,7 +26,7 @@ class ViewBuilder(AbstractViewBuilder):
                     edges.append(element)
                     row[qry_num] = str(element)
                 else:
-                    row[qry_num] = element 
+                    row[qry_num] = str(element) 
             datatable.append(row)
         if create_datatable:
             return self._builder.sub_graph(edges),datatable

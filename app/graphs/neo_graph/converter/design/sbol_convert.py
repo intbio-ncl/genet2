@@ -1,5 +1,5 @@
 import re
-from rdflib import RDF, BNode, URIRef
+from rdflib import RDF, BNode, URIRef, RDF
 from app.graphs.neo_graph.converter.design.utility.graph import SBOLGraph
 from app.graphs.neo_graph.converter.utility import map_to_nv, get_name, _derive_graph_name
 
@@ -16,8 +16,6 @@ accepted_file_types = ['xml', 'ttl', 'sbol', 'rdf']
 6. Else add node of property and edge between.
 '''
 
-
-
 def convert(filename, neo_graph, mode, graph_name):
     sbol_graph = SBOLGraph(filename)
     model_graph = neo_graph.model
@@ -29,10 +27,9 @@ def convert(filename, neo_graph, mode, graph_name):
     if graph_name is None or graph_name == "":
         graph_name = _derive_graph_name(neo_graph)
 
-    def _add_node(entity):
-        properties = _get_properties(entity, sbol_graph, graph_name)
-        n = neo_graph.add_node(str(entity), mode=mode, **properties)
-        return n
+    def _add_node(name,type=None):
+        properties = _get_properties(name, sbol_graph, graph_name)
+        return neo_graph.add_node(name,type, mode=mode, **properties)
 
     def _add_edge(n, v, e):
         properties = _get_properties(e, sbol_graph, graph_name)
@@ -43,27 +40,24 @@ def convert(filename, neo_graph, mode, graph_name):
                       [(nv_role, r) for r in (sbol_graph.get_roles(cd)+sbol_graph.get_types(cd))])
 
         s, p, o = map_to_nv(cd, properties, model_roots, model_graph)
-        n = _add_node(s)
-        v = _add_node(o)
-        _add_edge(n, v, p)
+        n = _add_node(s,o)
         object_type_map[s] = o
-
         for p, o in _map_entities(cd, sbol_graph, model_graph):
             o = _add_node(o)
             _add_edge(n, o, p)
-
     for i in sbol_graph.get_interactions():
         conceptual_entity = model_graph.identifiers.roles.interaction
         roles = ([(nv_characteristic, conceptual_entity)] +
                  [(nv_role, r) for r in (sbol_graph.get_types(i))])
         s, p, o = map_to_nv(i, roles, model_roots, model_graph)
-        n = _add_node(s)
-        v = _add_node(o)
-        _add_edge(n, v, p)
+        n = _add_node(s,o)
         for s, p, o in _get_interaction_properties(i, o, object_type_map, model_graph, sbol_graph):
-            s = _add_node(s)
-            o = _add_node(o)
-            _add_edge(s, o, p)
+            if p == RDF.type:
+                s = _add_node(s,o)
+            else:
+                s = _add_node(s)
+                o = _add_node(o)
+                _add_edge(s, o, p)
     neo_graph.submit()
 
 
@@ -170,11 +164,11 @@ def _get_properties(entity, graph, graph_name):
     properties = {str(key): str(value)
                   for key, value in graph.get_metadata(entity)}
     if isinstance(entity, URIRef):
-        properties["type"] = "URI"
+        properties["dtype"] = "URI"
     elif isinstance(entity, BNode):
-        properties["type"] = "BNode"
+        properties["dtype"] = "BNode"
     else:
-        properties["type"] = "Literal"
+        properties["dtype"] = "Literal"
     properties["name"] = _get_name(entity)
     properties["graph_name"] = [graph_name]
 

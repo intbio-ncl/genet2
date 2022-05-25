@@ -2,11 +2,15 @@
 
 from app.graphs.viewgraph.viewgraph import ViewGraph 
 from app.dashboards.builder.abstract import AbstractBuilder
+from app.dashboards.builder.builders.cypher.view import ViewBuilder
+from app.dashboards.builder.builders.cypher.mode import ModeBuilder
 
 class CypherBuilder(AbstractBuilder):
     def __init__(self,graph):
         super().__init__(graph)
         self.view = ViewGraph()
+        self._view_h = ViewBuilder(self)
+        self._mode_h = ModeBuilder(self)
 
     def set_cypher_view(self,cypher_qry,datatable):
         if datatable:

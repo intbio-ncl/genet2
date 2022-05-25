@@ -8,9 +8,7 @@ from app.dashboards.abstract_dashboard.utility.callback_structs import *
 from app.dashboards.visual.abstract import AbstractVisual
 from app.dashboards.abstract_dashboard.abstract import AbstractDash
 
-
 assets_ignore = '.*bootstrap.*'
-
 
 class FullDash(AbstractDash):
     def __init__(self, visualiser, name, server, pathname):
@@ -22,7 +20,6 @@ class FullDash(AbstractDash):
         # Add Options
         form_elements, identifiers, maps = self._create_form_elements(
             visualiser, id_prefix=id_prefix)
-
 
         del maps["cyto_preset"]
         preset_identifiers, identifiers, preset_output, preset_state = self._generate_inputs_outputs(

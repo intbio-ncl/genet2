@@ -8,16 +8,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='2_custom.css')}}"> {% if title %}
-    <title>Neo4j App - {{ title }}</title>
+    <title>Genet - {{ title }}</title>
     {% else %}
-    <title>Neo4j App </title>
+    <title>Genet </title>
     {% endif %}
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('index') }}">Genet2</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Genet</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,6 +35,11 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('cypher') }}">Cypher</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('gds') }}">GDS</a>
                     </li>
                 </ul>
             </div>

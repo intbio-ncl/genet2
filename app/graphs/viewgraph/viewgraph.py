@@ -1,3 +1,4 @@
+from cProfile import label
 import re
 import json
 import networkx as nx
@@ -135,13 +136,13 @@ class ViewGraph:
             yield Edge(n,v,e,**d)
         
     def add_edge(self, edge):
-        self._graph.add_edge(edge.n.id,edge.v.id,key="-".join(edge.labels),**edge.get_properties())
+        self._graph.add_edge(edge.n.id,edge.v.id,key=edge.get_type(),**edge.get_properties())
 
     def remove_edge(self, edge):
-        self._graph.remove_edge(edge.n.id, edge.v.id, key="-".join(edge.labels))
+        self._graph.remove_edge(edge.n.id, edge.v.id, edge.get_type())
 
     def remove_node(self, node):
-        self._graph.remove_node(node.id)
+        self._graph.remove_node(node)
 
     def merge_nodes(self, subject, nodes):
         for node in nodes:
@@ -150,11 +151,11 @@ class ViewGraph:
             for edge in in_edges:
                 self.remove_edge(edge)
                 if edge.n != subject:
-                    self.add_edge(Edge(edge.n, subject, edge.get_labels(), **edge.get_properties()))
+                    self.add_edge(Edge(edge.n, subject, edge.get_type(), **edge.get_properties()))
             for edge in out_edges:
                 self.remove_edge(edge)
                 if edge.v != subject:
-                    self.add_edge(Edge(subject,edge.v, edge.get_labels(), **edge.get_properties()))
+                    self.add_edge(Edge(subject,edge.v, edge.get_type(), **edge.get_properties()))
             self.remove_node(node)
 
     def save(self, output=None, d_type="gexf"):

@@ -136,21 +136,23 @@ class AbstractDash:
             return [button]
 
     def create_input(self, identifier, value=None, add=False, **kwargs):
+        if value is None:
+            value = ""
         input_l = dcc.Input(id=identifier, value=value, **kwargs)
         if add:
             return self._create_element(input_l)
         else:
             return [input_l]
 
-    def create_i(self,identifier,add=False,**kwargs):
-        input_l = html.I(id=identifier,**kwargs)
+    def create_i(self, identifier, add=False, **kwargs):
+        input_l = html.I(id=identifier, **kwargs)
         if add:
             return self._create_element(input_l)
         else:
             return [input_l]
 
-    def create_span(self,identifier,children,add=False,**kwargs):
-        input_l = html.Span(id=identifier,children=children,**kwargs)
+    def create_span(self, identifier, children, add=False, **kwargs):
+        input_l = html.Span(id=identifier, children=children, **kwargs)
         if add:
             return self._create_element(input_l)
         else:
@@ -158,7 +160,7 @@ class AbstractDash:
 
     def create_dropdown(self, identifier, options, value=None, add=False, **kwargs):
         dropdown = dcc.Dropdown(
-            id=identifier, options=options, value=value, **kwargs)
+            id=identifier, options=options, value=value,**kwargs)
         if add:
             return self._create_element(dropdown)
         else:
@@ -301,6 +303,34 @@ class AbstractDash:
             return self._create_element(upload_box)
         else:
             return [upload_box]
+
+    def create_accordion(self, identifier, cards, add=False, **kwargs):
+        f_cards = []
+        for index, (name, value) in enumerate(cards):
+            id_index = identifier + str(index)
+            c = html.Button(children=name, id="", 
+            className="btn btn-link", type="button", **{
+                      "data-toggle": "collapse", 
+                      "data-target": f"#collapse{id_index}",
+                      "aria-expanded": "false", 
+                      "aria-controls": f"collapse{id_index}"})
+
+            c = self.create_heading_5(name+"_h", c, className="mb-0")
+            c = self.create_div(
+                f"heading{id_index}", c, className="card-header")
+
+            b = self.create_div(name+"_c_b", value, className="card-body")
+            b = self.create_div(f'collapse{id_index}', b, **{"className": "collapse",
+                                "aria-labelledby": f"heading{id_index}", "data-parent": f"#{identifier}"})
+            card = self.create_div(name+"_c", c+b, className="card")
+            f_cards += (card)
+
+        acc = self.create_div(identifier, f_cards,
+                              className="accordion", **kwargs)
+        if add:
+            return self._create_element(acc)
+        else:
+            return acc
 
     def add_sequence_viewer(self, identifier, sequence, add=False, **kwargs):
         sequence_box = dashbio.SequenceViewer(

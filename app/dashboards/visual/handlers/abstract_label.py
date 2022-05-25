@@ -19,16 +19,16 @@ class AbstractNodeLabelHandler:
     def name(self):
         names = []
         for node in self._builder.v_nodes():
-            names.append("-".join([_get_name(l) for l in node.get_labels()]))
+            names.append(node.name)
         return names
 
     def class_type(self):
         node_text = []
         for node in self._builder.v_nodes():
             props = node.get_properties()
-            n_type = self._builder.get_rdf_type(node)
-            if n_type != []:
-                node_text.append("-".join([_get_name(n) for n in n_type[0].v.get_labels()]))
+            n_type = node.get_type()
+            if n_type is not None:
+                node_text.append(_get_name(n_type))
             elif props["type"] == "Literal":
                 node_text.append("Literal")
             elif props["type"] == "URI":
@@ -40,7 +40,7 @@ class AbstractNodeLabelHandler:
     def uri(self):
         names = []
         for node in self._builder.v_nodes():
-            names.append("-".join([l for l in node.get_labels()]))
+            names.append(node.get_key())
         return names
 
 class AbstractEdgeLabelHandler:
@@ -53,13 +53,13 @@ class AbstractEdgeLabelHandler:
     def name(self):
         edge_names = []
         for edge in self._builder.v_edges():
-            edge_names.append("-".join([_get_name(e) for e in edge.get_labels()]))
+            edge_names.append(edge.name)
         return edge_names
 
     def uri(self):
         names = []
-        for node in self._builder.v_edges():
-            names.append("-".join([l for l in node.get_labels()]))
+        for edge in self._builder.v_edges():
+            names.append(edge.get_type())
         return names
 
 def _get_name(subject):

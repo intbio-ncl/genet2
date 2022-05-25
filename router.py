@@ -13,6 +13,7 @@ from app.utility.sbol_connector.connector import SBOLConnector
 from app.graphs.neo_graph.nv_graph import NVGraph
 from app.dashboards.design import DesignDash
 from app.dashboards.cypher import CypherDash
+from app.dashboards.projection import ProjectionDash
 
 root_dir = "app"
 static_dir = 'assets'
@@ -24,13 +25,15 @@ server = Flask(__name__, static_folder=static_dir,
 design_graph = NVGraph()
 design_dash = DesignDash(__name__,server,design_graph)
 design_dash.app.enable_dev_tools(debug=True)
-cypher_graph = NVGraph()
-cypher_graph = CypherDash(__name__,server,design_graph)
-cypher_graph.app.enable_dev_tools(debug=True)
+cypher_dash = CypherDash(__name__,server,design_graph)
+cypher_dash.app.enable_dev_tools(debug=True)
+projection_dash = ProjectionDash(__name__,server,design_graph)
+projection_dash.app.enable_dev_tools(debug=True)
 
 app = DispatcherMiddleware(server, {
     design_dash.pathname : design_dash.app.server,
-    cypher_graph.pathname: cypher_graph.app.server
+    cypher_dash.pathname: cypher_dash.app.server,
+    projection_dash.pathname: projection_dash.app.server
 })
 sbol_connector = SBOLConnector()
 
@@ -54,6 +57,8 @@ def modify_graph():
     sbh_graph = forms.SynbioGraphForm()
     purge_graph = forms.PurgeGraphForm()
     remove_graph = forms.add_remove_graph_form(design_graph.get_graph_names())
+    project_names = design_graph.project.get_projected_names()
+    drop_projection = forms.add_remove_projection_form(project_names)
     add_graph_fn = None
     err_string = None
     if "visual_filename" in session.keys():
@@ -81,6 +86,13 @@ def modify_graph():
         design_graph.purge()
     elif remove_graph.validate_on_submit():
         design_graph.remove_graph(remove_graph.graphs.data)
+    elif drop_projection.validate_on_submit():
+        dg = drop_projection.graphs.data
+        if dg == "Remove All":
+            for n in project_names:
+                design_graph.project.drop(n)
+        else:
+            design_graph.project.drop(dg)
 
 
     if add_graph_fn is not None:
@@ -89,6 +101,7 @@ def modify_graph():
     return render_template('modify_graph.html', upload_graph=upload_graph,
                            paste_graph=paste_graph, sbh_graph=sbh_graph,
                            purge_graph=purge_graph, remove_graph=remove_graph,
+                           drop_projection=drop_projection,
                            err_string=err_string)
 
 @server.route('/visualiser', methods=['GET', 'POST'])
@@ -98,6 +111,10 @@ def visualiser():
 @server.route('/cypher', methods=['GET', 'POST'])
 def cypher():
     return redirect(cypher_dash.pathname)
+
+@server.route('/gds', methods=['GET', 'POST'])
+def gds():
+    return redirect(projection_dash.pathname)
 
 @server.before_request
 def before_request_func():

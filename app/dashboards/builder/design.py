@@ -25,7 +25,7 @@ def _add_object(obj,subject):
                 subjects = [str(subject),*[str(s[1]["key"]) for s in self._graph.model.get_derived(m_id)]]
             else:
                 subjects = str(subject)
-            return self._graph.edge_query(e=RDF.type, v=subjects)
+            return self._graph.node_query(subjects)
         return produce_get_subject_inner
     obj.__dict__[method_name] = types.MethodType(produce_get_subject(subject),obj)
 
@@ -42,8 +42,7 @@ class DesignBuilder(AbstractBuilder):
             _add_object(self,obj)
     
     def get_entities(self):
-        classes = [c[1]["key"] for c in self._graph.model.get_classes(False)]
-        return self._graph.edge_query(v=classes,e=RDF.type)
+        return self._graph.get_entities()
 
     def get_children(self,node):
         cp = self._graph.model.get_child_predicate()
@@ -56,20 +55,12 @@ class DesignBuilder(AbstractBuilder):
     def get_interaction_io(self,subject):
         inputs = []
         outputs = []
-        nv_ns = self._graph.model.identifiers.namespaces.nv
         d_predicate = self._graph.model.identifiers.predicates.direction
         i_predicate = self._graph.model.identifiers.objects.input
         o_predicate = self._graph.model.identifiers.objects.output
         for edge in self._graph.edge_query(n=subject):
-            labels = []
-            for l in  edge.get_labels():
-                # Knowledge of data model tricks to reduce pointless computation.
-                if os.path.commonprefix([l,nv_ns]) != nv_ns:
-                    continue
-                if self._graph.model.identifiers.predicates.consistsOf == l:
-                    continue
-                labels.append(l)
-            model_code = [self._graph.model.get_class_code(l) for l in labels]
+            e_type = edge.get_type()
+            model_code = self._graph.model.get_class_code(e_type)
             for d in [d[1] for d in self._graph.model.search((model_code,d_predicate,None))]:
                 d,d_data = d
                 if d_data["key"] == i_predicate:
@@ -92,9 +83,9 @@ class DesignBuilder(AbstractBuilder):
 
     def get_root_entities(self):
         roots = []
-        for entity in self.get_entities():
-            if self.get_parents(entity.n) == []:
-                roots.append(entity.n)
+        for node in self.get_entities():
+            if self.get_parents(node) == []:
+                roots.append(node)
         return roots
 
     def set_pruned_view(self):

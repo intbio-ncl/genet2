@@ -7,19 +7,20 @@ sys.path.insert(0, os.path.join("..","..",".."))
 import unittest
 from app.graphs.neo_graph.nv_graph import NVGraph
 from app.graphs.neo_graph.converter.design.utility.graph import SBOLGraph
+from app.dashboards.builder.projection import ProjectionBuilder
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
-test_fn = os.path.join(curr_dir,"..","files","design","sbol","output.xml")
+test_fn = os.path.join(curr_dir,"..","files","design","sbol","nor_full.xml")
 class TestGraph(unittest.TestCase):
     def setUp(self):
         self._wrapper = NVGraph()
+        self._builder = ProjectionBuilder(self._wrapper)
         self._rdf = SBOLGraph(test_fn)
-        self._backup = self._wrapper.get_all_edges()
-        self._wrapper.purge()
-        self._wrapper.add_graph(test_fn)
+        #self._backup = self._wrapper.get_all_edges()
+        #self._wrapper.purge()
+        #self._wrapper.add_graph(test_fn)
 
     def tearDown(self):
-        return
         self._wrapper.purge()
         if len(self._backup) > 0:
             for edge in self._backup:
@@ -48,8 +49,8 @@ class TestGraph(unittest.TestCase):
         cds = self._rdf.get_component_definitions()
         self.assertEqual(len(pe),len(cds))
         for p in pe:
-            p_n_lab = p.n.get_labels()[0]
-            p_v_lab = p.v.get_labels()[0]
+            p_n_lab = p.get_key()
+            p_v_lab = p.get_type()
             for c in cds:
                 if p_n_lab == str(c):
                     types = self._rdf.get_type(c)
@@ -59,8 +60,7 @@ class TestGraph(unittest.TestCase):
                         self.assertIn(str(roles[0]),type_role_map[p_v_lab])
                     else:
                         self.assertIn(str(types),type_role_map[p_v_lab])
-
-                    p_children = self._wrapper.get_children(p.n)
+                    p_children = self._wrapper.get_children(p)
                     s_children = [str(self._rdf.get_definition(n)) for n in self._rdf.get_components(c)]
                     self.assertEqual(len(pe),len(cds))
                     for p_child in p_children:
@@ -75,21 +75,19 @@ class TestGraph(unittest.TestCase):
         cep = [conceptual_entity_p] + [str(c[1]["key"]) for c in self._wrapper.model.get_derived(conceptual_entity_p)]
         self.assertEqual(len(ce),len(ints))
         for c in ce:
-            c_n_lab = c.n.get_labels()[0]
-            c_v_lab = c.v.get_labels()[0]
+            c_n_lab = c.get_key()
+            c_v_lab = c.get_type()
             for i in ints:
                 if c_n_lab == str(i):
                     types = self._rdf.get_type(i)
                     self.assertIn(str(types),type_role_map[c_v_lab])
-                    co = self._wrapper.get_consists_of(c.n)
+                    co = self._wrapper.get_consists_of(c)
                     self.assertEqual(len(co),1)
                     co = co[0]
                     items = self._wrapper.derive_consistsOf(co.v)
                     for i in items:
-                        item_type = self._wrapper.get_object_type(i)
-                        self.assertTrue(len(set(cep) & set(item_type.get_labels())) > 0)
+                        self.assertTrue(i.get_type() in cep)
                     break
-
             else:
                 self.fail(p)
         all_nodes = self._wrapper.get_all_nodes()
@@ -261,3 +259,530 @@ class TestGraph(unittest.TestCase):
         self._wrapper.remove_graph(graph_name_2)
         self.assertCountEqual(self._wrapper.get_all_nodes(),pn)
         self.assertCountEqual(self._wrapper.get_all_edges(),pe)
+
+class TestGDSProject(unittest.TestCase):
+    def setUp(self):
+        self._wrapper = NVGraph()
+        self._builder = ProjectionBuilder(self._wrapper)
+        self._rdf = SBOLGraph(test_fn)
+        #self._backup = self._wrapper.get_all_edges()
+        #self._wrapper.purge()
+        #self._wrapper.add_graph(test_fn)
+
+    def tearDown(self):
+        return
+        self._wrapper.purge()
+        if len(self._backup) > 0:
+            for edge in self._backup:
+                n = self._wrapper.add_node(edge.n)
+                v = self._wrapper.add_node(edge.v)
+                self._wrapper.add_edge(n,v,edge)
+            self._wrapper.submit()
+
+    def test_project_interaction_bi(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.physical_entity
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res =   self._wrapper.project.preset(gn,"interaction_bipartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        ip = [str(n[1]["key"]) for n in model.interaction_predicates()]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),int_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),ip)
+        self._wrapper.project.drop(gn)
+
+    def test_project_interaction_mono(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.physical_entity
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_directed_monopartite")
+        self.assertEqual(gn,res.name())
+        
+        graph = self._builder.build_projection_graph(res)
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        #self._wrapper.project.drop(gn)
+
+    def test_project_interaction_ppi_bi(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        protein = ids.objects.protein
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_ppi_directed_bipartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        g_info = res._graph_info()
+        config = g_info["configuration"]
+        rel_proj = config["relationshipProjection"]
+        nfilter = config["nodeFilter"]
+        efliter = config["relationshipFilter"]
+        schema = g_info["schema"]
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(protein)] + [str(n[1]["key"]) for n in model.get_derived(protein)]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    def test_project_interaction_ppi_mono(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        protein = ids.objects.protein
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_ppi_directed_monopartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        g_info = res._graph_info()
+        config = g_info["configuration"]
+        rel_proj = config["relationshipProjection"]
+        nfilter = config["nodeFilter"]
+        efliter = config["relationshipFilter"]
+        schema = g_info["schema"]
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(protein)] + [str(n[1]["key"]) for n in model.get_derived(protein)]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    def test_project_interaction_genetic_mono(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        dna = ids.objects.dna
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_genetic_directed_monopartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(dna)] + [str(n[1]["key"]) for n in model.get_derived(dna)]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+class TestGDSProcedures(unittest.TestCase):
+    def setUp(self):
+        self._wrapper = NVGraph()
+        self._builder = ProjectionBuilder(self._wrapper)
+        self._rdf = SBOLGraph(test_fn)
+        #self._backup = self._wrapper.get_all_edges()
+        #self._wrapper.purge()
+        #self._wrapper.add_graph(test_fn)
+
+    def tearDown(self):
+        return
+        self._wrapper.purge()
+        if len(self._backup) > 0:
+            for edge in self._backup:
+                n = self._wrapper.add_node(edge.n)
+                v = self._wrapper.add_node(edge.v)
+                self._wrapper.add_edge(n,v,edge)
+            self._wrapper.submit()
+
+    def test_mutate(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.project.mutate(gn,["1","2","3"],"mut","lab")
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+    
+    def test_page_rank(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.page_rank(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_article_rank(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.article_rank(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_eigenvector_centrality(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.eigenvector(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_betweenness_centrality(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.betweenness(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_degree_centrality(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.degree(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_closeness_centrality(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.closeness(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_harmonic_centrality(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.harmonic(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_hits(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.hits(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_celf_influence_maximization(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.celf_im(gn)
+        self.assertEqual(len(pr),3)
+        self._wrapper.project.drop(gn)
+
+    def test_greedy_influence_maximization(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.centrality.greedy_im(gn)
+        self.assertEqual(len(pr),3)
+        self._wrapper.project.drop(gn)
+
+    def test_louvain(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.louvain(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_label_propagation(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.label_propagation(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_wcc(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.wcc(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    def test_triangle_count(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.triangle_count(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    def test_local_clustering_coefficient(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.local_clustering_coefficient(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    def test_k1coloring(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.k1coloring(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    def test_modularity_optimization(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.modularity_optimization(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    def test_scc(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.scc(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+    def test_sllpa(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.sllpa(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+               
+    
+    def test_maxkcut(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.community_detection.maxkcut(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+
+
+    def test_node_similarity(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        pr = self._wrapper.procedure.similarity.node(gn)
+        self.assertEqual(len(pr),res.node_count())
+        self._wrapper.project.drop(gn)
+    
+    def test_delta_all_shortest_paths(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.delta_asp(gn,nodes[0].get_key())
+        self.assertTrue(len(pr)>1)
+        for path in pr:
+            self.assertIn("path",path)
+            self.assertIn("totalCost",path)
+            self.assertIsInstance(path["totalCost"],float)
+            self.assertIsInstance(path["path"],list)
+        self._wrapper.project.drop(gn)
+
+    def test_dijkstra_all_shortest_paths(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.dijkstra_asp(gn,nodes[0].get_key())
+        self.assertTrue(len(pr)>0)
+        for path in pr:
+            self.assertIn("path",path)
+            self.assertIn("totalCost",path)
+            self.assertIsInstance(path["totalCost"],float)
+            self.assertIsInstance(path["path"],list)
+        self._wrapper.project.drop(gn)
+
+    def test_dijkstra_shortest_path(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.dijkstra_sp(gn,nodes[0].get_key(),nodes[1].get_key())
+        self.assertTrue(len(pr) == 1)
+        pr = pr[0]
+        pr = pr["path"]
+        self.assertCountEqual([r.get_key() for r in pr],[nodes[0].get_key(),nodes[1].get_key()])
+        self._wrapper.project.drop(gn)
+
+    def test_yens_shortest_path(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.yens_sp(gn,nodes[0].get_key(),nodes[1].get_key(),7)
+        self.assertTrue(len(pr) == 1)
+        pr = pr[0]
+        pr = pr["path"]
+        self.assertCountEqual([r.get_key() for r in pr],[nodes[0].get_key(),nodes[1].get_key()])
+        self._wrapper.project.drop(gn)
+
+    def test_bfs(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.bfs(gn,nodes[0].get_key(),nodes[1].get_key())
+        for p in pr:
+            pr = p["path"]
+            self.assertCountEqual([r.get_key() for r in pr],[nodes[0].get_key(),nodes[1].get_key()])
+        self._wrapper.project.drop(gn)
+
+    def test_dfs(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.path_finding.dfs(gn,nodes[0].get_key(),nodes[1].get_key())
+        for p in pr:
+            self.assertEqual(nodes[0],p["path"][0])
+            self.assertEqual(nodes[1],p["path"][-1])
+        self._wrapper.project.drop(gn)
+
+
+    def test_adamic_adar(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"hierarchy")
+        g = self._builder.build_projection_graph(res)
+        nodes = [*g.nodes()]
+        pr = self._wrapper.procedure.tpp.adamic_adar(gn,nodes[0].get_key(),nodes[1].get_key())
+        self._wrapper.project.drop(gn)

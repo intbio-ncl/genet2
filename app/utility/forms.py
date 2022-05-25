@@ -66,4 +66,13 @@ def add_remove_graph_form(choices,**kwargs):
     setattr(RemoveGraphForm, "graphs",SelectField("Graph Name",choices=[(c,c) for c in choices])) 
     return RemoveGraphForm(**kwargs)
 
+def add_remove_projection_form(choices,**kwargs):
+    class RemoveProjectionForm(FlaskForm):
+        class Meta:
+            csrf = False
+        submit = SubmitField('Remove')
+    choices = ["Remove All"] + choices
+    setattr(RemoveProjectionForm, "graphs",SelectField("Projection Name",choices=[(c,c) for c in choices])) 
+    return RemoveProjectionForm(**kwargs)
+
 

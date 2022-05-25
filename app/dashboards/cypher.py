@@ -41,7 +41,7 @@ class CypherDash(AbstractDash):
         options = self.create_sidebar(not_modifier_identifiers["sidebar_id"], "Options", form_div, className="col sidebar")
         graph = self.create_div("cypher-graph",options+graph+legend,className="row")
 
-        # DataTable
+        # DataTableupdate_inputs
         datatable = self._create_datatable(datatable)
         datatable = self.create_div(cypher_output["datatable_id"].component_id,datatable,className="col")
         datatable = self.create_div("datatable-row",datatable,className="row")
@@ -68,7 +68,7 @@ class CypherDash(AbstractDash):
         
 
     def _create_datatable(self,struct):
-        if len(struct) == 0:
+        if not struct or len(struct) == 0:
             return self.create_heading_4("no_results","No Results Found.")
         return self.create_complex_table("datatable_t",[{"name": str(i), "id": str(i)} for i in struct[0].keys()],struct)
 

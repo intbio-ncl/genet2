@@ -16,11 +16,11 @@ class ColorHandler():
             col_map = {None : {"No_Type" : self._color_picker[0]}}
             col_index = len(col_map)
             for n in self._builder.v_nodes():
-                rdf_type = self._builder.get_rdf_type(n)
-                if rdf_type ==[]:
+                n_type = n.get_type()
+                if n_type == "None":
                     colors.append(col_map[None])
                 else:
-                    name = "-".join([_get_name(t) for t in rdf_type[0].v.get_labels()])
+                    name = _get_name(n_type)
                     if name not in col_map.keys():
                         col_map[name] = self._color_picker[col_index]
                         col_index += 1
@@ -52,15 +52,15 @@ class ColorHandler():
                 name = _get_name(d)
                 col_map[name] = self._color_picker[col_index]
                 col_index += 1
+
             for n in self._builder.v_nodes():
-                n_type = self._builder.get_rdf_type(n)
-                if n_type == []:
+                n_type = n.get_type()
+                if n_type == "None":
                     colors.append(col_map[None])
                     continue
-                n_type = n_type[0].v
-                name = "-".join([_get_name(n) for n in n_type.get_labels()])
+                name = _get_name(n_type)
                 if name not in col_map.keys():
-                    n_t_code = mg.get_class_code(n_type.get_labels()[0])
+                    n_t_code = mg.get_class_code(n_type)
                     for b in [str(i[1]["key"]) for i in mg.get_bases(n_t_code)]:
                         if b in pe_derived:
                             base = b

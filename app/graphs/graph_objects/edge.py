@@ -1,24 +1,134 @@
-from app.graphs.graph_objects.graph_object import GraphObject
+import re
+import validators
 
-class Edge(GraphObject):
-    def __init__(self,n,v,labels,id=None,**kwargs):
-        super().__init__(labels,id=id,**kwargs)
+class Edge:
+    def __init__(self,n,v,type,id=None,**kwargs):
+        self.type = str(type)
+        self.id=id
+        self.properties = {}
+        self._update(kwargs)
         self.n = n
         self.v = v
 
     def duplicate(self):
         return self.__class__(self.n.duplicate(),self.v.duplicate(),
-                              self.labels.copy(),**self.properties)
+                              self.type,**self.properties)
                               
     def __str__(self):
-        return f'{self.n} - {super().__str__()} - {self.v}'
+        return f'{self.n} - {self.type} - {self.v}'
 
     def __eq__(self, obj):
         if not isinstance(obj, self.__class__):
             return False
-        if obj.n == self.n and obj.labels == self.labels and obj.v == self.v:
+        if obj.n == self.n and obj.type == self.type and obj.v == self.v:
             return True
         return False
 
     def __hash__(self):
-        return hash(str(self.labels+self.n.labels+self.v.labels))
+        return hash(str(self.type+self.n.key+self.v.key))
+        
+    def __getitem__(self, item):
+        return self.properties[item]
+
+    def update(self,go):
+        if isinstance(go,self.__class__):
+            self._update(go.get_properties())
+            return
+        elif isinstance(go,dict):
+            self._update(go)
+            return
+        raise ValueError(f'{go} is not valid class to update with {self}')
+
+    def remove(self,go):
+        if isinstance(go,self.__class__):
+            self._update(go.get_properties())
+            return
+        elif isinstance(go,dict):
+            self._update(go)
+            return
+        raise ValueError(f'{go} is not valid class to remove with {self}')
+
+    def replace(self,go):
+        if isinstance(go,self.__class__):
+            self._replace(go.get_properties())
+            return
+        elif isinstance(go,dict):
+            self._replace(go)
+            return
+        raise ValueError(f'{go} is not valid class to remove with {self}')
+
+    def remove(self,items):
+        for k,v in items.items():
+            if validators.url(k):
+                setattr(self,_get_name(k),v)
+            elif isinstance(v,(set,list,tuple)) and hasattr(self,_get_name(k)):
+                setattr(self, k, self[k]+v)
+            else:
+                setattr(self, k, v)
+
+            if k != "id":
+                if k not in self.properties:
+                    continue
+                if isinstance(v,(set,list,tuple)):
+                    self.properties[k] = [n for n in self.properties[k] if n not in v]
+                else:
+                    del self.properties[k]
+                    self.properties[k] = v
+
+    def _update(self,items):
+        for k,v in items.items():
+            if validators.url(k):
+                setattr(self,_get_name(k),v)
+            elif isinstance(v,(set,list,tuple)) and hasattr(self,_get_name(k)):
+                setattr(self, k, self[k]+v)
+            else:
+                setattr(self, k, v)
+            if k != "id":
+                if k not in self.properties:
+                    self.properties[k] = v
+                if isinstance(v,(set,list,tuple)):
+                    self.properties[k] = list(set(self.properties[k]+v))
+                else:
+                    self.properties[k] = v
+
+    def _replace(self,items):
+        for k,v in self.properties.items():
+            delattr(self,k)
+        self.properties.clear()
+        for k,v in items.items():
+            if validators.url(k):
+                setattr(self,_get_name(k),v)
+            elif isinstance(v,(set,list,tuple)) and hasattr(self,_get_name(k)):
+                setattr(self, k, self[k]+v)
+            else:
+                setattr(self, k, v)
+            if k != "id":
+                if k not in self.properties:
+                    self.properties[k] = v
+                if isinstance(v,(set,list,tuple)):
+                    self.properties[k] = list(set(self.properties[k]+v))
+                else:
+                    self.properties[k] = v
+
+    def get_type(self):
+        return self.type
+
+    def get_properties(self):
+        return self.properties
+
+    def add_property(self,key,value):
+        self.properties[key] = value
+
+    def remove_property(self,k):
+        del self.properties[k]
+        
+def _get_name(subject):
+    split_subject = _split(subject)
+    if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
+        return split_subject[-2]
+    else:
+        return split_subject[-1]
+
+
+def _split(uri):
+    return re.split('#|\/|:', uri)

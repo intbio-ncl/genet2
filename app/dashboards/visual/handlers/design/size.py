@@ -8,7 +8,7 @@ class SizeHandler(AbstractSizeHandler):
     def hierarchy(self):
         sizes = []
         for node in self._builder.v_nodes():
-            if self._builder.get_rdf_type(node) == []:
+            if node.get_type() == "None":
                 for n in self._builder.in_edges(node):
                     d = self._builder.get_entity_depth(n.v)
                     if d != 0:

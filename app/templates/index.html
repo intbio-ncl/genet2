@@ -2,7 +2,74 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <h2>GENET</h2>
+            <p>
+                "Complex systems are systems whose behaviour is intrinsically difficult to model due to the
+                dependencies, competitions, relationships, or other interactions between their parts or between a given
+                system and its environment." Biology is packed with complex systems which are often challenging to
+                comprehend. Genet represents genetic designs as networks. This representation allows analysis and
+                transformations to be applied to tailor visualisation based on requirements.
+            </p>
+            <p>
+                Genet uses a neo4j server to store the entire network (Full Graph). Analysis or visualisation of this
+                whole network will seldom produce usable results because this data is likely multivariate, and
+                connections between data points are unclear. Instead, a projection will likely occur, which creates a
+                viewgraph (A smaller, more specialised graph) which focuses on a specific aspect of the data, such as an
+                interaction network.
+            </p>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <h4>FEATURES</h4>
+            All sub-tools can be accessed from the toolbar above.
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Graph Admin</b> - The section for more administrative functions on the
+                    graph, such as adding and removing data.</li>
+                <li class="list-group-item"><b>Visualiser</b> - A tool purely for a visualisation tool and allows for
+                    many automated and manual changes to the representation. Note this may be very slow with large
+                    graphs.</li>
+                <li class="list-group-item"><b>Cypher</b> - Cypher is the language to interface with neo4j graphs. This
+                    tool manually inspects the graph and will only be helpful for users comfortable with neo4j.</li>
+                <li class="list-group-item"><b>GDS</b> - Graph Data Science (GDS) is a package specifically designed for
+                    graph analysis. This tool couples the visualiser tool with the GDS plugin to enable a more
+                    comprehensive dataset analysis. Our goal is to make common network science procedures accessible
+                    with few technical requirements.</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h4>USAGE</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>1. </b>Open Graph Admin</li>
+                <li class="list-group-item"><b>2. </b>In the "Add New Graph" section, upload, paste, or point to a
+                    design file.</li>
+                <li class="list-group-item"><b>3. </b> Pick a tool from the features. Each tool revolves around a visual
+                    representation of the data but with different mechanisms for presentation and analysis.</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4>FUTURE</h4>
+            Some high-level descriptions of future work.
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>1. </b>The addition of higher-order processes for the enhancement and
+                    validation of genetic designs.</li>
+                <li class="list-group-item"><b>2. </b>The addition of build protocol integration and visualisation.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <h4>ABOUT</h4>
+        <p>GENET is academic software and therefore is built with limited resources. While we are activley expanding and
+        maintaining this tool, we do not have the resources for complete testing. Therefore, any issues found please
+        report here: <a href="https://github.com/MattyCrowther/genet2">GitHub</a>. Furthermore if you would like to
+        contribute or would like to use a sub-tool in your pipeline please email: <a
+            href="m.crowther1@ncl.ac.uk">m.crowther1@ncl.ac.uk</a></p>
+    </div>
+</div>
 </div>
 {% endblock %}
