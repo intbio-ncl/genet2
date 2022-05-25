@@ -13,8 +13,7 @@ Please get in touch with us if you would like to contribute or if you would like
 ## Installation
 
 Genet requires a neo4j server active and running with the APOC, and GDS plugins enabled. Here is a brief guide to installing neo4j with links to more comprehensive installation guides. Note this guide assumes a Debian based operating system.
-
-* `$ git clone https://github.com/MattyCrowther/genet2`
+* `$ git clone https://github.com/intbio-ncl/genet2`
 *  Install Neo4j (https://neo4j.com/docs/operations-manual/current/installation/)
 	1. `$ wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -`
 	2. `$ echo 'deb https://debian.neo4j.com stable latest' | sudo tee -a /etc/apt/sources.list.d/neo4j.list`
@@ -31,7 +30,6 @@ Genet requires a neo4j server active and running with the APOC, and GDS plugins 
 * Install Python requirements.
 	1. Navigate to your install directory
 	2. `python -m pip install -r requirements.txt`
-
 ## Usage
 
 1.  Navigate to your install directory
@@ -42,3 +40,4 @@ Genet requires a neo4j server active and running with the APOC, and GDS plugins 
 ## Architecture
 
 As discussed, Genet uses neo4j for graph storage and manipulation. However, to present this, a small flask application using dash-Cytoscape has been implemented and enables the user-generated network visualisations. A graphic of the architecture can be seen below.
+![Alt text](assets/architecture.png "Architecture")

@@ -16,9 +16,9 @@ class TestGraph(unittest.TestCase):
         self._wrapper = NVGraph()
         self._builder = ProjectionBuilder(self._wrapper)
         self._rdf = SBOLGraph(test_fn)
-        #self._backup = self._wrapper.get_all_edges()
-        #self._wrapper.purge()
-        #self._wrapper.add_graph(test_fn)
+        self._backup = self._wrapper.get_all_edges()
+        self._wrapper.purge()
+        self._wrapper.add_graph(test_fn)
 
     def tearDown(self):
         self._wrapper.purge()
@@ -327,7 +327,7 @@ class TestGDSProject(unittest.TestCase):
             self.assertIn(n.get_type(),pe_der)
             self.assertIn(v.get_type(),pe_der)
             self.assertIn(e.get_type(),int_der)
-        #self._wrapper.project.drop(gn)
+        self._wrapper.project.drop(gn)
 
     def test_project_interaction_ppi_bi(self):
         model = self._wrapper.model
@@ -772,17 +772,4 @@ class TestGDSProcedures(unittest.TestCase):
         for p in pr:
             self.assertEqual(nodes[0],p["path"][0])
             self.assertEqual(nodes[1],p["path"][-1])
-        self._wrapper.project.drop(gn)
-
-
-    def test_adamic_adar(self):
-        gn = "test1"
-        try:
-            self._wrapper.project.drop(gn)
-        except ValueError:
-            pass
-        res = self._wrapper.project.preset(gn,"hierarchy")
-        g = self._builder.build_projection_graph(res)
-        nodes = [*g.nodes()]
-        pr = self._wrapper.procedure.tpp.adamic_adar(gn,nodes[0].get_key(),nodes[1].get_key())
         self._wrapper.project.drop(gn)

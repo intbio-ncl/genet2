@@ -145,7 +145,16 @@ class ViewGraph:
         self._graph.remove_node(node)
 
     def merge_nodes(self, subject, nodes):
+        if not isinstance(subject,Node):
+            if not isinstance(subject,int):
+                subject = int(subject)
+            s_data = self._graph.nodes[subject]
+            subject = Node(id=subject,**s_data)
         for node in nodes:
+            if isinstance(node,Node):
+                node = node.id
+            if not isinstance(node,int):
+                node = int(node)
             in_edges = list(self.in_edges(node))
             out_edges = list(self.out_edges(node))
             for edge in in_edges:

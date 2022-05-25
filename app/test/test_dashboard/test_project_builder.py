@@ -17,14 +17,13 @@ test_fn = os.path.join(curr_dir,"..","files","design","sbol","nor_full.xml")
 class TestProjectBuilder(unittest.TestCase):
     def setUp(self):
         self._wrapper = NVGraph()
-        #self._backup = self._wrapper.get_all_edges()
-        #self._wrapper.purge()
-        #self._wrapper.add_graph(test_fn)
+        self._backup = self._wrapper.get_all_edges()
+        self._wrapper.purge()
+        self._wrapper.add_graph(test_fn)
         self.builder = ProjectionBuilder(self._wrapper)
-        #self.builder.set_full_view()
+        self.builder.set_full_view()
 
-    def tearDown(self):
-        return 
+    def tearDown(self): 
         self._wrapper.purge()
         if len(self._backup) > 0:
             for edge in self._backup:
