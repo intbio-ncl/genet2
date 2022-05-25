@@ -52,7 +52,6 @@ class ProjectionDash(AbstractDash):
 
         acc_elements = [("Raw", raw), 
                         ("Native", native), 
-                        ("Cypher", []), 
                         ("Preset", preset)]
         proj_accordion = self.create_accordion("proj_accordion", acc_elements)
 

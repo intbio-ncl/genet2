@@ -9,15 +9,7 @@ details {
     }
 }
 
-#sbol_submit_upload {
-    display: none;
-}
-
-#sbol_submit_paste {
-    display: none;
-}
-
-#sbol_submit_sbh {
+#submit_remove_graph,#submit_sbh_graph,#submit_paste_graph,#submit_upload_graph {
     display: none;
 }
 
