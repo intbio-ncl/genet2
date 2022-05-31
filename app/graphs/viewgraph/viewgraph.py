@@ -93,6 +93,9 @@ class ViewGraph:
             del props["key"]
             yield Node(labels,id=n,**props)
 
+    def has_edge(self,edge):
+        return self._graph.has_edge(edge.n.id,edge.v.id,key=edge.get_type())
+
     @resolve_node
     def edges(self,n=None):
         for n,v,e,d in self._graph.edges(n,keys=True,data=True):

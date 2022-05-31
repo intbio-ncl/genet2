@@ -50,7 +50,7 @@ class StringBuilder:
         for name,match in self._matches.items():
             f_str += f"MATCH ({name}) "
             if len(match) > 0:
-                f_str += "WHERE " + " AND ".join([f"{name}:`" + str(s) + "`" for s in match])
+                f_str += "WHERE " + " OR ".join([f"{name}:`" + str(s) + "`" for s in match])
         if self._call:
             f_str += f" CALL {self._call.procedure}.{self._call.mode}('{self._call.name}' {',' if len(self._parameters) > 0 else ''}"
         for index,(k,v) in enumerate(self._parameters.items()):

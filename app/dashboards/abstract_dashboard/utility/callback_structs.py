@@ -55,7 +55,7 @@ man_tool_outputs = {"id": Output("man_toolbar", "hidden"),
 man_tool_states = State("man_toolbar", "hidden")
 
 modify_node_inputs = {"t-remove": Input('t-remove-button', 'n_clicks'),
-                    "t-modify": Input('t-modify-button', 'n_clicks')}
+                      "t-modify": Input('t-modify-button', 'n_clicks')}
 modify_node_outputs = [Output(graph_id, 'elements')]
 modify_node_states = [State(graph_id, 'elements'),
                       State(graph_id, 'selectedNodeData')]
@@ -69,34 +69,36 @@ label_color_output = Output(graph_id, "stylesheet")
 
 cypher_input = {"submit": Input("submit_cypher", "n_clicks")}
 cypher_output = {"graph_id": Output("graph_content", "children"),
-                 "datatable_id": Output("datatable","children")}
+                 "datatable_id": Output("datatable", "children")}
 cypher_state = State("query", "value")
 
 
-project_load_input = Input("project_load_input","value")
+project_load_input = Input("project_load_input", "value")
 project_load_output = {"graph_id": Output("graph_content", "children"),
-                       "datatable": Output("datatable","children"),
-                       "info" : Output("info","children"),
-                       "procs" : Output("procedures","style")}
+                       "datatable": Output("datatable", "children"),
+                       "info": Output("info", "children"),
+                       "procs": Output("procedures", "style")}
 plo_inp_box = []
+project_params_inp = Input("preset_graph", "value")
+project_params_out = Output("preset_params","children")
 
-project_inp = {"raw_submit" : Input("raw_submit","n_clicks"),
-                  "preset_submit" : Input("preset_submit","n_clicks"),
-                  "native_submit" : Input("native_submit","n_clicks")}
-project_out = {"vis_input" : Output(project_load_input.component_id,"options"),
-                      "message" : Output("project_message","children")}
-project_states = {"raw_input" : State("raw_input" , "value"),
-                  "native_name" : State("native_name" , "value"),
-                  "node" : State("node" , "value"),
-                  "edge" : State("edge" , "value"),
-                  "node_properties" : State("node_propertie" , "value"),
-                  "edge_properties" : State("edge_propertie" , "value"),
-                  "preset_name" : State("preset_name" , "value"),
-                  "preset_graph" : State("preset_graph" , "value")}
+project_inp = {"raw_submit": Input("raw_submit", "n_clicks"),
+               "preset_submit": Input("preset_submit", "n_clicks"),
+               "native_submit": Input("native_submit", "n_clicks")}
+
+project_out = {"vis_input": Output(project_load_input.component_id, "options"),
+               "message": Output("project_message", "children")}
+project_states = {"raw_input": State("raw_input", "value"),
+                  "native_name": State("native_name", "value"),
+                  "node": State("node", "value"),
+                  "edge": State("edge", "value"),
+                  "node_properties": State("node_propertie", "value"),
+                  "edge_properties": State("edge_propertie", "value"),
+                  "preset_name": State("preset_name", "value"),
+                  "preset_graph": State(project_params_inp.component_id, "value"),
+                  "preset_params" : State(project_params_out.component_id,"children")}
 
 
 procedure_input = []
 procedure_state = []
-procedure_output = [Output("procedure_table","children")]
-
-
+procedure_output = [Output("procedure_table", "children")]

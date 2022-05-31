@@ -248,15 +248,14 @@ class PathFinding:
     def _normalise_sp(self,res):
         if res is None or len(res) == 0:
             return []
-        f = {}
-        for k,v in res.items():
-            if k == "node":
-                v = self._graph.labels_to_node(v.labels)
-            if k == "path":
-                v = [self._graph.labels_to_node(n.labels) for n in v]
-            f[k] = v
-        return [f]
-
+        results = []
+        for path in res.iterrows():
+            path = path[1]
+            path = {"totalCost":path["totalCost"],
+                    "path" : [self._graph.labels_to_node(n.labels) for n in path["path"]]}
+            results.append(path)
+        return results
+            
     def delta_asp(self, name, source, mode="stream"):
         if isinstance(source,Node):
             source = source.get_key()
@@ -294,17 +293,8 @@ class PathFinding:
         qry = self._graph.qry_builder.dijkstra_shortest_path(
             name, source, dest, mode)
         res = self._graph._run(qry)
-        sp = None
-        for path in res.iterrows():
-            path = path[1]
-            if sp is None:
-                sp = path
-            if path["totalCost"] == 0:
-                continue
-            if path["totalCost"] < sp["totalCost"]:
-                sp = path
-        return self._normalise_sp(sp)
-        
+        return self._normalise_sp(res)
+
     def astar_sp(self, name, source, dest, latitude_property,longitude_property, mode="stream"):
         if isinstance(source,Node):
             source = source.get_key()
@@ -314,16 +304,7 @@ class PathFinding:
         qry = self._graph.qry_builder.astar_shortest_path(
             name, source, dest, latitude_property, longitude_property, mode)
         res = self._graph._run(qry)
-        sp = None
-        for path in res.iterrows():
-            path = path[1]
-            if sp is None:
-                sp = path
-            if path["totalCost"] == 0:
-                continue
-            if path["totalCost"] < sp["totalCost"]:
-                sp = path
-        return self._normalise_sp(sp)
+        return self._normalise_sp(res)
 
     def yens_sp(self, name, source, dest, k, mode="stream"):
         if isinstance(source,Node):
@@ -334,16 +315,7 @@ class PathFinding:
         qry = self._graph.qry_builder.yens_shortest_path(
             name, source, dest, k, mode)
         res = self._graph._run(qry)
-        sp = None
-        for path in res.iterrows():
-            path = path[1]
-            if sp is None:
-                sp = path
-            if path["totalCost"] == 0:
-                continue
-            if path["totalCost"] < sp["totalCost"]:
-                sp = path
-        return self._normalise_sp(sp)
+        return self._normalise_sp(res)
 
     def dfs(self, name, source, dest, mode="stream"):
         if isinstance(source,Node):
@@ -382,7 +354,7 @@ class PathFinding:
             path = path[1]
             # If this isnt true is it the case when two paths of equal length are found?
             assert(len(path) == 1)
-            path = path[0]
+            path = path["path"]
             if len(path.relationships) == 0:
                 continue
             p = []

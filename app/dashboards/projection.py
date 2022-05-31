@@ -47,9 +47,9 @@ class ProjectionDash(AbstractDash):
         preset = (self.create_input(project_states["preset_name"].component_id, placeholder="Graph Name") + 
                   self.create_dropdown(project_states["preset_graph"].component_id, pn, placeholder="Projection"))
         preset = (self.create_div("preset_div", preset) + 
+                  self.create_div(project_params_out.component_id,[]) + 
                   self.create_line_break(10) + 
                   self.create_button(project_inp["preset_submit"].component_id, "Submit"))
-
         acc_elements = [("Raw", raw), 
                         ("Native", native), 
                         ("Preset", preset)]
@@ -118,8 +118,11 @@ class ProjectionDash(AbstractDash):
         def update_graph_inner(*args):
             return self.update_graph(args)
 
-        def project_inner(raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph):
-            return self.project(raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph)
+        def project_params_inner(preset):
+            return self.project_params(preset)
+
+        def project_inner(raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph,preset_params):
+            return self.project(raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph,preset_params)
         
         def procedure_inner(*args):
             return self.procedure(args)
@@ -127,6 +130,7 @@ class ProjectionDash(AbstractDash):
         def load_inner(value):
             return self.load(value)
 
+        self.add_callback(project_params_inner, [project_params_inp], [project_params_out])
         self.add_callback(project_inner, list(project_inp.values()), list(project_out.values()), list(project_states.values()))
         self.add_callback(load_inner, [project_load_input], list(project_load_output.values())+plo_inp_box)
         self.add_callback(update_graph_inner, list(update_inputs.values()), list(update_outputs.values()))
@@ -137,7 +141,18 @@ class ProjectionDash(AbstractDash):
     def _create_datatable(self,id,struct):
         return self.create_complex_table(id, [{"name": str(i), "id": str(i)} for i in struct[0].keys()], struct)
 
-    def project(self, raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph):
+    def project_params(self,preset):
+        if preset is None:
+            raise PreventUpdate()
+        params = self.visualiser.get_project_preset_parameters(preset)
+        children = []
+        for name,param in params.items():
+            print(name,param)
+            c = [{"label": c, "value": c} for c in param]
+            children += self.create_dropdown(name,c,placeholder=name)
+        return [children]
+
+    def project(self, raw_click, native_click, preset_click, raw_value, name, nodes, edges, n_props, e_props,preset_name,preset_graph,preset_params):
         changed_id = [p['prop_id']
                       for p in callback_context.triggered][0].split(".")[0]
         if changed_id == "":
@@ -159,8 +174,12 @@ class ProjectionDash(AbstractDash):
             except Exception as ex:
                 message = f'Error: {ex}'
         elif changed_id == project_inp["preset_submit"].component_id:
+            params = {}
+            for param in preset_params:
+                if param["props"]["value"] is not None:
+                    params[param["props"]["id"]] = param["props"]["value"]
             try:
-                self.visualiser.project_preset(preset_name,preset_graph)
+                self.visualiser.project_preset(preset_name,preset_graph,**params)
                 message = "Projected Graph"
             except Exception as ex:
                 message = f'Error: {ex}'

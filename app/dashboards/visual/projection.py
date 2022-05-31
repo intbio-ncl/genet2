@@ -1,5 +1,5 @@
 import os
-from typing import final
+
 import dash_cytoscape as cyto
 cyto.load_extra_layouts()
 from app.dashboards.builder.projection import ProjectionBuilder
@@ -64,8 +64,8 @@ class ProjectionVisual(AbstractVisual):
     def project_graph(self,name,nodes,edges,n_props,e_props,**kwargs):
         return self._builder.project_graph(name,nodes,edges,n_props,e_props,**kwargs)
     
-    def project_preset(self,name,preset):
-        return self._builder.project_preset(name,preset)
+    def project_preset(self,name,preset,**kwargs):
+        return self._builder.project_preset(name,preset,**kwargs)
     
     def get_node_labels(self):
         return self._builder.get_node_labels()
@@ -99,6 +99,9 @@ class ProjectionVisual(AbstractVisual):
     def get_parameter_types(self,params):
         return self._builder.get_parameter_types(params)
     
+    def get_project_preset_parameters(self,preset):
+        return self._builder.get_project_preset_parameters(preset)
+        
     def run_procedure(self,module,name,params):
         final_elements = []
         def iterdict(d):

@@ -319,6 +319,9 @@ class ModelGraph:
     def interaction_predicates(self):
         return [n[0] for n in self.search((None,self.identifiers.predicates.direction,None))]
 
+    def get_interaction_direction(self,pred):
+        return [n[1] for n in self.search((pred,self.identifiers.predicates.direction,None))]
+
     def _get_name(self, subject):
         split_subject = self._split(subject)
         if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():

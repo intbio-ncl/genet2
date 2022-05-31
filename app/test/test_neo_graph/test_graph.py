@@ -279,7 +279,49 @@ class TestGDSProject(unittest.TestCase):
                 self._wrapper.add_edge(n,v,edge)
             self._wrapper.submit()
 
-    def test_project_interaction_bi(self):
+    def test_full(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        graph,res = self._wrapper.project.project(gn,"*","*")
+        self.assertEqual(gn,graph.name())
+        graph = self._builder.build_projection_graph(graph)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+        self._wrapper.project.drop(gn)
+
+    def test_hierarchy(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        has_part = ids.predicates.has_part
+        pe = ids.objects.dna
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res =   self._wrapper.project.preset(gn,"hierarchy",direction="natural")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),has_part)
+        self._wrapper.project.drop(gn)
+
+
+    # Interaction
+    def test_interaction_natural_bipartite(self):
         model = self._wrapper.model
         ids = self._wrapper.ids
         interaction = ids.objects.interaction
@@ -289,13 +331,25 @@ class TestGDSProject(unittest.TestCase):
             self._wrapper.project.drop(gn)
         except ValueError:
             pass
-
-        res =   self._wrapper.project.preset(gn,"interaction_bipartite")
+        res = self._wrapper.project.preset(gn,"interaction",direction="NATURAL",type="bipartite")
         self.assertEqual(gn,res.name())
         graph = self._builder.build_projection_graph(res)
         int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
         pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
         ip = [str(n[1]["key"]) for n in model.interaction_predicates()]
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            self.assertEqual(v["orientation"],"NATURAL")
+        schema = ge["schema"]
+        edges = schema["relationships"].keys()
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for e in edges:
+            self.assertIn(e,ip)
+        for n in nodes:            
+            self.assertIn(n,pe_der+int_der)
+
         for e in graph.edges():
             n = e.n
             v = e.v
@@ -304,7 +358,7 @@ class TestGDSProject(unittest.TestCase):
             self.assertIn(e.get_type(),ip)
         self._wrapper.project.drop(gn)
 
-    def test_project_interaction_mono(self):
+    def test_interaction_directed_bipartite(self):
         model = self._wrapper.model
         ids = self._wrapper.ids
         interaction = ids.objects.interaction
@@ -315,12 +369,118 @@ class TestGDSProject(unittest.TestCase):
         except ValueError:
             pass
 
-        res = self._wrapper.project.preset(gn,"interaction_directed_monopartite")
+        res = self._wrapper.project.preset(gn,"interaction",direction="DIRECTED",type="bipartite")
         self.assertEqual(gn,res.name())
-        
         graph = self._builder.build_projection_graph(res)
         int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
         pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        ip = [str(n[1]["key"]) for n in model.interaction_predicates()]
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            if "Input" in model.get_interaction_direction(model.get_class_code(k))[0][1]["key"]:
+                self.assertEqual(v["orientation"],"REVERSE")
+            else:
+                self.assertEqual(v["orientation"],"NATURAL")
+
+        schema = ge["schema"]
+        edges = schema["relationships"].keys()
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for e in edges:
+            self.assertIn(e,ip)
+        for n in nodes:            
+            self.assertIn(n,pe_der+int_der)
+
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der + int_der)
+            self.assertIn(v.get_type(),pe_der + int_der)
+            self.assertIn(e.get_type(),ip)
+        self._wrapper.project.drop(gn)
+
+    def test_interaction_undirected_bipartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.physical_entity
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction",direction="UNDIRECTED",type="bipartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        ip = [str(n[1]["key"]) for n in model.interaction_predicates()]
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            self.assertEqual(v["orientation"],"UNDIRECTED")
+
+        schema = ge["schema"]
+        edges = schema["relationships"].keys()
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for e in edges:
+            self.assertIn(e,ip)
+        for n in nodes:            
+            self.assertIn(n,pe_der+int_der)
+
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der + int_der)
+            self.assertIn(v.get_type(),pe_der + int_der)
+            self.assertIn(e.get_type(),ip)
+        self._wrapper.project.drop(gn)
+
+    
+    def test_interaction_natural_monpartite(self):
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"interaction",direction="NATURAL",type="monopartite")
+        self.assertEqual(gn,res.name())
+        self.assertEqual(res.relationship_count(),0)
+
+    def test_interaction_directed_monpartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.physical_entity
+        gn = "test1"
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+        res = self._wrapper.project.preset(gn,"interaction",direction="DIRECTED",type="monopartite")
+        self.assertEqual(gn,res.name())
+        graph = self._builder.build_projection_graph(res)
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            if "Input" in model.get_interaction_direction(model.get_class_code(k))[0][1]["key"]:
+                self.assertEqual(v["orientation"],"REVERSE")
+            else:
+                self.assertEqual(v["orientation"],"NATURAL")
+        schema = ge["schema"]
+        edges = schema["relationships"].keys()
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for e in edges:
+            self.assertIn(e,int_der)
+        for n in nodes:            
+            self.assertIn(n,pe_der)
+
         for e in graph.edges():
             n = e.n
             v = e.v
@@ -329,28 +489,36 @@ class TestGDSProject(unittest.TestCase):
             self.assertIn(e.get_type(),int_der)
         self._wrapper.project.drop(gn)
 
-    def test_project_interaction_ppi_bi(self):
+    def test_interaction_undirected_monpartite(self):
         model = self._wrapper.model
         ids = self._wrapper.ids
         interaction = ids.objects.interaction
-        protein = ids.objects.protein
+        pe = ids.objects.physical_entity
         gn = "test1"
         try:
             self._wrapper.project.drop(gn)
         except ValueError:
             pass
 
-        res = self._wrapper.project.preset(gn,"interaction_ppi_directed_bipartite")
+        res = self._wrapper.project.preset(gn,"interaction",direction="UNDIRECTED",type="monopartite")
         self.assertEqual(gn,res.name())
         graph = self._builder.build_projection_graph(res)
-        g_info = res._graph_info()
-        config = g_info["configuration"]
-        rel_proj = config["relationshipProjection"]
-        nfilter = config["nodeFilter"]
-        efliter = config["relationshipFilter"]
-        schema = g_info["schema"]
         int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
-        pe_der = [str(protein)] + [str(n[1]["key"]) for n in model.get_derived(protein)]
+        pe_der = [str(n[1]["key"]) for n in model.get_derived(pe)]
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            self.assertEqual(v["orientation"],"UNDIRECTED")
+
+        schema = ge["schema"]
+        edges = schema["relationships"].keys()
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for e in edges:
+            self.assertIn(e,int_der)
+        for n in nodes:            
+            self.assertIn(n,pe_der)
+
         for e in graph.edges():
             n = e.n
             v = e.v
@@ -359,28 +527,30 @@ class TestGDSProject(unittest.TestCase):
             self.assertIn(e.get_type(),int_der)
         self._wrapper.project.drop(gn)
 
-    def test_project_interaction_ppi_mono(self):
+    # PPi
+    #Untested
+    def test_interaction_ppi_directed_bipartite(self):
         model = self._wrapper.model
         ids = self._wrapper.ids
         interaction = ids.objects.interaction
-        protein = ids.objects.protein
+        pe = ids.objects.protein
         gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
         try:
             self._wrapper.project.drop(gn)
         except ValueError:
             pass
 
-        res = self._wrapper.project.preset(gn,"interaction_ppi_directed_monopartite")
+        res = self._wrapper.project.preset(gn,"interaction_ppi",direction="DIRECTED",type="bipartite")
         self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:
+            self.assertIn(n,pe_der)
         graph = self._builder.build_projection_graph(res)
-        g_info = res._graph_info()
-        config = g_info["configuration"]
-        rel_proj = config["relationshipProjection"]
-        nfilter = config["nodeFilter"]
-        efliter = config["relationshipFilter"]
-        schema = g_info["schema"]
-        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
-        pe_der = [str(protein)] + [str(n[1]["key"]) for n in model.get_derived(protein)]
         for e in graph.edges():
             n = e.n
             v = e.v
@@ -389,22 +559,220 @@ class TestGDSProject(unittest.TestCase):
             self.assertIn(e.get_type(),int_der)
         self._wrapper.project.drop(gn)
 
-    def test_project_interaction_genetic_mono(self):
+    #Untested
+    def test_interaction_ppi_undirected_bipartite(self):
         model = self._wrapper.model
         ids = self._wrapper.ids
         interaction = ids.objects.interaction
-        dna = ids.objects.dna
+        pe = ids.objects.protein
         gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
         try:
             self._wrapper.project.drop(gn)
         except ValueError:
             pass
 
-        res = self._wrapper.project.preset(gn,"interaction_genetic_directed_monopartite")
+        res = self._wrapper.project.preset(gn,"interaction_ppi",direction="UNDIRECTED",type="bipartite")
         self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:
+            self.assertIn(n,pe_der)
         graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+
+    def test_interaction_ppi_directed_monpartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.protein
+        gn = "test1"
         int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
-        pe_der = [str(dna)] + [str(n[1]["key"]) for n in model.get_derived(dna)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_ppi",direction="DIRECTED",type="monopartite")
+        self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:         
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    def test_interaction_ppi_undirected_monpartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.protein
+        gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_ppi",direction="UNDIRECTED",type="monopartite")
+        self.assertEqual(gn,res.name())
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            self.assertEqual(v["orientation"],"UNDIRECTED")
+        schema = ge["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:         
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    # Genetic
+    #Untested
+    def test_interaction_genetic_directed_bipartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.dna
+        gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_genetic",direction="DIRECTED",type="bipartite")
+        self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    #Untested
+    def test_interaction_genetic_undirected_bipartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.dna
+        gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_genetic",direction="UNDIRECTED",type="bipartite")
+        self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+
+    def test_interaction_genetic_directed_monpartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.dna
+        gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_genetic",direction="DIRECTED",type="monopartite")
+        self.assertEqual(gn,res.name())
+        gi = res._graph_info()
+        schema = gi["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:         
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
+        for e in graph.edges():
+            n = e.n
+            v = e.v
+            self.assertIn(n.get_type(),pe_der)
+            self.assertIn(v.get_type(),pe_der)
+            self.assertIn(e.get_type(),int_der)
+        self._wrapper.project.drop(gn)
+
+    def test_interaction_genetic_undirected_monpartite(self):
+        model = self._wrapper.model
+        ids = self._wrapper.ids
+        interaction = ids.objects.interaction
+        pe = ids.objects.dna
+        gn = "test1"
+        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        try:
+            self._wrapper.project.drop(gn)
+        except ValueError:
+            pass
+
+        res = self._wrapper.project.preset(gn,"interaction_genetic",direction="UNDIRECTED",type="monopartite")
+        self.assertEqual(gn,res.name())
+        ge = res._graph_info()
+        relationship_projection = ge["configuration"]["relationshipProjection"]
+        for k,v in relationship_projection.items():
+            self.assertEqual(v["orientation"],"UNDIRECTED")
+        schema = ge["schema"]
+        nodes = schema["nodes"].keys()
+        pe_der += [n.get_key() for n in self._wrapper.node_query(list(nodes))]
+        for n in nodes:         
+            self.assertIn(n,pe_der)
+        graph = self._builder.build_projection_graph(res)
         for e in graph.edges():
             n = e.n
             v = e.v
