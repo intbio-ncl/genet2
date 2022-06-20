@@ -6,21 +6,19 @@
     </div>
     <br>
     <div class="row">
+        {% if err_string%}
+        <h5>
+            <font color="red">ERROR: </font><br>{{err_string}}
+        </h5>
+        {% endif %}
+        {% if success_str %}
+        <h5>{{success_str}}</h5>
+        {% endif %}
         {% if upload_graph %}
         <div class="col-md">
             <div class="card search-result">
                 <div class="card-body">
                     <h2>Add New Graph</h2>
-                    {% if err_string%}
-                    <h5>
-                        <font color="red">ERROR: </font><br>{{err_string}}
-                    </h5>
-                    {% endif %}
-                    {% if success%}
-                    <h5>
-                        Graph Successfully added.
-                    </h5>
-                    {% endif %}
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-secondary"
                             onclick="handle_submit_input('submit_upload_graph')">Upload</button>
@@ -153,27 +151,7 @@
             </div>
         </div>
         {% endif %}
-
-        {% if purge_graph %}
-        <div class="col-md">
-            <div class="card search-result">
-                <h2>Purge Graph</h2>
-                <div class="card-body">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary"
-                            onclick="handle_submit_input('submit_remove_graph')">Purge Graph</button>
-                    </div>
-                    <div id="submit_remove_graph">
-                        <h5>Are you sure? This option resets the graph.</h5>
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {{ purge_graph.hidden_tag() }}
-                            {{ purge_graph.purge_graph(class="btn btn-secondary") }}
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
+        
         {% if drop_projection %}
         <div class="col-md">
             <div class="card search-result">

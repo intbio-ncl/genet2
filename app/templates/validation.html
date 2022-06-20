@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <h1>Validator</h1>
+    </div>
+    <br>
+    <div class="row">
+        {% if upload %}
+        <div class="col-md">
+            <div class="card search-result">
+                <div class="card-body">
+                    {% if err_string%}
+                    <h5>
+                        <font color="red">ERROR: </font><br>{{err_string}}
+                    </h5>
+                    {% endif %}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('sbol_upload')">SBOL</button>
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph')">Use Graph</button>
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph_name')">Use Graph Name</button>
+                    </div>
+                    <div id="submit_forms">
+                        <br>
+                        {% if err %}
+                        <h5>
+                            <font color="red">ERROR: </font><br>{{err}}
+                        </h5>
+                        {% endif %}
+                        {% if upload %}
+                        <div id="sbol_upload">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ upload.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ upload.upload.label(for="upload") }}<br>
+                                    {{ upload.upload(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                {{ upload.submit_upload(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                        {% if use_graph %}
+                        <div id="use_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ use_graph.hidden_tag() }}
+                                {{ use_graph.submit(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                        {% if graph_name %}
+                        <div id="use_graph_name">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ graph_name.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ graph_name.graphs.label(for="graphs") }}
+                                    {{ graph_name.graphs(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ graph_name.submit(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+    {% endblock %}

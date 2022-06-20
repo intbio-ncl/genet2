@@ -1,0 +1,366 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700);
+details{
+    margin:2rem
+}
+@media (min-width:1200px){
+    .modal-xlg{
+        width:90%
+    }
+}
+#sbol_submit_upload{
+    display:none
+}
+#sbol_submit_paste{
+    display:none
+}
+#sbol_submit_sbh{
+    display:none
+}
+.modal_enhancer{
+    width:90%
+}
+.panel{
+    padding:2px 18px;
+    display:none;
+    background-color:#fff;
+    overflow:hidden;
+    transition:max-height .2s ease-out
+}
+.accordian,.sub_graph{
+    box-shadow:rgba(0,0,0,.24) 0 3px 8px;
+    margin:20px;
+    padding:20px;
+    background-color:#fff
+}
+.dash-toolbar{
+    margin:20px;
+    box-shadow:rgba(0,0,0,.24) 0 3px 8px
+}
+.sub_graph{
+    max-width:66%
+}
+.accordian{
+    max-width:33%
+}
+.navbar-custom{
+    background-color:#ccc
+}
+.detail_p{
+    margin:2rem
+}
+.export_button{
+    margin:2%
+}
+.tool_image{
+    width:10%;
+    height:10%
+}
+.help-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#eabcbc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.help-tip:before{
+    content:'?';
+    font-weight:700;
+    color:#fff
+}
+.info-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#eae5bc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.info-tip:before{
+    content:'I';
+    font-weight:700;
+    color:#fff
+}
+.adv-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#bceae4;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.adv-tip:before{
+    content:'A';
+    font-weight:700;
+    color:#fff
+}
+.manual-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#b0fabc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.manual-tip:before{
+    content:'M';
+    font-weight:700;
+    color:#fff
+}
+.graph-legend{
+    text-align:left;
+    margin-bottom:5px;
+    font-weight:700;
+    font-size:90%
+}
+.graph-legend .legend-scale ul{
+    margin:0;
+    margin-bottom:5px;
+    padding:0;
+    float:left;
+    list-style:none
+}
+.graph-legend .legend-scale ul li{
+    font-size:80%;
+    list-style:none;
+    margin-left:0;
+    line-height:18px;
+    margin-bottom:2px
+}
+.graph-legend ul.legend-labels{
+    padding:1%
+}
+.graph-legend ul.legend-labels li span{
+    display:block;
+    float:left;
+    height:16px;
+    width:30px;
+    margin-right:5px;
+    margin-left:0;
+    border:1px solid #999
+}
+.graph-legend .legend-source{
+    font-size:70%;
+    color:#999;
+    clear:both
+}
+.graph-legend a{
+    color:#777
+}
+#row-main{
+    height:100vh
+}
+#content{
+    -webkit-transition:width .3s ease;
+    -moz-transition:width .3s ease;
+    -o-transition:width .3s ease;
+    transition:width .3s ease
+}
+.sidebar{
+    background-color:rgb(248,249,250,0);
+    -webkit-transition:margin .3s ease;
+    -moz-transition:margin .3s ease;
+    -o-transition:margin .3s ease;
+    transition:margin .3s ease;
+    height:100%
+}
+#sidebar-left{
+    min-width:10%;
+    overflow-y:scroll
+}
+#man_toolbar{
+    padding-right:50px;
+    min-width:10%
+}
+.modal-content{
+    width:max-content
+}
+details{
+    margin:2rem
+}
+@media (min-width:1200px){
+    .modal-xlg{
+        width:90%
+    }
+}
+#sbol_upload,#submit_paste_graph,#submit_remove_graph,#submit_sbh_graph,#submit_upload_graph,#use_graph,#use_graph_name{
+    display:none
+}
+.modal_enhancer{
+    width:90%
+}
+.panel{
+    padding:2px 18px;
+    display:none;
+    background-color:#fff;
+    overflow:hidden;
+    transition:max-height .2s ease-out
+}
+.sub_graph{
+    box-shadow:rgba(0,0,0,.24) 0 3px 8px;
+    margin:20px;
+    padding:20px;
+    background-color:#fff
+}
+.dash-toolbar{
+    margin:20px;
+    box-shadow:rgba(0,0,0,.24) 0 3px 8px
+}
+.sub_graph{
+    max-width:66%
+}
+.navbar-custom{
+    background-color:#ccc
+}
+.detail_p{
+    margin:2rem
+}
+.export_button{
+    margin:2%
+}
+.tool_image{
+    width:10%;
+    height:10%
+}
+.help-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#eabcbc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.help-tip:before{
+    content:'?';
+    font-weight:700;
+    color:#fff
+}
+.info-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#eae5bc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.info-tip:before{
+    content:'I';
+    font-weight:700;
+    color:#fff
+}
+.adv-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#bceae4;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.adv-tip:before{
+    content:'A';
+    font-weight:700;
+    color:#fff
+}
+.manual-tip{
+    position:relative;
+    width:25%;
+    height:25%;
+    text-align:center;
+    background-color:#b0fabc;
+    border-radius:50%;
+    cursor:pointer;
+    margin:1px
+}
+.manual-tip:before{
+    content:'M';
+    font-weight:700;
+    color:#fff
+}
+.graph-legend{
+    text-align:left;
+    margin-bottom:5px;
+    font-weight:700;
+    font-size:90%
+}
+.graph-legend .legend-scale ul{
+    margin:0;
+    margin-bottom:5px;
+    padding:0;
+    float:left;
+    list-style:none
+}
+.graph-legend .legend-scale ul li{
+    font-size:80%;
+    list-style:none;
+    margin-left:0;
+    line-height:18px;
+    margin-bottom:2px
+}
+.graph-legend ul.legend-labels{
+    padding:1%
+}
+.graph-legend ul.legend-labels li span{
+    display:block;
+    float:left;
+    height:16px;
+    width:30px;
+    margin-right:5px;
+    margin-left:0;
+    border:1px solid #999
+}
+.graph-legend .legend-source{
+    font-size:70%;
+    color:#999;
+    clear:both
+}
+.graph-legend a{
+    color:#777
+}
+#row-main{
+    height:100vh
+}
+#content{
+    -webkit-transition:width .3s ease;
+    -moz-transition:width .3s ease;
+    -o-transition:width .3s ease;
+    transition:width .3s ease
+}
+.sidebar{
+    background-color:rgb(248,249,250,0);
+    -webkit-transition:margin .3s ease;
+    -moz-transition:margin .3s ease;
+    -o-transition:margin .3s ease;
+    transition:margin .3s ease;
+    height:100%
+}
+#sidebar-left{
+    min-width:10%;
+    overflow-y:scroll
+}
+#man_toolbar{
+    padding-right:50px;
+    min-width:10%
+}
+.modal-content{
+    width:max-content
+}
+.ms-n5{
+    margin-left:-40px
+}
+#cypher-graph{
+    height:75vh
+}

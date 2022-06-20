@@ -3,10 +3,11 @@ from datetime import datetime
 from urllib.parse import urlparse
 from werkzeug.utils import secure_filename
 
-def handle_upload(form,sess_dir):
+def handle_upload(form,sess_dir,file_type=None):
     file_data = form.upload.data
-    file_type = form.file_type.data
-    filename = f'{file_data.filename.split(".")[0]}.{file_type}'
+    if file_type is None:
+        file_type = form.file_type.data
+    filename = file_data.filename
     filename = secure_filename(filename)
     secure_fn = os.path.join(sess_dir,filename)
     file_data.save(secure_fn)
