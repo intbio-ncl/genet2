@@ -5,12 +5,17 @@ from wtforms import SelectField
 from wtforms import FileField 
 from wtforms import validators
 
-graph_choices = [('SBOL', 'SBOL')]
+graph_choices = [('SBOL', 'SBOL'),("GBK","Genbank")]
 mode_choices = [('ignore','Ignore (Duplicate nodes are not added).'),
                 ('merge','Merge (Duplicate nodes properties are merged).'),
                 ("duplicate",'Duplicate (Duplicate Nodes are added to the graph).'),
                 ('overwrite','Overwrite (New nodes overwrite older duplicate nodes).')]
-                
+
+class SubmitForm(FlaskForm):
+    class Meta:
+        csrf = False
+    submit = SubmitField('Submit')
+          
 class UploadForm(FlaskForm):
     class Meta:
         csrf = False
@@ -23,12 +28,17 @@ class PasteForm(FlaskForm):
     submit_paste = SubmitField('Submit')
     paste = TextAreaField('Paste',validators=[validators.InputRequired()])
 
-class UploadGraphForm(UploadForm):
+class UploadDesignForm(UploadForm):
     class Meta:
         csrf = False
     file_type = SelectField("Datatype",choices=graph_choices)
-    graph_name = TextAreaField('Graph Name (Optional)')
+
+    
+class UploadGraphForm(UploadDesignForm):
+    class Meta:
+        csrf = False
     mode = SelectField("Integration Mode",choices=mode_choices)
+    graph_name = TextAreaField('Graph Name (Optional)')
 
 class PasteGraphForm(PasteForm):
     class Meta:
@@ -74,5 +84,13 @@ def add_remove_projection_form(choices,**kwargs):
     choices = ["Remove All"] + choices
     setattr(RemoveProjectionForm, "graphs",SelectField("Projection Name",choices=[(c,c) for c in choices])) 
     return RemoveProjectionForm(**kwargs)
+
+def add_graph_name_form(choices,**kwargs):
+    class RemoveGraphForm(FlaskForm):
+        class Meta:
+            csrf = False
+        submit = SubmitField('Submit')
+    setattr(RemoveGraphForm, "graphs",SelectField("Graph Name",choices=[(c,c) for c in choices])) 
+    return RemoveGraphForm(**kwargs)
 
 
