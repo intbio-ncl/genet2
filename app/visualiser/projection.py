@@ -222,7 +222,6 @@ class ProjectionDash(AbstractDash):
         ni = self._create_datatable("WUT",project_struct)
         params = [n.component_id.split("/")[-1] for n in plo_i_box]
         box_values = self.visualiser.get_parameter_types(params)
-        print(ni)
         return d,dt,ni,{"style":"block"},*box_values
 
         #except Exception as ex:

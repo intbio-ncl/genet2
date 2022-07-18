@@ -37,7 +37,10 @@ class Neo4jInterface:
         if self.qry_builder.is_node_staged(n):
             return n
         q_node = self.node_query(n)
-        if mode != "duplicate" and q_node != []:
+        if mode == "duplicate" :
+            self.qry_builder.add_create_node(n)
+            return n
+        if q_node != []:
             q_node = q_node[0]
             self.qry_builder.add_match_node(q_node)
             q_node_props = q_node.get_properties()
@@ -60,8 +63,11 @@ class Neo4jInterface:
         e = self._edge(n, v, e, kwargs)
         if self.qry_builder.is_edge_staged(e):
             return e
+        if mode == "duplicate":
+            self.qry_builder.add_create_edge(e)
+            return e
         q_edge = self.edge_query(e=e)
-        if mode != "duplicate" and q_edge != []:
+        if q_edge != []:
             q_edge = q_edge[0]
             self.qry_builder.add_match_edge(q_edge)
             q_edge_props = q_edge.get_properties()
@@ -78,15 +84,41 @@ class Neo4jInterface:
             self.qry_builder.add_create_edge(e)
         return e
 
+    def remove_edge(self,edge):
+        self.qry_builder.add_match_edge(edge)
+        self.qry_builder.add_remove_edge(edge)
+    
+    def remove_node(self,node,use_id=False):
+        self.qry_builder.add_match_node(node,use_id)
+        self.qry_builder.add_remove_node(node)
+
+    def replace_edge_property(self,edge,new_properties):
+        self.qry_builder.add_match_edge(edge)
+        self.qry_builder.add_replace_edge_properties(edge, new_properties)
+    
+    def set_edge(self,edge,new_properties):
+        self.qry_builder.add_match_edge(edge)
+        self.qry_builder.add_set_edge(edge, new_properties)
+
+    def add_node_label(self,node,label):
+        self.qry_builder.add_match_node(node)
+        self.qry_builder.add_add_node_label(node, label)
+
+    def merge_nodes(self,edge):
+        qry = self.qry_builder.merge_relationship_nodes(edge)
+        res = self.run_query(qry)
+        assert(len(res) == 1)
+        return list(res[0].values())[0]
+
     def remove_graph(self, graph_name):
         if not isinstance(graph_name,list):
-            graph_name = graph_name
+            graph_name = [graph_name]
         for node in self.nodes:
             if "graph_name" not in node.get_properties():
                 continue
             gns = node["graph_name"]
             self.qry_builder.add_match_node(node)
-            if graph_name not in gns:
+            if len(set(graph_name) & set(gns)) == 0:
                 continue
             if len(gns) == 1:
                 self.qry_builder.add_remove_node(node)
@@ -151,6 +183,16 @@ class Neo4jInterface:
     def labels_to_node(self, labels):
         return Node(*self._derive_key_type(labels))
     
+    def get_isolated_nodes(self,**kwargs):
+        results = []
+        qry = self.qry_builder.get_isolated_nodes(**kwargs)
+        for index,record in self._run(qry).iterrows():
+            for k, v in record.items():
+                key, r_type = self._derive_key_type(v.labels)
+                props = self._go_dict(v)
+                results.append(self._node(key, r_type, props))
+        return results
+
     def run_query(self, cypher_str):
         results = []
 
@@ -177,7 +219,7 @@ class Neo4jInterface:
 
     def _run(self, cypher_str):
         if len(cypher_str) == 0:
-            print("WARN:: Empty Cypher Query Entered.")
+            #print("WARN:: Empty Cypher Query Entered.")
             return []
         return self.driver.run_cypher(cypher_str)
 
@@ -199,18 +241,28 @@ class Neo4jInterface:
         return Edge(n, v, e, **properties)
 
     def _derive_key_type(self, labels):
-        assert(len(labels) == 2)
         labels = list(labels)
         if "None" in labels:
-            return [l for l in labels if l != "None"][0], "None"
+            k = [l for l in labels if l != "None"]
+            return k[0],"None"
         res = model.are_classes(labels)
-        if res[0]:
-            assert(not res[1])
-            return labels[::-1]
-        if res[1]:
-            assert(not res[0])
-            return labels
-        return labels
+        n = zip(labels,res)
+        k = []
+        t = []
+        for lab,ac in n:
+            if ac:
+                t.append(lab)
+            else:
+                k.append(lab)
+        if len(k) == 1:
+            k = k[0]
+        if len(t) == 1:
+            t = t[0]
+        if len(k) == 0:
+            k = t
+        if t == []:
+            return k,None
+        return k,t
 
     def _go_dict(self, go):
         props = dict(go)

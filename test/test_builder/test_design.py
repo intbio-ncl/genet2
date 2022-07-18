@@ -12,7 +12,7 @@ from app.graph.world_graph import WorldGraph
 from  app.graph.utility.model.model import model
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
-test_fn = os.path.join(curr_dir,"..","files","output.xml")
+test_fn = os.path.join(curr_dir,"..","files","nor_full.xml")
 
 
 class TestViews(unittest.TestCase):
@@ -35,12 +35,14 @@ class TestViews(unittest.TestCase):
 
     def test_full(self):
         self.builder.set_full_view()
+        self.builder.build()
         graph = self.builder.view
         view_edges = graph.edges()
         self.assertCountEqual(self.all_edges,view_edges)
             
     def test_pruned(self):
         self.builder.set_pruned_view()
+        self.builder.build()
         graph = self.builder.view
         self.assertTrue(len(graph) > 0)
         for edge in graph.edges():
@@ -48,6 +50,7 @@ class TestViews(unittest.TestCase):
 
     def test_heirarchy(self):
         self.builder.set_hierarchy_view()
+        self.builder.build()
         graph = self.builder.view
         for n in graph.nodes():
             actual_children = [c for c in graph.edges(n)]
@@ -56,6 +59,7 @@ class TestViews(unittest.TestCase):
 
     def test_interaction_explicit(self):
         self.builder.set_interaction_explicit_view()
+        self.builder.build()
         graph = self.builder.view
         physical_entity_obj = model.identifiers.objects.physical_entity
         reaction_entity_obj = model.identifiers.objects.reaction
@@ -77,6 +81,7 @@ class TestViews(unittest.TestCase):
 
     def test_interaction_verbose(self):
         self.builder.set_interaction_verbose_view()
+        self.builder.build()
         graph = self.builder.view
         interaction_obj = model.identifiers.objects.interaction
         physical_entity_obj = model.identifiers.objects.physical_entity
@@ -98,6 +103,7 @@ class TestViews(unittest.TestCase):
     
     def test_interaction(self):
         self.builder.set_interaction_view()
+        self.builder.build()
         graph = self.builder.view
         interaction_obj = model.identifiers.objects.interaction
         physical_entity_obj = model.identifiers.objects.physical_entity
@@ -117,6 +123,7 @@ class TestViews(unittest.TestCase):
             
     def test_interaction_genetic(self):
         self.builder.set_interaction_genetic_view()
+        self.builder.build()
         graph = self.builder.view
         interaction_obj = model.identifiers.objects.interaction
         dna_obj = model.identifiers.objects.dna
@@ -136,6 +143,7 @@ class TestViews(unittest.TestCase):
 
     def test_interaction_protein(self):
         self.builder.set_interaction_protein_view()
+        self.builder.build()
         graph = self.builder.view
         interaction_obj = model.identifiers.objects.interaction
         prot_obj = model.identifiers.objects.protein
@@ -155,6 +163,7 @@ class TestViews(unittest.TestCase):
 
     def test_interaction_io(self):
         self.builder.set_interaction_io_view()
+        self.builder.build()
         graph = self.builder.view
         self.assertTrue(len(graph) > 0)        
 
@@ -173,24 +182,28 @@ class TestViews(unittest.TestCase):
         dg1 = self.wg.get_design([gn1],predicate="ANY")
         self.builder.set_design(dg1)
         self.builder.set_interaction_view()
+        self.builder.build()
         graph1 = self.builder.view
         edges1 = list(graph1.edges())
 
         dg2 = self.wg.get_design([gn2],predicate="ANY")
         self.builder.set_design(dg2)
         self.builder.set_interaction_view()
+        self.builder.build()
         graph2 = self.builder.view
         edges2 = list(graph2.edges())
 
         dg3 = self.wg.get_design([gn3],predicate="ANY")
         self.builder.set_design(dg3)
         self.builder.set_interaction_view()
+        self.builder.build()
         graph3 = self.builder.view
         edges3 = list(graph3.edges())
 
         adg = self.wg.get_design([gn1,gn2,gn3],predicate="ANY")
         self.builder.set_design(adg)
         self.builder.set_interaction_view()
+        self.builder.build()
         graph = self.builder.view
         for e in graph.edges():
             self.assertTrue(e in edges1 or e in edges2 or e in edges3)

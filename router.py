@@ -14,8 +14,13 @@ from app.utility.sbol_connector.connector import SBOLConnector
 from app.graph.world_graph import WorldGraph
 
 from app.visualiser.design import DesignDash
+from app.visualiser.editor import EditorDash
 from app.visualiser.cypher import CypherDash
 from app.visualiser.projection import ProjectionDash
+from app.visualiser.truth import TruthDash
+
+from app.validator.validator import Validator
+from app.enhancer.enhancer import Enhancer
 
 root_dir = "app"
 static_dir = os.path.join(root_dir, "assets")
@@ -27,21 +32,25 @@ server = Flask(__name__, static_folder=static_dir,
 
 graph = WorldGraph()
 design_dash = DesignDash(__name__,server,graph)
+editor_dash = EditorDash(__name__,server,graph)
 cypher_dash = CypherDash(__name__,server,graph)
 projection_dash = ProjectionDash(__name__,server,graph)
+truth_dash = TruthDash(__name__,server,graph)
 
 design_dash.app.enable_dev_tools(debug=True)
 cypher_dash.app.enable_dev_tools(debug=True)
 projection_dash.app.enable_dev_tools(debug=True)
+editor_dash.app.enable_dev_tools(debug=True)
 
 app = DispatcherMiddleware(server, {
     design_dash.pathname : design_dash.app.server,
     cypher_dash.pathname: cypher_dash.app.server,
-    #projection_dash.pathname: projection_dash.app.server
+    projection_dash.pathname: projection_dash.app.server,
+    editor_dash.pathname: editor_dash.app.server
 })
 connector = SBOLConnector()
-#enhancer = Enhancer(graph)
-#validator = Validator(graph)
+enhancer = Enhancer(graph)
+validator = Validator(graph)
 
 server.config['SESSION_PERMANENT'] = True
 server.config['SESSION_TYPE'] = 'filesystem'
@@ -115,6 +124,10 @@ def modify_graph():
 def visualiser():
     return redirect(design_dash.pathname)
 
+@server.route('/editor', methods=['GET', 'POST'])
+def editor():
+    return redirect(editor_dash.pathname)
+
 @server.route('/cypher', methods=['GET', 'POST'])
 def cypher():
     return redirect(cypher_dash.pathname)
@@ -122,6 +135,10 @@ def cypher():
 @server.route('/gds', methods=['GET', 'POST'])
 def gds():
     return redirect(projection_dash.pathname)
+
+@server.route('/truth', methods=['GET', 'POST'])
+def truth():
+    return redirect(truth_dash.pathname)
 
 @server.route('/enhancement', methods=['GET', 'POST'])
 def enhancement():
@@ -155,8 +172,8 @@ def validation():
         pass
     if graph_name.validate_on_submit():
         pass
-    
     return render_template("validation.html",upload=upload,use_graph=use_graph,graph_name=graph_name)
+
 
 @server.before_request
 def before_request_func():

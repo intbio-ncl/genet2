@@ -93,7 +93,10 @@ class Edge:
 
     def _replace(self,items):
         for k,v in self.properties.items():
-            delattr(self,k)
+            if validators.url(k):
+                delattr(self,_get_name(k))
+            else:
+                delattr(self,k)
         self.properties.clear()
         for k,v in items.items():
             if validators.url(k):

@@ -274,8 +274,6 @@ class PathFinding:
         return results
             
     def delta_asp(self, name, source, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.delta_all_shortest_paths(name, source, mode)
         res = self._interface.driver.run_cypher(qry)
@@ -288,8 +286,6 @@ class PathFinding:
         return results
 
     def dijkstra_asp(self, name, source, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.dijkstra_all_shortest_paths(name, source, mode)
         res = self._interface.driver.run_cypher(qry)
@@ -302,10 +298,6 @@ class PathFinding:
         return results
 
     def dijkstra_sp(self, name, source, dest, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
-        if isinstance(dest,Node):
-            dest = dest.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.dijkstra_shortest_path(
             name, source, dest, mode)
@@ -313,10 +305,6 @@ class PathFinding:
         return self._normalise_sp(res)
 
     def astar_sp(self, name, source, dest, latitude_property,longitude_property, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
-        if isinstance(dest,Node):
-            dest = dest.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.astar_shortest_path(
             name, source, dest, latitude_property, longitude_property, mode)
@@ -324,10 +312,6 @@ class PathFinding:
         return self._normalise_sp(res)
 
     def yens_sp(self, name, source, dest, k, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
-        if isinstance(dest,Node):
-            dest = dest.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.yens_shortest_path(
             name, source, dest, k, mode)
@@ -335,10 +319,6 @@ class PathFinding:
         return self._normalise_sp(res)
 
     def dfs(self, name, source, dest, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
-        if isinstance(dest,Node):
-            dest = dest.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.dfs(name, source, dest, mode)
         res = self._interface.driver.run_cypher(qry)
@@ -359,10 +339,6 @@ class PathFinding:
 
 
     def bfs(self, name, source, dest, mode="stream"):
-        if isinstance(source,Node):
-            source = source.get_key()
-        if isinstance(dest,Node):
-            dest = dest.get_key()
         name = _normalise_gn(name)
         qry = self._qry_builder.bfs(name, source, dest, mode)
         res = self._interface.driver.run_cypher(qry)

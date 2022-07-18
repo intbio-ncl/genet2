@@ -16,7 +16,6 @@ class CypherVisual(AbstractVisual):
     def __init__(self,graph):
         super().__init__()
         self.view = self.set_cypher_view
-        self.qry_str = self.default_query()
         self._builder = CypherBuilder(graph)
         self._layout_h = LayoutHandler()
         self._label_h = LabelHandler(self._builder)
@@ -37,15 +36,15 @@ class CypherVisual(AbstractVisual):
                             self.set_circle_node_shape,
                             self.set_bezier_edge_shape]
         return self._set_preset(preset_functions)
-
-    def default_query(self):
-        return "MATCH (n) RETURN n LIMIT 25"
-    
-    def set_query(self,qry_str):
-        self.qry_str = qry_str
         
-    def set_cypher_view(self,datatable=False):
+    def set_cypher_view(self):
         if self.view == self.set_cypher_view:
-            return self._builder.set_cypher_view(self.qry_str,datatable)
+            return self._builder.set_cypher_view()
         else:
            self.view =self.set_cypher_view
+
+    def default_query(self):
+        return self._builder.default_query()
+
+    def set_query(self,qry):
+        return self._builder.set_query(qry)

@@ -333,24 +333,7 @@ details{
 #row-main{
     height:100vh
 }
-#content{
-    -webkit-transition:width .3s ease;
-    -moz-transition:width .3s ease;
-    -o-transition:width .3s ease;
-    transition:width .3s ease
-}
-.sidebar{
-    background-color:rgb(248,249,250,0);
-    -webkit-transition:margin .3s ease;
-    -moz-transition:margin .3s ease;
-    -o-transition:margin .3s ease;
-    transition:margin .3s ease;
-    height:100%
-}
-#sidebar-left{
-    min-width:10%;
-    overflow-y:scroll
-}
+
 #man_toolbar{
     padding-right:50px;
     min-width:10%

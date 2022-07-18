@@ -3,15 +3,15 @@ from app.visualiser.viewgraph.viewgraph import ViewGraph
 from app.graph.utility.graph_objects.node import Node
 from app.graph.utility.graph_objects.edge import Edge
 
-class ViewBuilder(AbstractViewBuilder):
-    def __init__(self, graph):
-        self.driver = graph.driver
+class CypherViewBuilder(AbstractViewBuilder):
+    def __init__(self,graph):
         super().__init__(graph)
+        self.driver = graph.driver
 
-    def _subgraph(self, edges=[], new_graph=None):
-        return ViewGraph(super()._subgraph(edges,new_graph))
-        
-    def produce(self,qry_str,create_datatable):
+    def _subgraph(self, edges=[],nodes=[], new_graph=None):
+        return ViewGraph(super()._subgraph(edges,nodes,new_graph))
+
+    def build(self,qry_str,create_datatable=True):
         edges = []
         datatable = []
         elements = self.driver.run_query(qry_str)
@@ -36,6 +36,17 @@ class ViewBuilder(AbstractViewBuilder):
         if create_datatable:
             return self._subgraph(edges),datatable
         return self._subgraph(edges)
+
+    def get_edge_types(self):
+        pass
+    
+    def get_node_types(self):
+        pass
+
+    def transform(self,edges):
+        return []
+        
+
 
         
 

@@ -322,7 +322,35 @@ class ModelGraph:
     def interaction_predicates(self,interaction=None):
         if interaction is None:
             return [n[0] for n in self.search((None,self.identifiers.predicates.direction,None))]
-        
+        inputs = []
+        outputs = []
+        i_predicate = self.identifiers.objects.input
+        o_predicate = self.identifiers.objects.output
+        for s,p,o in self.search((None,RDF.first,interaction)):
+            o = s[0] 
+            o_key = s[1]["key"]
+
+            while o_key != OWL.unionOf:
+                res = self.search((None,None,o))
+                assert(len(res) == 1)
+                s,p,o = res[0]
+                o_key = o
+                o = s[0]
+            
+            res = self.search((None,None,o))
+            assert(len(res) == 1)
+            res = res[0][0]
+            direction = self.get_interaction_direction(res[0])
+            if direction == []:
+                continue
+            assert(len(direction) == 1)
+            direction = direction[0][1]["key"]
+            if direction == i_predicate:
+                inputs.append(res)
+            elif direction == o_predicate:
+                outputs.append(res)
+        return inputs,outputs
+            
 
     def get_interaction_direction(self,pred):
         return [n[1] for n in self.search((pred,self.identifiers.predicates.direction,None))]

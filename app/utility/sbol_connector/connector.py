@@ -34,7 +34,7 @@ class SBOLConnector:
 
     def query(self,query,search_limit=5,hubs=[]):
         if hubs == []:
-             hubs = list(self.hubs.values())
+            hubs = list(self.hubs.values())
         else:
             hubs = [self.hubs[hub] for hub in hubs]
         results = []

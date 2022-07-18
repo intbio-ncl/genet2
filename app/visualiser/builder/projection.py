@@ -3,16 +3,31 @@ import inspect
 import networkx as nx
 from app.visualiser.viewgraph.projectgraph import ProjectGraph
 from app.visualiser.builder.abstract import AbstractBuilder
-from app.visualiser.builder.builders.projection.view import ViewBuilder
-from app.visualiser.builder.builders.projection.mode import ModeBuilder
+from app.visualiser.builder.builders.projection.none import NoneViewBuilder
+from app.visualiser.builder.builders.projection.projection import ProjectionViewBuilder
 
 class ProjectionBuilder(AbstractBuilder):
     def __init__(self,graph):
         super().__init__(graph)
         self._dg = self._graph.get_design(None)
-        self.view = ProjectGraph()
-        self._view_h = ViewBuilder(self._dg)
-        self._mode_h = ModeBuilder(self)
+        self._view_builder = NoneViewBuilder(self._dg)
+        self.projection_name = None
+
+    def build(self,create_datatable=True):
+        if create_datatable:
+            view,dt = self._view_builder.build(self.projection_name,create_datatable)
+            self.view=view
+            return dt
+        self.view = self._view_builder.build(self.projection_name,create_datatable)
+
+    def set_no_view(self):
+        self._view_builder = NoneViewBuilder(self._dg)
+
+    def set_projection_view(self):
+        self._view_builder = ProjectionViewBuilder(self._dg)
+
+    def set_projection_graph(self,name):
+        self.projection_name = name
 
     def get_design_names(self):
         return self._graph.get_design_names()
@@ -22,17 +37,7 @@ class ProjectionBuilder(AbstractBuilder):
     
     def set_design(self,design):
         self._dg = design
-        self._view_h.set_graph(design)
-
-    def set_no_view(self):
-        self.view = self._view_h.none()
-
-    def set_projection_view(self, graph_name, datatable=False):
-        if datatable:
-            view, datatabe = self._view_h.projection(graph_name, datatable)
-            self.view = view
-            return datatabe
-        self.view = self._view_h.projection(graph_name, datatable)
+        self._view_builder.set_graph(design)
 
     def run_cypher(self, qry_str):
         return self._dg.driver.run_query(qry_str)
@@ -80,7 +85,6 @@ class ProjectionBuilder(AbstractBuilder):
     def get_project_info(self):
         nodes = []
         gn = self.view.name()
-        print(gn)
         pr = self._graph.driver.procedures.centrality.page_rank(gn)
         bc = self._graph.driver.procedures.centrality.betweenness(gn)
         dc = self._graph.driver.procedures.centrality.degree(gn)

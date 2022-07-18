@@ -22,9 +22,9 @@ class QueryBuilder:
         self._add_edge(edge)
         self.edges[edge].enable_create()
 
-    def add_match_node(self, node):
+    def add_match_node(self, node,use_id=False):
         self._add_node(node)
-        self.nodes[node].enable_match()
+        self.nodes[node].enable_match(use_id)
     
     def add_match_edge(self, edge):
         self._add_edge(edge)
@@ -66,6 +66,10 @@ class QueryBuilder:
         self.edges[edge].use_properties = False
         self.edges[edge].enable_remove_properties(properties)
 
+    def add_add_node_label(self,node,label):
+        self._add_node(node)
+        self.nodes[node].enable_add_label(label)
+
     def generate(self):
         for operation in self.nodes.values():
             yield operation.generate()
@@ -80,70 +84,23 @@ class QueryBuilder:
 
     def node_query(self, identity,predicate="ALL", **kwargs):
         where = ""
-        if isinstance(identity,Node):
+        if not isinstance(identity,(list, tuple, set, frozenset)):
             identity = [identity]
-        if isinstance(identity, (list, tuple, set, frozenset)):
-            for index, i in enumerate(identity):
-                where += f'n:`{i}`'
-                if index < len(identity) - 1:
-                    where += " OR "
+
+        for index, i in enumerate(identity):
+            if i is None:
+                continue
+            where += f'n:`{i}`'
+            if index < len(identity) - 1:
+                where += " OR "
         where = self._graph_name(kwargs,where,"n",predicate)
         if where != "":
             where = "WHERE " + where
-
-        identity = ""
-        return f"""MATCH (n{":" + str(identity) if identity else ""} {{{self.dict_to_query(kwargs)}}}) {where} RETURN n"""
+        return f"""MATCH (n {{{self.dict_to_query(kwargs)}}}) {where} RETURN n"""
 
     def edge_query(self, n=None, v=None, e=None, n_props={}, v_props={}, 
                     e_props={},directed=True,exclusive=False,predicate="ALL"):
-        def _cast_node(n,code):
-            where = ""
-            if isinstance(n, Node):
-                n = [n]
-            if isinstance(n, (list, tuple, set)):
-                where = ""
-                for index,node in enumerate(n):
-                    where += f'{code}:`{node}`'
-                    if index < len(n) -1:
-                        where += " OR " if not exclusive else " AND "
-                n = ""
-            else:
-                n = ":`"+n+"`" if n else ""
-
-            return n,where
-        if n is not None and isinstance(n,Node):
-            n_props.update(n.get_properties())
-        if v is not None and isinstance(v,Node):
-            v_props.update(v.get_properties())
-        if e is not None and isinstance(e,Node):
-            e_props.update(e.get_properties())
-
-        n,n_where = _cast_node(n,"n")
-        v,v_where = _cast_node(v,"v")
-        n_where = self._graph_name(n_props,n_where,"n",predicate)
-        v_where = self._graph_name(v_props,v_where,"v",predicate)
-        e_where = self._graph_name(e_props,"","e",predicate)
-
-        if isinstance(e, list):
-            e = ":" + ""+"|".join(["`" + edge + "`" for edge in e])
-        else:
-            e = f':`{e}`' if e else ""
-
-        n = f'(n{n} {{{self.dict_to_query(n_props)}}})'
-        e = f'[e{e} {{{self.dict_to_query(e_props)}}}]'
-        v = f'(v{v} {{{self.dict_to_query(v_props)}}})'
-        where = n_where
-        if v_where != "":
-            if where != "":
-                where += " AND "
-            where += v_where
-        if e_where != "":
-            if where != "":
-                where += " AND "
-            where += e_where
-        if where != "":
-            where = "WHERE " + where
-        return f"""MATCH {n}-{e}-{">" if directed else ""}{v} {where} RETURN n,v,e"""
+        return f"""{self._edge_match(n,v,e,n_props,v_props,e_props,directed,exclusive,predicate)} RETURN n,v,e"""
 
     def node_property(self, n=None, prop="",distinct=False):
         return f"""MATCH (p{":" + n if n else ""}) RETURN {"DISTINCT" if distinct else ""} p.{prop}"""
@@ -153,6 +110,25 @@ class QueryBuilder:
 
     def get_edge_properties(self):
         return "MATCH (n)-[r]-(m) RETURN properties(r)"
+
+    def get_isolated_nodes(self,identity=[],**kwargs):
+        where = ""
+        for index, i in enumerate(identity):
+            if i is None:
+                continue
+            where += f'n:`{i}`'
+            if index < len(identity) - 1:
+                where += " OR "
+
+        where = self._graph_name(kwargs,where,"n","ALL")
+        return f'''
+        match (n {{{self.dict_to_query(kwargs)}}})
+        with n
+        optional match (n)-[r]-()
+        with n, count(r) as c
+        where c=0 {"AND " + where if where != "" else ""}
+        RETURn n
+        '''
 
     def shortest_path(self, source, dest):
         if isinstance(source, Node):
@@ -168,6 +144,17 @@ class QueryBuilder:
         p = shortestPath((a)-[*]-(b))
         RETURN p
         """
+
+    def merge_relationship_nodes(self,edge):
+        return f'''
+        {self._edge_match(n=edge.n,v=edge.v,e=edge.get_type(),e_props=edge.get_properties())}
+        CALL apoc.refactor.mergeNodes([n,v],{{properties:"combine",
+                                                        mergeRels:TRUE,
+                                                        produceSelfRel:FALSE,
+                                                        preserveExistingSelfRels:FALSE}})
+        YIELD node
+        RETURN node
+        '''
 
     def degree(self, source, **kwargs):
         return f"""MATCH (p:{self.list_to_query(source)} {{{self.dict_to_query(kwargs)}}})
@@ -253,9 +240,62 @@ class QueryBuilder:
     def _graph_name(self,kwargs,where,code,intersection):
         if "graph_name" in kwargs:
             gn = kwargs["graph_name"]
+            if None in gn:
+                return where
             if not isinstance(gn,list):
                 gn = [gn]
             if where != "":
                 where = f"({where}) AND "
             where += f"{intersection}(a IN {str(gn)} WHERE a IN {code}.`graph_name`)"
         return where
+
+    def _edge_match(self, n=None, v=None, e=None, n_props={}, v_props={}, 
+                    e_props={},directed=True,exclusive=False,predicate="ALL"):
+        def _cast_node(n,code):
+            where = ""
+            if isinstance(n, Node):
+                n = [n]
+            if isinstance(n, (list, tuple, set)):
+                where = ""
+                for index,node in enumerate(n):
+                    where += f'{code}:`{node}`'
+                    if index < len(n) -1:
+                        where += " OR " if not exclusive else " AND "
+                n = ""
+            else:
+                n = ":`"+n+"`" if n else ""
+
+            return n,where
+        if n is not None and isinstance(n,Node):
+            n_props.update(n.get_properties())
+        if v is not None and isinstance(v,Node):
+            v_props.update(v.get_properties())
+        if e is not None and isinstance(e,Node):
+            e_props.update(e.get_properties())
+        n,n_where = _cast_node(n,"n")
+        v,v_where = _cast_node(v,"v")
+        n_where = self._graph_name(n_props,n_where,"n",predicate)
+        v_where = self._graph_name(v_props,v_where,"v",predicate)
+        e_where = self._graph_name(e_props,"","e",predicate)
+
+        if isinstance(e, list):
+            e = ":" + ""+"|".join(["`" + edge + "`" for edge in e])
+        else:
+            e = f':`{e}`' if e else ""
+
+        n = f'(n{n} {{{self.dict_to_query(n_props)}}})'
+        e = f'[e{e} {{{self.dict_to_query(e_props)}}}]'
+        v = f'(v{v} {{{self.dict_to_query(v_props)}}})'
+        where = n_where
+        if v_where != "":
+            if where != "":
+                where += " AND "
+            where += v_where
+        if e_where != "":
+            if where != "":
+                where += " AND "
+            where += e_where
+        if where != "":
+            where = "WHERE " + where
+
+        return f'MATCH {n}-{e}-{">" if directed else ""}{v} {where}'

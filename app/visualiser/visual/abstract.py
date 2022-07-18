@@ -8,6 +8,7 @@ default_stylesheet_fn = os.path.join(os.path.dirname(
 
 class AbstractVisual:
     def __init__(self):
+        self.view = self.set_full_graph_view
         self.mode = self.set_network_mode
         self.node_text = self.add_node_no_labels
         self.edge_text = self.add_edge_no_labels
@@ -569,11 +570,13 @@ class AbstractVisual:
         edges = []
         node_selectors = []
         edge_selectors = []
+        self.view()
         if datatable:
-            dt = self.view(True)
+            dt = self._builder.build(True)
         else:
-            self.view()
+            self._builder.build()
         self.mode()
+        
         node_color = self.node_color()
         node_shapes = self.node_shape()
         node_sizes = self.node_size()

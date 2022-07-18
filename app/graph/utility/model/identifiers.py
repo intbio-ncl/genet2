@@ -11,6 +11,7 @@ class KnowledgeGraphIdentifiers:
         self.predicates = Predicates()
         self.roles = Roles()
         self.namespaces = Namespaces()
+        self.external = External()
 
 class Namespaces:
     def __init__(self):
@@ -36,7 +37,6 @@ class Namespaces:
 class Predicates:
     def __init__(self):
         self.rdf_type = RDF.type
-        self.is_synonym = URIRef(nv_namespace + "isSynonym")
     
     def __iter__(self):
         for i in dir(self):
@@ -46,8 +46,7 @@ class Predicates:
 
 class Objects:
     def __init__(self):
-        self.synonym = URIRef(nv_namespace + "Synonym")
-        self.external_class = URIRef(nv_namespace + "ExternalClass")
+        pass
 
     def __iter__(self):
         for i in dir(self):
@@ -64,6 +63,15 @@ class Roles:
             attr = getattr(self,i)
             if isinstance(attr,(URIRef)):
                 yield attr
+
+class External:
+    def __init__(self):
+        self.type = RDF.type
+        self.confidence = URIRef("http://purl.obolibrary.org/obo/NCIT_C49020")
+        self.synonym = URIRef("http://purl.obolibrary.org/obo/NCIT_C52469")
+        self.description = URIRef("http://purl.org/dc/terms/description")
+
+
 
 def produce_identifiers(graph):
     bl_namespaces = [str(OWL),str(RDF),str(RDFS)]

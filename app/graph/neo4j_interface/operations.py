@@ -4,16 +4,17 @@ class Operations:
     def __init__(self, graph_object, index, use_properties=True):
         self.graph_object = graph_object
         self.index = index
-        self.ops = {self.create: False, self.match: False,
-                    self.set: False, self.replace: False,
-                    self.remove:False,self.remove_properties:False}
+        self.ops = {self.create: None, self.match: None,
+                    self.set: None, self.replace: None,
+                    self.remove:None,self.remove_properties:None,
+                    self.add_label:None}
         self.use_properties = use_properties
 
     def enable_create(self):
         self.ops[self.create] = True
 
-    def enable_match(self):
-        self.ops[self.match] = True
+    def enable_match(self,use_id=False):
+        self.ops[self.match] = [use_id]
 
     def enable_set(self, new_props):
         self.ops[self.set] = new_props
@@ -27,14 +28,21 @@ class Operations:
     def enable_remove_properties(self, remove_props):
         self.ops[self.remove_properties] = remove_props
 
+    def enable_add_label(self,label):
+        self.ops[self.add_label] = label
+
     def generate(self, code):
         qry_str = ""
         for k, v in self.ops.items():
-            if isinstance(v, bool):
-                if v == True:
-                    qry_str += k()
+            if v is  None:
+                continue
+            elif v is True:
+                qry_str += k()
+            elif isinstance(v,list):
+                qry_str += k(*v)
             else:
                 qry_str += k(v)
+
         if qry_str == "":
             return qry_str
         if not any(ext in qry_str for ext in update_clauses):
@@ -58,6 +66,9 @@ class Operations:
         set = set[:-1]
         return set
 
+    def add_label(self,code,label):
+        return f' SET {code}{self.index}:`{label}`'
+
     def replace(self, new_props,code):
         return f'SET {code}{self.index} = {{{ self.dict_to_query(new_props)}}} \n'
 
@@ -70,7 +81,10 @@ class Operations:
         for c_index, (k, v) in enumerate(remove_props.items()):
             if isinstance(v, list):
                 for ele in v:
-                    set += f' {n_id}.`{k}` = [x IN {n_id}.`{k}` WHERE x <> "{ele}"],'
+                    if isinstance(ele,list):
+                        set += f' {n_id}.`{k}` = [x IN {n_id}.`{k}` WHERE NOT x IN {ele}],'
+                    else:
+                        set += f' {n_id}.`{k}` = [x IN {n_id}.`{k}` WHERE x <> "{ele}"],'
                 set = set[:-1]
             else:
                 set += f' {n_id}.`{k}` = {{}}'
@@ -110,13 +124,19 @@ class Operations:
                 f_str += ":"
         return f_str
 
-    def _where(self):
+    def _where(self,use_id):
         where = ""
         labels = self.graph_object.get_labels()
+
+
         for c_index, i in enumerate(labels):
             where += f'n{self.index}:`{i}`'
             if c_index < len(labels) - 1:
                 where += " AND "
+        if use_id:
+            if where != "":
+                where += " AND "
+            where += f" ID(n{self.index}) = {self.graph_object.id} "
 
         props = self.graph_object.get_properties()
         for index,(k,v) in enumerate({k:v for k,v in props.items() if isinstance(v,(set,list,tuple))}.items()):
@@ -141,8 +161,8 @@ class NodeOperations(Operations):
         qry += f'{{{self.get_properties()}}})'
         return qry
 
-    def match(self):
-        return f"""MATCH (n{self.index} {{{self.get_properties(add_lists=False)}}}) WHERE {self._where()}"""
+    def match(self,use_id=False):
+        return f"""MATCH (n{self.index} {{{self.get_properties(add_lists=False)}}}) WHERE {self._where(use_id)}"""
 
     def set(self, new_props):
         qry = super().set(new_props,"n")
@@ -155,6 +175,9 @@ class NodeOperations(Operations):
 
     def remove(self):
         return super().remove("n")
+
+    def add_label(self,label):
+        return super().add_label("n",label)
 
     def remove_properties(self,remove_props):
         qry = super().remove_properties(remove_props,"n")
@@ -184,13 +207,12 @@ class EdgeOperations(Operations):
         qry += f'(n{self.v_index})'
         return qry
 
-    def match(self):
+    def match(self,use_id):
         e = f': `{self.graph_object.get_type()}`'
-
         n_op = NodeOperations(self.graph_object.n, self.n_index)
         v_op = NodeOperations(self.graph_object.v, self.v_index)
-        n_where = n_op._where()
-        v_where = v_op._where()
+        n_where = n_op._where(use_id)
+        v_where = v_op._where(use_id)
         n = f'(n{self.n_index} {{{self.get_properties(self.graph_object.n,add_lists=False)}}})'
         e = f'[e{self.index}{e} {{{self.get_properties(add_lists=False)}}}]'
         v = f'(n{self.v_index} {{{self.get_properties(self.graph_object.v,add_lists=False)}}})'
@@ -205,7 +227,10 @@ class EdgeOperations(Operations):
         return super().replace(new_props,"e")
 
     def remove(self):
-        return super().remove("n")
+        return super().remove("e")
+
+    def add_label(self,label):
+        return super().add_label("e",label)
 
     def remove_properties(self,remove_props):
         qry = super().remove_properties(remove_props,"e")

@@ -3,6 +3,7 @@ import re
 from string import ascii_lowercase
 
 from app.graph.utility.model.model import model
+from app.graph.utility.graph_objects.node import Node
 
 presets = ["hierarchy",
 "interaction",
@@ -31,8 +32,8 @@ class ProjectBuilder():
         n = []
         for edge in self._graph.get_haspart():
             n += [str(edge.n),str(edge.v)]
-        n = list(set(n))
-        return self._driver.project.project(name,n,e)[0]
+        n = self._cast(list(set(n)))
+        return self._driver.project.cypher_project(name,n,e)
 
     def interaction(self,name,direction="DIRECTED",type="bipartite"):
         i_name = ''.join(random.choice(ascii_lowercase) for i in range(10))
@@ -42,13 +43,14 @@ class ProjectBuilder():
         if type.lower() == "bipartite":
             for int,(i,o) in ints.items():
                 for inp in i:
-                    nodes.append(inp.n.get_key())
-                    nodes.append(inp.v.get_key())
+                    nodes.append(inp.n)
+                    nodes.append(inp.v)
                     edges.append(inp.get_type())
                 for out in o:
-                    nodes.append(out.n.get_key())
-                    nodes.append(out.v.get_key())
+                    nodes.append(out.n)
+                    nodes.append(out.v)
                     edges.append(out.get_type())
+            nodes = self._cast(nodes)
             graph = self._driver.project.sub_graph(i_name,name,nodes,edges)
         elif type.lower() == "monopartite":
             seens = []
@@ -67,7 +69,7 @@ class ProjectBuilder():
     def interaction_ppi(self,name,direction="DIRECTED",type="monopartite"):
         i_name = ''.join(random.choice(ascii_lowercase) for i in range(10))
         graph,ints,pet = self._interaction_direction(i_name,direction.upper())
-        p_obj = [str(self._ids.objects.protein)]
+        p_obj = self._graph.get_protein()
         if type.lower() == "bipartite":
             graph = self._interaction_bipartite(graph,i_name,name,ints,p_obj)
         elif type.lower() == "monopartite":
@@ -78,12 +80,11 @@ class ProjectBuilder():
     def interaction_genetic(self,name,direction="DIRECTED",type="monopartite"):
         i_name = ''.join(random.choice(ascii_lowercase) for i in range(10))
         graph,ints,pet = self._interaction_direction(i_name,direction.upper())
-        dna_obj = self._ids.objects.dna
-        g_objs = [str(dna_obj)] + [str(k[1]["key"]) for k in model.get_derived(dna_obj)]
+        dna_obj = self._graph.get_dna()
         if type.lower() == "bipartite":
-            graph = self._interaction_bipartite(graph,i_name,name,ints,g_objs)
+            graph = self._interaction_bipartite(graph,i_name,name,ints,dna_obj)
         elif type.lower() == "monopartite":
-            graph = self._interaction_monopartite(graph,i_name,name,ints,g_objs)
+            graph = self._interaction_monopartite(graph,i_name,name,ints,dna_obj)
         self._driver.project.drop(i_name)
         return graph
     
@@ -100,21 +101,22 @@ class ProjectBuilder():
         elif direction == "UNDIRECTED":
             di = "UNDIRECTED"
             do = "UNDIRECTED"
+        elif direction == "REVERSE":
+            di = "NATURAL"
+            do = "REVERSE"
         interactions = {i:self._graph.get_interaction_io(i) for i in self._graph.get_interaction()}
         for interaction,io in interactions.items():
             inps,outs = io
-            nodes.append(interaction.get_key())
+            nodes.append(interaction)
             for i in inps:
-                nodes.append(i.v.get_key())
-                nodes.append(i.v.get_type())
-                pet.append(i.v.get_type())
+                nodes.append(i.v)
+                pet.append(i.v.get_key())
                 i = str(i.get_type())
                 if i not in e:
                     e[i] = {"orientation" : di}
             for o in outs:
-                nodes.append(o.v.get_key())
-                nodes.append(o.v.get_type())
-                pet.append(o.v.get_type())
+                nodes.append(o.v)
+                pet.append(o.v.get_key())
                 o = str(o.get_type())
                 if o not in e:
                     e[o] = {"orientation" : do} 
@@ -123,6 +125,7 @@ class ProjectBuilder():
     def _interaction_bipartite(self,graph,o_name,n_name,interactions,objs):
         int_map,objs = self._interaction(graph,interactions,objs)
         f_interactions = []
+        seens = []
         for interaction,paths in int_map.items():
             for path in paths:
                 node_label = path[0]
@@ -136,8 +139,12 @@ class ProjectBuilder():
                 f_interactions.append(i_type)
                 f_interactions.append(o_type)
                 objs.append(i_node.get_key())
-                self._driver.project.mutate(o_name,el1,i_type,node_labels=node_label)
-                self._driver.project.mutate(o_name,el2,o_type,node_labels=i_node.get_key())
+                if i_type not in seens:
+                    self._driver.project.mutate(o_name,el1,i_type,node_labels=node_label)
+                    seens.append(i_type)
+                if o_type not in seens:
+                    self._driver.project.mutate(o_name,el2,o_type,node_labels=i_node.get_key())
+                    seens.append(o_type)
         graph = self._driver.project.sub_graph(o_name,n_name,objs,f_interactions)
         return graph
     
@@ -156,6 +163,9 @@ class ProjectBuilder():
                 if len(path) <= 1:
                     continue
                 i_type,path,dest = self._derive_edgelist(interaction,path)
+                # Undirected graphs with path finding source == dest
+                if len(path) == 2 and path[0] == path[1]:
+                    continue
                 i_type = self._unique_interaction_type(i_type,node_label,dest)
                 f_interactions.append(i_type)
                 r = self._driver.project.mutate(o_name,path,i_type,node_labels=node_label)
@@ -165,15 +175,15 @@ class ProjectBuilder():
     
     def _interaction(self,graph,interactions,objs):
         int_map = {}
-        objs = list(set([i.v.get_type() for int,(inps,outs) in interactions.items() for i in inps if i.v.get_type() in objs]))
-        #o_instances = self._graph.node_query(objs)
+        objects = list(set([i.v for int,(inps,outs) in interactions.items() 
+                            for i in inps if i.v in objs]))
         for interaction,(inps,outs) in interactions.items():
-            if len(set([i.v.get_type() for i in inps]) & set(objs)) == 0:
-                continue
             for i in inps:
-                if i.v.get_type() not in objs:
+                if i.v not in objects:
                     continue
-                paths = self._driver.procedures.path_finding.dijkstra_sp(graph,i.n,objs)
+                source = self._cast(i.n)
+                os = [o.get_type() for o in objects]
+                paths = self._driver.procedures.path_finding.dijkstra_sp(graph,source,os)
                 if len(paths) == 0:
                     continue
                 paths = sorted([n["path"] for n in paths], key=len)
@@ -184,7 +194,7 @@ class ProjectBuilder():
                         f_paths.append(path)
                         end_nodes.append(path[-1])
                 int_map[interaction] = [[i.v] + p for p in f_paths]
-        return int_map,objs
+        return int_map,objects
 
     def _unique_interaction_type(self,i_type,source,dest):
         return i_type + f"/{_get_name(source)}/{_get_name(dest)}"
@@ -219,8 +229,7 @@ class ProjectBuilder():
             if index >= len(path) - 1:
                 return i_type,edgelist,node
             v_node = path[index+1]
-            ret_val = self._graph.edges(n=node,v=v_node,
-                                directed=False,exclusive=True)
+            ret_val = self._graph.edges(n=node,v=v_node,directed=False,exclusive=True)
             edgelist.append(ret_val[0].get_type())
         raise ValueError(f'Inputed path is empty.')
 
@@ -262,6 +271,19 @@ class ProjectBuilder():
         seen = set()
         seen_add = seen.add
         return [x for x in l if not (x in seen or seen_add(x))]
+
+    def _cast(self,nodes):
+        if not isinstance(nodes,list):
+            nodes = [nodes]        
+        for index in range(0,len(nodes)):
+            node = nodes[index]
+            if not isinstance(node,Node):
+                node = Node(node,graph_name=self._graph.name)
+            else:
+                node.graph_name = self._graph.name
+
+            nodes[index] = node
+        return nodes
         
 def is_num(value):
     try:

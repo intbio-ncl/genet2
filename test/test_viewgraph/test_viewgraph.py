@@ -17,11 +17,13 @@ class TestViewGraph(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_graph1"
         self._wrapper = WorldGraph()
+        self._wrapper.remove_design(self.gn)
         self._wrapper.add_design(test_fn,self.gn)
         self._driver = self._wrapper.driver
         b = DesignBuilder(self._wrapper)
-        b.set_design_names(self.gn)
+        b.set_design_names(self.gn,"Union")
         b.set_full_view()
+        b.build()
         self.d_graph = b.view
 
     @classmethod

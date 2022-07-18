@@ -16,8 +16,6 @@ class StringBuilder:
         self._returns = []
 
     def MATCH(self,name,where):
-        if isinstance(where,Node):
-            where = [where.get_key()]
         if not isinstance(where,list):
             where = [where]
         self._matches[name] = where
@@ -48,7 +46,19 @@ class StringBuilder:
         for name,match in self._matches.items():
             f_str += f"MATCH ({name}) "
             if len(match) > 0:
-                f_str += "WHERE " + " OR ".join([f"{name}:`" + str(s) + "`" for s in match])
+                f_str += "WHERE "
+                for index, i in enumerate(match):
+                    if i is None:
+                        continue
+                    if isinstance(i,Node):
+                        f_str += f'{name}:`{i.get_key()}`' if i.get_key() != "None" else ""
+                        f_str += f' AND {name}:`{i.get_type()}`' if i.get_type() != "None" else ""
+                        f_str += f' AND ANY(a IN {str(i.graph_name)} WHERE a IN {name}.`graph_name`)'
+                    else:
+                        f_str += f'{name}:`{i}`'                        
+                    if index < len(match) - 1:
+                        f_str += " OR "
+
         if self._call:
             f_str += f" CALL {self._call.procedure}.{self._call.mode}('{self._call.name}' {',' if len(self._parameters) > 0 else ''}"
         for index,(k,v) in enumerate(self._parameters.items()):
@@ -85,8 +95,18 @@ class GDSQueryBuilder:
                 for index, i in enumerate(n):
                     if index == 0:
                         where = " WHERE "
-                    w_inner += f'n:`{i}`'
-                    v_inner += f'v:`{i}`'
+
+                    if isinstance(i,Node):
+                        w_inner += f' (n:`{i.get_key()}`' if i.get_key() != "None" else ""
+                        w_inner += f' AND n:`{i.get_type()}`' if i.get_type() != "None" else ""
+                        w_inner += f' AND ANY(a IN {str(i.graph_name)} WHERE a IN n.`graph_name`)) '
+
+                        v_inner += f'  (v:`{i.get_key()}`' if i.get_key() != "None" else ""
+                        v_inner += f' AND v:`{i.get_type()}`' if i.get_type() != "None" else ""
+                        v_inner += f' AND ANY(a IN {str(i.graph_name)} WHERE a IN v.`graph_name`)) '
+                    else:
+                        w_inner += f'( n:`{i}` )'
+                        v_inner += f' (v:`{i}` )'   
                     if index < len(n) - 1:
                         w_inner += " OR "
                         v_inner += " OR "
@@ -98,13 +118,13 @@ class GDSQueryBuilder:
         if edges is not None and len(edges) > 0:
             e = ":" + "" + ""+"|".join(["`" + str(edge) + "`" for edge in edges])
             
-        n_str = f"MATCH (n)-[r{e}]-(v) {ewhere} RETURN id(n) AS id"
-        e_str = f"MATCH (n)-[r{e}]->(v) {ewhere} RETURN id(n) AS source, id(v) AS target"
+        n_str = f"MATCH (n)-[r{e}]-(v) {ewhere} RETURN id(n) AS id, labels(n) AS labels"
+        e_str = f"MATCH (n)-[r{e}]->(v) {ewhere} RETURN id(n) AS source, id(v) AS target, type(r) AS type"
         return f'''
         CALL gds.graph.project.cypher(
-        '{name}',
-        '{n_str}',
-        '{e_str}',
+        "{name}",
+        "{n_str}",
+        "{e_str}",
          {{validateRelationships: false}}   )
         YIELD graphName AS graph, nodeQuery, nodeCount AS nodes, relationshipQuery, relationshipCount AS rels
         '''

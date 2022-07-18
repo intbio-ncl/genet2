@@ -9,7 +9,7 @@ from app.visualiser.visual.design import DesignVisual
 from app.visualiser.abstract_dashboard.abstract import AbstractDash
 
 assets_ignore = '.*bootstrap.*'
-
+hFalse = False
 class DesignDash(AbstractDash):
     def __init__(self, name, server, graph):
         super().__init__(DesignVisual(graph), name, server,
@@ -95,7 +95,6 @@ class DesignDash(AbstractDash):
         self.add_callback(load_inner, [load_i], [load_o],load_s.values())
         self.add_callback(update_graph_inner, update_i.values(), update_o.values())
         self.add_callback(update_preset_inner, preset_i.values(), preset_o.values(), preset_state.values())
-        self.add_callback(update_graph_inner, update_i.values(), update_o.values())
         self.add_callback(docs_modal_inner, docs_modal_i.values(), docs_modal_o.values(), doc_modal_s)
         self.add_callback(info_modal_inner, info_modal_i.values(), info_modal_o.values(), info_modal_s)
         self.add_callback(man_tool_inner, man_tool_i.values(), man_tool_o.values(), man_tool_s)
@@ -170,8 +169,7 @@ class DesignDash(AbstractDash):
                         print(ex)
                         raise PreventUpdate()
         try:
-            figure, legend = self.visualiser.build(
-                graph_id=graph_id, legend=True)
+            figure, legend = self.visualiser.build(graph_id=graph_id, legend=True)
             legend = self.create_legend(legend)
             return [figure], legend
         except Exception as ex:
@@ -332,7 +330,7 @@ class DesignDash(AbstractDash):
 
             return [True, cards]
         elif info_modal_i["close_info"].component_id in changed_id:
-            return [False, []]
+            return [hFalse, []]
         return [is_open, []]
 
     def _generate_node_edge_tables(self, builder):
@@ -371,7 +369,7 @@ class DesignDash(AbstractDash):
         changed_id = [p['prop_id'] for p in callback_context.triggered][0]
         if man_tool_i["open_man"].component_id in changed_id:
             style = {'width': f'{str(65)}vw', 'height': f'{str(100)}vh'}
-            is_hidden = False
+            is_hidden = hFalse
         else:
             style = {'width': f'{str(80)}vw', 'height': f'{str(100)}vh'}
             is_hidden = True
@@ -608,7 +606,8 @@ class DesignDash(AbstractDash):
                                "edge_text",
                                "node_shape",
                                "node_text",
-                               "set_design_names"]
+                               "set_design_names",
+                               "get_load_predicates"]
 
         options = {"preset": {},
                    "mode": {},

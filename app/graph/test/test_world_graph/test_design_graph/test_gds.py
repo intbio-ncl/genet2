@@ -17,11 +17,12 @@ class TestDesignGraphGDS(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_dg"
         self.wg = WorldGraph()
-        self.dg = self.wg.get_design(self.gn)#self.wg.add_design(fn,self.gn)
+        #self.dg = self.wg.get_design(self.gn)
+        self.dg = self.wg.add_design(fn,self.gn)
 
     @classmethod
     def tearDownClass(self):
-        pass#self.wg.remove_design(self.gn)
+        self.wg.remove_design(self.gn)
 
     def test_hierarchy(self):
         ids = model.identifiers
@@ -38,20 +39,64 @@ class TestDesignGraphGDS(unittest.TestCase):
         self.assertEqual(gn,res.name())
         gi = res._graph_info()
         config = gi["configuration"]
+        rp = config["nodeQuery"]
+        dna = [str(model.identifiers.objects.dna)] + [str(k[1]["key"]) for k in model.get_derived(model.get_class_code(model.identifiers.objects.dna))]
+        for _,identifier  in self.dg.driver._run(rp).iterrows():
+            qry = f"MATCH (s) WHERE ID(s) = {identifier[0]} RETURN s"
+            res = self.dg.driver._run(qry)
+            res = res["s"][0].labels
+            self.assertTrue(len(res) == 2)
+            self.assertTrue(len(set(dna) & set(res)) > 0)
 
-        rp = config["relationshipProjection"]
-        self.assertIn(has_part,rp)
-        rp_d = rp[has_part]
-        self.assertEqual(rp_d["orientation"],direction)
+        rp = config["relationshipQuery"]
+        for _,identifier  in self.dg.driver._run(rp).iterrows():
+            source = identifier["source"]
+            target = identifier["target"]
+            qry = f"MATCH (s) WHERE ID(s) = {source} RETURN s"
+            source = self.dg.driver._run(qry)
+            source = source["s"][0].labels
 
-        
-        np = config["nodeProjection"]
-        pes = [k.get_key() for k in self.dg.get_physicalentity()]
-        for k,v in np.items():
-            self.assertIn(k,pes)
-        self.dg.driver.project.drop(gn)
+            qry = f"MATCH (s) WHERE ID(s) = {target} RETURN s"
+            target = self.dg.driver._run(qry)
+            target = target["s"][0].labels
+
+            self.assertTrue(len(source) == 2)
+            self.assertTrue(len(set(dna) & set(source)) > 0)
+            self.assertTrue(len(target) == 2)
+            self.assertTrue(len(set(dna) & set(target)) > 0)
 
     # Interaction
+    def test_interaction_direction(self):
+        p_name = "test_interaction_direction"
+        try:
+            self.dg.driver.project.drop(p_name)
+        except ValueError:
+            pass
+
+        predicates = [str(k[1]["key"]) for k in model.interaction_predicates()]
+        ints = self.dg.get_interaction()
+        pes = self.dg.get_physicalentity()
+        entity = [k.get_key() for k in ints] + [p.get_key() for p in pes]
+        graph,interactions,pet = self.dg.project._interaction_direction(p_name,"DIRECTED")
+        gi = graph._graph_info()
+        config = gi["configuration"]
+        rp = config["relationshipProjection"]
+        np = config["nodeProjection"]
+        for k,v in rp.items():
+            self.assertIn(k,predicates)
+        for k,v in np.items():
+            self.assertIn(k,entity)
+        for interaction,(i,o) in interactions.items():
+            self.assertTrue(interaction in ints)
+            for inp in i:
+                self.assertIn(inp.n.get_key(),entity)
+                self.assertIn(inp.v.get_key(),entity)
+                self.assertIn(inp.get_type(),predicates)
+            for out in o:
+                self.assertIn(out.n.get_key(),entity)
+                self.assertIn(out.v.get_key(),entity)
+                self.assertIn(out.get_type(),predicates)
+
     def test_interaction_natural_bipartite(self):
         ids = model.identifiers
         ips = [str(i[1]["key"]) for i in model.interaction_predicates()]
@@ -113,7 +158,6 @@ class TestDesignGraphGDS(unittest.TestCase):
             self.assertIn(e,ip)
         for n in nodes:            
             self.assertIn(n,pe_der+int_der)
-
         self.dg.driver.project.drop(gn)
 
     def test_interaction_undirected_bipartite(self):
@@ -218,14 +262,12 @@ class TestDesignGraphGDS(unittest.TestCase):
         self.dg.driver.project.drop(gn)
 
     # PPi
-    #Untested
     def test_interaction_ppi_directed_bipartite(self):
         ids = model.identifiers
         interaction = ids.objects.interaction
         pe = ids.objects.protein
         gn = "test1"
-        int_der = [str(n[1]["key"]) for n in model.get_derived(interaction)]
-        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)]
+        pe_der = [str(pe)]+[str(n[1]["key"]) for n in model.get_derived(pe)] + [str(n[1]["key"]) for n in model.get_derived(interaction)]
         try:
             self.dg.driver.project.drop(gn)
         except ValueError:
@@ -237,14 +279,11 @@ class TestDesignGraphGDS(unittest.TestCase):
         schema = gi["schema"]
         nodes = schema["nodes"].keys()
         edges = schema["relationships"].keys()
-        pe_der += [n.get_key() for n in self.dg.driver.node_query(list(nodes))]
         for n in nodes:
-            self.assertIn(n,pe_der)
-        for e in edges:
-            self.assertIn(e,int_der)
+            nt = self.dg.driver.node_query(n)[0].get_type()
+            self.assertIn(nt,pe_der)
         self.dg.driver.project.drop(gn)
 
-    #Untested
     def test_interaction_ppi_undirected_bipartite(self):
         ids = model.identifiers
         interaction = ids.objects.interaction
@@ -284,7 +323,7 @@ class TestDesignGraphGDS(unittest.TestCase):
         schema = gi["schema"]
         nodes = schema["nodes"].keys()
         pe_der += [n.get_key() for n in self.dg.driver.node_query(list(nodes))]
-        for n in nodes:    
+        for n in nodes:
             self.assertIn(n,pe_der)
         self.dg.driver.project.drop(gn)
 
@@ -313,7 +352,6 @@ class TestDesignGraphGDS(unittest.TestCase):
         self.dg.driver.project.drop(gn)
 
     # Genetic
-    #Untested
     def test_interaction_genetic_directed_bipartite(self):
         ids = model.identifiers
         interaction = ids.objects.interaction
@@ -334,7 +372,6 @@ class TestDesignGraphGDS(unittest.TestCase):
         for n in nodes:
             self.assertIn(n,pe_der)
 
-    #Untested
     def test_interaction_genetic_undirected_bipartite(self):
         ids = model.identifiers
         interaction = ids.objects.interaction

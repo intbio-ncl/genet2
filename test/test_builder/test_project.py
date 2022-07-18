@@ -20,6 +20,7 @@ class TestViews(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_builder_views"
         self.wg = WorldGraph()
+        self.wg.remove_design(self.gn)
         self.dg = self.wg.add_design(test_fn,self.gn)
         self.all_nodes = self.dg.nodes()
         self.all_edges = self.dg.edges()
@@ -46,7 +47,9 @@ class TestViews(unittest.TestCase):
         pe_classes = [str(d[1]["key"]) for d in model.get_derived(pe_class_code)]
 
         self.builder.project_preset(pgn,"hierarchy")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.set_projection_graph(pgn)
+        self.builder.build()
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -71,7 +74,9 @@ class TestViews(unittest.TestCase):
         ips = [str(s[1]["key"]) for s in model.interaction_predicates()]
 
         self.builder.project_preset(pgn,"interaction",direction="NATURAL",type="bipartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.set_projection_graph(pgn)
+        self.builder.build()
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -81,7 +86,8 @@ class TestViews(unittest.TestCase):
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction",direction="DIRECTED",type="bipartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -91,7 +97,8 @@ class TestViews(unittest.TestCase):
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction",direction="UNDIRECTED",type="bipartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -101,14 +108,16 @@ class TestViews(unittest.TestCase):
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction",direction="NATURAL",type="monopartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = list(graph.edges())
         self.assertEqual(len(view_edges),0)
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction",direction="DIRECTED",type="monopartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -118,7 +127,8 @@ class TestViews(unittest.TestCase):
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction",direction="UNDIRECTED",type="monopartite")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -142,7 +152,9 @@ class TestViews(unittest.TestCase):
         int_classes = [str(d[1]["key"]) for d in model.get_derived(interaction_class_code)]
 
         self.builder.project_preset(pgn,"interaction_ppi",direction="DIRECTED")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.set_projection_graph(pgn)
+        self.builder.build()
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -152,7 +164,8 @@ class TestViews(unittest.TestCase):
         self.wg.driver.project.drop(pgn)
 
         self.builder.project_preset(pgn,"interaction_ppi",direction="UNDIRECTED")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build()
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -176,7 +189,9 @@ class TestViews(unittest.TestCase):
         int_classes = [str(d[1]["key"]) for d in model.get_derived(interaction_class_code)]
 
         self.builder.project_preset(pgn,"interaction_genetic",direction="DIRECTED")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.set_projection_graph(pgn)
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:
@@ -184,9 +199,10 @@ class TestViews(unittest.TestCase):
             self.assertIn(e.n.get_type(),pe_classes)
             self.assertIn(e.get_type(),int_classes)
         self.wg.driver.project.drop(pgn)
-
+        
         self.builder.project_preset(pgn,"interaction_genetic",direction="UNDIRECTED")
-        self.builder.set_projection_view(pgn)
+        self.builder.set_projection_view()
+        self.builder.build(pgn)
         graph = self.builder.view
         view_edges = graph.edges()
         for e in view_edges:

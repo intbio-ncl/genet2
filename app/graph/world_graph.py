@@ -1,7 +1,7 @@
 from app.graph.truth_graph.truth_graph import TruthGraph
 from app.graph.design_graph.design_graph import DesignGraph
-from  app.graph.neo4j_interface.interface import Neo4jInterface
-from  app.graph.design_graph.converter.handler import file_convert
+from app.graph.neo4j_interface.interface import Neo4jInterface
+from app.graph.design_graph.converter.handler import file_convert
 
 class WorldGraph:
     def __init__(self):
@@ -9,6 +9,8 @@ class WorldGraph:
         self.truth = TruthGraph(self.driver)
 
     def add_design(self,fn,graph_name,mode="merge"):
+        if graph_name in self.get_design_names():
+            raise ValueError(f'{graph_name} is already in use.')
         file_convert(self.driver,fn,mode,graph_name)
         return DesignGraph(self.driver,graph_name)
 

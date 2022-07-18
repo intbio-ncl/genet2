@@ -1,7 +1,13 @@
-from app.visualiser.viewgraph.viewgraph import ViewGraph 
 from app.visualiser.builder.abstract import AbstractBuilder
-from app.visualiser.builder.builders.design.view import ViewBuilder
-from app.visualiser.builder.builders.design.mode import ModeBuilder
+from app.visualiser.builder.builders.design.hierarchy import HierarchyViewBuilder
+from app.visualiser.builder.builders.design.interaction import InteractionViewBuilder
+from app.visualiser.builder.builders.design.interaction_explicit import InteractionExplicitViewBuilder
+from app.visualiser.builder.builders.design.interaction_genetic import InteractionGeneticViewBuilder
+from app.visualiser.builder.builders.design.interaction_protein import InteractionProteinViewBuilder
+from app.visualiser.builder.builders.design.interaction_verbose import InteractionVerboseViewBuilder
+from app.visualiser.builder.builders.design.interaction_io import InteractionIoViewBuilder
+from app.visualiser.builder.builders.design.pruned import PrunedViewBuilder
+from app.visualiser.builder.builders.full import FullViewBuilder
 
 predicates = {"Intersection":"ALL",
               "Union":"ANY",
@@ -11,10 +17,35 @@ class DesignBuilder(AbstractBuilder):
     def __init__(self,graph):
         super().__init__(graph)
         self._dg = self._graph.get_design(None)
-        self.view = ViewGraph()
-        self._view_h = ViewBuilder(self._dg)
-        self._mode_h = ModeBuilder(self)
+        self._view_builder = FullViewBuilder(self._dg)
     
+    def set_full_view(self):
+        self._view_builder = FullViewBuilder(self._dg)
+
+    def set_pruned_view(self):
+        self._view_builder = PrunedViewBuilder(self._dg)
+         
+    def set_hierarchy_view(self):
+        self._view_builder = HierarchyViewBuilder(self._dg)
+
+    def set_interaction_explicit_view(self):
+        self._view_builder = InteractionExplicitViewBuilder(self._dg)
+
+    def set_interaction_verbose_view(self):
+        self._view_builder = InteractionVerboseViewBuilder(self._dg)
+
+    def set_interaction_view(self):
+        self._view_builder = InteractionViewBuilder(self._dg)
+
+    def set_interaction_genetic_view(self):
+        self._view_builder = InteractionGeneticViewBuilder(self._dg)
+
+    def set_interaction_protein_view(self):
+        self._view_builder = InteractionProteinViewBuilder(self._dg)
+
+    def set_interaction_io_view(self):
+        self._view_builder = InteractionIoViewBuilder(self._dg)
+
     def get_design_names(self):
         return self._graph.get_design_names()
     
@@ -28,7 +59,7 @@ class DesignBuilder(AbstractBuilder):
     
     def set_design(self,design):
         self._dg = design
-        self._view_h.set_graph(design)
+        self._view_builder.set_graph(design)
 
     def get_children(self,node):
         return self._dg.get_children(node)
@@ -41,30 +72,3 @@ class DesignBuilder(AbstractBuilder):
 
     def get_root_entities(self):
         return self._dg.get_root_entities()
-
-    def set_pruned_view(self):
-        self.view = self._view_h.pruned()
-         
-    def set_hierarchy_view(self):
-        self.view = self._view_h.hierarchy()
-
-    def set_interaction_explicit_view(self):
-        self.view = self._view_h.interaction_explicit()
-
-    def set_interaction_verbose_view(self):
-        self.view = self._view_h.interaction_verbose()
-
-    def set_interaction_view(self):
-        self.view = self._view_h.interaction()
-
-    def set_interaction_genetic_view(self):
-        self.view = self._view_h.interaction_genetic()
-
-    def set_interaction_protein_view(self):
-        self.view = self._view_h.interaction_protein()
-
-    def set_interaction_io_view(self):
-        self.view = self._view_h.interaction_io()
-
-    def set_module_view(self):
-        self.view = self._view_h.module_view()

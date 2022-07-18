@@ -420,7 +420,7 @@ class TestShape(unittest.TestCase):
         self._wrapper = WorldGraph()
         self.dg = self._wrapper.add_design(test_fn,self.gn)
         self.visual = DesignVisual(self._wrapper)
-        self.visual.set_design_names(self.gn)
+        self.visual.set_design_names(self.gn,"Union")
         self.visual.set_full_graph_view()
         self._color_list = ColorPicker()
 
@@ -468,10 +468,9 @@ class TestSize(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_g1"
         self._wrapper = WorldGraph()
-        #self.dg = self._wrapper.add_design(test_fn,self.gn)
-        self.dg = self._wrapper.get_design(test_fn)
+        self.dg = self._wrapper.add_design(test_fn,self.gn)
         self.visual = DesignVisual(self._wrapper)
-        self.visual.set_design_names(self.gn)
+        self.visual.set_design_names(self.gn,"Union")
         self.visual.set_full_graph_view()
         self._color_list = ColorPicker()
         self.standard_node_size = self.visual._size_h._standard_node_size

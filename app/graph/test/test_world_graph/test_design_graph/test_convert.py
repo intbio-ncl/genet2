@@ -21,7 +21,7 @@ class TestConvert(unittest.TestCase):
     def test_sbol(self):
         fn = os.path.join(curr_dir,"..","..","files","nor_full.xml")
         sbol_graph = SBOLGraph(fn)
-        gn = "test1"
+        gn = "test_sbol"
         graph = WorldGraph()
         dg = graph.add_design(fn, gn)
 
@@ -37,7 +37,7 @@ class TestConvert(unittest.TestCase):
 
     def test_gbk(self):
         fn = os.path.join(curr_dir,"..","..","files","nor_reporter.gb")
-        gn = "test1"
+        gn = "test_gbk"
         graph = WorldGraph()
         dg = graph.add_design(fn, gn)
         pes = dg.get_physicalentity()

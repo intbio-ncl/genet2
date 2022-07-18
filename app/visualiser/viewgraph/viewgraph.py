@@ -93,7 +93,16 @@ class ViewGraph:
 
     def has_edge(self,edge):
         return self._graph.has_edge(edge.n.id,edge.v.id,key=edge.get_type())
-
+    
+    def get_node(self,n=None):
+        if n is None:
+            return list(self.nodes())
+        data = self._graph.nodes[n]
+        props = data.copy()
+        labels = props["key"]
+        del props["key"]
+        return Node(labels,id=n,**props)
+        
     @resolve_node
     def edges(self,n=None):
         for n,v,e,d in self._graph.edges(n,keys=True,data=True):
@@ -138,6 +147,9 @@ class ViewGraph:
         
     def add_edge(self, edge):
         self._graph.add_edge(edge.n.id,edge.v.id,key=edge.get_type(),**edge.get_properties())
+
+    def add_node(self, node):
+        self._graph.add_node(node.id,key=node.get_key(),type=node.get_type(),**node.get_properties())
 
     def remove_edge(self, edge):
         self._graph.remove_edge(edge.n.id, edge.v.id, edge.get_type())

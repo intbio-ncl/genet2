@@ -23,6 +23,7 @@ class ProjectionVisual(AbstractVisual):
         self._size_h = SizeHandler(self._builder)
         self._shape_h = ShapeHandler(self._builder)
         self.set_concentric_layout()
+        self.projection_name = None
         
     def set_default_preset(self):
         preset_functions = [self.set_network_mode,
@@ -37,15 +38,15 @@ class ProjectionVisual(AbstractVisual):
                             self.set_bezier_edge_shape]
         return self._set_preset(preset_functions)
             
-    def set_no_view(self,datatable=False):
+    def set_no_view(self):
         if self.view == self.set_no_view:
             return self._builder.set_no_view()
         else:
            self.view =self.set_no_view
     
-    def set_projection_view(self,datatable=False):
+    def set_projection_view(self):
         if self.view == self.set_projection_view:
-            return self._builder.set_projection_view(self.projection_name,datatable)
+            return self._builder.set_projection_view()
         else:
            self.view =self.set_projection_view
 
@@ -62,7 +63,7 @@ class ProjectionVisual(AbstractVisual):
         return self._builder.get_project_graph_names()
 
     def set_projection_graph(self,graph_name):
-        self.projection_name = graph_name
+        self._builder.set_projection_graph(graph_name)
     
     def run_cypher(self,cypher_str):
         return self._builder.run_cypher(cypher_str)

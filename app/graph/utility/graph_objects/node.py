@@ -1,7 +1,7 @@
 import re
 import validators
 class Node:
-    def __init__(self,key,type,id=None, **kwargs): 
+    def __init__(self,key,type=None,id=None, **kwargs): 
         self.key = str(key)
         self.type = str(type)
         self.id=id
@@ -123,6 +123,8 @@ class Node:
         return self.type
 
     def get_labels(self):
+        if self.type is None or self.type == "None":
+            return [self.key]
         return [self.key,self.type]
 
     def get_properties(self):

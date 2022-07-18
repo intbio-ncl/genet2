@@ -1,11 +1,13 @@
 from app.graph.neo4j_interface.gds.query_builder import GDSQueryBuilder
-
+from app.graph.utility.graph_objects.node import Node
 class Projection():
     def __init__(self, interface):
         self._driver = interface.driver
         self._qry_builder = GDSQueryBuilder()
     
     def project(self, name, nodes, edges, **kwargs):
+        f_nodes = []
+        nodes = [n.get_key() if isinstance(n,Node) else n for n in nodes ]
         return self._driver.graph.project(name, nodes, edges, **kwargs)
         
     def drop(self, name):
@@ -35,11 +37,5 @@ class Projection():
         qry = self._qry_builder.mutate(name, types, mutate_type, node_labels)
         return self._run(qry)
         
-    def _project(self,name,n,e):
-        return self.project(name,n,e,
-                nodeProperties=self._node_props(),
-                relationshipProperties=self._edge_props(),
-                validateRelationships=False)
-
     def _run(self,qry):
         return self._driver.run_cypher(qry)

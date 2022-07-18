@@ -24,7 +24,8 @@ class TestViews(unittest.TestCase):
     
     def test_cypher(self):
         cypher_qry = "match (n) return n Limit 25"
-        dt = self.builder.set_cypher_view(cypher_qry,True)
+        self.builder.set_cypher_view()
+        dt = self.builder.build(cypher_qry,True)
         graph = self.builder.view
         self.assertTrue(len(list(graph.nodes())) <= 25)
         self.assertTrue(len(dt) == 25)
