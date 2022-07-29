@@ -43,4 +43,4 @@ As discussed, Genet uses neo4j for graph storage and manipulation. However, to p
 ![Alt text](app/assets/architecture.png "Architecture")
 
 
-![Alt text](app/assets/architecture2.png "Architecture-High-Level")
+![Alt text](app/assets/arcitecture2.png "Architecture-High-Level")
