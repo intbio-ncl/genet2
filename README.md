@@ -41,3 +41,6 @@ Genet requires a neo4j server active and running with the APOC, and GDS plugins 
 
 As discussed, Genet uses neo4j for graph storage and manipulation. However, to present this, a small flask application using dash-Cytoscape has been implemented and enables the user-generated network visualisations. A graphic of the architecture can be seen below.
 ![Alt text](app/assets/architecture.png "Architecture")
+
+
+![Alt text](app/assets/architecture2.png "Architecture-High-Level")
