@@ -5,7 +5,7 @@ class Edge:
     def __init__(self,n,v,type,id=None,**kwargs):
         self.type = str(type)
         self.id=id
-        self.properties = {}
+        self.properties = {"name" : _get_name(type)} if "name" not in kwargs else {}
         self._update(kwargs)
         self.n = n
         self.v = v
@@ -18,7 +18,7 @@ class Edge:
         return f'{self.n} - {self.type} - {self.v}'
 
     def __eq__(self, obj):
-        if not isinstance(obj, self.__class__):
+        if not isinstance(obj, Edge):
             return False
         if obj.n == self.n and obj.type == self.type and obj.v == self.v:
             return True

@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/pSEVA111/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111"/>
+    <sbol:displayId>pSEVA111</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>pSEVA111</dcterms:title>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_0"/>
+        <sbol:displayId>Mcs_Default_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/FseI_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_0"/>
+        <sbol:displayId>FseI_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_FseI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/AscI_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_0"/>
+        <sbol:displayId>AscI_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_AscI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Ap_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_0"/>
+        <sbol:displayId>Ap_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_Ap/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T1_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T1_0"/>
+        <sbol:displayId>T1_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T0_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_0"/>
+        <sbol:displayId>T0_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_T0/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SwaI_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_0"/>
+        <sbol:displayId>SwaI_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_SwaI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SanDI_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_0"/>
+        <sbol:displayId>SanDI_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_SanDI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/R6K_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_0"/>
+        <sbol:displayId>R6K_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_R6K/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_0"/>
+        <sbol:displayId>PshAI_v1_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_PshAI_v1/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/OriT_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_0"/>
+        <sbol:displayId>OriT_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_OriT/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://sevahub.es/public/Canonical/pSEVA111/scar1_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_0"/>
+        <sbol:displayId>scar1_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:definition rdf:resource="http://sevahub.es/public/Canonical/cd_scar1/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:roleIntegration rdf:resource="http://sbols.org/v2#mergeRoles"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_annotation_0"/>
+        <sbol:displayId>Mcs_Default_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_annotation_0/Mcs_Default_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_annotation_0/Mcs_Default_annotation_0_range"/>
+            <sbol:displayId>Mcs_Default_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>150</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T0_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_annotation_0"/>
+        <sbol:displayId>T0_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T0_annotation_0/T0_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_annotation_0/T0_annotation_0_range"/>
+            <sbol:displayId>T0_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>151</sbol:start>
+            <sbol:end>253</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SanDI_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_annotation_0"/>
+        <sbol:displayId>SanDI_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SanDI_annotation_0/SanDI_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_annotation_0/SanDI_annotation_0_range"/>
+            <sbol:displayId>SanDI_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>254</sbol:start>
+            <sbol:end>260</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/scar1_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_annotation_0"/>
+        <sbol:displayId>scar1_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/scar1_annotation_0/scar1_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_annotation_0/scar1_annotation_0_range"/>
+            <sbol:displayId>scar1_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>261</sbol:start>
+            <sbol:end>271</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SwaI_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_annotation_0"/>
+        <sbol:displayId>SwaI_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/SwaI_annotation_0/SwaI_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_annotation_0/SwaI_annotation_0_range"/>
+            <sbol:displayId>SwaI_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>272</sbol:start>
+            <sbol:end>279</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Ap_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_annotation_0"/>
+        <sbol:displayId>Ap_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/Ap_annotation_0/Ap_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_annotation_0/Ap_annotation_0_range"/>
+            <sbol:displayId>Ap_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>280</sbol:start>
+            <sbol:end>1318</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_annotation_0"/>
+        <sbol:displayId>PshAI_v1_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_annotation_0/PshAI_v1_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_annotation_0/PshAI_v1_annotation_0_range"/>
+            <sbol:displayId>PshAI_v1_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1319</sbol:start>
+            <sbol:end>1328</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/OriT_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_annotation_0"/>
+        <sbol:displayId>OriT_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/OriT_annotation_0/OriT_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_annotation_0/OriT_annotation_0_range"/>
+            <sbol:displayId>OriT_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1329</sbol:start>
+            <sbol:end>1574</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/FseI_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_annotation_0"/>
+        <sbol:displayId>FseI_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/FseI_annotation_0/FseI_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_annotation_0/FseI_annotation_0_range"/>
+            <sbol:displayId>FseI_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1575</sbol:start>
+            <sbol:end>1582</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/R6K_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_annotation_0"/>
+        <sbol:displayId>R6K_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/R6K_annotation_0/R6K_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_annotation_0/R6K_annotation_0_range"/>
+            <sbol:displayId>R6K_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1583</sbol:start>
+            <sbol:end>1974</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/AscI_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_annotation_0"/>
+        <sbol:displayId>AscI_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/AscI_annotation_0/AscI_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_annotation_0/AscI_annotation_0_range"/>
+            <sbol:displayId>AscI_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1975</sbol:start>
+            <sbol:end>1982</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T1_annotation_0/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T1_annotation_0"/>
+        <sbol:displayId>T1_annotation_0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/pSEVA111/T1_annotation_0/T1_annotation_0_range/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T1_annotation_0/T1_annotation_0_range"/>
+            <sbol:displayId>T1_annotation_0_range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+            <sbol:start>1983</sbol:start>
+            <sbol:end>2094</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T1_0/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint11/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint11"/>
+        <sbol:displayId>constraint11</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T1_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint10/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint10"/>
+        <sbol:displayId>constraint10</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/AscI_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint1/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint1"/>
+        <sbol:displayId>constraint1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Mcs_Default_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint9/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint9"/>
+        <sbol:displayId>constraint9</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/R6K_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint8/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint8"/>
+        <sbol:displayId>constraint8</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/FseI_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint7/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint7"/>
+        <sbol:displayId>constraint7</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/OriT_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint6/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint6"/>
+        <sbol:displayId>constraint6</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/PshAI_v1_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint5/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint5"/>
+        <sbol:displayId>constraint5</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/Ap_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint4/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint4"/>
+        <sbol:displayId>constraint4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SwaI_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint3/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint3"/>
+        <sbol:displayId>constraint3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/scar1_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="http://sevahub.es/public/Canonical/pSEVA111/constraint2/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/constraint2"/>
+        <sbol:displayId>constraint2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/T0_0/1"/>
+        <sbol:object rdf:resource="http://sevahub.es/public/Canonical/pSEVA111/SanDI_0/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/pSEVA111_seq/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/Mcs_Default/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default"/>
+    <sbol:displayId>Mcs_Default</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Mcs_Default</dcterms:title>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/Mcs_Default/Mcs_Default/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/Mcs_Default"/>
+        <sbol:displayId>Mcs_Default</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/Mcs_Default/Mcs_Default/r/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/Mcs_Default/r"/>
+            <sbol:displayId>r</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default/1"/>
+            <sbol:start>9</sbol:start>
+            <sbol:end>144</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default_seq/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_Ap/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_Ap"/>
+    <sbol:displayId>cd_Ap</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Ampicilin</dcterms:title>
+    <dcterms:description>Seva Ap</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_Ap/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000704"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqAp/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_AscI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_AscI"/>
+    <sbol:displayId>cd_AscI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>AscI</dcterms:title>
+    <dcterms:description>Seva AscI</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_AscI/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001687"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqAscI/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_FseI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_FseI"/>
+    <sbol:displayId>cd_FseI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>FseI</dcterms:title>
+    <dcterms:description>Seva FseI</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_FseI/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001687"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqFseI/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_OriT/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_OriT"/>
+    <sbol:displayId>cd_OriT</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>OriT</dcterms:title>
+    <dcterms:description>Seva OriT</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_OriT/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqOriT/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_PshAI_v1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_PshAI_v1"/>
+    <sbol:displayId>cd_PshAI_v1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>PshAI</dcterms:title>
+    <dcterms:description>Seva PshAI</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_PshAI_v1/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001687"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqPshAI_v1/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_R6K/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_R6K"/>
+    <sbol:displayId>cd_R6K</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>R6K</dcterms:title>
+    <dcterms:description>Seva R6K</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_R6K/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000296"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqR6K/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_SanDI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_SanDI"/>
+    <sbol:displayId>cd_SanDI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>SanDI</dcterms:title>
+    <dcterms:description>Seva SanDI</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_SanDI/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001687"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqSanDI/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_SwaI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_SwaI"/>
+    <sbol:displayId>cd_SwaI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>SwaI</dcterms:title>
+    <dcterms:description>Seva SwaI</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_SwaI/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001687"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqSwaI/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_T0/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T0"/>
+    <sbol:displayId>cd_T0</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>T0</dcterms:title>
+    <dcterms:description>Seva T0</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T0/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqT0/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_T1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1"/>
+    <sbol:displayId>cd_T1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>T1</dcterms:title>
+    <dcterms:description>example T1</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/cd_T1/ScarT1a/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/ScarT1a"/>
+        <sbol:displayId>ScarT1a</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/cd_T1/ScarT1a/ScarT1aloc/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/ScarT1a/ScarT1aloc"/>
+            <sbol:displayId>ScarT1aloc</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>6</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/cd_T1/T1seq/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/T1seq"/>
+        <sbol:displayId>T1seq</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/cd_T1/T1seq/T1seqloc/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/T1seq/T1seqloc"/>
+            <sbol:displayId>T1seqloc</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+            <sbol:start>7</sbol:start>
+            <sbol:end>111</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/cd_T1/ScarT1b/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/ScarT1b"/>
+        <sbol:displayId>ScarT1b</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/cd_T1/ScarT1b/ScarT1bloc/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_T1/ScarT1b/ScarT1bloc"/>
+            <sbol:displayId>ScarT1bloc</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_T1/1"/>
+            <sbol:start>112</sbol:start>
+            <sbol:end>112</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqT1/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_scar1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_scar1"/>
+    <sbol:displayId>cd_scar1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>scar1</dcterms:title>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_scar1/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0001953"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_scar1/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/pSEVA111_seq/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/pSEVA111_seq"/>
+    <sbol:displayId>pSEVA111_seq</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/pSEVA111_seq/1"/>
+    <sbol:elements>TTAATTAAAGCGGATAACAATTTCACACAGGAGGCCGCCTAGGCCGCGGCCGCGCGAATTCGAGCTCGGTACCCGGGGATCCTCTAGAGTCGACCTGCAGGCATGCAAGCTTGCGGCCGCGTCGTGACTGGGAAAACCCTGGCGACTAGTCTTGGACTCCTGTTGATAGATCCAGTAATGACCTCAGAACTCCATCTGGATTTGTTCAGAACGCTCGGTTGCCGCCGGGCGTTTTTTATTGGTGAGAATCCAGGGGTCCCCAATAATTACGATTTAAATTAGTAGCCCGCCTAATGAGCGGGCTTTTTTTTAATTCCCCTATTTGTTTATTTTTCTAAATACATTCAAATATGTATCCGCTCATGAGACAATAACCCTGATAAATGCTTCAATAATATTGAAAAAGGAAGAGTATGAGCATTCAGCATTTTCGTGTGGCGCTGATTCCGTTTTTTGCGGCGTTTTGCCTGCCGGTGTTTGCGCATCCGGAAACCCTGGTGAAAGTGAAAGATGCGGAAGATCAACTGGGTGCGCGCGTGGGCTATATTGAACTGGATCTGAACAGCGGCAAAATTCTGGAATCTTTTCGTCCGGAAGAACGTTTTCCGATGATGAGCACCTTTAAAGTGCTGCTGTGCGGTGCGGTTCTGAGCCGTGTGGATGCGGGCCAGGAACAACTGGGCCGTCGTATTCATTATAGCCAGAACGATCTGGTGGAATATAGCCCGGTGACCGAAAAACATCTGACCGATGGCATGACCGTGCGTGAACTGTGCAGCGCGGCGATTACCATGAGCGATAACACCGCGGCGAACCTGCTGCTGACGACCATTGGCGGTCCGAAAGAACTGACCGCGTTTCTGCATAACATGGGCGATCATGTGACCCGTCTGGATCGTTGGGAACCGGAACTGAACGAAGCGATTCCGAACGATGAACGTGATACCACCATGCCGGCAGCAATGGCGACCACCCTGCGTAAACTGCTGACGGGTGAGCTGCTGACCCTGGCAAGCCGCCAGCAACTGATTGATTGGATGGAAGCGGATAAAGTGGCGGGTCCGCTGCTGCGTAGCGCGCTGCCGGCTGGCTGGTTTATTGCGGATAAAAGCGGTGCGGGCGAACGTGGCAGCCGTGGCATTATTGCGGCGCTGGGCCCGGATGGTAAACCGAGCCGTATTGTGGTGATTTATACCACCGGCAGCCAGGCGACGATGGATGAACGTAACCGTCAGATTGCGGAAATTGGCGCGAGCCTGATTAAACATTGGTAAACCGATACAATTAAAGGCTCCTTTTGGAGCCTTTTTTTTTGGACGACCCTTGTCCTTTTCCGCTGCATAACCCTGCTTCGGGGTCATTATAGCGATTTTTTCGGTATATCCATCCTTTTTCGCACGATATACAGGATTTTGCCAAAGGGTTCGTGTAGACTTTCCTTGGTGTATCCAACGGCGTCAGCCGGGCAGGATAGGTGAAGTAGGCCCACCCGCGAGCGGGTGTTCCTTCTTCACTGTCCCTTATTCGCACCTGGCGGTGCTCAACGGGAATCCTGCTCTGCGAGGCTGGCCGTAGGCCGGCCGATCTGAAGATCAGCAGTTCAACCTGTTGATAGTACGTACTAAGCTCTCATGTTTCACGTACTAAGCTCTCATGTTTAACGTACTAAGCTCTCATGTTTAACGAACTAAACCCTCATGGCTAACGTACTAAGCTCTCATGGCTAACGTACTAAGCTCTCATGTTTCACGTACTAAGCTCTCATGTTTGAACAATAAAATTAATATAAATCAGCAACTTAAATAGCCTCTAAGGTTTTAAGTTTTATAAGAAAAAAAAGAATATATAAGGCTTTTAAAGCCTTTAAGGTTTAACGGTTGTGGACAACAAGCCAGGGATGTAACGCACTGAGAAGCCCTTAGAGCCTCTCAAAGCAATTTTGAGTGACACAGGAACACTTAACGGCTGACATGGGGCGCGCCCAGCTGTCTAGGGCGGCGGATTTGTCCTACTCAGGAGAGCGTTCACCGACAAACAACAGATAAAACGAAAGGCCCAGTCTTTCGACTGAGCCTTTCGTTTTATTTGATGCCT</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/Mcs_Default_seq/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default_seq"/>
+    <sbol:displayId>Mcs_Default_seq</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/Mcs_Default_seq/1"/>
+    <sbol:elements>TTAATTAAAGCGGATAACAATTTCACACAGGAGGCCGCCTAGGCCGCGGCCGCGCGAATTCGAGCTCGGTACCCGGGGATCCTCTAGAGTCGACCTGCAGGCATGCAAGCTTGCGGCCGCGTCGTGACTGGGAAAACCCTGGCGACTAGT</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_scar1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_scar1"/>
+    <sbol:displayId>seq_scar1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_scar1/1"/>
+    <sbol:elements>CAATAATTACG</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqAp/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqAp"/>
+    <sbol:displayId>seq_seqAp</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqAp/1"/>
+    <sbol:elements>TAGTAGCCCGCCTAATGAGCGGGCTTTTTTTTAATTCCCCTATTTGTTTATTTTTCTAAATACATTCAAATATGTATCCGCTCATGAGACAATAACCCTGATAAATGCTTCAATAATATTGAAAAAGGAAGAGTATGAGCATTCAGCATTTTCGTGTGGCGCTGATTCCGTTTTTTGCGGCGTTTTGCCTGCCGGTGTTTGCGCATCCGGAAACCCTGGTGAAAGTGAAAGATGCGGAAGATCAACTGGGTGCGCGCGTGGGCTATATTGAACTGGATCTGAACAGCGGCAAAATTCTGGAATCTTTTCGTCCGGAAGAACGTTTTCCGATGATGAGCACCTTTAAAGTGCTGCTGTGCGGTGCGGTTCTGAGCCGTGTGGATGCGGGCCAGGAACAACTGGGCCGTCGTATTCATTATAGCCAGAACGATCTGGTGGAATATAGCCCGGTGACCGAAAAACATCTGACCGATGGCATGACCGTGCGTGAACTGTGCAGCGCGGCGATTACCATGAGCGATAACACCGCGGCGAACCTGCTGCTGACGACCATTGGCGGTCCGAAAGAACTGACCGCGTTTCTGCATAACATGGGCGATCATGTGACCCGTCTGGATCGTTGGGAACCGGAACTGAACGAAGCGATTCCGAACGATGAACGTGATACCACCATGCCGGCAGCAATGGCGACCACCCTGCGTAAACTGCTGACGGGTGAGCTGCTGACCCTGGCAAGCCGCCAGCAACTGATTGATTGGATGGAAGCGGATAAAGTGGCGGGTCCGCTGCTGCGTAGCGCGCTGCCGGCTGGCTGGTTTATTGCGGATAAAAGCGGTGCGGGCGAACGTGGCAGCCGTGGCATTATTGCGGCGCTGGGCCCGGATGGTAAACCGAGCCGTATTGTGGTGATTTATACCACCGGCAGCCAGGCGACGATGGATGAACGTAACCGTCAGATTGCGGAAATTGGCGCGAGCCTGATTAAACATTGGTAAACCGATACAATTAAAGGCTCCTTTTGGAGCCTTTTTTTTTGGAC</sbol:elements>
+    <sbol:encoding rdf:resource="http://seva.cnb.csic.eshttp//seva.cnb.csic.es/"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqAscI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqAscI"/>
+    <sbol:displayId>seq_seqAscI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqAscI/1"/>
+    <sbol:elements>GGCGCGCC</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqFseI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqFseI"/>
+    <sbol:displayId>seq_seqFseI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqFseI/1"/>
+    <sbol:elements>GGCCGGCC</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqOriT/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqOriT"/>
+    <sbol:displayId>seq_seqOriT</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqOriT/1"/>
+    <sbol:elements>CTTTTCCGCTGCATAACCCTGCTTCGGGGTCATTATAGCGATTTTTTCGGTATATCCATCCTTTTTCGCACGATATACAGGATTTTGCCAAAGGGTTCGTGTAGACTTTCCTTGGTGTATCCAACGGCGTCAGCCGGGCAGGATAGGTGAAGTAGGCCCACCCGCGAGCGGGTGTTCCTTCTTCACTGTCCCTTATTCGCACCTGGCGGTGCTCAACGGGAATCCTGCTCTGCGAGGCTGGCCGTA</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqPshAI_v1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqPshAI_v1"/>
+    <sbol:displayId>seq_seqPshAI_v1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqPshAI_v1/1"/>
+    <sbol:elements>GACCCTTGTC</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqR6K/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqR6K"/>
+    <sbol:displayId>seq_seqR6K</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqR6K/1"/>
+    <sbol:elements>GATCTGAAGATCAGCAGTTCAACCTGTTGATAGTACGTACTAAGCTCTCATGTTTCACGTACTAAGCTCTCATGTTTAACGTACTAAGCTCTCATGTTTAACGAACTAAACCCTCATGGCTAACGTACTAAGCTCTCATGGCTAACGTACTAAGCTCTCATGTTTCACGTACTAAGCTCTCATGTTTGAACAATAAAATTAATATAAATCAGCAACTTAAATAGCCTCTAAGGTTTTAAGTTTTATAAGAAAAAAAAGAATATATAAGGCTTTTAAAGCCTTTAAGGTTTAACGGTTGTGGACAACAAGCCAGGGATGTAACGCACTGAGAAGCCCTTAGAGCCTCTCAAAGCAATTTTGAGTGACACAGGAACACTTAACGGCTGACATGG</sbol:elements>
+    <sbol:encoding rdf:resource="http://seva.cnb.csic.eshttp//seva.cnb.csic.es/"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqSanDI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqSanDI"/>
+    <sbol:displayId>seq_seqSanDI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqSanDI/1"/>
+    <sbol:elements>GGGTCCC</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqSwaI/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqSwaI"/>
+    <sbol:displayId>seq_seqSwaI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqSwaI/1"/>
+    <sbol:elements>ATTTAAAT</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqT0/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqT0"/>
+    <sbol:displayId>seq_seqT0</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqT0/1"/>
+    <sbol:elements>CTTGGACTCCTGTTGATAGATCCAGTAATGACCTCAGAACTCCATCTGGATTTGTTCAGAACGCTCGGTTGCCGCCGGGCGTTTTTTATTGGTGAGAATCCAG</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqT1/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqT1"/>
+    <sbol:displayId>seq_seqT1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqT1/1"/>
+    <sbol:elements>CAGCTGTCTAGGGCGGCGGATTTGTCCTACTCAGGAGAGCGTTCACCGACAAACAACAGATAAAACGAAAGGCCCAGTCTTTCGACTGAGCCTTTCGTTTTATTTGATGCCT</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>

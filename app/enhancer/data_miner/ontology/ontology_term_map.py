@@ -1,9 +1,8 @@
 
 import os
 import atexit
-from enum import Enum
-
 import rdflib
+from enum import Enum
 
 language_graph_map = os.path.join(os.path.dirname(os.path.realpath(__file__)),"ontology_map.xml")
 
@@ -26,7 +25,7 @@ class OntologyTermMap:
             self.language_graph = self._build_graph()
         else:
             self.language_graph = rdflib.Graph()
-            self.language_graph.load(language_graph_map)
+            self.language_graph.parse(language_graph_map)
 
         atexit.register(self._save_graph) 
     

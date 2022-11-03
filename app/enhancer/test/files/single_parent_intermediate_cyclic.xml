@@ -1,0 +1,159 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#intermediate_3/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_3"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_3/intermediate_3_p5_c/1">
+        <sbol:displayId>intermediate_3_p5_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_3/intermediate_3_p5_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p5/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_3/intermediate_3_intermediate_2_c/1">
+        <sbol:displayId>intermediate_3_intermediate_2_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_3/intermediate_3_intermediate_2_c"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_2/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:displayId>intermediate_3</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p2/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p2"/>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:displayId>p2</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p5/1">
+    <sbol:displayId>p5</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p5"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p4/1">
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>p4</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p4"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#root1/1">
+    <sbol:version>1</sbol:version>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#root1/root1_intermediate_2_c/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#root1/root1_intermediate_2_c"/>
+        <sbol:displayId>root1_intermediate_2_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_2/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#root1/root1_intermediate_1_c/1">
+        <sbol:displayId>root1_intermediate_1_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#root1/root1_intermediate_1_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_1/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#root1/root1_intermediate_3_c/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#root1/root1_intermediate_3_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_3/1"/>
+        <sbol:displayId>root1_intermediate_3_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#root1"/>
+    <sbol:displayId>root1</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#intermediate_1/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_1/intermediate_1_intermediate_3_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_1/intermediate_1_intermediate_3_c"/>
+        <sbol:displayId>intermediate_1_intermediate_3_c</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_3/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_1"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_1/intermediate_1_p2_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>intermediate_1_p2_c</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p2/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_1/intermediate_1_p2_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:displayId>intermediate_1</sbol:displayId>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_1/intermediate_1_p1_c/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_1/intermediate_1_p1_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p1/1"/>
+        <sbol:displayId>intermediate_1_p1_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#intermediate_2/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>intermediate_2</sbol:displayId>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_2/intermediate_2_p4_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>intermediate_2_p4_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_2/intermediate_2_p4_c"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p4/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_2"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_2/intermediate_2_intermediate_1_c/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#intermediate_1/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>intermediate_2_intermediate_1_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_2/intermediate_2_intermediate_1_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#intermediate_2/intermediate_2_p3_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>intermediate_2_p3_c</sbol:displayId>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p3/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#intermediate_2/intermediate_2_p3_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p3/1">
+    <sbol:displayId>p3</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p3"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p1/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p1"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:displayId>p1</sbol:displayId>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

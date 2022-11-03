@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://genbank2graph/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://genbank2graph/NC_002516">
+    <ns1:version>NC_002516.2</ns1:version>
+    <ns1:references>Effect_of_anaerobiosis_and_nitrate_on_gene_expression_in_Pseudomonas_aeruginosa</ns1:references>
+    <ns1:taxonomy>Pseudomonas</ns1:taxonomy>
+    <ns1:comment>REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+reference sequence is identical to AE004091.
+On Jul 24, 2006 this sequence version replaced NC_002516.1.
+RefSeq Category: Reference Genome
+            FGS: First Genome sequenced
+            MOD: Model Organism
+            UPR: UniProt Genome
+-----------------------------------------------------------------
+This represents the Sept 08, 2010 version of the continually
+updated, reviewed, Pseudomonas aeruginosa PAO1 genome annotation
+from PseudoCap (see http://www.pseudomonas.com for the latest
+updates and links to alternate annotations). This update includes
+updated base pair coordinates and new features. PseudoCap is
+coordinated by Fiona S.L. Brinkman (Simon Fraser University,
+Canada) and Robert E.W. Hancock (University of British Columbia,
+Canada) with database development by Geoff Winsor (Simon Fraser
+University). We welcome submission through
+www.pseudomonas.com of any proposed changes.
+'protein name confidence' is used to rate our confidence of the
+accuracy of the protein name.
+class 1: Function experimentally demonstrated in P. aeruginosa.
+class 2: Function of highly similar gene experimentally
+demonstrated in another organism (and gene context consistent in
+terms of pathways its involved in, if known).
+class 3: Function proposed based on presence of conserved amino
+acid motif, structural feature or limited sequence similarity to an
+experimentally studied gene.
+class 4: Homologs of previously reported genes of unknown function,
+or no similarity to any previously reported sequences.
+------------------------------------------------------------------.
+COMPLETENESS: full length.</ns1:comment>
+    <ns1:references>Screening_for_quorum-sensing_inhibitors_(QSI)_by_use_of_a_novel_genetic_system,_the_QSI_selector</ns1:references>
+    <ns1:references>Cystic_fibrosis_sputum_supports_growth_and_cues_key_aspects_of_Pseudomonas_aeruginosa_physiology</ns1:references>
+    <ns1:references>Complete_genome_sequence_of_Pseudomonas_aeruginosa_PA01,_an_opportunistic_pathogen</ns1:references>
+    <ns1:taxonomy>Proteobacteria</ns1:taxonomy>
+    <ns1:taxonomy>Pseudomonadaceae</ns1:taxonomy>
+    <ns1:topology>circular</ns1:topology>
+    <ns1:size>6264404</ns1:size>
+    <ns1:features>"genomic_DNA"</ns1:features>
+    <ns1:references>Defining_the_Pseudomonas_aeruginosa_SOS_response_and_its_role_in_the_global_response_to_the_antibiotic_ciprofloxacin</ns1:references>
+    <ns1:references>Pseudomonas_Genome_Database:_facilitating_user-friendly,_comprehensive_comparisons_of_microbial_genomes</ns1:references>
+    <ns1:keywords>RefSeq</ns1:keywords>
+    <ns1:features>"Pseudomonas_aeruginosa_PAO1"</ns1:features>
+    <ns1:organism>Pseudomonas aeruginosa PAO1</ns1:organism>
+    <ns1:references>A_cystic_fibrosis_epidemic_strain_of_Pseudomonas_aeruginosa_displays_enhanced_virulence_and_antimicrobial_resistance</ns1:references>
+    <ns1:references>Pseudomonas_aeruginosa_Genome_Database_and_PseudoCap:_facilitating_community-based,_continually_updated,_genome_annotation</ns1:references>
+    <ns1:taxonomy>Bacteria</ns1:taxonomy>
+    <ns1:taxonomy>Pseudomonadales</ns1:taxonomy>
+    <ns1:references>Microarray_analysis_of_Pseudomonas_aeruginosa_quorum-sensing_regulons:_effects_of_growth_phase_and_environment</ns1:references>
+    <ns1:accession>NC_002516</ns1:accession>
+    <ns1:residue_type>DNA     circular</ns1:residue_type>
+    <ns1:data_file_division>CON</ns1:data_file_division>
+    <ns1:references>Direct_Submission</ns1:references>
+    <ns1:molecule_type>DNA</ns1:molecule_type>
+    <ns1:references>Identification,_timing,_and_signal_specificity_of_Pseudomonas_aeruginosa_quorum-controlled_genes:_a_transcriptome_analysis</ns1:references>
+    <ns1:taxonomy>Gammaproteobacteria</ns1:taxonomy>
+    <ns1:source>Pseudomonas aeruginosa PAO1</ns1:source>
+    <ns1:definition>Pseudomonas aeruginosa PAO1, complete genome</ns1:definition>
+  </rdf:Description>
+</rdf:RDF>

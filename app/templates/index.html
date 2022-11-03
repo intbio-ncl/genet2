@@ -35,15 +35,14 @@
                     graph analysis. This tool couples the visualiser tool with the GDS plugin to enable a more
                     comprehensive dataset analysis. Our goal is to make common network science procedures accessible
                     with few technical requirements.</li>
-                <li class="list-group-item"><b>Enhancer</b> - Visualisation requires rich data. This tool takes standard
-                    and non-standardised data formats and adds new information via a consortium of network and knowledge
-                    graph centric approaches. Encoded design data, for example, within a Genbank file is much more
-                    common than a standard format such as SBOL. Furthermore, the data is often poorly defined, even when
-                    standard forms are used. </li>
-                <li class="list-group-item"><b>Validator</b> - Even when a design is encoded richly within a
-                    standardised format, this has no guarantee that the biological logic is correct. This tool takes a
-                    well-defined design and applies techniques to find potential errors. You should run your data
-                    through the enhancer before the validator.</li>
+                <li class="list-group-item"><b>Evaluator</b> - This tool evaluates designs are provides scores on the
+                    quality of the design, provides information of areas where enhancement is needed. </li>
+                <li class="list-group-item"><b>Canonicaliser</b> - This tool attempts replace colloquial or ambiguous
+                    entity names with external references usually stored on the synbiohub databases. </li>
+                <li class="list-group-item"><b>Enhancer</b> - This tool infers new information not currently defined in
+                    the design to enhance and thus increasing detail. </li>
+                <li class="list-group-item"><b>Validator</b> - This tool attempts to find potential errors in a design.
+                </li>
             </ul>
         </div>
     </div>

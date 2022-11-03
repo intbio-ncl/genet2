@@ -6,8 +6,8 @@ import rdflib
 from SPARQLWrapper import SPARQLWrapper,JSON
 import operator
 
-from graph.knowledge.data_miner.ontology.server_interface.utility.query_builder import QueryBuilder
-from graph.knowledge.data_miner.ontology.server_interface.utility.ontology_graph import OntologyGraph
+from app.enhancer.data_miner.ontology.server_interface.utility.query_builder import QueryBuilder
+from app.enhancer.data_miner.ontology.server_interface.utility.ontology_graph import OntologyGraph
 
 
 base_server_uri = "http://localhost:8890/sparql"

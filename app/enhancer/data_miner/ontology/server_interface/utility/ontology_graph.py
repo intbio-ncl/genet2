@@ -3,8 +3,8 @@ import atexit
 
 from rdflib import Graph,URIRef,Literal
 
-from graph.knowledge.data_miner.ontology.server_interface.utility.identifiers import Identifiers
-from graph.knowledge.data_miner.ontology.server_interface.utility.static_data import StaticOntologyData
+from app.enhancer.data_miner.ontology.server_interface.utility.identifiers import Identifiers
+from app.enhancer.data_miner.ontology.server_interface.utility.static_data import StaticOntologyData
 
 ontology_graph = os.path.join(os.path.dirname(os.path.realpath(__file__)),"ontologies.xml")
 class OntologyGraph:
@@ -15,7 +15,7 @@ class OntologyGraph:
             self.graph = self._generate_new_ontology_graph()
         else:
             self.graph = Graph()
-            self.graph.load(ontology_graph)
+            self.graph.parse(ontology_graph)
         atexit.register(self._save_ontology_graph)
 
     def search(self,pattern):

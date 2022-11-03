@@ -1,0 +1,12 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://shortbol.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#lasR/1">
+    <ns0:resource rdf:resource="https://www.ncbi.nlm.nih.gov/nuccore/D30812.1"/>
+    <sbol:displayId>lasR</sbol:displayId>
+    <ns0:resource rdf:resource="https://synbiohub.programmingbiology.org/public/PhoenixTest/LasR_protein_production/0.3"/>
+    <ns0:resource rdf:resource="http://sevahub.es/public/Canonical/T5_lacO/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lasR"/>
+    <ns0:resource rdf:resource="https://synbiohub.org/public/igem/BBa_C0079/1"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

@@ -70,11 +70,15 @@ class QueryBuilder:
         self._add_node(node)
         self.nodes[node].enable_add_label(label)
 
-    def generate(self):
+    def add_replace_node_label(self,node,old,new):
+        self._add_node(node)
+        self.nodes[node].enable_replace_label(old,new)
+
+    def generate(self,log=True):
         for operation in self.nodes.values():
-            yield operation.generate()
+            yield operation.generate(log=log)
         for operation in self.edges.values():
-            yield operation.generate()
+            yield operation.generate(log=log)
         self.nodes.clear()
         self.edges.clear()
         self.index = 1
@@ -204,11 +208,12 @@ class QueryBuilder:
         items = {k:v for k,v in items.items() if k != "graph_name"}
         f_str = ""
         for index, (k, v) in enumerate(items.items()):
-            if not isinstance(v,list):
-                v = v if isinstance(v, list) else f'"{v}"'
-                f_str += f'`{k}`: {v}'
-                if index != len(items) - 1:
-                    f_str += ","
+            if k == "graph_name":
+                continue
+            v = v if isinstance(v, list) else f'"{v}"'
+            f_str += f'`{k}`: {v}'
+            if index != len(items) - 1:
+                f_str += ","
         return f_str
 
     def list_to_query(self, items):
@@ -218,6 +223,15 @@ class QueryBuilder:
             if index < len(items) - 1:
                 f_str += ":"
         return f_str
+
+    def export(self,graph_name):
+        return f'''
+        MATCH (n {{graph_name:{graph_name}}})-[e {{graph_name:{graph_name}}}]->()
+        WITH collect(n) as n, collect(e) as e
+        CALL apoc.export.json.data(n,e,null,{{useTypes:true, stream: true}})
+        YIELD data
+        RETURN data
+        '''
 
     def _add_node(self,node):
         if node not in self.nodes:

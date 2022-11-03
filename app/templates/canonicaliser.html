@@ -1,0 +1,182 @@
+{% extends "base.html" %} {% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <h1>Canonicaliser</h1>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card search-result">
+                <div class="card-body">
+                    {% if err_string%}
+                    <h5>
+                        <font color="red">ERROR: </font><br>{{err_string}}
+                    </h5>
+                    {% endif %}
+                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('sbol_upload')">Upload</button>
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph')">Use
+                            Graph</button>
+                    </div>
+                    <div id="submit_forms">
+                        <br>
+                        {% if err %}
+                        <h5>
+                            <font color="red">ERROR: </font><br>{{err}}
+                        </h5>
+                        {% endif %}
+                        {% if upload %}
+                        <div id="sbol_upload">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ upload.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ upload.upload.label(for="upload") }}<br>
+                                    {{ upload.upload(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.file_type.label(for="file_type") }}
+                                    {{ upload.file_type(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.run_mode.label(for="run_mode") }}
+                                    {{ upload.run_mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ upload.submit_upload(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                        {% if cg %}
+                        <div id="use_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ cg.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ cg.graphs.label(for="cg") }}<br>
+                                    {{ cg.graphs(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ cg.run_mode.label(for="run_mode") }}
+                                    {{ cg.run_mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ cg.submit(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if no_changes %}
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="staticBackdropLabel">No Results</h2>
+                </div>
+                <div class="modal-body">
+                    <p>No references found.</p>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <a id="close" type="button" class="btn btn-light" href="{{ url_for('canonicalise') }}">Close</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if s_changes %}
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="staticBackdropLabel">Canonical Changes</h2>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Old</th>
+                                    <th scope="col">New</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for key, value in s_changes.items() %}
+                                <tr>
+                                    <th scope="row">{{loop.index}}</th>
+                                    <td>{{key}}</td>
+                                    <td>{{value}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <a type="export" class="btn btn-light" href="{{ url_for('export_graph',gn=gn) }}">Export</a>
+                            <a id="close" type="button" class="btn btn-light"
+                                href="{{ url_for('canonicalise') }}">Close</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if p_changes %}
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="staticBackdropLabel">Potential Changes</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Old</th>
+                                        <th scope="col">New</th>
+                                        <th scope="col">Stage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for field in p_changes.forms %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{field.label}}</td>
+                                        <td>{{field.description}}</td>
+                                        <td>{{field}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {{ p_changes.submit_semi_canonicaliser(class="btn btn-secondary") }}
+                            {{ p_changes.close(class="btn btn-secondary") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

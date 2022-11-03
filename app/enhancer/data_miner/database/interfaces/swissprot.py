@@ -5,7 +5,7 @@ import rdflib
 from Bio import ExPASy
 from Bio import SwissProt
 
-from graph.knowledge.data_miner.database.interfaces.db_interface import DatabaseInterface
+from app.enhancer.data_miner.database.interfaces.db_interface import DatabaseInterface
 
 class SwissProtInterface(DatabaseInterface):
     def __init__(self,record_storage =  None):

@@ -1,0 +1,45 @@
+LOCUS       MT436494                 394 bp    DNA     linear   BCT 12-MAY-2020
+DEFINITION  Haemophilus influenzae strain POPI_936 16S ribosomal RNA gene,
+            partial sequence.
+ACCESSION   MT436494
+VERSION     MT436494.1
+KEYWORDS    .
+SOURCE      Haemophilus influenzae
+  ORGANISM  Haemophilus influenzae
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales;
+            Pasteurellaceae; Haemophilus.
+REFERENCE   1  (bases 1 to 394)
+  AUTHORS   Coleman,A., Bialasiewicz,S., Marsh,R.L., Grahn Hakansson,E.,
+            Cottrell,K., Wood,A., Jayasundara,N., Ware,R.S., Zaugg,J.,
+            Sidjabat,H.E., Adams,J., Ferguson,J., Brown,M., Roos,K. and
+            Cervin,A.
+  TITLE     Upper respiratory microbiota in relation to ear and nose health
+            among Australian Aboriginal and Torres Strait Islander children
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 394)
+  AUTHORS   Coleman,A., Bialasiewicz,S., Cottrell,K. and Jayasundara,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-MAY-2020) Centre for Clinical Research, The
+            University of Queensland, Building 71/918 RBWH, Herston, Brisbane,
+            QLD 4029, Australia
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..394
+                     /organism="Haemophilus influenzae"
+                     /mol_type="genomic DNA"
+                     /strain="POPI_936"
+                     /db_xref="taxon:727"
+     rRNA            <1..>394
+                     /product="16S ribosomal RNA"
+ORIGIN      
+        1 gacgcagcat gccgcgtgat gagaaggcct tagggttgta aagttctttc ggtattgagg
+       61 aaggttgatg tgttaatagc acatcaaatt gacgttaaat acagaagaag caccggctaa
+      121 ctccgtgcca gcagccgcgg taatacggag ggtgcgagcg ttaatcggaa taactgggcg
+      181 taaagggcac gcaggcggtt atttaagtga ggtgtgaaag ccccgggctt aacctgggaa
+      241 ttgcatttca gactgggtaa ctagagtact ttagggaggg gtagaattcc acgtgtagcg
+      301 gtgaaatgcg tagagatgtg gaggaatacc gaaggcgaag gcagcccctt gggaatgtac
+      361 tgacgctcat gtgcgaaagc gtggggagca aaca
+//
+

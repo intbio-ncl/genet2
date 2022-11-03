@@ -1,0 +1,43 @@
+                        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:ns1="http://purl.org/dc/terms/" xmlns:ns2="http://shortbol.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#GFP/1">
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://shortbol.org/v2#GFP/annotation1934520/1">
+        <ns0:topLevel rdf:resource="http://shortbol.org/v2#BBa_E0040"/>
+        <sbol:version>1</sbol:version>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+        <ns2:title>GFP protein</ns2:title>
+        <sbol:role rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#feature/protein"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#GFP/annotation1934520"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://shortbol.org/v2#GFP/annotation1934520/range1934520/1">
+            <sbol:end>720</sbol:end>
+            <sbol:displayId>range1934520</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#GFP/annotation1934520/range1934520"/>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:start>1</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>annotation1934520</sbol:displayId>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <ns1:description>green fluorescent protein derived from jellyfish Aequeora victoria wild-type GFP (SwissProt: P42212</ns1:description>
+    <sbol:version>1</sbol:version>
+    <ns0:mutableDescription>GFP (mut3b) [note that this part does not have a barcode]</ns0:mutableDescription>
+    <ns2:title>GFP</ns2:title>
+    <sbol:displayId>GFP</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#GFP"/>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#BBa_E0040_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#BBa_E0040_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BBa_E0040_sequence"/>
+    <sbol:elements>atgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataa</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>BBa_E0040_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>
+
+                    

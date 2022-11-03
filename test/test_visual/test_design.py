@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.join("..","..",".."))
 from app.visualiser.visual.handlers.color_producer import ColorPicker
 from app.visualiser.visual.design import DesignVisual
 from app.graph.world_graph import WorldGraph
-
+from app.converter.sbol_convert import convert
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 test_fn = os.path.join(curr_dir,"..","files","nor_full.xml")
@@ -22,7 +22,7 @@ class TestLabels(unittest.TestCase):
         def setUpClass(self):
             self.gn = "test_g1"
             self._wrapper = WorldGraph()
-            self._wrapper.add_design(test_fn,self.gn)
+            convert(test_fn,self._wrapper.driver,self.gn)
             self.visual = DesignVisual(self._wrapper)
             self.visual.set_design_names(self.gn)
             self.visual.set_full_graph_view()
@@ -136,7 +136,7 @@ class TestLabels(unittest.TestCase):
         def setUpClass(self):
             self.gn = "test_g1"
             self._wrapper = WorldGraph()
-            self._wrapper.add_design(test_fn,self.gn)
+            convert(test_fn,self._wrapper.driver,self.gn)
             self.visual = DesignVisual(self._wrapper)
             self.visual.set_design_names(self.gn)
             self.visual.set_full_graph_view()
@@ -201,7 +201,7 @@ class TestColor(unittest.TestCase):
         def setUpClass(self):
             self.gn = "test_g1"
             self._wrapper = WorldGraph()
-            self._wrapper.add_design(test_fn,self.gn)
+            convert(test_fn,self._wrapper.driver,self.gn)
             self.visual = DesignVisual(self._wrapper)
             self.visual.set_design_names(self.gn)
             self.visual.set_full_graph_view()
@@ -323,7 +323,8 @@ class TestColor(unittest.TestCase):
         def setUpClass(self):
             self.gn = "test_g1"
             self._wrapper = WorldGraph()
-            self.dg = self._wrapper.add_design(test_fn,self.gn)
+            convert(test_fn,self._wrapper.driver,self.gn)
+            self.dg = self._wrapper.get_design(self.gn)
             self.visual = DesignVisual(self._wrapper)
             self.visual.set_design_names(self.gn)
             self.visual.set_full_graph_view()
@@ -419,7 +420,8 @@ class TestShape(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_g1"
         self._wrapper = WorldGraph()
-        self.dg = self._wrapper.add_design(test_fn,self.gn)
+        convert(test_fn,self._wrapper.driver,self.gn)
+        self.dg = self._wrapper.get_design(self.gn)
         self.visual = DesignVisual(self._wrapper)
         self.visual.set_design_names(self.gn,"Union")
         self.visual.set_full_graph_view()
@@ -469,7 +471,8 @@ class TestSize(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_g1"
         self._wrapper = WorldGraph()
-        self.dg = self._wrapper.add_design(test_fn,self.gn)
+        convert(test_fn,self._wrapper.driver,self.gn)
+        self.dg = self._wrapper.get_design(self.gn)
         self.visual = DesignVisual(self._wrapper)
         self.visual.set_design_names(self.gn,"Union")
         self.visual.set_full_graph_view()

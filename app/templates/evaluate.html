@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        <h1>Evaluator</h1>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card search-result">
+                <div class="card-body">
+                    {% if err_string%}
+                    <h5>
+                        <font color="red">ERROR: </font><br>{{err_string}}
+                    </h5>
+                    {% endif %}
+                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('sbol_upload')">Upload</button>
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph')">Use
+                            Graph</button>
+                    </div>
+                    <div id="submit_forms">
+                        <br>
+                        {% if err %}
+                        <h5>
+                            <font color="red">ERROR: </font><br>{{err}}
+                        </h5>
+                        {% endif %}
+                        {% if upload %}
+                        <div id="sbol_upload">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ upload.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ upload.upload.label(for="upload") }}<br>
+                                    {{ upload.upload(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.file_type.label(for="file_type") }}
+                                    {{ upload.file_type(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ upload.submit_upload(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                        {% if cg %}
+                        <div id="use_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ cg.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ cg.graphs.label(for="cg") }}<br>
+                                    {{ cg.graphs(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                {{ cg.submit(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if feedback %}
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="staticBackdropLabel">Evaluate Results</h2>
+                    </div>
+                    <div class="modal-body">
+                        <h1>Overall Score: {{feedback["score"]}}%</h1>
+                        <br>
+                        {% for eval, details in feedback["evaluators"].items() %}
+                        <h3>{{eval}} Score: {{details["score"]}}%</h3>
+                        <p><b>{{descriptions[eval]}}</b></p>
+                        <br>
+                        {% for sub_eval_name,sub_eval in details["evaluators"].items() %}
+                        <h5>{{sub_eval_name}} Score: {{sub_eval["score"]}}%</h5>
+                        <p><b>{{descriptions[sub_eval_name]}}</b></p>
+                        {% if sub_eval["comments"]|length == 0 %}
+                        <p>No Issues</p>
+                        {% else %}
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for subject, comment in sub_eval["comments"].items() %}
+                                <tr>
+                                    <th scope="row">{{loop.index}}</th>
+                                    <td>{{subject}}</td>
+                                    <td>{{comment}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+                        <br>
+                        {% endfor %}
+                        {% endfor %}
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <a id="close" type="button" class="btn btn-light"
+                                href="{{ url_for('evaluate') }}">Close</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

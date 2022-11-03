@@ -1,0 +1,191 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pTetR/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pTetR"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#pTetR_sequence/1"/>
+    <sbol:displayId>pTetR</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#alt_hier/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#alt_hier"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:displayId>alt_hier</sbol:displayId>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#alt_hier/alt_hier_pTetR_c/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pTetR/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#alt_hier/alt_hier_pTetR_c"/>
+        <sbol:displayId>alt_hier_pTetR_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#lacI_RBS/1">
+    <sbol:displayId>lacI_RBS</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:version>1</sbol:version>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#lacI_RBS_sequence/1"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_RBS"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#pTetR_sequence/1">
+    <sbol:elements>tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcac</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>pTetR_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pTetR_sequence"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#lacI_CDS_sequence/1">
+    <sbol:displayId>lacI_CDS_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_CDS_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:elements>gtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcag</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#lacI_term/1">
+    <sbol:displayId>lacI_term</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#lacI_term_sequence/1"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_term"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#lacI_RBS_sequence/1">
+    <sbol:displayId>lacI_RBS_sequence</sbol:displayId>
+    <sbol:elements>aaggaggtg</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_RBS_sequence"/>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#lacI_CDS/1">
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#lacI_CDS_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_CDS"/>
+    <sbol:displayId>lacI_CDS</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#tetRInverter/1">
+    <sbol:displayId>tetRInverter</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_sequenceAnnotation/1">
+        <sbol:displayId>tetRInverter_lacI_CDS_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_sequenceAnnotation"/>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_sequenceAnnotation/lacI_CDS_loc/1">
+            <sbol:start>169</sbol:start>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:displayId>lacI_CDS_loc</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_sequenceAnnotation/lacI_CDS_loc"/>
+            <sbol:version>1</sbol:version>
+            <sbol:end>1197</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_c/1">
+        <sbol:displayId>tetRInverter_lacI_CDS_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#lacI_CDS/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_CDS_c"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:version>1</sbol:version>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#lacI_term/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_c"/>
+        <sbol:displayId>tetRInverter_lacI_term_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_sequenceAnnotation"/>
+        <sbol:displayId>tetRInverter_pTetR_sequenceAnnotation</sbol:displayId>
+        <sbol:component rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_c/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_sequenceAnnotation/pTetR_loc/1">
+            <sbol:displayId>pTetR_loc</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_sequenceAnnotation/pTetR_loc"/>
+            <sbol:end>55</sbol:end>
+            <sbol:start>1</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_c/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pTetR/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_pTetR_c"/>
+        <sbol:displayId>tetRInverter_pTetR_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter"/>
+    <sbol:component>
+      <sbol:Component rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_c/1">
+        <sbol:displayId>tetRInverter_lacI_RBS_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#lacI_RBS/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_sequenceAnnotation/1">
+        <sbol:location>
+          <sbol:Range rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_sequenceAnnotation/lacI_term_loc/1">
+            <sbol:start>1197</sbol:start>
+            <sbol:displayId>lacI_term_loc</sbol:displayId>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_sequenceAnnotation/lacI_term_loc"/>
+            <sbol:end>1240</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_sequenceAnnotation"/>
+        <sbol:component rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_term_c/1"/>
+        <sbol:displayId>tetRInverter_lacI_term_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_sequenceAnnotation/1">
+        <sbol:component rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_c/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_sequenceAnnotation/lacI_RBS_loc/1">
+            <sbol:start>56</sbol:start>
+            <sbol:displayId>lacI_RBS_loc</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#tetRInverter/tetRInverter_lacI_RBS_sequenceAnnotation/lacI_RBS_loc"/>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:end>68</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>tetRInverter_lacI_RBS_sequenceAnnotation</sbol:displayId>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#lacI_term_sequence/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#lacI_term_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>lacI_term_sequence</sbol:displayId>
+    <sbol:elements>ttcagccaaaaaacttaagaccgccggtcttgtccactaccttgcagtaatgcggtggacaggatcggcggttttcttttctcttctcaa</sbol:elements>
+  </sbol:Sequence>
+</rdf:RDF>

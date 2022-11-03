@@ -1,29 +1,29 @@
 import types
-from rdflib import RDF
+import re
+import os
+from rdflib import RDF,DCTERMS
 from app.graph.utility.model.model import model
 from app.graph.design_graph.gds.project import ProjectBuilder
 from app.graph.design_graph.gds.procedures import Procedures
 
-
-def _add_predicate(obj, predicate):
-    method_name = f'get_{predicate.split("/")[-1].lower()}'
-
-    def produce_get_predicate(predicate):
-        def produce_get_predicate_inner(self, subject=None):
-            return self._edge_query(n=subject, e=predicate)
+def _add_predicate(obj, pred):
+    method_name = f'get_{pred.split("/")[-1].lower()}'
+    def produce_get_predicate(pred):
+        def produce_get_predicate_inner(self, subject=None,predicate="ALL"):
+            return self._edge_query(n=subject, e=pred,predicate=predicate)
         return produce_get_predicate_inner
     obj.__dict__[method_name] = types.MethodType(
-        produce_get_predicate(predicate), obj)
+        produce_get_predicate(pred), obj)
 
 
 def _add_object(obj, subject):
     method_name = f'get_{subject.split("/")[-1].lower()}'
 
     def produce_get_subject(subject):
-        def produce_get_subject_inner(self):
+        def produce_get_subject_inner(self,predicate="ALL"):
             derived = ([subject] + [n[1]["key"]
                        for n in model.get_derived(subject)])
-            return self._node_query(derived)
+            return self._node_query(derived,predicate=predicate)
         return produce_get_subject_inner
     obj.__dict__[method_name] = types.MethodType(
         produce_get_subject(subject), obj)
@@ -38,7 +38,6 @@ class DesignGraph:
         self.procedure = Procedures(self)
         self.project = ProjectBuilder(self)
 
-        self._predicate = predicate
         for c in model.get_classes(False):
             _add_object(self, c[1]["key"])
         for p in model.get_properties():
@@ -53,18 +52,29 @@ class DesignGraph:
     def edges(self, n=None, v=None, e=None, directed=True, exclusive=False):
         return self._edge_query(n=n, v=v, e=e, directed=directed, exclusive=exclusive)
 
-    def add_node(self,key,type,mode="merge",**kwargs):
+    def add_node(self,key,type,sequence=None,description=None,**kwargs):
         if "graph_name" not in kwargs:
             kwargs["graph_name"] = self.name
-        self.driver.add_node(key,type,mode=mode,**kwargs)
+        if sequence is not None:
+            kwargs[model.identifiers.predicates.has_sequence] = sequence
+        if description is not None:
+            if not isinstance(description,list):
+                description = [description]
+            kwargs[DCTERMS.description] = description
+        self.driver.add_node(key,type,**kwargs)
         self.driver.submit()
 
-    def add_edges(self,edges,mode="merge"):
+    def add_edges(self,edges):
         for edge in edges:
             n,v,e,props = edge
             if "graph_name" not in props:
                 props["graph_name"] = self.name
-            self.driver.add_edge(n,v,e,mode=mode,**props)
+            if "graph_name" not in n.get_properties():
+                n.add_property("graph_name",self.name)
+            if "graph_name" not in v.get_properties():
+                v.add_property("graph_name",self.name)
+            
+            self.driver.add_edge(n,v,e,**props)
         self.driver.submit()
 
     def remove_node(self,nodes):
@@ -76,6 +86,39 @@ class DesignGraph:
             self.driver.remove_node(node)
         self.driver.submit()
 
+    def remove_edges(self,edges):
+        if not isinstance(edges,list):
+            edges = [edges]
+        for edge in edges:
+            n,v,e,props = edge
+            if "graph_name" not in props:
+                props["graph_name"] = self.name
+            if "graph_name" not in n.get_properties():
+                n.add_property("graph_name",self.name)
+            if "graph_name" not in v.get_properties():
+                v.add_property("graph_name",self.name)
+            self.driver.remove_edge(n,v,e,**props)
+        self.driver.submit()
+
+        
+    def replace_label(self,old,new):
+        new_props = {"name" : _get_name(new)}
+        self.driver.replace_node_label(old,new,new_props=new_props,graph_name=self.name)
+        self.driver.submit()
+
+    def replace_node_property(self,node,predicate,new):
+        if "graph_name" not in node.get_properties():
+            node.update({"graph_name" : self.name})
+        self.driver.replace_node_property(node,{predicate:new})
+        self.driver.submit()
+
+    def replace_edge_property(self,edge,predicate,new):
+        n,v,e,props = edge
+        if "graph_name" not in props:
+            edge.update({"graph_name" : self.name})
+        self.driver.replace_edge_property(n,v,e,props,{predicate:new})
+        self.driver.submit()
+        
     def get_children(self, node):
         cp = model.get_child_predicate()
         return self._edge_query(n=node, e=cp)
@@ -83,6 +126,9 @@ class DesignGraph:
     def get_parents(self, node):
         cp = model.get_child_predicate()
         return self._edge_query(v=node, e=cp)
+
+    def get_by_type(self,types):
+        return self._node_query(types)
 
     def get_entity_depth(self, subject):
         def _get_class_depth(s, depth):
@@ -101,6 +147,13 @@ class DesignGraph:
                 roots.append(node)
         return roots
 
+    def get_leaf_entities(self):
+        roots = []
+        for node in self.get_entity():
+            if self.get_children(node) == []:
+                roots.append(node)
+        return roots
+        
     def get_interactions(self,node,predicate=None):
         s = model.identifiers.objects.interaction
         derived = ([s] + [n[1]["key"] for n in model.get_derived(s)])
@@ -135,6 +188,14 @@ class DesignGraph:
                         f'{subject} has direction not input or output')
         return inputs, outputs
 
+    def get_interaction_directions(self,interaction):
+        icc = model.get_class_code(interaction.get_type()) 
+        idir = model.get_interaction_direction(icc)
+        if idir == []:
+            return []
+        assert(len(idir) == 1)
+        return idir[0]
+
     def get_isolated_nodes(self):
         if None in self.name:
             return []
@@ -165,15 +226,37 @@ class DesignGraph:
     def get_project_graph(self, name):
         return self.project.get_graph(name)
 
-    def _node_query(self, n=None, **kwargs):
+    def _node_query(self, n=None,predicate="ALL", **kwargs):
         if None in self.name:
             return []
-        return self.driver.node_query(n, predicate=self._predicate, graph_name=self.name, **kwargs)
+        return self.driver.node_query(n, predicate=predicate, graph_name=self.name, **kwargs)
 
-    def _edge_query(self, n=None, e=None, v=None, **kwargs):
+    def _edge_query(self, n=None, e=None, v=None, predicate="ALL", **kwargs):
         if None in self.name:
             return []
         props = {"graph_name": self.name}
         return self.driver.edge_query(n=n, v=v, e=e,
                                       e_props=props, n_props=props, v_props=props,
-                                      predicate=self._predicate, **kwargs)
+                                      predicate=predicate, **kwargs)
+
+
+def _get_name(subject):
+    split_subject = _split(subject)
+    if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
+        return split_subject[-2]
+    elif len(split_subject[-1]) == 3 and _isfloat(split_subject[-1]):
+        return split_subject[-2]
+    else:
+        return split_subject[-1]
+
+
+def _split(uri):
+    return re.split('#|\/|:', uri)
+
+
+def _isfloat(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False

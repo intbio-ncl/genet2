@@ -1,0 +1,73 @@
+LOCUS       KJ775863                1083 bp    DNA     linear   SYN 28-OCT-2014
+DEFINITION  Synthetic construct LacI (lacI) gene, complete cds.
+ACCESSION   KJ775863
+VERSION     KJ775863.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+REFERENCE   1  (bases 1 to 1083)
+  AUTHORS   Horbal,L., Fedorenko,V. and Luzhetskyy,A.
+  TITLE     Novel and tightly regulated resorcinol and cumate-inducible
+            expression systems for Streptomyces and other actinobacteria
+  JOURNAL   Appl. Microbiol. Biotechnol. 98 (20), 8641-8655 (2014)
+   PUBMED   25012786
+REFERENCE   2  (bases 1 to 1083)
+  AUTHORS   Luzhetskyy,A.
+  TITLE     Codon-optimized version of the lacI gene for Streptomyces albus
+            from Escherichia coli
+  JOURNAL   Unpublished
+REFERENCE   3  (bases 1 to 1083)
+  AUTHORS   Horbal,L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (30-APR-2014) Helmholtz-Zentrum fur Infektionsforschung,
+            Helmholtz-Zentrum fur Infektionsforschung, Campus, Building C2 3,
+            Saarbrucken 66123, Germany
+COMMENT     ##Assembly-Data-START##
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..1083
+                     /organism="synthetic construct"
+                     /mol_type="other DNA"
+                     /db_xref="taxon:32630"
+                     /note="derived from Escherichia coli"
+     gene            1..1083
+                     /gene="lacI"
+     CDS             1..1083
+                     /gene="lacI"
+                     /note="transcriptional regulator; codon-optimized for
+                     expression in Streptomyces albus"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="LacI"
+                     /protein_id="AII71792.1"
+                     /translation="MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAE
+                     LNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERS
+                     GVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSII
+                     FSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREG
+                     DWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDT
+                     EDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLVKRKTTLAPNT
+                     QTASPRALADSLMQLARQVSRLESGQ"
+ORIGIN      
+        1 atgaagccgg tgaccctcta cgacgtggcg gagtacgcgg gcgtgtccta ccagaccgtc
+       61 tcgcgggtgg tgaaccaggc ctcgcacgtc tccgccaaga cccgcgagaa ggtggaggcc
+      121 gcgatggccg agctgaacta catcccgaac cgggtcgcgc agcagctggc cggcaagcag
+      181 tccctgctca tcggcgtggc cacctcctcg ctggccctcc acgcgccctc ccagatcgtc
+      241 gccgcgatca agtcgcgcgc ggaccagctg ggcgccagcg tcgtggtctc catggtggag
+      301 cggagcggcg tcgaggcgtg caaggccgcg gtccacaacc tgctcgccca gcgcgtgtcg
+      361 ggcctgatca tcaactaccc gctcgacgac caggacgcca tcgcggtgga ggccgcgtgc
+      421 accaacgtcc cggccctgtt cctcgacgtg tccgaccaga cccccatcaa ctcgatcatc
+      481 ttcagccacg aggacggcac ccggctgggc gtggagcacc tggtcgccct cggccaccag
+      541 cagatcgccc tgctcgcggg cccgctgagc tccgtctccg cgcgcctgcg gctcgccggc
+      601 tggcacaagt acctgacccg caaccagatc cagcccatcg cggagcggga gggcgactgg
+      661 tccgccatgt cgggcttcca gcagaccatg cagatgctga acgagggcat cgtgccgacc
+      721 gcgatgctgg tcgccaacga ccagatggcc ctcggcgcga tgcgcgccat caccgagtcg
+      781 ggcctgcggg tcggcgccga catcagcgtg gtcggctacg acgacaccga ggactcgagc
+      841 tgctacatcc cgcccctgac caccatcaag caggacttcc gcctgctcgg ccagaccagc
+      901 gtcgaccggc tgctccagct gtcccagggc caggccgtga agggcaacca gctgctcccc
+      961 gtgtccctgg tcaagcgcaa gaccaccctc gcgccgaaca cccagaccgc ctcgccccgg
+     1021 gccctcgccg acagcctcat gcagctcgcc cgccaggtct cccgcctcga gtccggccag
+     1081 taa
+//
+

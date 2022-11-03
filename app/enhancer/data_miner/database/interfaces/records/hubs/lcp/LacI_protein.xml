@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/LacI_protein/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/LacI_protein"/>
+    <sbol:displayId>LacI_protein</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>LacI_protein</dcterms:title>
+    <dcterms:created>2019-11-14T20:50:42.872Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/LacI_protein/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </sbol:ComponentDefinition>
+  <sbol:Attachment rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/attachment_2a6ef492b29345cb92c0b0e738f30881/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/attachment_2a6ef492b29345cb92c0b0e738f30881"/>
+    <sbol:displayId>attachment_2a6ef492b29345cb92c0b0e738f30881</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Eco1C1G1T1-tandem-synbiohub.UCF.json</dcterms:title>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/attachment_2a6ef492b29345cb92c0b0e738f30881/1"/>
+    <sbol:source rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/attachment_2a6ef492b29345cb92c0b0e738f30881/1/download"/>
+    <sbol:format rdf:resource="http://purl.org/NET/mediatypes/text/plain"/>
+    <sbol:size>3576113</sbol:size>
+    <sbol:hash>b9ff9e321edf990df5174a46bdd96907e1d3ed6d</sbol:hash>
+  </sbol:Attachment>
+  <prov:Activity rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity"/>
+    <sbol:displayId>CelloUCF2sbol_Activity</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL conversion</dcterms:title>
+    <dcterms:description>Conversion of the Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/1"/>
+    <prov:endedAtTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-11-14T20:50:42.893Z</prov:endedAtTime>
+    <prov:qualifiedUsage>
+      <prov:Usage rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/UCF_file/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/UCF_file"/>
+        <sbol:displayId>UCF_file</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/1"/>
+        <prov:entity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/attachment_2a6ef492b29345cb92c0b0e738f30881/1"/>
+      </prov:Usage>
+    </prov:qualifiedUsage>
+    <prov:qualifiedAssociation>
+      <prov:Association rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/association/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/association"/>
+        <sbol:displayId>association</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2sbol_Activity/1"/>
+        <prov:agent rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2SBOL/1"/>
+      </prov:Association>
+    </prov:qualifiedAssociation>
+  </prov:Activity>
+  <prov:Agent rdf:about="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2SBOL/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2SBOL"/>
+    <sbol:displayId>CelloUCF2SBOL</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL</dcterms:title>
+    <dcterms:description>A script to convert Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <dc:creator>Prashant Vaidyanathan</dc:creator>
+    <dc:creator>Chris J. Myers</dc:creator>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Eco1C1G1T1/CelloUCF2SBOL/1"/>
+    <dc:source rdf:resource="https://github.com/MyersResearchGroup/UCF2SBOL"/>
+  </prov:Agent>
+</rdf:RDF>

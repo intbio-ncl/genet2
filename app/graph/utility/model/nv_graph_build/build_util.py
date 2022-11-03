@@ -1,8 +1,10 @@
 import sys, inspect
 import inspect
+import warnings
+warnings.filterwarnings("ignore")
 
 from rdflib.namespace import RDFS
-from rdflib.term import BNode, URIRef,Literal
+from rdflib.term import BNode, Literal
 from rdflib import Graph,RDF,OWL
 from rdflib.extras import infixowl as owl 
 
@@ -88,13 +90,7 @@ def add_properties(properties,graph,datatypes):
         domain_node = BNode()
         graph.add((prop,RDF.type,OWL.ObjectProperty))
         graph.add((prop,RDFS.domain,domain_node))
-        reduced_domain = []
-        for d in domain:
-            parents = [c[2] for c in graph.triples((d,RDFS.subClassOf,None))]
-            if len(list(set(parents) - set(domain))) == 0:
-                continue
-            reduced_domain.append(d)
-        graph = add_union(graph, domain_node, reduced_domain)
+        graph = add_union(graph, domain_node, domain)
         p_range = property.range
         if p_range != [None]:
             range_node = BNode()
@@ -107,13 +103,16 @@ def add_properties(properties,graph,datatypes):
                 default_v = default_v.uri()
             else:
                 default_v = Literal(default_v)
-            for rd in reduced_domain:
+            for rd in domain:
                 graph.add((rd,property.property,default_v))
                 if isinstance(property.default_value, Datatype):
                     datatypes.append(p.default_value)
         for p in property.properties:
             if p.default_value is not None:
-                default_v_uri = p.default_value.uri
+                if hasattr(p.default_value,"uri"):
+                    default_v_uri = p.default_value.uri
+                else:
+                    default_v_uri = p.default_value
                 graph.add((prop,p.property,default_v_uri))
                 if isinstance(p.default_value, Datatype):
                     datatypes.append(p.default_value)

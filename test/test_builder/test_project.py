@@ -10,6 +10,7 @@ sys.path.insert(0, os.path.join("..","..",".."))
 from app.visualiser.builder.projection import ProjectionBuilder
 from app.graph.world_graph import WorldGraph
 from  app.graph.utility.model.model import model
+from app.converter.sbol_convert import convert
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 test_fn = os.path.join(curr_dir,"..","files","nor_full.xml")
@@ -21,7 +22,8 @@ class TestViews(unittest.TestCase):
         self.gn = "test_builder_views"
         self.wg = WorldGraph()
         self.wg.remove_design(self.gn)
-        self.dg = self.wg.add_design(test_fn,self.gn)
+        convert(test_fn,self.wg.driver,self.gn)
+        self.dg = self.wg.get_design(self.gn)
         self.all_nodes = self.dg.nodes()
         self.all_edges = self.dg.edges()
         self.builder = ProjectionBuilder(self.wg)

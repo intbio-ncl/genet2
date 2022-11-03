@@ -22,8 +22,11 @@ class EditorVisual(AbstractDesignVisual):
     def add_edges(self,n,v,e):
         return self._builder.add_edges(n,v,e)
     
-    def add_node(self,key,type):
-        return self._builder.add_node(key,type)
+    def add_node(self,key,type,**kwargs):
+        return self._builder.add_node(key,type,**kwargs)
+
+    def get_standardised_nodes(self,key,type,sequence,description):
+        return self._builder.get_standardised_nodes(key,type,sequence,description)
 
 
         

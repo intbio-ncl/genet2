@@ -1,0 +1,40 @@
+LOCUS       HIU02897                 391 bp    DNA     linear   BCT 08-MAR-1996
+DEFINITION  Haemophilus influenzae ATCC 33391 16S rRNA gene, partial sequence.
+ACCESSION   U02897
+VERSION     U02897.1
+KEYWORDS    .
+SOURCE      Haemophilus influenzae
+  ORGANISM  Haemophilus influenzae
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales;
+            Pasteurellaceae; Haemophilus.
+REFERENCE   1  (bases 1 to 391)
+  AUTHORS   Greisen,K., Loeffelholz,M., Purohit,A. and Leong,D.
+  TITLE     PCR primers and probes for the 16S rRNA gene of most species of
+            pathogenic bacteria, including bacteria found in cerebrospinal
+            fluid
+  JOURNAL   J. Clin. Microbiol. 32 (2), 335-351 (1994)
+   PUBMED   7512093
+REFERENCE   2  (bases 1 to 391)
+  AUTHORS   Leong,D.U.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-OCT-1993) Diane U. Leong, Roche Molecular Systems,
+            1145 Atlantic Avenue, Alameda, CA 94501, USA
+FEATURES             Location/Qualifiers
+     source          1..391
+                     /organism="Haemophilus influenzae"
+                     /mol_type="genomic DNA"
+                     /strain="ATCC 33391"
+                     /type_material="type strain of Haemophilus influenzae"
+                     /db_xref="taxon:727"
+     rRNA            1..391
+                     /product="16S ribosomal RNA"
+ORIGIN      
+        1 ctttgttgcc agcgacttgg tcgggaactc aaaggagact gccagtgata aactggagga
+       61 aggtggggat gacgtcaagt catcatggcc cttacgagta gggctacaca cgtgctacaa
+      121 tggcgtatac agagggaagc gaagctgcga ggtggagcga atctcataaa gtacgtctaa
+      181 gtccggattg gagtctgcaa ctcgactcca tgaagtcgga atcgctagta atcgcgaatc
+      241 agaatgtcgc ggtgaatacg ttcccgggcc ttgtacacac cgcccgtcac accatgggag
+      301 tgggttgtac cagaagtaga tagcttaacc ttttggaggg cgtttaccac ggtatgattc
+      361 atgactgggg tgaagtcgta acaaggtaac c
+//
+

@@ -2,10 +2,11 @@ from property.property import Property
 from property.property import Direction
 from datatype.datatype import Input,Output
 from equivalent import property_equivalent as pe
-
+from property.property import Confidence
 class InteractionProperty(Property):
     def __init__(self,range,properties=[],equivalents=[]):
-        super().__init__(range,properties=properties,equivalents=equivalents)
+        p = [Confidence()] + properties
+        super().__init__(range,properties=p,equivalents=equivalents)
 
 class Activator(InteractionProperty):
     def __init__(self,range=None):

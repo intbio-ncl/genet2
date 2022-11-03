@@ -348,18 +348,16 @@ class AbstractDash:
         else:
             return [sequence_box]
 
-    def create_complex_table(self, identifier, columns, data, add=False, **kwargs):
+    def create_complex_table(self, identifier, columns, data=None, add=False, **kwargs):
         table = dash_table.DataTable(
             id=identifier,
             columns=columns,
             data=data,
-            editable=True,
             filter_action="native",
             sort_action="native",
             sort_mode="multi",
             column_selectable="single",
-            row_selectable="multi",
-            row_deletable=True,
+            row_selectable="single",
             selected_columns=[],
             selected_rows=[],
             page_action="native",

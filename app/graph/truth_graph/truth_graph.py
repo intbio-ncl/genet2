@@ -1,120 +1,152 @@
-from app.graph.utility.graph_objects.edge import Edge
+import json
+import re
+
 from app.graph.utility.model.model import model
+from app.graph.truth_graph.modules.synonym import SynonymModule
+from app.graph.utility.graph_objects.node import Node
+from app.graph.utility.graph_objects.edge import Edge
+p_confidence = str(model.identifiers.external.confidence)
+p_synonym = str(model.identifiers.external.synonym)
 
-confidence = str(model.identifiers.external.confidence)
+
 class TruthGraph:
-    def __init__(self,driver):
-        self.name = "truth_graph"
+    def __init__(self, name, driver):
+        self.name = [name]
+        self.synonyms = SynonymModule(self)
         self.driver = driver
-        self._scm = 5
-        self._upper_threshold = 100
-        self._lower_threshold = 0
+        self._np = {"graph_name": self.name}
 
-    def positive(self,edges):
-        return self._change(edges,self._scm)
-    
-    def negative(self,edges):
-        return self._change(edges,-self._scm)
+    def nodes(self, n=None, **kwargs):
+        return self._node_query(n, **kwargs)
 
-    def get(self,edge):
-        res = self.driver.edge_query(e=edge,e_props={"graph_name":self.name})
-        if len(res) == 0:
-            return None
-        assert(len(res) == 1)
-        res = res[0]
-        res.replace({confidence : int(res[confidence])})
-        return res
+    def edges(self, n=None, v=None, e=None):
+        return self._edge_query(n=n, v=v, e=e)
 
-    def get_properties(self,node):
-        pass
-    
-    def _change(self,edges,modifier):
-        if not isinstance(edges,(list,set,tuple)):
-            edges = [edges]
-        for edge in edges:
-            if not isinstance(edge,Edge):
-                raise ValueError(f'{edge} must be an edge.')
-            eq = self.get(edge)
-            if eq is not None:
-                self._update_confidence(eq,modifier)
-                continue
-            nq = self.driver.node_query([edge.n,edge.v],graph_name=self.name)
-            if nq != []:
-                assert(edge.n in nq or edge.v in nq)
-                if edge.n not in nq:
-                    self._add_node(edge.n)
-                if edge.v not in nq:
-                    self._add_node(edge.n)
-                self._add_edge(edge,modifier)
-            else:
-                self._add_edge(edge,modifier)
-
-    def _add_edge(self,edge,modifier):
+    def add_edge(self, edge, modifier):
         if modifier < 0:
             return
-        e = self._add_gn(edge)
-        e.update({confidence:modifier})
-        self.driver.add_edge(e.n,e.v,e,mode="duplicate")
+        e = self._add_edge_gn(edge)
+        e.update({p_confidence: modifier})
+        self.driver.add_edge(e.n, e.v, e.get_type(), **e.get_properties())
         self.driver.submit()
 
-    def _add_node(self,node):
-        node.update({"graph_name" : self.name})
-        self.driver.add_node(node,mode="duplicate")
+    def add_node(self, node):
+        node.update(self._np)
+        n_props = node.get_properties()
+        if "name" not in n_props:
+            node.update({"name": _get_name(node.get_key())})
+        self.driver.add_node(node)
         self.driver.submit()
 
-    def _update_confidence(self,edge,modifier):
-        conf = edge.get_properties()[confidence]
-        new_conf = int(conf) + modifier
-        if new_conf >= self._upper_threshold:
-            self._upper_threshold_map(edge)
-        elif new_conf <= self._lower_threshold:
-            self._lower_threshold_map(edge)
-        else:
-            props = {confidence : new_conf}
-            self.driver.set_edge(edge,props)
-            self.driver.submit()
-    
-    def _lower_threshold_map(self,edge):
-        self._add_gn(edge)
-        nedges = self.driver.edge_query(n=edge.n,directed=False)
-        vedges = self.driver.edge_query(n=edge.v,directed=False)
-        if len(nedges) == 1:
-            self.driver.remove_node(edge.n)
-        if len(vedges) == 1:
-            self.driver.remove_node(edge.v)
-        self.driver.remove_edge(edge)
+    def remove_node(self, node):
+        node.update(self._np)
+        self.driver.remove_node(node)
+        return self.driver.submit()
+
+    def remove_edge(self, edge):
+        edge = self._add_edge_gn(edge)
+        self.driver.remove_edge(edge.n,edge.v,edge.get_type(),**edge.get_properties())
+        return self.driver.submit()
+
+    def set_confidence(self, edge, confidence):
+        self.driver.set_edge(edge, {p_confidence: confidence})
+        return self.driver.submit()
+
+    def node_query(self, n=[], **kwargs):
+        return self.driver.node_query(n, graph_name=self.name, **kwargs)
+
+    def edge_query(self, n=None, v=None, e=None, threshold=0, **kwargs):
+        n = self._add_node_gn(n)
+        v = self._add_node_gn(v)
+        return [e for e in self.driver.edge_query(n=n, v=v, e=e,
+                                                  e_props=self._np,
+                                                  **kwargs)
+                if int(e[p_confidence]) >= threshold]
+
+    def export(self, out_name):
+        res = self.driver.export(self.name)
+        res_l = []
+        for r in res.splitlines():
+            res_l.append(json.loads(r))
+        with open(out_name, 'w') as f:
+            json.dump(res_l, f)
+        return out_name
+
+    def load(self, fn):
+        def _node(ele):
+            k, t = self.driver.derive_key_type(ele["labels"])
+            iden = ele["id"]
+            if "properties" in ele:
+                props = ele["properties"]
+            else:
+                props = self._np
+            return Node(k, t, id=iden, **props)
+        data = []
+        with open(fn) as f:
+            # Weirdness its always 1 line.
+            for line in f:
+                data = json.loads(line)
+        for d in data:
+            if d["type"] == "relationship":
+                n = _node(d["start"])
+                v = _node(d["end"])
+                t = d["label"]
+                props = d["properties"]
+                iden = d["id"]
+                self.driver.add_edge(n, v, t, id=iden, **props)
+            elif d["type"] == "node":
+                self.driver.add_node(_node(d))
+            else:
+                raise ValueError(f'{d["type"]} isnt known.')
         self.driver.submit()
 
-    def _upper_threshold_map(self,edge):
-        ids = model.identifiers
-        tm = {str(ids.external.synonym) : self._upper_threshold_synonym,
-             str(ids.external.type) : self._upper_threshold_type}
-        if edge.get_type() in tm:
-            tm[edge.get_type()](edge)
+    def _seed_graph(self):
+        # TODO: Add some initial data into graph.
+        pass
 
-    def _upper_threshold_type(self,edge):
-        pcc = model.get_class_code(edge.n.get_type())
-        if model.is_derived(edge.v.get_type(),pcc):
-            self.driver.remove_edge(edge)
-            if len(self._edge_query(n=edge.v,directed=False)) == 1:
-                self.driver.remove_node(edge.v,True)
-            self.driver.add_node_label(edge.n,edge.v.get_key())
-            self.driver.submit()
-        else:
-            print(f"""WARN:: {edge} has been tagged as reaching threshold. 
-            However, {edge.v.get_type()} & {edge.n.get_type()} are exclusive tags.""")
+    def _node_query(self, n=None, **kwargs):
+        if None in self.name:
+            return []
+        return self.driver.node_query(n, graph_name=self.name, **kwargs)
 
-    def _upper_threshold_synonym(self,edge):
-        self.driver.merge_nodes(edge)
-        
-    def _add_gn(self,edge):
-        gnd = {"graph_name" : self.name}
+    def _edge_query(self, n=None, e=None, v=None, **kwargs):
+        if None in self.name:
+            return []
+        props = {"graph_name": self.name}
+        return self.driver.edge_query(n=n, v=v, e=e, e_props=props, n_props=props, v_props=props, **kwargs)
+
+    def _add_edge_gn(self, edge):
+        gnd = self._np
         edge.n.update(gnd)
         edge.v.update(gnd)
         edge.update(gnd)
         return edge
 
-    def _edge_query(self,n=None,v=None,e=None,**kwargs):
-        return self.driver.edge_query(n=n,v=v,e=e,e_props={"graph_name":self.name},**kwargs)        
+    def _add_node_gn(self, node):
+        if node is not None:
+            gnd = self._np
+            node.update(gnd)
+            return node
+        return None
 
-     
+
+def _get_name(subject):
+    split_subject = _split(subject)
+    if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
+        return split_subject[-2]
+    elif len(split_subject[-1]) == 3 and _isfloat(split_subject[-1]):
+        return split_subject[-2]
+    else:
+        return split_subject[-1]
+
+
+def _split(uri):
+    return re.split('#|\/|:', uri)
+
+
+def _isfloat(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False

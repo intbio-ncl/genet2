@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone"/>
+    <sbol:displayId>BBF10K_003498_backbone</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:description>synthetic DNA</dcterms:description>
+    <genbank:molecule>ds-DNA</genbank:molecule>
+    <genbank:locus>BBF10K_003498_backbone</genbank:locus>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+    <genbank:date>09-JAN-2022</genbank:date>
+    <genbank:division>SYN</genbank:division>
+    <genbank:organism>synthetic DNA construct</genbank:organism>
+    <genbank:source>synthetic DNA construct</genbank:source>
+    <sbol:type rdf:resource="http://identifiers.org/so/SO:0000987"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation0/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation0"/>
+        <sbol:displayId>annotation0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>synthetic DNA construct</dcterms:title>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:mol_type>other DNA</gbconv:mol_type>
+        <gbconv:organism>synthetic DNA construct</gbconv:organism>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation0/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation0/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>2001</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0002206"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation1"/>
+        <sbol:displayId>annotation1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>T7 terminator</dcterms:title>
+        <gbconv:label>T7 terminator</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:note>transcription terminator for bacteriophage T7 RNA polymerase</gbconv:note>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation1/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation1/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>38</sbol:start>
+            <sbol:end>85</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation2"/>
+        <sbol:displayId>annotation2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>M13 rev</dcterms:title>
+        <gbconv:label>M13 rev</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:note>common sequencing primer, one of multiple similar variants</gbconv:note>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation2/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation2/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>90</sbol:start>
+            <sbol:end>106</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#reverseComplement"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005850"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation3"/>
+        <sbol:displayId>annotation3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>ori</dcterms:title>
+        <gbconv:direction>LEFT</gbconv:direction>
+        <gbconv:label>ori</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:note>high-copy-number ColE1/pMB1/pBR322/pUC origin of replication</gbconv:note>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation3/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation3/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>173</sbol:start>
+            <sbol:end>761</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#reverseComplement"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000296"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation4"/>
+        <sbol:displayId>annotation4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>AmpR</dcterms:title>
+        <gbconv:translation>MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGYIELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVEYSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRWEPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGASLIKHW</gbconv:translation>
+        <gbconv:label>AmpR</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:codon_start>1</gbconv:codon_start>
+        <gbconv:gene>bla</gbconv:gene>
+        <gbconv:note>confers resistance to ampicillin, carbenicillin, and related antibiotics</gbconv:note>
+        <gbconv:product>beta-lactamase</gbconv:product>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation4/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation4/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>952</sbol:start>
+            <sbol:end>1812</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#reverseComplement"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation5/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation5"/>
+        <sbol:displayId>annotation5</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>AmpR promoter</dcterms:title>
+        <gbconv:label>AmpR promoter</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:gene>bla</gbconv:gene>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation5/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation5/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>1813</sbol:start>
+            <sbol:end>1917</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#reverseComplement"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation6/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation6"/>
+        <sbol:displayId>annotation6</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>M13 fwd</dcterms:title>
+        <gbconv:label>M13 fwd</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:note>common sequencing primer, one of multiple similar variants</gbconv:note>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation6/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation6/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>1933</sbol:start>
+            <sbol:end>1949</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005850"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation7/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation7"/>
+        <sbol:displayId>annotation7</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>tonB terminator</dcterms:title>
+        <gbconv:label>tonB terminator</gbconv:label>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+        <gbconv:note>bidirectional E. coli tonB-P14 transcription terminator</gbconv:note>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation7/range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/annotation7/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone/1"/>
+            <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+            <sbol:start>1950</sbol:start>
+            <sbol:end>1981</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone_seq/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone_seq/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone_seq"/>
+    <sbol:displayId>BBF10K_003498_backbone_seq</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/free_genes_feature_libraries/BBF10K_003498_backbone_seq/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/nroehner"/>
+    <sbol:elements>cgctgaggtgtcaatcgtcggagccgctgagcaataactagcataaccccttggggcctctaaacgggtcttgaggggttttttgcatggtcatagctgtttcctgagagcttggcaggtgatgacacacattaacaaatttcgtgaggagtctccagaagaatgccattaatttccataggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagaacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaaggcctactattagcaacaacgatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagttaccaatgcttaatcagtgaggcacctatctcagcgatctgtctatttcgttcatccatagttgcctgactccccgtcgtgtagataactacgatacgggagggcttaccatctggccccagtgctgcaatgataccgcgagaaccacgctcaccggctccagatttatcagcaataaaccagccagccggaagggccgagcgcagaagtggtcctgcaactttatccgcctccatccagtctattaattgttgccgggaagctagagtaagtagttcgccagttaatagtttgcgcaacgttgttgccattgctacaggcatcgtggtgtcacgctcgtcgtttggtatggcttcattcagctccggttcccaacgatcaaggcgagttacatgatcccccatgttgtgcaaaaaagcggttagctccttcggtcctccgatcgttgtcagaagtaagttggccgcagtgttatcactcatggttatggcagcactgcataattctcttactgtcatgccatccgtaagatgcttttctgtgactggtgagtactcaaccaagtcattctgagaatagtgtatgcggcgaccgagttgctcttgcccggcgtcaatacgggataataccgcgccacatagcagaactttaaaagtgctcatcattggaaaacgttcttcggggcgaaaactctcaaggatcttaccgctgttgagatccagttcgatgtaacccactcgtgcacccaactgatcttcagcatcttttactttcaccagcgtttctgggtgagcaaaaacaggaaggcaaaatgccgcaaaaaagggaataagggcgacacggaaatgttgaatactcatactcttcctttttcaatattattgaagcatttatcagggttattgtctcatgagcggatacatatttgaatgtatttagaaaaataaacaaataggggttccgcgcacctgcaccagtcagtaaaacgacggccagtagtcaaaagcctccgaccggaggcttttgacttggttcaggtggagtgggag</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>

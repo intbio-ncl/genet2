@@ -1,8 +1,9 @@
 import re
-from rdflib import URIRef
+from rdflib import URIRef,DCTERMS
 from app.visualiser.builder.design import DesignBuilder
 from app.graph.utility.model.model import model
-
+from app.enhancer.enhancer import Enhancer
+from app.graph.utility.graph_objects.node import Node
 from app.visualiser.builder.builders.editor.hierarchy import EditorHierarchyViewBuilder
 from app.visualiser.builder.builders.editor.interaction import EditorInteractionViewBuilder
 from app.visualiser.builder.builders.editor.interaction_genetic import EditorInteractionGeneticViewBuilder
@@ -14,6 +15,7 @@ from app.visualiser.builder.builders.editor.full import EditorFullViewBuilder
 class EditorBuilder(DesignBuilder):
     def __init__(self, graph):
         super().__init__(graph)
+        self._enhancer = Enhancer(self._graph)
 
     def set_full_view(self):
         self._view_builder = EditorFullViewBuilder(self._dg)
@@ -112,6 +114,18 @@ class EditorBuilder(DesignBuilder):
     def get_view_edge_types(self):
         return [str(s) for s in self._view_builder.get_edge_types()]
 
+    def get_standardised_nodes(self,key,type,sequence,description):
+        gn = self.get_loaded_design_names()
+        props = {"graph_name" : gn,
+                "name":_get_name(key)}
+        if sequence is not None:
+            props[model.identifiers.predicates.has_sequence] = sequence
+        if description is not None:
+            props[DCTERMS.description] = description
+
+        entity = Node(key,type,**props)
+        return self._enhancer.canonicalise_entity(entity,gn,mode="manual")
+
     def add_edges(self, n, v, e):
         # To reduce number of queries to server.
         all_nodes = []
@@ -130,8 +144,8 @@ class EditorBuilder(DesignBuilder):
         if len(edges) > 0:
             self._dg.add_edges(edges)
 
-    def add_node(self, key, type):
-        self._dg.add_node(key, type, name=_get_name(key))
+    def add_node(self, key, type,**kwargs):
+        self._dg.add_node(key, type, name=_get_name(key),**kwargs)
 
     def _add_props(self,node):
         node.update({"name" :_get_name(node.get_key()),

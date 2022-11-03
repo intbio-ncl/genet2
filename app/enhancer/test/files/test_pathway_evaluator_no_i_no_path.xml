@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://sbols.org/v2#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://shortbol.org/v2#c2/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#c2"/>
+    <ns1:displayId>c2</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#pr3/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#pr3"/>
+    <ns1:displayId>pr3</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#pr1/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#pr1"/>
+    <ns1:displayId>pr1</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#c4/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#c4"/>
+    <ns1:displayId>c4</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#p2/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#p2"/>
+    <ns1:displayId>p2</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#c3/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#c3"/>
+    <ns1:displayId>c3</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#p1/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#p1"/>
+    <ns1:displayId>p1</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#pr2/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#pr2"/>
+    <ns1:displayId>pr2</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#p3/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#p3"/>
+    <ns1:displayId>p3</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#c1/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#c1"/>
+    <ns1:displayId>c1</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <ns1:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://shortbol.org/v2#pr4/1">
+    <rdf:type rdf:resource="http://sbols.org/v2#ComponentDefinition"/>
+    <ns1:persistentIdentity rdf:resource="http://shortbol.org/v2#pr4"/>
+    <ns1:displayId>pr4</ns1:displayId>
+    <ns1:version rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</ns1:version>
+    <ns1:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </rdf:Description>
+</rdf:RDF>

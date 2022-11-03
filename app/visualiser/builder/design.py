@@ -48,6 +48,9 @@ class DesignBuilder(AbstractBuilder):
 
     def get_design_names(self):
         return self._graph.get_design_names()
+
+    def get_loaded_design_names(self):
+        return self._dg.name
     
     def get_load_predicates(self):
         return predicates.keys()
@@ -56,7 +59,7 @@ class DesignBuilder(AbstractBuilder):
         if load_predicate not in predicates:
             raise ValueError(f'{load_predicate} not valid load predicate, choices are: {str(predicates.keys())}')
         self.set_design(self._graph.get_design(names,predicates[load_predicate]))
-    
+        
     def set_design(self,design):
         self._dg = design
         self._view_builder.set_graph(design)

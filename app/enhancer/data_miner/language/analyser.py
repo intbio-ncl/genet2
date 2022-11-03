@@ -1,73 +1,32 @@
-import rdflib
-
-from graph.knowledge.data_miner.language.utility import LanguageUtil
-from utility.sbol_identifiers import identifiers
+import spacy
+from fuzzywuzzy import fuzz,process
 
 '''
-Sentence Segmenation -> Tokenization -> Part of speech tagging -> Entity Detection     -> Relation Detection
-            Raw Text -> Sentences    -> Tokenized sentences    -> Pos-tagged Sentences -> Chunked Sentences -> Relations
-            String   -> List<String> -> List<List<String>>     -> List<List<Tuple>>    -> List<Tree>        -> List<Tuples> 
+Note this doesn't really work.
+It just returns the subjects of potential sentences.
 '''
-
-'''
-8 Parts of Speech 
-1. NOUN - the name of a person, place, thing, or idea.
-2. PRONOUN - used in place of a noun.
-3. VERB - Expresses action or being.
-4. ADJECTIVE - modifies or describes a noun or pronoun.
-5. ADVERB - modifies or describes a verb, an adjective, or another adverb.
-6. PREPOSITION - placed before a noun or pronoun to form a phrase modifying another word in the sentence.
-7. CONJUNCTION - joins words, phrases, or clauses.
-8. INTERJECTION - used to express emotion.
-'''
-'''
-https://cheatography.com/murenei/cheat-sheets/natural-language-processing-with-python-and-nltk/
-https://cheatography.com/deacondesperado/cheat-sheets/nltk-part-of-speech-tags/
-'''
-
-manual_blacklist = ["bba"]
-descriptor_predicates = [identifiers.predicates.title,
-                        identifiers.predicates.description,
-                        identifiers.predicates.mutable_description,
-                        identifiers.predicates.mutable_notes,
-                        identifiers.predicates.mutable_provenance]
-
-
 class LanguageAnalyser:
     def __init__(self,blacklist_words = [], whitelist_words = []):
-        blacklist_words = []#self._produce_blacklist_words()
-        whitelist_words = []
-        self._util = LanguageUtil(blacklist_words, whitelist_words)
-    
-    def get_aliases(self,texts=[],triples=[]):
-        aliases = []
-        for text in texts:
-            aliases.append(text)
-        for s,p,o in triples:
-            aliases.append(str(o))
-        return aliases
+        self.nlp = spacy.load('en_core_web_sm')
 
-    def get_descriptions(self,texts=[],triples=[]):
-        descriptions = []
-        for text in texts:
-            pass
-        for s,p,o in triples:
-            pass
-        return descriptions
+    def fuzzy_string_match(self,search_term,expected_terms,confidence_threshold=70):
+        if len(expected_terms) == 0:
+            return False
 
-        
+        highest_confidence_score = process.extractOne(search_term, expected_terms,
+                                                      scorer=fuzz.token_sort_ratio)
+        if highest_confidence_score[1] >= confidence_threshold:
+            return True
+        return False
 
-    def _produce_blacklist_words(self):
-        blacklist_words = manual_blacklist.copy()
-        def split_inner(word):
-            return word.lower().split(" ")
+    def get_subjects(self,sentences):
+        subjects = []
+        doc=self.nlp(sentences)
+        for sentence in list(doc.sents):
+            subjects += [str(tok) for tok in sentence if (tok.dep_ == "nsubj") ]
+        return list(set(subjects))
 
-        for c_name in identifiers.external.cd_type_names.values():
-            c_name = split_inner(c_name)
-            blacklist_words = blacklist_words + c_name
-
-        for c_role in identifiers.external.cd_role_dict.values():
-            for role_name in c_role.values():
-                r_name = split_inner(role_name)
-                blacklist_words = blacklist_words + r_name
-        return list(set(blacklist_words))
+    def get_subject(self,sentence):
+        doc=self.nlp(sentence)
+        sub_toks = [tok for tok in doc if (tok.dep_ == "nsubj") ]
+        return sub_toks

@@ -27,13 +27,17 @@ class ProjectBuilder():
     def get_projected_names(self):
         return self._driver.project.names()
 
+    def drop(self,name):
+        self._driver.project.drop(name)
+
     def hierarchy(self,name,direction="NATURAL"):
         e = {self._ids.predicates.has_part:{"orientation" : direction}}
         n = []
-        for edge in self._graph.get_haspart():
+        for edge in self._graph.get_haspart(predicate="ANY"):
             n += [str(edge.n),str(edge.v)]
         n = self._cast(list(set(n)))
-        return self._driver.project.cypher_project(name,n,e)
+        #return self._driver.project.cypher_project(name,n,e)
+        return self._driver.project.project(name,n,e)[0]
 
     def interaction(self,name,direction="DIRECTED",type="bipartite"):
         i_name = ''.join(random.choice(ascii_lowercase) for i in range(10))

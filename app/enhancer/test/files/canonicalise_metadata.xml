@@ -1,0 +1,77 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://purl.org/dc/terms/" xmlns:ns1="http://www.w3.org/ns/prov#" xmlns:ns2="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:ns3="http://shortbol.org/v2#">
+    <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A1/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BO_11239"/>
+    <sbol:displayId>Medium_2016Interlab</sbol:displayId>
+    <ns0:title>Medium_2016Interlab</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A2/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BBa_B0033"/>
+    <ns0:description>Weaker RBS</ns0:description>
+    <sbol:displayId>BBa_B0033</sbol:displayId>
+    <ns0:title>BBa_B0033</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <ns1:wasDerivedFrom rdf:resource="https://synbiohub.org/public/igem/BBa_B0033"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A3/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BO_11239"/>
+    <ns0:description>Weaker RBS</ns0:description>
+    <sbol:displayId>BO_11239</sbol:displayId>
+    <ns0:title>BO_11239</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A4/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BO_11239"/>
+    <sbol:displayId>GenBank_CP003820_Region_1242235_1243067</sbol:displayId>
+    <ns0:title>GenBank_CP003820_Region_1242235_1243067</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A5/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#BO_11239"/>
+    <sbol:displayId>BBF10K_003498_backbone</sbol:displayId>
+    <ns0:title>BBF10K_003498_backbone</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A6/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pSEVA284"/>
+    <sbol:displayId>pSEVA284</sbol:displayId>
+    <ns0:title>pSEVA284</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A7/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#A1_AmtR"/>
+    <sbol:displayId>A1_AmtR</sbol:displayId>
+    <ns0:title>A1_AmtR</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A9/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#v2_circuit_0x01_2_H1_HlyIIR"/>
+    <sbol:displayId>v2_circuit_0x01_2_H1_HlyIIR</sbol:displayId>
+    <ns0:title>v2_circuit_0x01_2_H1_HlyIIR</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#A10/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#CIDAR_000935"/>
+    <sbol:displayId>CIDAR_000935</sbol:displayId>
+    <ns0:title>CIDAR_000935</ns0:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

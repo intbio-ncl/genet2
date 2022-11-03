@@ -1,0 +1,37 @@
+[
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#intermediate_3/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#intermediate_3/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#intermediate_2/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#root1/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#intermediate_3/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#intermediate_2/1",
+        "type": "node"
+    },
+    {
+        "action": "remove",
+        "subject": "http://shortbol.org/v2#root1/1",
+        "type": "node"
+    }
+]

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR"/>
+    <sbol:displayId>v2_circuit_0x01_2_H1_HlyIIR</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <obo:OBI_0001617>27034378</obo:OBI_0001617>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/ECK120033736/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/ECK120033736"/>
+        <sbol:displayId>ECK120033736</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/H1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/H1"/>
+        <sbol:displayId>H1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/pBetI/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/pBetI"/>
+        <sbol:displayId>pBetI</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/HlyIIR/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/HlyIIR"/>
+        <sbol:displayId>HlyIIR</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/RiboJ51/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/RiboJ51"/>
+        <sbol:displayId>RiboJ51</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation0/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation0"/>
+        <sbol:displayId>SequenceAnnotation0</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation0/SequenceAnnotation0_Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation0/SequenceAnnotation0_Range"/>
+            <sbol:displayId>SequenceAnnotation0_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>27034378</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>64</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/pBetI/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation1"/>
+        <sbol:displayId>SequenceAnnotation1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation1/SequenceAnnotation1_Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation1/SequenceAnnotation1_Range"/>
+            <sbol:displayId>SequenceAnnotation1_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>27034378</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+            <sbol:start>65</sbol:start>
+            <sbol:end>144</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/RiboJ51/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation2"/>
+        <sbol:displayId>SequenceAnnotation2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation2/SequenceAnnotation2_Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation2/SequenceAnnotation2_Range"/>
+            <sbol:displayId>SequenceAnnotation2_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>27034378</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+            <sbol:start>145</sbol:start>
+            <sbol:end>154</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/H1/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation3"/>
+        <sbol:displayId>SequenceAnnotation3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation3/SequenceAnnotation3_Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation3/SequenceAnnotation3_Range"/>
+            <sbol:displayId>SequenceAnnotation3_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>27034378</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+            <sbol:start>155</sbol:start>
+            <sbol:end>794</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/HlyIIR/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation4"/>
+        <sbol:displayId>SequenceAnnotation4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation4/SequenceAnnotation4_Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/SequenceAnnotation4/SequenceAnnotation4_Range"/>
+            <sbol:displayId>SequenceAnnotation4_Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>27034378</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+            <sbol:start>795</sbol:start>
+            <sbol:end>848</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/ECK120033736/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint4"/>
+        <sbol:displayId>circuit_0x01_2_H1_HlyIIRConstraint4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/HlyIIR/1"/>
+        <sbol:object rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/ECK120033736/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint3"/>
+        <sbol:displayId>circuit_0x01_2_H1_HlyIIRConstraint3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/H1/1"/>
+        <sbol:object rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/HlyIIR/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint2"/>
+        <sbol:displayId>circuit_0x01_2_H1_HlyIIRConstraint2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/RiboJ51/1"/>
+        <sbol:object rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/H1/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/circuit_0x01_2_H1_HlyIIRConstraint1"/>
+        <sbol:displayId>circuit_0x01_2_H1_HlyIIRConstraint1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <obo:OBI_0001617>27034378</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/pBetI/1"/>
+        <sbol:object rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR/RiboJ51/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736"/>
+    <sbol:displayId>ECK120033736</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>ECK120033736</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1"/>
+    <sbol:displayId>H1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>H1</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR"/>
+    <sbol:displayId>HlyIIR</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>HlyIIR</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51"/>
+    <sbol:displayId>RiboJ51</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>RiboJ51</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000374"/>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI"/>
+    <sbol:displayId>pBetI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>pBetI</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Attachment rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/attachment_00009WRPR2gZAT2e0UjRL6/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/attachment_00009WRPR2gZAT2e0UjRL6"/>
+    <sbol:displayId>attachment_00009WRPR2gZAT2e0UjRL6</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Eco1C1G1T1.UCF.json</dcterms:title>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/attachment_00009WRPR2gZAT2e0UjRL6/1"/>
+    <sbol:source rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/attachment_00009WRPR2gZAT2e0UjRL6/1/download"/>
+    <sbol:format rdf:resource="http://purl.org/NET/mediatypes/text/plain"/>
+    <sbol:size>3253079</sbol:size>
+    <sbol:hash>d1e33a0dc15d437c552825932515d7fc981d01c3</sbol:hash>
+  </sbol:Attachment>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR_sequence"/>
+    <sbol:displayId>v2_circuit_0x01_2_H1_HlyIIR_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <obo:OBI_0001617>27034378</obo:OBI_0001617>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/tramyn"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_VPRGeneration_Paper/v2_circuit_0x01_2_H1_HlyIIR_sequence/1"/>
+    <sbol:elements>AGCGCGGGTGAGAGGgattcgttaccaatagacaATTgATTGGACGTTCAATATAAtgctagcCTGAAGTAGTCACCGGCTGTGCTTGCCGGTCTGATGAGCCTGTGAAGGCGAAACTACCTCTACAAATAATTTTGTTTAAACCCCCGAGATGAAATACATCCTGTTTGAGGTGTGCGAAATGGGTAAAAGCCGTGAACAGACCATGGAAAATATTCTGAAAGCAGCCAAAAAGAAATTCGGCGAACGTGGTTATGAAGGCACCAGCATTCAAGAAATTACCAAAGAAGCCAAAGTTAACGTTGCAATGGCCAGCTATTACTTTAATGGCAAAGAGAACCTGTACTACGAGGTGTTCAAAAAATACGGTCTGGCAAATGAACTGCCGAACTTTCTGGAAAAAAACCAGTTTAATCCGATTAATGCCCTGCGTGAATATCTGACCGTTTTTACCACCCACATTAAAGAAAATCCGGAAATTGGCACCCTGGCCTATGAAGAAATTATCAAAGAAAGCGCACGCCTGGAAAAAATCAAACCGTATTTTATCGGCAGCTTCGAACAGCTGAAAGAAATTCTGCAAGAGGGTGAAAAACAGGGTGTGTTTCACTTTTTTAGCATCAACCATACCATCCATTGGATTACCAGCATTGTTCTGTTTCCGAAATTCAAAAAATTCATCGATAGCCTGGGTCCGAATGAAACCAATGATACCAATCATGAATGGATGCCGGAAGATCTGGTTAGCCGTATTATTAGCGCACTGACCGATAAACCGAACATTTAATAAaacgcatgagAAAGCCCCCGGAAGATCACCTTCCGGGGGCTTTtttattgcgc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736_sequence"/>
+    <sbol:displayId>ECK120033736_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>ECK120033736_sequence</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/ECK120033736_sequence/1"/>
+    <sbol:elements>aacgcatgagAAAGCCCCCGGAAGATCACCTTCCGGGGGCTTTtttattgcgc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1_sequence"/>
+    <sbol:displayId>H1_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>H1_sequence</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/H1_sequence/1"/>
+    <sbol:elements>ACCCCCGAG</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR_sequence"/>
+    <sbol:displayId>HlyIIR_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>HlyIIR_sequence</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/HlyIIR_sequence/1"/>
+    <sbol:elements>ATGAAATACATCCTGTTTGAGGTGTGCGAAATGGGTAAAAGCCGTGAACAGACCATGGAAAATATTCTGAAAGCAGCCAAAAAGAAATTCGGCGAACGTGGTTATGAAGGCACCAGCATTCAAGAAATTACCAAAGAAGCCAAAGTTAACGTTGCAATGGCCAGCTATTACTTTAATGGCAAAGAGAACCTGTACTACGAGGTGTTCAAAAAATACGGTCTGGCAAATGAACTGCCGAACTTTCTGGAAAAAAACCAGTTTAATCCGATTAATGCCCTGCGTGAATATCTGACCGTTTTTACCACCCACATTAAAGAAAATCCGGAAATTGGCACCCTGGCCTATGAAGAAATTATCAAAGAAAGCGCACGCCTGGAAAAAATCAAACCGTATTTTATCGGCAGCTTCGAACAGCTGAAAGAAATTCTGCAAGAGGGTGAAAAACAGGGTGTGTTTCACTTTTTTAGCATCAACCATACCATCCATTGGATTACCAGCATTGTTCTGTTTCCGAAATTCAAAAAATTCATCGATAGCCTGGGTCCGAATGAAACCAATGATACCAATCATGAATGGATGCCGGAAGATCTGGTTAGCCGTATTATTAGCGCACTGACCGATAAACCGAACATTTAA</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51_sequence"/>
+    <sbol:displayId>RiboJ51_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>RiboJ51_sequence</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/RiboJ51_sequence/1"/>
+    <sbol:elements>CTGAAGTAGTCACCGGCTGTGCTTGCCGGTCTGATGAGCCTGTGAAGGCGAAACTACCTCTACAAATAATTTTGTTTAA</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI_sequence"/>
+    <sbol:displayId>pBetI_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <dcterms:title>pBetI_sequence</dcterms:title>
+    <dcterms:created>2018-05-09T19:41:51.056Z</dcterms:created>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/pBetI_sequence/1"/>
+    <sbol:elements>AGCGCGGGTGAGAGGGATTCGTTACCAATTGACAATTGATTGGACGTTCAATATAATGCTAGC</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <prov:Activity rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity"/>
+    <sbol:displayId>CelloUCF2sbol_Activity</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL conversion</dcterms:title>
+    <dcterms:description>Conversion of the Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+    <prov:endedAtTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-09T19:41:51.098Z</prov:endedAtTime>
+    <prov:qualifiedUsage>
+      <prov:Usage rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/UCF_file/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/UCF_file"/>
+        <sbol:displayId>UCF_file</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+        <prov:entity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/attachment_00009WRPR2gZAT2e0UjRL6/1"/>
+      </prov:Usage>
+    </prov:qualifiedUsage>
+    <prov:qualifiedAssociation>
+      <prov:Association rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/association/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/association"/>
+        <sbol:displayId>association</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2sbol_Activity/1"/>
+        <prov:agent rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2SBOL/1"/>
+      </prov:Association>
+    </prov:qualifiedAssociation>
+  </prov:Activity>
+  <prov:Agent rdf:about="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2SBOL/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2SBOL"/>
+    <sbol:displayId>CelloUCF2SBOL</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Cello UCF to SBOL</dcterms:title>
+    <dcterms:description>A script to convert Cello UCF parts and metadata to SBOL 2 documents.</dcterms:description>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/myers"/>
+    <dc:creator>Chris J. Myers</dc:creator>
+    <dc:creator>Prashant Vaidyanathan</dc:creator>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/Cello_Parts/CelloUCF2SBOL/1"/>
+    <dc:source rdf:resource="https://github.com/MyersResearchGroup/UCF2SBOL"/>
+  </prov:Agent>
+</rdf:RDF>

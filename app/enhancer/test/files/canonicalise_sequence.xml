@@ -1,0 +1,18 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://purl.org/dc/terms/" xmlns:ns1="http://www.w3.org/ns/prov#" xmlns:ns2="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:ns3="http://shortbol.org/v2#">
+    <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#unknown_uri/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#unknown_uri"/>
+    <sbol:displayId>unknown_uri</sbol:displayId>
+    <ns3:title>unknown_uri</ns3:title>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:sequence rdf:resource="http://shortbol.org/v2#unknown_uri_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://shortbol.org/v2#unknown_uri_sequence/1">
+    <sbol:displayId>unknown_uri_sequence</sbol:displayId>
+    <sbol:elements>ttgacggctagctcagtcctaggtacagtgctagc</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#unknown_uri_sequence"/>
+  </sbol:Sequence>
+</rdf:RDF>

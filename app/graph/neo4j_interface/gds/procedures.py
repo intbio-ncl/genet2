@@ -1,4 +1,5 @@
 from graphdatascience.graph.graph_object import Graph
+from neo4j.graph import Node as NeoNode
 from app.graph.utility.graph_objects.node import Node
 from app.graph.neo4j_interface.gds.query_builder import GDSQueryBuilder
 
@@ -241,7 +242,7 @@ class Similarity:
         for r in res.iterrows():
             row = {}
             for k,v in r[1].items():
-                if k == "node":
+                if isinstance(v,NeoNode):
                     v = self._interface.labels_to_node(v.labels)
                 row[k] = v
 
@@ -318,7 +319,7 @@ class PathFinding:
         res = self._interface.driver.run_cypher(qry)
         return self._normalise_sp(res)
 
-    def dfs(self, name, source, dest, mode="stream"):
+    def dfs(self, name, source, dest=None, mode="stream"):
         name = _normalise_gn(name)
         qry = self._qry_builder.dfs(name, source, dest, mode)
         res = self._interface.driver.run_cypher(qry)
@@ -338,7 +339,7 @@ class PathFinding:
         return paths
 
 
-    def bfs(self, name, source, dest, mode="stream"):
+    def bfs(self, name, source, dest=None, mode="stream"):
         name = _normalise_gn(name)
         qry = self._qry_builder.bfs(name, source, dest, mode)
         res = self._interface.driver.run_cypher(qry)

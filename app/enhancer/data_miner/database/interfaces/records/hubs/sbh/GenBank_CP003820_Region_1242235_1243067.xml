@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067"/>
+    <sbol:displayId>GenBank_CP003820_Region_1242235_1243067</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/1"/>
+    <dcterms:title>ACT1</dcterms:title>
+    <dcterms:description>Organism: Cryptococcus neoformans var. grubii H99 (Cryptococcus neoformans serotype A)</dcterms:description>
+    <dcterms:modified>2022-06-21T02:04:04</dcterms:modified>
+    <sbh:mutableProvenance>Plasmid&lt;a href=&quot;https://www.addgene.org/128355/&quot;&gt; pSDMA66 (#12835)&lt;/a&gt;
+GenBank: &lt;a href=&quot;https://www.ncbi.nlm.nih.gov/nucleotide/CP003820.1?report=genbank&amp;log$=nuclalign&amp;blast_rank=4&amp;RID=ATAXAU7H016&amp;from=1242235&amp;to=1243067&quot;&gt; CP003820 Region: 1242235..12430676&lt;/a&gt;</sbh:mutableProvenance>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/sophia"/>
+    <sbh:mutableDescription>   This is actin&apos;s promoter.</sbh:mutableDescription>
+    <sbh:mutableNotes> The plasmid pSDMA66 (#128355) sequence has an A in position 84, and the chromosome sequence has a G. We used the last one.</sbh:mutableNotes>
+    <obo:OBI_0001617>27711143</obo:OBI_0001617>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067Sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067Sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067Sequence"/>
+    <sbol:displayId>GenBank_CP003820_Region_1242235_1243067Sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/1"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067Sequence/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/sophia"/>
+    <sbol:elements>gctgcgaggatgtgagctggagagcggcgcacgggaaggggaggactcacataagcatgcaggattcgagtggcatggtgtgcgctgagtgtatggttgtcggaggagaggatgatggtaacaacaatagcagcaacgtcactcgacgcgcgtccggtgtgccacacggggtaacgccgagtcgccgtcagggtcgccgagaccactctcacagcgtcaccgttggcaccagctcagcttacagcttctatcctccgccagcatccacatacatcccctataccgcatcccccacccactgcccaaggtgagtcatcttcccgcccccttcccttgcccgccactcagtcctccatcctccactaatccaccttatcgcacccaccgcctatcgcacatccgagcacaatgctgggcctgccaggggctgctagatggtgctctccccacgctgatctgcatgccggccattggatcatgggtgctaggtgctgggtgctggatgttggatgctggatgctgggtgcacgcttggtcatttccttccaggattgacggtcgccgagaggacgacgtggcgttcgacaacgagggccgatagcaccgcatcgcctcgacctgcatccatctcgccttgtccttttggtgcaacaatccatccgtgctggtgccacacgcatagctggaagagatggatgtgcgttgaacagagctgccgtcaggactttttggtgcacggaccctattgtcctccccaatcttcaccgcgtctcctaatatgcagcctctttgctaattgtctttttccattagtaaactcgcccaacatgtct</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <prov:Activity rdf:about="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity"/>
+    <sbol:displayId>GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/sophia"/>
+    <dc:creator>Sophia Garcia de Resende</dc:creator>
+    <prov:endedAtTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-11-01T03:55:50.845Z</prov:endedAtTime>
+    <prov:qualifiedAssociation>
+      <prov:Association rdf:about="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/Association/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/Association"/>
+        <sbol:displayId>Association</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/CnDatabase/GenBank_CP003820_Region_1242235_1243067_SBOLDesignerActivity/1"/>
+        <sbh:ownedBy rdf:resource="https://synbiohub.org/user/sophia"/>
+        <prov:agent rdf:resource="https://synbiohub.org/public/SBOL_Software/SBOLDesigner/3.1"/>
+        <prov:hadRole rdf:resource="http://sbols.org/v2#sequenceEditor"/>
+      </prov:Association>
+    </prov:qualifiedAssociation>
+  </prov:Activity>
+  <prov:Agent rdf:about="https://synbiohub.org/public/SBOL_Software/SBOLDesigner/3.1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/SBOL_Software/SBOLDesigner"/>
+    <sbol:displayId>SBOLDesigner</sbol:displayId>
+    <sbol:version>3.1</sbol:version>
+    <dcterms:title>SBOLDesigner CAD Tool</dcterms:title>
+    <dcterms:description>SBOLDesigner is a simple, biologist-friendly CAD software tool for creating and manipulating the sequences of genetic constructs using the Synthetic Biology Open Language (SBOL) 2 data model. Throughout the design process, SBOL Visual symbols, a system of schematic glyphs, provide standardized visualizations of individual parts. SBOLDesigner completes a workflow for users of genetic design automation tools. It combines a simple user interface with the power of the SBOL standard and serves as a launchpad for more detailed designs involving simulations and experiments. Some new features in SBOLDesigner are the ability to add variant collections to combinatorial derivations, enumerating those collections, and the ability to view sequence features hierarchically. There are also some small changes to the way that preferences work in regards to saving a design with incomplete sequences.</dcterms:description>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/SBOL_Software/SBOLDesigner/3.1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <dc:creator>Samuel Bridge</dc:creator>
+    <dc:creator>Chris Myers</dc:creator>
+    <dc:creator>Michal Galdzicki</dc:creator>
+    <dc:creator>Michael Zhang</dc:creator>
+    <dc:creator>John Gennari</dc:creator>
+    <dc:creator>Sean Sleight</dc:creator>
+    <dc:creator>Bryan Bartley</dc:creator>
+    <dc:creator>Evren Sirin</dc:creator>
+  </prov:Agent>
+</rdf:RDF>
