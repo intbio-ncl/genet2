@@ -74,6 +74,7 @@ def modify_graph():
     upload_graph = forms.UploadGraphForm()
     paste_graph = forms.PasteGraphForm()
     sbh_graph = forms.SynbioGraphForm()
+    enhance_tg = forms.EnhanceTruthGraphForm()
     d_names = graph.get_design_names()
     remove_graph = forms.add_remove_graph_form(d_names)
     export_graph = forms.add_export_graph_form(d_names)
@@ -127,13 +128,16 @@ def modify_graph():
                 graph.driver.project.drop(n)
         else:
             graph.driver.project.drop(n)
+    elif enhance_tg.validate_on_submit():
+        enhancer.expand_truth_graph()
+        pass
     if add_graph_fn is not None:
         if g_name == "":
             g_name = add_graph_fn.split(os.path.sep)[-1].split(".")[0]
         return _add_graph(add_graph_fn, g_name,ft)
 
     return render_template('modify_graph.html', upload_graph=upload_graph,
-                           paste_graph=paste_graph, sbh_graph=sbh_graph,
+                           paste_graph=paste_graph, sbh_graph=sbh_graph,enhance_truth_graph=enhance_tg,
                            remove_graph=remove_graph, drop_projection=drop_projection,
                            export_graph=export_graph, err_string=err_string, success_str=success_str)
 

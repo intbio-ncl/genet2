@@ -176,7 +176,6 @@ class EditorDash(AbstractDash):
             n_seq = None if n_seq == "" else n_seq
             n_desc = None if n_desc == "" else n_desc
             p,f = self.visualiser.get_standardised_nodes(n_key,n_type,n_seq,n_desc)
-            print("FIN")
             for s,v in p.items():
                 print(s,v)
             data = [{"entity" : n_key, "confidence" : "N/A", "comment" : "Local Name"}] + [{"entity" : s,"confidence" : str(v), "comment" : f[s]} for s,v in p.items()]

@@ -159,3 +159,7 @@ class TestEnhancer(unittest.TestCase):
         self.wg.truth.synonyms.negative(standardised_uri,"unknown_uri")
         self.wg.truth.synonyms.negative(standardised_uri,"unknown_uri")
         dg.drop()
+
+
+    def test_seed_graph(self):
+        self.enhancer.seed_truth_graph()

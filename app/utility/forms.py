@@ -22,6 +22,11 @@ class UploadForm(FlaskForm):
     submit_upload = SubmitField('Submit')
     upload = FileField('Upload File', validators=[validators.InputRequired()])
 
+class EnhanceTruthGraphForm(FlaskForm):
+    class Meta:
+        csrf = False
+    e_submit = SubmitField('Run')
+
 
 class PasteForm(FlaskForm):
     class Meta:
@@ -44,7 +49,6 @@ class UploadGraphForm(UploadDesignForm):
     class Meta:
         csrf = False
     graph_name = TextAreaField('Graph Name (Optional)')
-
 
 class PasteGraphForm(PasteForm):
     class Meta:

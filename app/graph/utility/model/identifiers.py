@@ -69,6 +69,7 @@ class External:
         self.type = RDF.type
         self.confidence = URIRef("http://purl.obolibrary.org/obo/NCIT_C49020")
         self.synonym = URIRef("http://purl.obolibrary.org/obo/NCIT_C52469")
+        self.similar_to = URIRef("http://semanticscience.org/resource/CHEMINF_000481")
         self.description = URIRef("http://purl.org/dc/terms/description")
 
 

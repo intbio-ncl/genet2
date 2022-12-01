@@ -5,7 +5,7 @@
         <h1>Admin Panel</h1>
     </div>
     <br>
-    <div class="row">
+    <div class="row gy-5">
         {% if err_string%}
         <h5>
             <font color="red">ERROR: </font><br>{{err_string}}
@@ -15,7 +15,7 @@
         <h5>{{success_str}}</h5>
         {% endif %}
         {% if upload_graph %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <div class="card-body">
                     <h2>Add New Graph</h2>
@@ -61,7 +61,7 @@
                             </form>
                         </div>
                         {% endif %}
-        
+
                         {% if paste_graph %}
                         <div id="submit_paste_graph">
                             <form action="" method="post" enctype="multipart/form-data">
@@ -77,18 +77,18 @@
                                     {{ paste_graph.file_type.label(for="file_type") }}
                                     {{ paste_graph.file_type(class="form-control") }}
                                     <br>
-                                <div class="form-group">
-                                    {{ upload_graph.graph_name.label(for="graph_name") }}
-                                    {{ upload_graph.graph_name(class="form-control") }}
-                                    <br>
-                                </div>
+                                    <div class="form-group">
+                                        {{ upload_graph.graph_name.label(for="graph_name") }}
+                                        {{ upload_graph.graph_name(class="form-control") }}
+                                        <br>
+                                    </div>
                                 </div>
                                 {{ paste_graph.submit_paste(class="btn btn-secondary") }}
                                 <br><br>
                             </form>
                         </div>
                         {% endif %}
-        
+
                         {% if sbh_graph %}
                         <div id="submit_sbh_graph">
                             <form action="" method="post" enctype="multipart/form-data">
@@ -109,7 +109,7 @@
                             </form>
                         </div>
                         {% endif %}
-        
+
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
         {% endif %}
 
         {% if remove_graph %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <h2>Remove Graph</h2>
                 <div class="card-body">
@@ -136,9 +136,9 @@
             </div>
         </div>
         {% endif %}
-        
+
         {% if drop_projection %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <h2>Drop Projections</h2>
                 <div class="card-body">
@@ -157,8 +157,9 @@
             </div>
         </div>
         {% endif %}
+        
         {% if export_graph %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <h2>Export Graph</h2>
                 <div class="card-body">
@@ -171,6 +172,21 @@
                                 <br>
                             </div>
                             {{ export_graph.export(class="btn btn-secondary") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if enhance_truth_graph %}
+        <div class="col-md-6">
+            <div class="card search-result">
+                <h2>Enhance Truth Graph</h2>
+                <div class="card-body">
+                    <div id="drop_projection">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {{ enhance_truth_graph.hidden_tag() }}
+                            {{ enhance_truth_graph.e_submit(class="btn btn-secondary") }}
                         </form>
                     </div>
                 </div>
@@ -209,7 +225,7 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        {% endif %}
+    </div>
+</div>
+{% endif %}
 {% endblock %}

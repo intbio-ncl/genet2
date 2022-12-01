@@ -49,5 +49,9 @@ class WorldGraph:
     def get_truth(self,edge,threshold=None):
         return self.truth.get(edge,threshold=threshold)
 
+    def drop_truth_graph(self):
+        self.truth.drop()
+
+        
     def get_projected_names(self):
         return self.driver.project.names()

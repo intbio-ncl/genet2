@@ -62,6 +62,7 @@ class Canonicaliser:
 
         return replacements,feedback
 
+
     def entity(self,entity,graph_name,mode="automated"):
         dg = self._wg.get_design(graph_name)
         subjects = {}
@@ -86,6 +87,7 @@ class Canonicaliser:
                 return subjects,fback
         return subjects,{}
 
+
     def get_absolute_references(self,entity):
         name = entity.name
         record = self._miner.get_external(name)
@@ -105,7 +107,8 @@ class Canonicaliser:
             descriptions = entity.description
             return self._miner.mine_explicit_reference(descriptions)
         return None
-        
+
+
     def get_potential_references(self,entity):
         name = entity.name
         e_type = entity.get_type()
@@ -153,6 +156,12 @@ class Canonicaliser:
             dg.replace_label(str(old),str(new))
         return replacements
 
+
+    def truth_graph(self):
+        pes = self._tg.get_physcial_entities()
+        while len(pes) > 0:
+            subject = pes.pop(0)
+            pass
 
     def _post_rank(self,entity,potentials,dg,parent=None):
         '''

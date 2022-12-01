@@ -31,7 +31,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
         DatabaseInterface.__init__(self, record_storage)
         self._query_builder = QueryBuilder()
 
-    def get(self,identifier,prune=False):
+    def get(self,identifier,prune=False,timeout=10):
         name = self._get_name(identifier)
         expected_fn = os.path.join(self.record_storage,name + ".xml")
         if os.path.isfile(expected_fn):
@@ -47,7 +47,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
             identifier = identifier[0]
         identifier = identifier + "/sbol"
         try:
-            r = requests.get(identifier,timeout=10)
+            r = requests.get(identifier,timeout=timeout)
         except (ConnectionError,ReadTimeout):
             print(f"WARN:: GET request for {identifier} timed out.")
             return
@@ -89,7 +89,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
             print(f'Warn: Partial Sequence match not working on Synbiohub '+
                 f'(https://github.com/SynBioHub/synbiohub/issues/1507)')
             return None
-        get_uri = f'{self.base}search/globalsequence={sequence}&id={str(similarity)}&'
+        get_uri = f'{self.base}search/sequence={sequence}&id={str(similarity)}&'
         try:
             r = requests.get(get_uri,timeout=50,
                             headers={'Accept': 'text/plain'})

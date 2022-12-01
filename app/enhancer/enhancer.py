@@ -1,6 +1,7 @@
 from app.enhancer.data_miner.data_miner import DataMiner
 from app.enhancer.canonicaliser.canonicaliser import Canonicaliser
 from app.enhancer.evaluator.evaluator import Evaluator
+from app.enhancer.enhancements.enhancements import Enhancements
 
 class Enhancer:
     def __init__(self,graph):
@@ -8,7 +9,7 @@ class Enhancer:
         self._miner = DataMiner()
         self._canonicaliser = Canonicaliser(self._graph,self._miner)
         self._evaluator = Evaluator(self._graph,self._miner)
-        self._pipelines = {}
+        self._enhancements = Enhancements(self._graph,self._miner)
 
     def evaluate_design(self,graph_name,flatten=False):
         return self._evaluator.evaluate(graph_name,flatten=flatten)
@@ -53,4 +54,21 @@ class Enhancer:
     def enhance_design(self,graph_name,mode="automated",pipeline=None):
         return [],{}
 
+
+    def seed_truth_graph(self):
+        '''
+        Keep it seperate because it should only need to be loaded once ever.
+        '''
+        from app.enhancer.seeder import seeder
+        seeder.truth_graph(self._graph.truth,self._miner)
+    
+
+    def expand_truth_graph(self):
+        '''
+        Performs an iteration over the truth graph to find enhancements internally.
+        '''
+        self._enhancements.enhance(self._graph.truth.name)
+        #self._canonicaliser.truth_graph()
+
+        pass
 

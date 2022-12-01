@@ -15,9 +15,9 @@ class DatabaseUtility:
                                  "genbank"   : GenBankInterface()}
         atexit.register(self._remove_records)
 
-    def get(self,id,db_name):
+    def get(self,id,db_name,timeout=10):
         try:
-            record = self.db_mapping_calls[db_name].get(id)
+            record = self.db_mapping_calls[db_name].get(id,timeout=timeout)
             return record
         except (HTTPError,ValueError,KeyError):
             return None

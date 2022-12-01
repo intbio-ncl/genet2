@@ -7,13 +7,18 @@ class DatabaseHandler:
         for k,v in self._db_util.db_mapping_calls.items():
             setattr(DatabaseHandler, k, k)
         
-    def get(self,identity):
+    def get(self,identity,timeout=10,db_name=None):
         if identity in blacklist_inputs:
             return None
         if str.isdigit(identity):
             return None
-        for db in self._get_potential_db_names(identity):
-            record = self._db_util.get(identity,db_name=db)
+        if db_name is not None:
+            dbs = [db_name]
+        else:
+            dbs = self._get_potential_db_names(identity)
+
+        for db in dbs:
+            record = self._db_util.get(identity,db_name=db,timeout=timeout)
             if record is not None:
                 return record
         return None
@@ -39,8 +44,12 @@ class DatabaseHandler:
                 return True
         return False
 
-    def sequence_search(self,seqeunce,similarity=None):
-        for db in self._db_util.db_mapping_calls.keys():
+    def sequence_search(self,seqeunce,similarity=None,db_name=None):
+        if db_name is not None:
+            dbs = [db_name]
+        else:
+            dbs = self._db_util.db_mapping_calls.keys()
+        for db in dbs:
             s = self._db_util.sequence(seqeunce,db,similarity=similarity)
             if s is not None and len(s) > 0:
                 return s

@@ -18,8 +18,8 @@ class DataMiner:
     def is_reference(self,uri):
         return self._database.is_record(uri)
 
-    def get_external(self,name):
-        return self._database.get(name)
+    def get_external(self,name,timeout=10,db_name=None):
+        return self._database.get(name,timeout=timeout,db_name=db_name)
     
     def get_graph_subject(self,graph,fragments=None):
         return self._graph_analyser.get_subject(graph,fragments)
@@ -30,12 +30,11 @@ class DataMiner:
     def get_descriptors(self,descriptions):
         return self._language.get_subjects(descriptions)
 
-    def full_sequence_match(self,sequence):
-        matches = self._database.sequence_search(sequence)
+    def full_sequence_match(self,sequence,db_name=None):
+        matches = self._database.sequence_search(sequence,db_name=db_name)
         if matches is None:
             return None
         if len(matches) == 1:
-            print(matches)
             return list(matches.keys())[0]
         # When a part has multiple names of 
         # is referenced in multiple records.

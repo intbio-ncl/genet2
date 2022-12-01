@@ -31,7 +31,16 @@ class AbstractModule(ABC):
     
     def upper_threshold(self):
         pass
-
+    
+    def _cast_edge(self,edge):
+        n = self._cast_node(edge.n)
+        v = self._cast_node(edge.v)
+        edge.n = n
+        edge.v = v
+        edge.properties["graph_name"] = self._tg.name
+        edge.graph_name = self._tg.name
+        return edge
+        
     def _cast_node(self,subject):
         if not isinstance(subject,Node):
             subject = Node(subject)
@@ -95,21 +104,3 @@ class AbstractModule(ABC):
             r.update({confidence : c_val})
             setattr(r,"confidence",c_val)
         return res
-
-    '''
-    I am unsure if these are needed. 
-    def _upper_threshold_type(self,edge):
-        pcc = model.get_class_code(edge.n.get_type())
-        if model.is_derived(edge.v.get_type(),pcc):
-            self.driver.remove_edge(edge)
-            if len(self._edge_query(n=edge.v,directed=False)) == 1:
-                self.driver.remove_node(edge.v,True)
-            self.driver.add_node_label(edge.n,edge.v.get_key())
-            self.driver.submit()
-        else:
-            print(f"""WARN:: {edge} has been tagged as reaching threshold. 
-            However, {edge.v.get_type()} & {edge.n.get_type()} are exclusive tags.""")
-
-    def _upper_threshold_synonym(self,edge):
-        self.driver.merge_nodes(edge)
-    '''

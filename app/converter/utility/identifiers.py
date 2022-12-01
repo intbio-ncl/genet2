@@ -1,4 +1,4 @@
-from  rdflib import URIRef, RDF
+from  rdflib import URIRef, RDF,DC
 
 class SBOLIdentifiers:
     def __init__(self):
@@ -17,11 +17,12 @@ class Namespace:
 
         self.biopax = URIRef('http://www.biopax.org/release/biopax-level3.owl#')
         self.dc = URIRef('http://purl.org/dc/terms/')
+        self.dc_alt = URIRef("http://purl.org/dc/elements/1.1/")
         self.edam = URIRef('http://edamontology.org/format')
         self.owl = URIRef('http://www.w3.org/2002/07/owl#')
         self.prov = URIRef('http://www.w3.org/ns/prov#')
         self.synbiohub = URIRef('http://wiki.synbiohub.org/wiki/Terms/synbiohub#')
-
+        self.igem = URIRef("http://wiki.synbiohub.org/wiki/Terms/igem#")
         self.prune = ["http://purl.org/dc/elements/1.1/",
                       "http://purl.obolibrary.org/obo/"]
 
@@ -130,7 +131,6 @@ class Predicates:
         self.ownedby = URIRef(self.namespaces.synbiohub + 'ownedBy')
 
         self.created = URIRef(self.namespaces.dc + 'created')
-
         self.was_generated_by = URIRef(self.namespaces.prov + 'wasGeneratedBy') 
         self.ended_at_time = URIRef(self.namespaces.prov + 'endedAtTime')
         self.had_plan = URIRef(self.namespaces.prov + 'hadPlan')
@@ -139,6 +139,23 @@ class Predicates:
         self.qualified_usage = URIRef(self.namespaces.prov + 'qualifiedUsage')
         self.agent = URIRef(self.namespaces.prov + 'agent')
 
+        self.discontinued = URIRef(self.namespaces.igem + 'discontinued')
+        self.star = URIRef(self.namespaces.synbiohub + 'star')
+        self.bookmark = URIRef(self.namespaces.synbiohub + "bookmark")
+        self.modified = URIRef(self.namespaces.dc + "modified")
+        self.owning_group_id = URIRef(self.namespaces.igem + "owning_group_id")
+        self.dominant = URIRef(self.namespaces.igem + "dominant")
+        self.creator = URIRef(self.namespaces.dc_alt + "creator")
+        self.wasDerivedFrom = URIRef(self.namespaces.prov + "wasDerivedFrom")
+        self.m_user_id = URIRef(self.namespaces.igem + "m_user_id")
+        self.group_u_list = URIRef(self.namespaces.igem + "group_u_list")
+        self.owner_id = URIRef(self.namespaces.igem + "owner_id")
+        self.status = URIRef(self.namespaces.igem + "status")
+        self.sampleStatus = URIRef(self.namespaces.igem + "sampleStatus")
+        self.experience = URIRef(self.namespaces.igem + "experience")
+
+        self.synonym = URIRef("http://purl.obolibrary.org/obo/NCIT_C52469")
+        self.similar_to = URIRef("http://semanticscience.org/resource/CHEMINF_000481")
         self.prune = [
             self.display_id,
             self.version,
@@ -195,4 +212,11 @@ class Roles:
 
         self.inline = URIRef(namespaces.sbol + "inline")
         self.reverse = URIRef(namespaces.sbol + "reverseComplement")
+
+        self.igem_promoter = URIRef(namespaces.igem + 'feature/promoter')
+        self.igem_rbs = URIRef(namespaces.igem + 'feature/rbs')
+        self.igem_cds = URIRef(namespaces.igem + 'feature/cds')
+        self.igem_terminator = URIRef(namespaces.igem + 'feature/terminator')
+        self.igem_protein = URIRef(namespaces.igem + 'feature/protein')
+
 identifiers = SBOLIdentifiers()

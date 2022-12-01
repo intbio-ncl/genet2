@@ -20,7 +20,7 @@ class GenBankInterface(DatabaseInterface):
         self.id_codes = [".-","nuccore","ncbi"]
         
 
-    def get(self,identifier):
+    def get(self,identifier,timeout=10):
         if isinstance(identifier,rdflib.URIRef):
             dbs = [self._get_db_name(identifier)]
             identifier = self._get_name(identifier)

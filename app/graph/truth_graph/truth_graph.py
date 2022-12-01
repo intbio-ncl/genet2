@@ -3,6 +3,7 @@ import re
 
 from app.graph.utility.model.model import model
 from app.graph.truth_graph.modules.synonym import SynonymModule
+from app.graph.truth_graph.modules.interaction import InteractionModule
 from app.graph.utility.graph_objects.node import Node
 from app.graph.utility.graph_objects.edge import Edge
 p_confidence = str(model.identifiers.external.confidence)
@@ -13,6 +14,7 @@ class TruthGraph:
     def __init__(self, name, driver):
         self.name = [name]
         self.synonyms = SynonymModule(self)
+        self.interactions = InteractionModule(self)
         self.driver = driver
         self._np = {"graph_name": self.name}
 
@@ -29,6 +31,7 @@ class TruthGraph:
         e.update({p_confidence: modifier})
         self.driver.add_edge(e.n, e.v, e.get_type(), **e.get_properties())
         self.driver.submit()
+        return edge
 
     def add_node(self, node):
         node.update(self._np)
@@ -37,6 +40,7 @@ class TruthGraph:
             node.update({"name": _get_name(node.get_key())})
         self.driver.add_node(node)
         self.driver.submit()
+        return node
 
     def remove_node(self, node):
         node.update(self._np)
@@ -100,10 +104,9 @@ class TruthGraph:
                 raise ValueError(f'{d["type"]} isnt known.')
         self.driver.submit()
 
-    def _seed_graph(self):
-        # TODO: Add some initial data into graph.
-        pass
-
+    def drop(self):
+        self.driver.remove_graph(self.name)
+            
     def _node_query(self, n=None, **kwargs):
         if None in self.name:
             return []

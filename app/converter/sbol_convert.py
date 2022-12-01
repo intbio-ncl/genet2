@@ -5,7 +5,7 @@ from pysbolgraph.SBOL2Graph import SBOL2Graph
 from urllib.parse import urlparse
 
 from app.converter.utility.graph import SBOLGraph
-from app.converter.utility.common import map_to_nv, get_name, _derive_graph_name
+from app.converter.utility.common import map_to_nv, derive_graph_name, get_interaction_properties
 from app.graph.utility.model.model import model as model
 from app.converter.utility.identifiers import identifiers
 from app.utility.change_log.logger import logger
@@ -57,7 +57,7 @@ def convert(filename, neo_graph, graph_name):
     model_roots = model.get_base_class()
     object_type_map = {}
     if graph_name is None or graph_name == "":
-        graph_name = _derive_graph_name(neo_graph)
+        graph_name = derive_graph_name(neo_graph)
 
     def _add_node(name, type=None, props=None):
         properties = _get_properties(name, sbol_graph, graph_name)
@@ -92,7 +92,7 @@ def convert(filename, neo_graph, graph_name):
                  [(nv_role, r) for r in (sbol_graph.get_types(i))])
         s, p, o = map_to_nv(i, roles, model_roots, model)
         n = _add_node(s, o)
-        for s, p, o in _get_interaction_properties(i, o, object_type_map, model, sbol_graph):
+        for s, p, o in get_interaction_properties(i, o, object_type_map, model, sbol_graph):
             if p == RDF.type:
                 s = _add_node(s, o)
             else:
@@ -343,98 +343,12 @@ def _derive_edge_role(o_type):
     otcc = model.get_class_code(o_type)
     return model.get_equivalent_properties(otcc)[0][1]["key"]
 
-def _get_interaction_properties(identity, i_type, object_type_map, m_graph, s_graph):
-    triples = []
-    subject_list = []
-    i_type_c = m_graph.get_class_code(i_type)
-    prop = m_graph.get_class_properties(i_type_c)
-    io_data = _get_io_data(identity, object_type_map, m_graph, s_graph)
-    restrictions = _get_restrictions(i_type_c, m_graph)
-
-    for p, p_data in prop:
-        p_key = p_data["key"]
-        # Ontology - Property references data in NV.
-        if p_key in restrictions.keys():
-            restriction = restrictions[p_key]
-            cur_node = BNode(identity + "/" + get_name(p_key) + "/0")
-            triples.append((identity, p_key, cur_node))
-            for index, (pred, element) in enumerate(restriction):
-                e, e_data = element
-                e_key = e_data["key"]
-                e_id, e_triples = _build_restriction_obj(
-                    identity, pred, e_key, subject_list)
-                subject_list.append(e_id)
-                if index == len(restriction) - 1:
-                    next_node = RDF.nil
-                else:
-                    next_node = BNode(
-                        identity + "/" + get_name(p_key) + "/" + str(index+1))
-                triples.append((cur_node, RDF.first, e_id))
-                triples.append((cur_node, RDF.rest, next_node))
-                triples += e_triples
-                cur_node = next_node
-
-        # SBOL Graph - Property references data in design.
-        else:
-            # Check participant is of correct NV:type
-            r_id, r_data = m_graph.get_range(p)
-            potential_ios = []
-            for r, data in m_graph.get_union(r_id):
-                for r in m_graph.resolve_union(r):
-                    pred, val = r
-                    for io in io_data:
-                        child = URIRef(io[pred])
-                        parent = val[1]["key"]
-                        if (pred in io.keys() and
-                           (child == parent or m_graph.is_derived(child, val[0]))):
-                            potential_ios.append(io)
-            equivalents = m_graph.get_equivalent_properties(p)
-            for io in potential_ios:
-                metadata = io["meta"]
-                for e_id, e_data in equivalents:
-                    if e_data["key"] in metadata:
-                        triples.append((identity, p_key, io["definition"]))
-                        break
-    return triples
-
-def _build_restriction_obj(parent, predicate, value, curr_subjects):
-    if parent[-1].isdigit:
-        parent = parent[:-1]
-    name = URIRef(parent + get_name(value))
-    count = 1
-    while name in curr_subjects:
-        name = URIRef(f'{name}/{count}')
-        count += 1
-    triples = [(name, predicate, value)]
-    return name, triples
-
-def _get_io_data(identity, object_type_map, m_graph, s_graph):
-    # Gets metadata and RDF type for each SBOL: participant (i/o elements).
-    object_data = []
-    for p in s_graph.get_participants(interaction=identity):
-        definition = s_graph.get_definition(s_graph.get_participant(p))
-        object_data.append({"definition": definition,
-                            "meta": [m[-1] for m in s_graph.get_type_role(p)],
-                            RDF.type: _get_nv_type(definition, object_type_map)})
-    return object_data
-
-def _get_restrictions(i_type_c, m_graph):
-    # Get restrictions from ontology for a given interaction.
-    restrictions = {}
-    for restriction in m_graph.get_restrictions_on(i_type_c):
-        predicate, constraints = m_graph.get_constraint(restriction)
-        restrictions[predicate] = constraints
-    return restrictions
-
 def _map_entities(cd, sbol_graph, model):
     triples = []
     part_of = model.identifiers.predicates.hasPart
     for sc in [sbol_graph.get_definition(c) for c in sbol_graph.get_components(cd)]:
         triples.append((part_of, sc))
     return triples
-
-def _get_nv_type(key, object_type_map):
-    return object_type_map[key]
 
 def _get_properties(entity, graph, graph_name):
     properties = {}

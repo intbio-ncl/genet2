@@ -1,5 +1,8 @@
 from rdflib import URIRef,RDF,Literal,BNode
 import re
+from pysbolgraph.SBOL2Serialize import serialize_sboll2
+from pysbolgraph.SBOL2Graph import SBOL2Graph
+
 from  app.converter.utility.util import SBOLGraphUtil
 from  app.converter.utility.identifiers import identifiers
 
@@ -15,8 +18,10 @@ class SBOLGraph:
         return len(self.graph)
 
     def __add__(self,obj):
-        return self.__class__(self.graph.graph + obj.graph.graph)
-
+        if isinstance(obj,SBOLGraph):
+            return self.__class__(self.graph.graph + obj.graph.graph)
+        return self.__class__(self.graph.graph + obj)
+        
     def __sub__(self,obj):
         return self.__class__(self.graph.graph - obj.graph.graph)
 
@@ -24,9 +29,15 @@ class SBOLGraph:
     # ----- RDF-Type searches ------
     def add_triple(self,triple):
         self._add_triples([triple])
-        
+    
+    def add_triples(self,triples):
+        self._add_triples(triples)
+
     def remove_triple(self,triple):
         self._remove_triples([triple])
+
+    def remove_properties(self,subject,predicates):
+        self._remove_triples([(subject,p,None) for p in predicates])
 
     def replace_uri(self,old,new):
         for s,p,o in self.search((old,None,None)):
@@ -49,7 +60,7 @@ class SBOLGraph:
             sn = self.create_sequence_name(subject)
             self.add_sequence(sn,Literal(seq),identifiers.objects.naseq)
             self._remove_triples([(subject,identifiers.predicates.sequence,seqs)])
-
+    
     def replace_property(self,subject,predicate,property):
         self._remove_triples(self.search((subject,predicate,None)))
         self._add_triples([(subject,predicate,property)])
@@ -58,6 +69,14 @@ class SBOLGraph:
         self._remove_triples([old])
         self._add_triples([new])
 
+    def replace_component_definition(self,old,new):
+        self.replace_uri(old,new)
+        self.replace_property(new,identifiers.predicates.persistent_identity,_get_pid(new))
+        self.replace_property(new,identifiers.predicates.display_id,Literal(_get_name(new)))
+
+    def replace_definition(self,component,old,new):
+        self.replace_triple((component,identifiers.predicates.definition,old),
+                            (component,identifiers.predicates.definition,new))
 
     def get_all_instances(self):
         return [i[0] for i in self.graph.get_instances()]
@@ -71,7 +90,15 @@ class SBOLGraph:
         except (IndexError,TypeError):
             return None
 
-    def get_component_definitions(self):
+    def get_component_definitions(self,seq_name=None,sequence=None):
+        if seq_name is not None:
+            return [cd[0] for cd in self.graph.search((None,identifiers.predicates.sequence,seq_name))]
+        if sequence is not None:
+            seqs = [s[0] for s in self.graph.search((None,identifiers.predicates.elements,sequence))]
+            cds = []
+            for s in seqs:
+                cds += [cd[0] for cd in self.graph.search((None,identifiers.predicates.sequence,s))]
+            return cds
         return [cd[0] for cd in self.graph.get_instances(identifiers.objects.component_definition)]
 
     def get_sequence_annotations(self,cd=None,component=None,data=False):
@@ -144,6 +171,15 @@ class SBOLGraph:
             return parent[0]
         except (IndexError,TypeError):
             return None
+
+    def get_maps_to(self):
+        return [cd[0] for cd in self.graph.get_instances(identifiers.objects.mapsTo)]
+
+    def get_local(self,subject):
+        return self.get_property(subject,identifiers.predicates.local)
+
+    def get_remote(self,subject):
+        return self.get_property(subject,identifiers.predicates.remote)
 
     def get_component_definition(self,component=None,sc=None,sa=None):
         parent =  []
@@ -254,7 +290,7 @@ class SBOLGraph:
                     for sequence in self.graph.get_object(sequence_obj,identifiers.predicates.elements)]
         return sequences
 
-    def get_interactions(self,fc = None,md=None):
+    def get_interactions(self,fc = None,md=None,participation=None):
         if fc is not None:
             interactions = []
             participants = self.get_participants(fc)
@@ -267,10 +303,16 @@ class SBOLGraph:
 
         if md is not None:
             return [sa[2] for sa in self.graph.get_children(md,identifiers.predicates.interaction)]
+        
+        if participation is not None:
+            return [i[0] for i in self.graph.get_subject(identifiers.predicates.participation,participation)]
         return [i[0] for i in self.graph.get_instances(identifiers.objects.interaction)]
-            
 
+    def is_discontinued(self,subject):
+        return self.get_property(subject,identifiers.predicates.discontinued) == Literal("true")
 
+    def is_star(self,subject):
+        return self.get_property(subject,identifiers.predicates.star) == Literal("true")
 
     # Property Searches
     def get_property(self,subject,predicate):
@@ -305,6 +347,9 @@ class SBOLGraph:
                    identifiers.predicates.type]
         return [m[1:] for m in self.search((subject,m_preds,None))]
 
+    def get_title(self,subject):
+        return self.get_property(subject,identifiers.predicates.title)
+
     def get_metadata(self,subject):
         m_preds = [identifiers.predicates.description,
                    identifiers.predicates.mutable_notes,
@@ -312,11 +357,16 @@ class SBOLGraph:
                    identifiers.predicates.title]
         md = []
         for m in self.search((subject,m_preds,None)):
-            md.append(m[2].replace('"',""))
+            m = m[2].replace('"',"")
+            if m == "None":
+                continue
+            if len(m) < 2:
+                continue
+            md.append(m)
         return md
         
     def get_triples(self,subject):
-        return self.graph.sub_graph((subject,None,None))
+        return self.graph.search((subject,None,None))
     
     def search(self,pattern,lazy=False): 
         return self.graph.search(pattern,lazy)
@@ -455,6 +505,8 @@ class SBOLGraph:
             self.remove_sequence_constraint(sc)
         for c in self.get_heirachical_instances(subject):
             self.remove_component(c)
+        for c in self.get_components(subject):
+            self.remove_component(c)
         for fc in self.get_functional_instances(subject):
             self.remove_functional_component(fc)
         self._remove_triples(self.search((subject,None,None)))
@@ -471,6 +523,11 @@ class SBOLGraph:
         self._remove_triples(self.search((subject,None,None)))
 
     def remove_sequence_annotation(self,subject):
+        for r in self.get_locations(subject):
+            self.remove_location(r)
+        self._remove_triples(self.search((subject,None,None)))
+
+    def remove_location(self,subject):
         self._remove_triples(self.search((subject,None,None)))
 
     def remove_sequence_constraint(self,subject):
@@ -487,6 +544,9 @@ class SBOLGraph:
             self.remove_functional_component(fc)
         self._remove_triples(self.search((subject,None,None)) + self.search((None,None,subject)) )
 
+    def remove_maps_to(self,subject):
+        self._remove_triples(self.search((subject,None,None)) + self.search((None,None,subject))) 
+
     def build_children_uri(self,base,addition):
         return URIRef(f'{_get_pid(base)}/{_get_name(addition)}/1')
 
@@ -501,6 +561,14 @@ class SBOLGraph:
 
     def create_part_name(self,int,cd,part_type): # Part type is CD type.
         return URIRef(self.build_children_uri(int,f'{_get_name(cd)}_{_get_name(part_type)}'))
+
+    def save(self,out_fn):
+        pysbolG = SBOL2Graph()
+        pysbolG += self.graph.graph
+        s = serialize_sboll2(pysbolG).decode("utf-8")
+        with open(out_fn, 'w') as o:
+            o.write(s)
+
 
 def _get_pid(subject):
     if subject[-1].isdigit():
