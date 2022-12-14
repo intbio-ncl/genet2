@@ -1,10 +1,12 @@
 import types
 import re
-import os
+import json
 from rdflib import RDF,DCTERMS
 from app.graph.utility.model.model import model
 from app.graph.design_graph.gds.project import ProjectBuilder
 from app.graph.design_graph.gds.procedures import Procedures
+from app.graph.utility.graph_objects.node import Node
+from app.graph.utility.graph_objects.edge import Edge
 
 def _add_predicate(obj, pred):
     method_name = f'get_{pred.split("/")[-1].lower()}'
@@ -61,12 +63,19 @@ class DesignGraph:
             if not isinstance(description,list):
                 description = [description]
             kwargs[DCTERMS.description] = description
-        self.driver.add_node(key,type,**kwargs)
+        n = self.driver.add_node(key,type,**kwargs)
         self.driver.submit()
-
+        return n
+        
     def add_edges(self,edges):
         for edge in edges:
-            n,v,e,props = edge
+            if isinstance(edge,Edge):
+                n = edge.n
+                v = edge.v
+                e = edge.get_type()
+                props = edge.get_properties()
+            else:
+                n,v,e,props = edge
             if "graph_name" not in props:
                 props["graph_name"] = self.name
             if "graph_name" not in n.get_properties():
@@ -90,7 +99,13 @@ class DesignGraph:
         if not isinstance(edges,list):
             edges = [edges]
         for edge in edges:
-            n,v,e,props = edge
+            if isinstance(edge,Edge):
+                n = edge.n
+                v = edge.v
+                e = edge.get_type()
+                props = edge.get_properties()
+            else:
+                n,v,e,props = edge
             if "graph_name" not in props:
                 props["graph_name"] = self.name
             if "graph_name" not in n.get_properties():
@@ -225,6 +240,15 @@ class DesignGraph:
 
     def get_project_graph(self, name):
         return self.project.get_graph(name)
+
+    def export(self, out_name):
+        res = self.driver.export(self.name)
+        res_l = []
+        for r in res.splitlines():
+            res_l.append(json.loads(r))
+        with open(out_name, 'w') as f:
+            json.dump(res_l, f)
+        return out_name
 
     def _node_query(self, n=None,predicate="ALL", **kwargs):
         if None in self.name:

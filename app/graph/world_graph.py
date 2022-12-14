@@ -15,6 +15,8 @@ class WorldGraph:
     def get_design(self,graph_name,predicate="ALL"):
         if graph_name == "*":
             graph_name = self.get_design_names()
+        if graph_name == self.truth.name:
+            return self.truth
         return DesignGraph(self.driver,graph_name,predicate=predicate)
     
     def get_design_names(self):

@@ -73,7 +73,7 @@ class AbstractModule(ABC):
                 self._tg.add_node(edge.n)
             if edge.v not in nq:
                 self._tg.add_node(edge.n)
-        self._tg.add_edge(edge,self._standard_modifier)
+        self._tg.add_edges(edge,self._standard_modifier)
 
     def _update_confidence(self,edge,modifier):
         conf = edge.get_properties()[confidence]
@@ -96,7 +96,7 @@ class AbstractModule(ABC):
             self._tg.remove_node(edge.n)
         if len(vedges) == 1:
             self._tg.remove_node(edge.v)
-        self._tg.remove_edge(edge)
+        self._tg.remove_edges(edge)
 
     def _cast_condfidence(self,res):
         for r in res:

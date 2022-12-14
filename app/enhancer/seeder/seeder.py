@@ -270,7 +270,7 @@ def _add_sbol_data(tg):
         properties = _get_properties(name, graph)
         if props is not None:
             properties.update(props)
-        neo = tg.add_node(Node(name,type,**properties))
+        neo = tg.add_node(name,type,**properties)
         return neo
 
     def _add_edge(n, v, e):
