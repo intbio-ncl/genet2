@@ -34,6 +34,7 @@ class Projection():
         if node_labels and not isinstance(node_labels, list):
             node_labels = [str(node_labels)]
         qry = self._qry_builder.mutate(name, types, mutate_type, node_labels)
+        print(qry)
         return self._run(qry)
         
     def _run(self,qry):

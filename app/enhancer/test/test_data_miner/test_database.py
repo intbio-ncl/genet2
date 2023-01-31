@@ -488,7 +488,6 @@ class TestDatabaseHandlerLCPHub(unittest.TestCase):
             count = self.lcp_interface.count(query_string)
             self.assertEqual(count,0)
 
-
 class TestDatabaseHandlerGenbank(unittest.TestCase):
 
     def setUp(self):

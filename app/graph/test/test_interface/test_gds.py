@@ -23,7 +23,7 @@ class TestProjectGDS(unittest.TestCase):
             if index == len(self.nodes) - 1:
                 continue
             nn = self.nodes[index+1]
-            edge = Edge(node,nn,f'{node} - {nn}{index}',**{"graph_name" : ["TestProjectGDS"] })
+            edge = Edge(node,nn,f'{node} - {nn}',**{"graph_name" : ["TestProjectGDS"] })
             self.edges.append(edge)
             res = self.interface.add_edge(edge.n,edge.v,edge.get_type(),**edge.get_properties())
             self.interface.submit()
@@ -80,8 +80,15 @@ class TestProjectGDS(unittest.TestCase):
             self.project.drop(gn)
         except ValueError:
             pass
+        for e in self.interface.edge_query():
+            print(e)
+        print("\n")
+        for n in self.nodes:
+            print(n)
+        print("\n")
+        print(paths)
         res = self.project.project(gn,self.nodes,paths)
-        pr = self.project.mutate(gn,paths,"mut")
+        pr = self.project.mutate(gn,[paths],"mut")
         self.assertEqual(len(pr["relationshipsWritten"]),1)
         self.project.drop(gn)
         self.interface.remove_graph(gn)

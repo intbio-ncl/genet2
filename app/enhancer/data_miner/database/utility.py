@@ -2,7 +2,8 @@ import os
 import shutil
 import atexit
 import time
-from urllib.error import HTTPError
+from urllib.error import HTTPError as uHTTPerror
+from requests.exceptions import HTTPError as rHTTPError
 
 from app.enhancer.data_miner.database.interfaces import hub_interface
 from app.enhancer.data_miner.database.interfaces.genbank_interface import GenBankInterface
@@ -16,22 +17,25 @@ class DatabaseUtility:
         atexit.register(self._remove_records)
 
     def get(self,id,db_name,timeout=10):
-        try:
-            record = self.db_mapping_calls[db_name].get(id,timeout=timeout)
-            return record
-        except (HTTPError,ValueError,KeyError):
-            return None
+        attempts = 0
+        while attempts < 5:
+            try:
+                return self.db_mapping_calls[db_name].get(id,timeout=timeout)
+            except rHTTPError:
+                attempts = attempts + 1
+                time.sleep(2)
+            except (uHTTPerror,ValueError,KeyError):
+                return None
     
     def count(self,query,db_name):
         return self.db_mapping_calls[db_name].count(query)
 
     def query(self,query,db_name,limit = 5):
-        returned = False
         attempts = 0
-        while not returned and attempts < 5:
+        while attempts < 5:
             try:
                 return self.db_mapping_calls[db_name].query(query,limit=limit)
-            except HTTPError:
+            except (uHTTPerror,rHTTPError):
                 print(f'WARN:: Err querying with {query} for db: {db_name}. Attempt: {attempts}')
                 attempts = attempts + 1
                 time.sleep(5)

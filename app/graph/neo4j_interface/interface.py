@@ -340,7 +340,7 @@ class Neo4jInterface:
 
     def _go_dict(self, go):
         props = dict(go)
-        props["id"] = go.id
+        props["id"] = go.element_id
         return props
 
     def _new_props(self, old_props, new_props):

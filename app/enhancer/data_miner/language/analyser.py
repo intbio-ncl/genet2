@@ -1,14 +1,13 @@
 import spacy
 from fuzzywuzzy import fuzz,process
 
-'''
-Note this doesn't really work.
-It just returns the subjects of potential sentences.
-'''
 class LanguageAnalyser:
-    def __init__(self,blacklist_words = [], whitelist_words = []):
+    def __init__(self):
         self.nlp = spacy.load('en_core_web_sm')
 
+    def interaction_search(self,text):
+        return None
+        
     def fuzzy_string_match(self,search_term,expected_terms,confidence_threshold=70):
         if len(expected_terms) == 0:
             return False

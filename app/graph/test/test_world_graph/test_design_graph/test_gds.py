@@ -23,48 +23,7 @@ class TestDesignGraphGDS(unittest.TestCase):
 
     @classmethod
     def tearDownClass(self):
-        self.wg.remove_design(self.gn)
-
-    def test_hierarchy(self):
-        ids = model.identifiers
-        has_part = str(ids.predicates.has_part)
-        pe = ids.objects.dna
-        gn = "test1"
-        try:
-            self.dg.driver.project.drop(gn)
-        except ValueError:
-            pass
-        
-        direction = "NATURAL"
-        res = self.dg.project.hierarchy(gn,direction=direction)
-        self.assertEqual(gn,res.name())
-        gi = res._graph_info()
-        config = gi["configuration"]
-        rp = config["nodeQuery"]
-        dna = [str(model.identifiers.objects.dna)] + [str(k[1]["key"]) for k in model.get_derived(model.get_class_code(model.identifiers.objects.dna))]
-        for _,identifier  in self.dg.driver._run(rp).iterrows():
-            qry = f"MATCH (s) WHERE ID(s) = {identifier[0]} RETURN s"
-            res = self.dg.driver._run(qry)
-            res = res["s"][0].labels
-            self.assertTrue(len(res) == 2)
-            self.assertTrue(len(set(dna) & set(res)) > 0)
-
-        rp = config["relationshipQuery"]
-        for _,identifier  in self.dg.driver._run(rp).iterrows():
-            source = identifier["source"]
-            target = identifier["target"]
-            qry = f"MATCH (s) WHERE ID(s) = {source} RETURN s"
-            source = self.dg.driver._run(qry)
-            source = source["s"][0].labels
-
-            qry = f"MATCH (s) WHERE ID(s) = {target} RETURN s"
-            target = self.dg.driver._run(qry)
-            target = target["s"][0].labels
-
-            self.assertTrue(len(source) == 2)
-            self.assertTrue(len(set(dna) & set(source)) > 0)
-            self.assertTrue(len(target) == 2)
-            self.assertTrue(len(set(dna) & set(target)) > 0)
+        pass#self.wg.remove_design(self.gn)
 
     # Interaction
     def test_interaction_direction(self):

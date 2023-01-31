@@ -74,8 +74,11 @@ class DesignGraph:
                 v = edge.v
                 e = edge.get_type()
                 props = edge.get_properties()
-            else:
+            elif len(edge) == 4:
                 n,v,e,props = edge
+            else:
+                n,v,e = edge
+                props = {}
             if "graph_name" not in props:
                 props["graph_name"] = self.name
             if "graph_name" not in n.get_properties():
@@ -104,8 +107,11 @@ class DesignGraph:
                 v = edge.v
                 e = edge.get_type()
                 props = edge.get_properties()
-            else:
+            elif len(edge) == 4:
                 n,v,e,props = edge
+            else:
+                n,v,e = edge
+                props = {}
             if "graph_name" not in props:
                 props["graph_name"] = self.name
             if "graph_name" not in n.get_properties():

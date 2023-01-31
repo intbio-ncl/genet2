@@ -7,7 +7,6 @@ from dash import callback_context
 from app.visualiser.abstract_dashboard.utility.callback_structs import *
 from app.visualiser.visual.editor import EditorVisual
 from app.visualiser.abstract_dashboard.abstract import AbstractDash
-from app.graph.utility.graph_objects.node import Node
 assets_ignore = '.*bootstrap.*'
 
 class EditorDash(AbstractDash):
@@ -39,13 +38,8 @@ class EditorDash(AbstractDash):
         graph = self.create_div(modify_graph_o["graph_container"].component_id, graph,className="col")
         legend = self.create_div(e_update_o["legend_id"].component_id,[], className="col sidebar")
 
-        col_names = [{"id" : "entity", "name" : "Entity"},
-                     {"id" : "confidence","name" : "Confidence"},
-                     {"id" : "comment","name" : "Comment"}]
-        an_tbl = self.create_complex_table(add_node_o["data"].component_id, col_names)
-        an_modal = self.create_modal(add_node_o["id"].component_id,add_node_i["close_an"].component_id,"Export", an_tbl)
 
-        elements = options + graph + legend + an_modal
+        elements = options + graph + legend
         container = self.create_div("row-main", elements, className="row flex-nowrap no-gutters")
         self.app.layout = self.create_div("main", load_accordion+container, className="container-fluid")[0]
         # Bind the callbacks
@@ -54,9 +48,6 @@ class EditorDash(AbstractDash):
 
         def load_inner(click,gns,lp):
             return self.load(click,gns,lp)
-
-        def add_node_inner(o_click,c_click,is_open,n_key,n_type,n_seq,n_desc):
-            return self.add_node(o_click,c_click,is_open,n_key,n_type,n_seq,n_desc)
 
         def modify_graph_inner(n_select,e_click,n_data,n_type,n_seq,n_desc,e_subj,e_pred,e_obj):
             return self.modify_graph(n_select,e_click,n_data,n_type,n_seq,n_desc,e_subj,e_pred,e_obj)
@@ -71,7 +62,6 @@ class EditorDash(AbstractDash):
         self.add_callback(load_inner, [load_editor_input], load_editor_output,load_editor_states.values())
         
         self.add_callback(select_node_inner, select_node_i.values(), select_node_o.values(),select_node_s.values())
-        self.add_callback(add_node_inner, add_node_i.values(), add_node_o.values(),add_node_s.values())
         self.add_callback(modify_graph_inner, modify_graph_i.values(), modify_graph_o.values(),modify_graph_s.values())
         self.add_callback(update_graph_inner, e_update_i.values(), e_update_o.values())
         self.build()
@@ -166,32 +156,15 @@ class EditorDash(AbstractDash):
         else:
             return [],[],hidden,hidden
 
-    def add_node(self,s_click,c_click,is_open,n_key,n_type,n_seq,n_desc):
-        changed_id = [p['prop_id'] for p in callback_context.triggered][0].split(".")[0]
-        if changed_id == "":
-            return False, []
-        if add_node_i["close_an"].component_id in changed_id:
-            return False, []
-        elif n_key != "":
-            n_seq = None if n_seq == "" else n_seq
-            n_desc = None if n_desc == "" else n_desc
-            p,f = self.visualiser.get_standardised_nodes(n_key,n_type,n_seq,n_desc)
-            for s,v in p.items():
-                print(s,v)
-            data = [{"entity" : n_key, "confidence" : "N/A", "comment" : "Local Name"}] + [{"entity" : s,"confidence" : str(v), "comment" : f[s]} for s,v in p.items()]
-            return True,data
-        return False,[]
-
-    def modify_graph(self,n_select,e_click,n_data,n_type,n_seq,n_desc,e_subj,e_pred,e_obj):
+    def modify_graph(self,n_select,e_click,n_key,n_type,n_seq,n_desc,e_subj,e_pred,e_obj):
         changed_id = [p['prop_id'] for p in callback_context.triggered][0]
         if None in self.visualiser.get_loaded_design_names():
             raise PreventUpdate()
-        if n_select != [] and n_data != []:
+        if modify_graph_i["submit_am"].component_id in changed_id:
+            if n_key == "" or n_type is None:
+                raise PreventUpdate()
             n_seq = None if n_seq == "" else n_seq
             n_desc = None if n_desc == "" else n_desc
-            assert(len(n_select) == 1)
-            print(n_data,n_select)
-            n_key = n_data[n_select[0]]["entity"]
             self.visualiser.add_node(n_key,n_type,sequence=n_seq,description=n_desc)
             figure = self.visualiser.build(graph_id=graph_id)
             graph = self.create_div(e_update_o["graph_id"].component_id, figure)
@@ -219,16 +192,16 @@ class EditorDash(AbstractDash):
             raise PreventUpdate()
             
     def _create_editor(self):
-        nkey = self.create_input(add_node_s["node_key"].component_id, placeholder="Node Key")
+        nkey = self.create_input(modify_graph_s["node_key"].component_id, placeholder="Node Key")
         add_node =  self.create_div("a_n_key", nkey, className="col") 
         ntype = self.create_dropdown(e_update_o["node_type"].component_id, [], placeholder="Node Type")
         add_node +=  self.create_div("a_n_type", ntype, className="col") 
-        sub_a_n = self.create_button(add_node_i["submit_am"].component_id, "Add Node")
+        sub_a_n = self.create_button(modify_graph_i["submit_am"].component_id, "Add Node")
         add_node += self.create_line_break(10)
         add_node +=  self.create_div("a_n_submit", sub_a_n, className="col")
         meta_data = self.create_heading_5("node_metadata","Metadata (Optional)")
-        meta_data += self.create_input(add_node_s["node_sequence"].component_id, placeholder="Sequence")
-        meta_data += self.create_input(add_node_s["node_desc"].component_id, placeholder="Descriptions")
+        meta_data += self.create_input(modify_graph_s["node_sequence"].component_id, placeholder="Sequence")
+        meta_data += self.create_input(modify_graph_s["node_desc"].component_id, placeholder="Descriptions")
         add_node +=  self.create_div("a_n_meta", meta_data, className="col")
 
         subj_i = self.create_div(modify_graph_s["edge_subject"].component_id,[],className="col")

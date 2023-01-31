@@ -106,7 +106,6 @@ class GDSQueryBuilder:
                     if index < len(n) - 1:
                         w_inner += " OR "
                         v_inner += " OR "
-                print(len(w_inner+v_inner)>0)
                 return f'{where} {w_inner} {"AND" if len(w_inner+v_inner)>0 else ""} {v_inner} '
             return where
         
@@ -130,8 +129,8 @@ class GDSQueryBuilder:
 
     def mutate(self,name,types,mutate_type,node_labels=None):
         sb = StringBuilder()
-        sb.CALL("gds.alpha.collapsePath",name,"mutate")
-        sb.PARAMETER("relationshipTypes",types)
+        sb.CALL("gds.beta.collapsePath",name,"mutate")
+        sb.PARAMETER("pathTemplates",types)
         sb.PARAMETER("mutateRelationshipType",mutate_type)
         sb.PARAMETER("allowSelfLoops",False)
         if node_labels:

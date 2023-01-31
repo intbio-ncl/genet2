@@ -32,11 +32,10 @@ class AbstractModule(ABC):
     def upper_threshold(self):
         pass
     
-    def _cast_edge(self,edge):
-        n = self._cast_node(edge.n)
-        v = self._cast_node(edge.v)
-        edge.n = n
-        edge.v = v
+    def _cast_edge(self,n,v,e):
+        n = self._cast_node(n)
+        v = self._cast_node(v)
+        edge = Edge(n,v,e)
         edge.properties["graph_name"] = self._tg.name
         edge.graph_name = self._tg.name
         return edge

@@ -141,20 +141,10 @@ select_node_o = {"edge_subject": Output(select_node_s["edge_subject"].component_
                 "node_subject_div": Output("node_subject_div", "style"),
                 "node_object_div": Output("node_object_div", "style")}
 
-# -- Add Node --
-add_node_i = {"close_an": Input("close_an", "n_clicks"),
-              "submit_am": Input("submit_am", "n_clicks")}
-add_node_o = {"id": Output("an_modal", "is_open"),
-              "data": Output("an_data", "data")}
-add_node_s = {"an_open" : State("an_modal", "is_open"),
-            "node_key": State("node_key", "value"),
-            "node_type": State(e_update_o["node_type"].component_id, "value"),
-            "node_sequence": State("node_sequence", "value"),
-            "node_desc": State("node_desc", "value")}
 # -- Modify --
-modify_graph_i = {"data": Input("an_data", "selected_rows"),
+modify_graph_i = {"submit_am": Input("submit_am", "n_clicks"),
                   "add_edge_submit": Input("add_edge_submit", "n_clicks")}
-modify_graph_s = {"data": State(add_node_o["data"].component_id, "data"),
+modify_graph_s = {"node_key": State("node_key", "value"),
                   "node_type": State(e_update_o["node_type"].component_id, "value"),
                   "node_sequence": State("node_sequence", "value"),
                   "node_desc": State("node_desc", "value"),

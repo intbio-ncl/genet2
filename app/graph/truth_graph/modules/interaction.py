@@ -16,8 +16,8 @@ class InteractionModule(AbstractModule):
             return self._cast_condfidence(res)
         return []
 
-    def positive(self,edge):
-        edge = self._cast_edge(edge)
+    def positive(self,n,v,e):
+        edge = self._cast_edge(n,v,e)
         # Check if the subject is in the graph.
         res = self._tg.edge_query(n=edge.n,v=edge.v,e=edge.get_type())
         if len(res) != 0:
@@ -26,8 +26,8 @@ class InteractionModule(AbstractModule):
         else:
             return self._add_new_edge(edge)
             
-    def negative(self,edge):
-        edge = self._cast_edge(edge)
+    def negative(self,n,v,e):
+        edge = self._cast_edge(n,v,e)
         # Check if the subject is in the graph.
         res = self._tg.edge_query(n=edge.n,v=edge.v,e=edge.get_type())
         if len(res) != 0:

@@ -19,7 +19,7 @@ class TruthGraph(DesignGraph):
         kwargs.update(self._np)
         return super().add_node(key,type,**kwargs)
 
-    def add_edges(self, edges, modifier):
+    def add_edges(self, edges, modifier=5):
         if not isinstance(edges,list):
             edges = [edges]
         if modifier <= 0:

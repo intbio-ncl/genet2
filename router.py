@@ -22,7 +22,6 @@ from app.visualiser.editor import EditorDash
 from app.visualiser.cypher import CypherDash
 from app.visualiser.projection import ProjectionDash
 from app.visualiser.truth import TruthDash
-
 from app.validator.validator import Validator
 from app.enhancer.enhancer import Enhancer
 
@@ -309,26 +308,6 @@ def enhancement():
                 return render_template("enhancement.html", upload=upload, cg=cg, s_changes=changes, gn=gn)
     return render_template("enhancement.html", upload=upload, cg=cg)
 
-
-@server.route('/validation', methods=['GET', 'POST'])
-def validation():
-    upload = forms.UploadForm()
-    use_graph = forms.SubmitForm()
-    project_names = graph.get_projected_names()
-    graph_name = forms.add_graph_name_form(project_names)
-
-    if upload.validate_on_submit():
-        fn,gn = form_handlers.handle_upload(
-            upload, session["session_dir"], "sbol")
-        gn = f'{session["uid"]}-{gn}'
-        file_convert(graph.driver,fn,gn,convert_type="sbol")
-        os.remove(fn)
-        validator.validate(gn)
-    if use_graph.validate_on_submit():
-        pass
-    if graph_name.validate_on_submit():
-        pass
-    return render_template("validation.html", upload=upload, use_graph=use_graph, graph_name=graph_name)
 
 @server.route('/export_graph/<gn>', methods=['GET', 'POST'])
 def export_graph(gn):

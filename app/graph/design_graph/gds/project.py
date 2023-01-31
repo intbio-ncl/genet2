@@ -63,7 +63,7 @@ class ProjectBuilder():
                 if it in seens:
                     continue
                 seens.append(it)
-                types = self._reduce([e.get_type() for e in i+o])
+                types = [self._reduce([e.get_type() for e in i+o])]
                 self._driver.project.mutate(i_name,types,it)
             # Project Aggregation.
             graph = self._driver.project.sub_graph(i_name,name,pet,seens)
@@ -78,18 +78,19 @@ class ProjectBuilder():
             graph = self._interaction_bipartite(graph,i_name,name,ints,p_obj)
         elif type.lower() == "monopartite":
             graph = self._interaction_monopartite(graph,i_name,name,ints,p_obj)
-        self._driver.project.drop(i_name)
+        #self._driver.project.drop(i_name)
         return graph
 
     def interaction_genetic(self,name,direction="DIRECTED",type="monopartite"):
         i_name = ''.join(random.choice(ascii_lowercase) for i in range(10))
         graph,ints,pet = self._interaction_direction(i_name,direction.upper())
+
         dna_obj = self._graph.get_dna()
         if type.lower() == "bipartite":
             graph = self._interaction_bipartite(graph,i_name,name,ints,dna_obj)
         elif type.lower() == "monopartite":
             graph = self._interaction_monopartite(graph,i_name,name,ints,dna_obj)
-        self._driver.project.drop(i_name)
+        #self._driver.project.drop(i_name)
         return graph
     
     def _interaction_direction(self,name,direction):
@@ -144,10 +145,10 @@ class ProjectBuilder():
                 f_interactions.append(o_type)
                 objs.append(i_node.get_key())
                 if i_type not in seens:
-                    self._driver.project.mutate(o_name,el1,i_type,node_labels=node_label)
+                    self._driver.project.mutate(o_name,[el1],i_type,node_labels=node_label)
                     seens.append(i_type)
                 if o_type not in seens:
-                    self._driver.project.mutate(o_name,el2,o_type,node_labels=i_node.get_key())
+                    self._driver.project.mutate(o_name,[el2],o_type,node_labels=i_node.get_key())
                     seens.append(o_type)
         graph = self._driver.project.sub_graph(o_name,n_name,objs,f_interactions)
         return graph
@@ -170,9 +171,10 @@ class ProjectBuilder():
                 # Undirected graphs with path finding source == dest
                 if len(path) == 2 and path[0] == path[1]:
                     continue
+                path = [path]
                 i_type = self._unique_interaction_type(i_type,node_label,dest)
                 f_interactions.append(i_type)
-                r = self._driver.project.mutate(o_name,path,i_type,node_labels=node_label)
+                r = self._driver.project.mutate(o_name,path,i_type)
         # Project Aggregation.
         graph = self._driver.project.sub_graph(o_name,n_name,objs,f_interactions)
         return graph
@@ -183,10 +185,12 @@ class ProjectBuilder():
                             for i in inps if i.v in objs]))
         for interaction,(inps,outs) in interactions.items():
             for i in inps:
+                if len(outs) == 0:
+                    continue
                 if i.v not in objects:
                     continue
                 source = self._cast(i.n)
-                os = [o.get_type() for o in objects]
+                os = [o.get_key() for o in objects]
                 paths = self._driver.procedures.path_finding.dijkstra_sp(graph,source,os)
                 if len(paths) == 0:
                     continue

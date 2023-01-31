@@ -114,18 +114,6 @@ class EditorBuilder(DesignBuilder):
     def get_view_edge_types(self):
         return [str(s) for s in self._view_builder.get_edge_types()]
 
-    def get_standardised_nodes(self,key,type,sequence,description):
-        gn = self.get_loaded_design_names()
-        props = {"graph_name" : gn,
-                "name":_get_name(key)}
-        if sequence is not None:
-            props[model.identifiers.predicates.has_sequence] = sequence
-        if description is not None:
-            props[DCTERMS.description] = description
-
-        entity = Node(key,type,**props)
-        return self._enhancer.canonicalise_entity(entity,gn,mode="manual")
-
     def add_edges(self, n, v, e):
         # To reduce number of queries to server.
         all_nodes = []

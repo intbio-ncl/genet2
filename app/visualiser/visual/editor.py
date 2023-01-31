@@ -25,8 +25,5 @@ class EditorVisual(AbstractDesignVisual):
     def add_node(self,key,type,**kwargs):
         return self._builder.add_node(key,type,**kwargs)
 
-    def get_standardised_nodes(self,key,type,sequence,description):
-        return self._builder.get_standardised_nodes(key,type,sequence,description)
-
 
         

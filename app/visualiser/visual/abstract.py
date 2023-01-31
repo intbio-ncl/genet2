@@ -592,7 +592,7 @@ class AbstractVisual:
             color_key = list(node_color[index].keys())[0]
             shape = node_shapes[index]
             shape = str(list(shape.values())[0])
-            size = node_sizes[index]
+            size = str(node_sizes[index])
             n_color = node_color[index][color_key]
             node, n_style = self._build_node(
                 node, text, size, color_key, n_color, shape)
@@ -627,13 +627,13 @@ class AbstractVisual:
 
     def _build_node(self, n, label, size, c_key, color, shape):
         class_str = f'top-center {c_key} {shape}'
-        node = {'data': {'id': n.id, 'label': label, "size": size},
+        node = {'data': {'id': str(n.id), 'label': label, "size": size},
                 'classes': class_str}
         style = {"selector": "." + c_key, "style": {"background-color": color}}
         return node, style
 
     def _build_edge(self, edge, label, c_key, color, edge_shape):
-        edge = {'data': {'source': edge.n.id, 'target': edge.v.id, 'label': label},
+        edge = {'data': {'source': str(edge.n.id), 'target': str(edge.v.id), 'label': label},
                 'classes': f'center-right {c_key}'}
         style = {"selector": "." + c_key, "style": {"line-color": color,
                                                     'curve-style': edge_shape,

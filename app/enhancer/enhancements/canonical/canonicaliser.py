@@ -10,11 +10,8 @@ Case Group 3: Metadata reveals a standardised part.
     Case 3.2. A name is driectrly encoded.
     Case 3.3: Metadata query reveals a potential reference
 Case Group 4: The object is the parent/child of 
-                in some way refers to a known standardised part. 
+              in some way refers to a known standardised part. 
                 
-'''
-
-'''
 Overview of the process:
 1. Absolute References
     1.1. Check if an entity name refers directly to a record.
@@ -28,72 +25,46 @@ Overview of the process:
 
 3. Post-Processing Score
     3.1. Chance to increase score by comparing entites within the graph.
-    
 '''
+from app.enhancer.enhancements.abstract_enhancements import AbstractEnhancement
 import uuid
 from app.converter.sbol_convert import convert
 
-class Canonicaliser:
-    def __init__(self,graph,miner):
-        self._wg = graph
-        self._tg = graph.truth
-        self._miner = miner
+class DesignCanonicaliser(AbstractEnhancement):
+    def __init__(self, world_graph, miner):
+        super().__init__(world_graph, miner)
 
-    def design(self,graph_name,mode="automated"):
+    def enhance(self,graph_name,mode="automated"):
         dg = self._wg.get_design(graph_name)
-        replacements = {}
-        feedback = {}
+        changes = {}
         for entity in dg.get_physicalentity():
             if not self._miner.is_reference(entity.get_key()):
                 key = entity.get_key()
-                subject = self.get_absolute_references(entity)
+                subject = self._get_absolute_references(entity)
                 if subject is not None:
-                    replacements[key] = {subject : 1.0}
-                    if mode == "automated":    
-                        self.apply({key:subject},graph_name)
-                    continue 
-                if mode != "automated":
-                    p_subjects,fback = self.get_potential_references(entity)
-                    if len(p_subjects) > 0:
-                        replacements[key] = p_subjects
-                        feedback.update(fback)
-        for r,subs in replacements.items():
-            replacements[r] = self._post_rank(r,subs,dg)
+                    if mode == "automated":
+                        comment = f'{subject} synonym of {key}.'
+                        self.apply(self._potential_change({},entity,subject,100,comment,enabled=True),graph_name)
+                    else:
+                        changes = self._potential_change(changes,key,subject,100,comment)
+                elif mode != "automated":
+                    changes = self._add_potential_changes(changes,entity)
+        for r,subs in changes.items():
+            changes[r] = self._post_rank(r,subs,dg)
+        return changes
 
-        return replacements,feedback
-
-
-    def entity(self,entity,graph_name,mode="automated"):
+    def apply(self,replacements,graph_name):
         dg = self._wg.get_design(graph_name)
-        subjects = {}
-        if self._miner.is_reference(entity.get_key()):
-            return {},{}
-        # Absolute doesnt provide feedback (in theory they should be definitive).
-        subject = self.get_absolute_references(entity)
-        if subject is not None:
-            if mode == "automated":    
-                self.apply({entity.get_key():subject},graph_name)
-            return {subject:1.0},{}
+        for old,new in replacements.items():
+            dg.replace_label(str(old),str(new))
+        return replacements
 
-        if mode != "automated":
-            subjects,fback = self.get_potential_references(entity)
-            if subjects != []:
-                parent = dg.get_parents(entity)
-                if len(parent) == 0:
-                    parent = None
-                else:
-                    parent == parent[0]
-                subjects = self._post_rank(entity,subjects,dg,parent=parent)
-                return subjects,fback
-        return subjects,{}
-
-
-    def get_absolute_references(self,entity):
+    def _get_absolute_references(self,entity):
         name = entity.name
         record = self._miner.get_external(name)
         if record is not None:
             return self._miner.get_graph_subject(record,[name])
-        res = self._tg.synonyms.get(synonym=name)
+        res = self._wg.truth.synonyms.get(synonym=name)
         if res != []:
             assert(len(res) == 1)
             if res[0].confidence == 100:
@@ -108,20 +79,18 @@ class Canonicaliser:
             return self._miner.mine_explicit_reference(descriptions)
         return None
 
-
-    def get_potential_references(self,entity):
+    def _get_potential_references(self,entity):
         name = entity.name
         e_type = entity.get_type()
         feedback = {}
-        subjects = {}
-
         def _add_feedback(subj,conf,feedback_str):
-            if subj in subjects:
-                subjects[subj] = subjects[r] + conf / 2
-                feedback[subj] += " - " + feedback_str
+            subj = str(subj)
+            if subj in feedback:
+                feedback[subj]["score"] += conf / 2
+                feedback[subj]["comment"] += " - " + feedback_str
             else:
-                subjects[subj] = conf
-                feedback[subj] = feedback_str
+                feedback[subj] = {"score": conf,
+                                  "comment":feedback_str}
         
         if hasattr(entity,"hasSequence"):
             sequence = entity.hasSequence
@@ -136,7 +105,7 @@ class Canonicaliser:
             queries += self._miner.get_descriptors(entity.description)
         for query in queries:
             # Check if truth graph has it stored.
-            res = self._tg.synonyms.get(synonym=query)
+            res = self._wg.truth.synonyms.get(synonym=query)
             if len(res) != 0:
                 for r in res:
                     _add_feedback(r.n,r.confidence,query)
@@ -144,24 +113,10 @@ class Canonicaliser:
                 # Try mine via external.
                 records = list(self._miner.query_external(query,lazy=True))
                 if len(records) != 0:
-                    graphs = [self._miner.get_external(r) for r in records[0] if r not in subjects]
+                    graphs = [self._miner.get_external(r) for r in records[0] if r not in feedback]
                     for leaf in self._miner.get_leaf_subjects(graphs,e_type,query):
                         _add_feedback(leaf,0,f'Using Query: {query}')
-        return subjects,feedback
-
-
-    def apply(self,replacements,graph_name):
-        dg = self._wg.get_design(graph_name)
-        for old,new in replacements.items():
-            dg.replace_label(str(old),str(new))
-        return replacements
-
-
-    def truth_graph(self):
-        pes = self._tg.get_physcial_entities()
-        while len(pes) > 0:
-            subject = pes.pop(0)
-            pass
+        return feedback
 
     def _post_rank(self,entity,potentials,dg,parent=None):
         '''
@@ -172,10 +127,11 @@ class Canonicaliser:
         on potential references.
         '''
         def _add_confidence(node,row):
-            new_c = potentials[node] + row["similarity"]
+            new_c = potentials[node]["score"] + row["similarity"]
             if new_c > 0:
                 new_c = 1.0
-            potentials[node] = new_c
+            potentials[node]["score"] = new_c
+            
         gn = str(uuid.uuid4())
         if parent is not None:
             fn = self._miner.get_external(parent)
@@ -186,7 +142,7 @@ class Canonicaliser:
             convert(fn,self._wg.driver,gn)
         p_gn = str(uuid.uuid4())
         dg = self._wg.get_design(dg.name + [gn])
-        tmp = dg.project.hierarchy(p_gn,direction="UNDIRECTED")
+        dg.project.hierarchy(p_gn,direction="UNDIRECTED")
         res = dg.procedure.node_similarity(p_gn)
         seen_combos = []
         for r in res:
@@ -203,3 +159,14 @@ class Canonicaliser:
         self._wg.remove_design(gn)
         return potentials
         
+    def _add_potential_changes(self,changes,entity):
+        for p_obj,d in self._get_potential_references(entity).items():
+            changes = self._potential_change(changes,entity,
+                                            p_obj,d["score"],
+                                            d["comment"])
+        return changes
+
+
+class TruthCanonicaliser(AbstractEnhancement):
+    def __init__(self, world_graph, miner):
+        super().__init__(world_graph, miner)

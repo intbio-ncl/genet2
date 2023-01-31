@@ -99,7 +99,7 @@ class AbstractSynBioHubInterface:
 
     def _load_graph(self,fn):
         record_graph = rdflib.Graph()
-        record_graph.load(fn)
+        record_graph.parse(fn)
         return record_graph
         
     def _store_record(self,target,record):

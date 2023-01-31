@@ -1,5 +1,7 @@
 import re
-class AbstractEnhancement:
+from abc import ABC
+
+class AbstractEnhancement(ABC):
     def __init__(self,world_graph,miner,enhancers=[]):
         self._wg = world_graph
         self._miner = miner
@@ -10,19 +12,23 @@ class AbstractEnhancement:
         for e in self._enhancers:
             yield e
             
-    def enhance(self,graph):
-        enhancements = {}
+    def enhance(self,graph_name,mode="automated"):
+        res = {}
         if len(self._enhancers) == 0:
-            return enhancements
+            return res
         for evaluator in self._enhancers:
-            enhancements[evaluator.name] = evaluator.enhance(graph)
-        return enhancements
+            res[evaluator.name] = evaluator.enhance(graph_name,mode=mode)
+        return res
     
-    def _add_interaction(self,graph,interaction,entities,modifier):
+    def apply(self,replacements,graph_name):
+        for evaluator in self._enhancers:
+            evaluator.apply(graph_name,replacements)
+    
+    def _add_interaction(self,graph,interaction,entities):
         edges = []
         for e,i_type in entities:
             edges.append((interaction,e,i_type))
-        graph.add_edges(edges,modifier)
+        graph.add_edges(edges)
 
     def _add_related_node(self,graph,related,r_type):
         ppn = self._create_uri(related.get_key(),r_type)
@@ -32,6 +38,15 @@ class AbstractEnhancement:
         it_name = _get_name(i_type).lower()
         return f'{_get_prefix(original)}_{it_name}/1'
 
+    def _potential_change(self,cur_changes,subject,option,score,comment,enabled=False):
+        i_dict = {"score" : score,
+                  "comment" : comment,
+                  "apply" : enabled}
+        if subject in cur_changes:
+            cur_changes[subject][option] = i_dict
+        else:
+            cur_changes[subject] = {option : i_dict} 
+        return cur_changes
 
 def _get_prefix(subject):
     split_subject = _split(subject)
