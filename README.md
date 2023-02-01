@@ -19,7 +19,7 @@ Genet contains a docker-compose file which can be used to fully setup and start 
 1. Navigate to genets directory.
 3. `sudo chmod +x startup.sh`
 4. `./startup`
-5. Wait until application_1 statesL Serving Flask app"
+5. Wait until application_1 states: Serving Flask app"
 6.  Open a browser and enter: http://127.0.0.1:5000/
 7.  The landing page has information for using the tool.
 
