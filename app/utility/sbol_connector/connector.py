@@ -108,7 +108,7 @@ class SBOLConnector:
     def can_connect(self,filename):
         try:
             graph = SBOLGraph(filename)
-        except Exception:
+        except Exception as ex:
             return False
         definitions = graph.get_definitions()
         for s,p,o in definitions:

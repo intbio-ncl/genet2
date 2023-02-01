@@ -3,6 +3,21 @@
    xmlns:ns1="http://ontology_graph/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
+  <rdf:Description rdf:about="http://ontology_graph/GO">
+    <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasSynonymType"/>
+    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
+    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2002/07/owl#annotatedProperty"/>
+    <ns1:comment rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <ns1:hasdbxref rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+    <ns1:definition rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://ontology_graph/EDAM">
     <ns1:comment rdf:resource="http://edamontology.org/deprecation_comment"/>
     <ns1:comment rdf:resource="http://edamontology.org/comment_handle"/>
@@ -26,20 +41,19 @@
     <ns1:definition rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDefinition"/>
     <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ontology_graph/GO">
+  <rdf:Description rdf:about="http://ontology_graph/SBO">
     <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasSynonymType"/>
-    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
-    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
-    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
-    <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2002/07/owl#annotatedProperty"/>
     <ns1:comment rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology_graph/CHEBI">
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+    <ns1:potentialSynonym rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
     <ns1:hasdbxref rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
     <ns1:definition rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    <ns1:comment rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://ontology_graph/SO">
     <ns1:potentialSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
@@ -61,20 +75,6 @@
     <ns1:definiteSynonym rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
     <ns1:hasdbxref rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
     <ns1:definition rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ontology_graph/CHEBI">
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
-    <ns1:potentialSynonym rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <ns1:hasdbxref rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
-    <ns1:definition rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
-    <ns1:comment rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ontology_graph/SBO">
-    <ns1:label rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <ns1:comment rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://ontology_graph/biopax-level3">
     <ns1:potentialSynonym rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>

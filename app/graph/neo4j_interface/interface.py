@@ -1,7 +1,10 @@
+import os
 from graphdatascience import GraphDataScience
+from graphdatascience.error.unable_to_connect import UnableToConnectError
 from neo4j.graph import Node as NeoNode
 from neo4j.graph import Relationship
 import copy
+import time
 
 from app.graph.utility.graph_objects.node import Node
 from app.graph.utility.graph_objects.edge import Edge
@@ -12,10 +15,28 @@ from app.graph.neo4j_interface.gds.project import Projection
 from app.graph.neo4j_interface.gds.procedures import Procedures
 from app.graph.utility.model.model import model
 from app.utility.change_log.logger import logger
+
+def _connect_db():
+    db_host = os.environ.get('NEO4J_HOST', 'localhost')
+    db_port = os.environ.get('NEO4J_PORT', '7687')
+    attempts = 1
+    while attempts < 10:
+        try:
+            return GraphDataScience(f'neo4j://{db_host}:{db_port}', auth=("neo4j", "Radeon12300"))
+        except UnableToConnectError:
+            print(f'Attempt: {attempts} to connect to neo4j db.')
+            time.sleep(5)
+            attempts += 1
+            
+    else:
+        raise UnableToConnectError("Can't connect to Neo4j database.")
+
 class Neo4jInterface:
     def __init__(self,reserved_names=None):
-        self.driver = GraphDataScience(
-            "bolt://localhost:7687", auth=("neo4j", "Radeon12300"))
+        try:
+            self.driver = _connect_db()
+        except UnableToConnectError:
+            self.driver = None
         self.qry_builder = QueryBuilder()
         self.project = Projection(self)
         self.procedures = Procedures(self)
@@ -304,6 +325,9 @@ class Neo4jInterface:
         if len(cypher_str) == 0:
             #print("WARN:: Empty Cypher Query Entered.")
             return []
+        if self.driver is None:
+            self.driver = _connect_db()
+            print("WARN:: No connection to neo4j graph.")
         return self.driver.run_cypher(cypher_str)
 
     def _node(self, name, ntype=None, properties={}):

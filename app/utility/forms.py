@@ -25,7 +25,7 @@ class UploadForm(FlaskForm):
 class EnhanceTruthGraphForm(FlaskForm):
     class Meta:
         csrf = False
-    e_submit = SubmitField('Run')
+    enhance_submit = SubmitField('Run Enhancement')
 
 
 class PasteForm(FlaskForm):

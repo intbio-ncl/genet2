@@ -1,0 +1,22 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  application:
+    build: .
+    ports:
+      - '5000:5000'
+    environment:
+      NEO4J_HOST: database
+    restart: on-failure
+  database:
+    image: neo4j:latest
+    env_file:
+      - 'docker_env'
+    volumes:
+      - dbdata:/data
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+      
+volumes:
+  dbdata:

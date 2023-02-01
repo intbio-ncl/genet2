@@ -12,7 +12,19 @@ Please get in touch with us if you would like to contribute or if you would like
 
 ## Installation
 
-Genet requires a neo4j server active and running with the APOC, and GDS plugins enabled. Here is a brief guide to installing neo4j with links to more comprehensive installation guides. Note this guide assumes a Debian based operating system.
+Genet requires a neo4j server active and running with the APOC, and GDS plugins enabled. 
+
+Genet contains a docker-compose file which can be used to fully setup and start the web application.
+1. Download and install docker `https://docs.docker.com/get-docker/`
+1. Navigate to genets directory.
+3. `sudo chmod +x startup.sh`
+4. `./startup`
+5. Wait until application_1 statesL Serving Flask app"
+6.  Open a browser and enter: http://127.0.0.1:5000/
+7.  The landing page has information for using the tool.
+
+If docker is not available, here is a brief guide to installing neo4j with links to more comprehensive installation guides. 
+Note this guide assumes a Debian based operating system.
 * `$ git clone https://github.com/intbio-ncl/genet2`
 *  Install Neo4j (https://neo4j.com/docs/operations-manual/current/installation/)
 	1. `$ wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -`
@@ -30,12 +42,9 @@ Genet requires a neo4j server active and running with the APOC, and GDS plugins 
 * Install Python requirements.
 	1. Navigate to your install directory
 	2. `python -m pip install -r requirements.txt`
-## Usage
-
-1.  Navigate to your install directory
-2.  $ FLASK_APP=router.py python3 -m flask run
-3.  Open a browser and enter: http://127.0.0.1:5000/
-4.  The landing page has information for using the tool.
+	3.  $ FLASK_APP=router.py python3 -m flask run
+	4.  Open a browser and enter: http://127.0.0.1:5000/
+	5.  The landing page has information for using the tool.
 
 ## Architecture
 

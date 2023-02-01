@@ -127,7 +127,7 @@ def modify_graph():
                 graph.driver.project.drop(n)
         else:
             graph.driver.project.drop(n)
-    elif enhance_tg.validate_on_submit():
+    elif enhance_tg.validate_on_submit() and enhance_tg.enhance_submit.id in request.form:
         enhancer.expand_truth_graph()
         pass
     if add_graph_fn is not None:
