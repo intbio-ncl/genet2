@@ -130,13 +130,13 @@ class EditorDash(AbstractDash):
             changed_id = [p['prop_id'] for p in callback_context.triggered][0]
             if select_node_i["edge_subject"].component_id in changed_id:
                 for node in data:
-                    nid = int(node["id"])
+                    nid = node["id"]
                     res = self.visualiser.get_view_nodes(nid)
                     for e in es_values:
                         e["props"]["value"] = res.get_key()
             elif select_node_i["edge_object"].component_id in changed_id:
                 for node in data:
-                    nid = int(node["id"])
+                    nid = node["id"]
                     res = self.visualiser.get_view_nodes(nid)
                     for e in eo_values:
                         e["props"]["value"] = res.get_key()

@@ -60,7 +60,7 @@ save_map = {
 
 
 class ViewGraph:
-    def __init__(self, graph=None):
+    def __init__(self, graph=None): 
         self._graph = graph if graph is not None else nx.MultiDiGraph()
 
     def resolve_node(func):

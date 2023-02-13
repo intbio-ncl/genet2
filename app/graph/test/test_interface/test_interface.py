@@ -22,7 +22,6 @@ class TestInterface(unittest.TestCase):
         self.interface.remove_graph(gn)
         self.interface.remove_graph(gn2)
         self.interface.remove_graph(self.reserved_names)
-
     def tearDown(self):
         return
         self.interface.remove_graph(gn)
@@ -277,9 +276,11 @@ class TestInterface(unittest.TestCase):
             gn_res = self.interface.edge_query(e_props={"graph_name":[gn2]})
             self.assertEqual(res,gn_res[0])
 
-        self.interface.remove_graph(gn)
-        res = self.interface.edge_query(e_props={"graph_name":[gn]})
-        self.assertEqual(res,[])
+
 
         self.assertEqual(self.interface.edge_query(e_props={"graph_name":[gn2]})[0].get_type(),in_edges[0][2])
         self.interface.remove_graph(gn2)
+
+        self.interface.remove_graph(gn)
+        res = self.interface.edge_query(e_props={"graph_name":[gn]})
+        self.assertEqual(res,[])
