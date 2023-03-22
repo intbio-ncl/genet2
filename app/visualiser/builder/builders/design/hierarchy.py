@@ -8,10 +8,10 @@ class HierarchyViewBuilder(AbstractViewBuilder):
     def _subgraph(self, edges=[], nodes=[],new_graph=None):
         return ViewGraph(super()._subgraph(edges,nodes,new_graph))
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        for entity in self._graph.get_entity():
-            children = self._graph.get_children(entity)
+        for entity in self._graph.get_entity(predicate=predicate):
+            children = self._graph.get_children(entity,predicate=predicate)
             if len(children) == 0:
                 continue
             for child in children:

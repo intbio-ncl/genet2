@@ -5,11 +5,11 @@ class EditorHierarchyViewBuilder(HierarchyViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
         nodes = []
-        for entity in self._graph.get_dna():
-            children = self._graph.get_children(entity)
+        for entity in self._graph.get_dna(predicate=predicate):
+            children = self._graph.get_children(entity,predicate=predicate)
             if len(children) == 0:
                 nodes.append(entity)
                 continue

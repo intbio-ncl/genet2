@@ -399,7 +399,7 @@ class AbstractDash:
             return [sum_tag]
 
     def create_modal(self, identifier, close_identifier, name, contents, submit_button=None, add=False, **kwargs):
-        modal_header = dbc.ModalHeader(name)
+        modal_header = self.create_heading_3(name,name)
         modal_body = dbc.ModalBody(contents)
         if submit_button is not None:
             submit_button = [dbc.Button(
@@ -408,8 +408,8 @@ class AbstractDash:
             submit_button = []
         modal_footer = dbc.ModalFooter(
             submit_button + [dbc.Button("Close", id=close_identifier, className="ml-auto")])
-        modal = dbc.Modal(id=identifier, children=[
-                          modal_header, modal_body, modal_footer], size="xl", **kwargs)
+        modal = dbc.Modal(id=identifier, children=modal_header+[
+                          modal_body, modal_footer], size="xl", **kwargs)
         if add:
             return self._create_element(modal)
         else:

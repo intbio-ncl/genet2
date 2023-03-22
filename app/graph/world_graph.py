@@ -1,30 +1,27 @@
 from app.graph.truth_graph.truth_graph import TruthGraph
 from app.graph.design_graph.design_graph import DesignGraph
 from app.graph.neo4j_interface.interface import Neo4jInterface
-truth_gn = "truth_graph"
+reserved_names = ["truth_graph"]
 class WorldGraph:
     def __init__(self):
-        self.driver = Neo4jInterface(reserved_names=[truth_gn])
-        self.truth = TruthGraph(truth_gn,self.driver)
+        self.driver = Neo4jInterface(reserved_names=reserved_names)
+        self.truth = TruthGraph(reserved_names[0],self.driver)
 
     def new_design(self,graph_name):
         if graph_name in self.get_design_names():
             raise ValueError(f'{graph_name} is already in use.')
         return DesignGraph(self.driver,graph_name)
 
-    def get_design(self,graph_name,predicate="ALL"):
+    def get_design(self,graph_name):
         if graph_name == "*":
             graph_name = self.get_design_names()
         if graph_name == self.truth.name:
             return self.truth
-        return DesignGraph(self.driver,graph_name,predicate=predicate)
+        return DesignGraph(self.driver,graph_name)
     
     def get_design_names(self):
         gns = self.driver.node_property("graph_name",distinct=True)
-        try:
-            gns.remove(self.truth.name)
-        except ValueError:
-            pass
+        gns = list(set(gns) - set(reserved_names))
         return list(set(gns))
 
     def remove_design(self,graph):

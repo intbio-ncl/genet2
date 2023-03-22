@@ -34,7 +34,7 @@ class Enhancer:
         from app.enhancer.seeder import seeder
         seeder.truth_graph(self._graph.truth,self._miner)
     
-    def enhance_truth(self,mode="automated"):
+    def expand_truth_graph(self,mode="automated"):
         self._truth_enhancements.enhance(self._graph.truth.name,mode=mode)
 
     def apply_truth(self,replacements,graph_name,feedback=None):

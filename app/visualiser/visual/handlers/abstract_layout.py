@@ -101,6 +101,7 @@ class AbstractLayoutHandler:
                 "coolingFactor": float,
                 "minTemp": float})
 
+    '''
     class CoseBilkent(Layout):
         def __init__(self):
             super().__init__()
@@ -127,7 +128,8 @@ class AbstractLayoutHandler:
                 "gravityCompound": float,
                 "gravityRange": float,
                 "initialEnergyOnIncremental": float})
-        
+    '''
+    
     class Cola(Layout):
         def __init__(self):
             super().__init__()

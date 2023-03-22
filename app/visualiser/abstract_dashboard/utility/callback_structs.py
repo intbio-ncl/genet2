@@ -128,6 +128,10 @@ e_update_o = {"graph_id": Output("content", "children"),
               "node_type": Output("node_type", "options"),
               "edge_predicate": Output("edge_predicate", "options")}
 
+# -- Properties -- 
+properties_node_i = {"node_type": Input(e_update_o["node_type"].component_id, "value")}
+properties_node_o = {"p_list" : Output("p_list","children")}
+
 # -- Select --
 select_node_i = {"predicate": Input(e_update_o["edge_predicate"].component_id, "value"),
                       "edge_subject": Input("edge_subject_na", "n_clicks"),
@@ -146,8 +150,7 @@ modify_graph_i = {"submit_am": Input("submit_am", "n_clicks"),
                   "add_edge_submit": Input("add_edge_submit", "n_clicks")}
 modify_graph_s = {"node_key": State("node_key", "value"),
                   "node_type": State(e_update_o["node_type"].component_id, "value"),
-                  "node_sequence": State("node_sequence", "value"),
-                  "node_desc": State("node_desc", "value"),
+                  "p_list" : State(properties_node_o["p_list"].component_id,"children"),
                   "edge_subject": State(select_node_s["edge_subject"].component_id, "children"),
                   "edge_predicate": State(e_update_o["edge_predicate"].component_id, "value"),
                   "edge_object": State(select_node_s["edge_object"].component_id, "children")}

@@ -216,6 +216,8 @@ class DesignDash(AbstractDash):
         Data table.
         Global information
         '''
+        if self.visualiser.get_loaded_design_names() == [None]:
+            return [hFalse, []]
         changed_id = [p['prop_id'] for p in callback_context.triggered][0]
         if info_modal_i["open_info"].component_id in changed_id:
             builder = self.visualiser._builder
@@ -382,8 +384,7 @@ class DesignDash(AbstractDash):
 
         if modify_node_i["t-remove"].component_id in changed_id:
             ids_to_remove = {ele_data['id'] for ele_data in data}
-            [self.visualiser._builder.view.remove_node(
-                int(d)) for d in ids_to_remove]
+            [self.visualiser._builder.view.remove_node(d) for d in ids_to_remove]
             new_elements = [
                 ele for ele in elements if str(ele['data']['id']) not in ids_to_remove]
             return [new_elements]
@@ -607,7 +608,8 @@ class DesignDash(AbstractDash):
                                "node_shape",
                                "node_text",
                                "set_design_names",
-                               "get_load_predicates"]
+                               "get_load_predicates",
+                               "get_loaded_design_names"]
 
         options = {"preset": {},
                    "mode": {},

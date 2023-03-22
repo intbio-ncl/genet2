@@ -34,7 +34,7 @@ class SynonymModule(AbstractModule):
                 if synonym.get_key() == edge.v.get_key():
                     return self._update_confidence(res[0],self._standard_modifier)
             else:
-                edge = Edge(subject,synonym,p_synonym)
+                edge = Edge(subject,synonym,p_synonym,name="Synonym")
                 # New synonym to existing subject
                 return self._add_new_edge(edge)
             
@@ -45,10 +45,10 @@ class SynonymModule(AbstractModule):
                 r_type = node.get_type()
                 if r_type !=  "None":
                     n_syn = Node(subject.name)
-                    edge = Edge(node,n_syn,p_synonym)
+                    edge = Edge(node,n_syn,p_synonym,name="Synonym")
                     return self._change(edge,self._standard_modifier)
             # The synonym node exists, let it fall through.
-        edge = Edge(subject,synonym,p_synonym)
+        edge = Edge(subject,synonym,p_synonym,name="Synonym")
         return self._add_new_edge(edge)
 
 

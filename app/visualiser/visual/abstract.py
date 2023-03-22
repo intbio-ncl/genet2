@@ -159,13 +159,14 @@ class AbstractVisual:
         '''
         self._set_layout(self._layout_h.Cose)
 
-    def set_cose_bilkent_layout(self):
-        '''
-        Positions nodes based on the CoSE: Compound Spring Embedder - 
-        A force directed layout scheme.
-        Similar to COSE but more expensive + can provide better results.
-        '''
-        self._set_layout(self._layout_h.CoseBilkent)
+    
+   # def set_cose_bilkent_layout(self):
+   #     '''
+   #     Positions nodes based on the CoSE: Compound Spring Embedder - 
+   #     A force directed layout scheme.
+   #     Similar to COSE but more expensive + can provide better results.
+   #     '''
+   #     self._set_layout(self._layout_h.CoseBilkent)
 
     def set_cola_layout(self):
         '''

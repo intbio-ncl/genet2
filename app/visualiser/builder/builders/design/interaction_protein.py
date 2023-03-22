@@ -12,9 +12,9 @@ class InteractionProteinViewBuilder(AbstractViewBuilder):
     def _subgraph(self, new_graph):
         return ViewGraph(super()._subgraph(new_graph=new_graph))
 
-    def build(self):
+    def build(self,predicate="ALL"):
         pp = model.identifiers.objects.protein
-        g = self._subgraph(produce_interaction_graph(self._graph))
+        g = self._subgraph(produce_interaction_graph(self._graph,predicate=predicate))
         g = produce_aggregated_interaction_graph(g, pp)
         g = self._subgraph(g)
         g.remove_isolated_nodes()

@@ -90,9 +90,12 @@ def _get_io_data(identity, object_type_map, m_graph, s_graph):
     object_data = []
     for p in s_graph.get_participants(interaction=identity):
         definition = s_graph.get_definition(s_graph.get_participant(p))
+        object_type = _get_nv_type(definition, object_type_map)
+        if object_type is None:
+            object_type = m_graph.identifiers.objects.physical_entity
         object_data.append({"definition": definition,
                             "meta": [m[-1] for m in s_graph.get_type_role(p)],
-                            RDF.type: _get_nv_type(definition, object_type_map)})
+                            RDF.type: object_type})
     return object_data
 
 def _build_restriction_obj(parent, predicate, value, curr_subjects):
@@ -107,8 +110,11 @@ def _build_restriction_obj(parent, predicate, value, curr_subjects):
     return name, triples
 
 def _get_nv_type(key, object_type_map):
-    return object_type_map[key]
-
+    try:
+        return object_type_map[key]
+    except KeyError:
+        return None
+    
 def _get_restrictions(i_type_c, m_graph):
     # Get restrictions from ontology for a given interaction.
     restrictions = {}

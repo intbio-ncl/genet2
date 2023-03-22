@@ -30,6 +30,12 @@ class DataMiner:
     def get_descriptors(self,descriptions):
         return self._language.get_subjects(descriptions)
 
+    def download_igem_parts(self,out_fn):
+        return self._database.download_igem_parts(out_fn)
+    
+    def get_vpr_data(self,out_fn):
+        return self._database.get_vpr_data(out_fn)
+    
     def full_sequence_match(self,sequence,db_name=None):
         matches = self._database.sequence_search(sequence,db_name=db_name)
         if matches is None:

@@ -583,6 +583,70 @@ class TestDatabaseHandlerGenbank(unittest.TestCase):
             self.assertEqual(count,0)
 
 
+class TestDatabaseHandlerVPR(unittest.TestCase):
+    def setUp(self):
+        self.db_handler = DatabaseHandler()
+        vpr_interface_name = self.db_handler.vpr
+        self.vpr_interface = self.db_handler._db_util.db_mapping_calls[vpr_interface_name]
+
+    def tearDown(self):
+        None
+    
+    def _atleast_one(self,expectant,graph):
+        for triple in graph:
+            for element in triple:
+                if str(expectant) in str(element):
+                    return True
+                if str(expectant) == str(element):
+                    return True
+        return False
+    
+    def _equal_graphs(self,g1,g2):
+        self.assertCountEqual([*g1.triples((None,None,None))],
+                              [*g2.triples((None,None,None))])
+
+    def test_vpr_get(self):
+        vpr_id = "BO_31362"
+        record = self.vpr_interface.get(vpr_id)
+        self.assertIsInstance(record,Graph)
+        self.assertGreater(len(record),0)
+        self.assertTrue(self._atleast_one(vpr_id,record))
+
+        vpr_id = "http://www.bacillondex.org/BO_31362/1"
+        record1 = self.vpr_interface.get(vpr_id)
+        self.assertIsInstance(record1,Graph)
+        self.assertGreater(len(record1),0)
+        self.assertTrue(self._atleast_one(vpr_id,record))
+        self._equal_graphs(record,record1)
+        
+    def test_vpr_query(self):
+        query_strings = ["ylaA"]
+        for query_string in query_strings:
+            results = self.vpr_interface.query(query_string)
+            self.assertGreater(len(results),0)
+
+    def test_vpr_count(self):
+        query_strings = ["ylaA"]
+        for query_string in query_strings:
+            results = self.vpr_interface.count(query_string)
+            self.assertGreater(results,0)
+
+    def test_vpr_get_uri(self):
+        name = "BO_31362"
+        res = self.vpr_interface.get_uri(name)
+        for r in res:
+            if any(name in s for s in r):
+                break
+        else:
+            self.fail()
+
+    def test_vpr_is_triple(self):
+        res = self.vpr_interface.is_triple("http://www.bacillondex.org/BO_31362/1")
+        self.assertTrue(res)
+
+    def test_vpr_sequence(self):
+        res = self.vpr_interface.sequence("TGTTTCATCTTGAAACTTTTTGAAAAGTCCGCTGTCTAACCGAATGAGGCCTTAA")
+        self.assertGreater(res,0)
 
 if __name__ == '__main__':
     unittest.main()

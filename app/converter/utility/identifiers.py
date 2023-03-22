@@ -153,6 +153,9 @@ class Predicates:
         self.status = URIRef(self.namespaces.igem + "status")
         self.sampleStatus = URIRef(self.namespaces.igem + "sampleStatus")
         self.experience = URIRef(self.namespaces.igem + "experience")
+        self.partStatus = URIRef(self.namespaces.igem + "partStatus")
+        self.igdirection = URIRef(self.namespaces.igem + "direction")
+        self.igdirection = URIRef(self.namespaces.igem + "direction")
 
         self.synonym = URIRef("http://purl.obolibrary.org/obo/NCIT_C52469")
         self.similar_to = URIRef("http://semanticscience.org/resource/CHEMINF_000481")
@@ -162,6 +165,17 @@ class Predicates:
             self.persistent_identity
         ]
 
+        self.ownership_predicates = [
+            self.module,
+            self.maps_to,
+            self.interaction,
+            self.participation,
+            self.functional_component,
+            self.sequence_constraint,
+            self.location,
+            self.sequence_annotation,
+            self.variable_component
+        ] 
 class Roles:
     def __init__(self, namespaces):
         namespaces = namespaces
@@ -198,6 +212,7 @@ class Roles:
         self.degradation = URIRef(namespaces.sbo_biomodels + "0000179")
         self.genetic_production = URIRef(namespaces.sbo_biomodels + "0000589")
         self.control = URIRef(namespaces.sbo_biomodels + "0000168")
+        self.phosphorylation = URIRef(namespaces.sbo_biomodels + "0000216")
 
         self.inhibitor = URIRef(namespaces.sbo_biomodels + "0000020")
         self.inhibited = URIRef(namespaces.sbo_biomodels + "0000642")

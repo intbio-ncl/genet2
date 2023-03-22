@@ -4,15 +4,17 @@ import networkx as nx
 
 from app.graph.utility.graph_objects.edge import Edge
 from app.graph.utility.graph_objects.node import Node
+from app.graph.utility.graph_objects.reserved_node import ReservedNode
+from app.graph.utility.graph_objects.reserved_edge import ReservedEdge
 
 def _stringify_graph(G):
     ng = nx.MultiDiGraph()
     for n, v, k, d in G.edges(keys=True, data=True):
         n_data = G.nodes[n]
         v_data = G.nodes[v]
-        ng.add_node(n, **{key: str(v) for key, v in n_data.items()})
-        ng.add_node(v, **{key: str(v) for key, v in v_data.items()})
-        ng.add_edge(n, v, str(k), **d)
+        ng.add_node(n, **{str(key): str(v) for key, v in n_data.items()})
+        ng.add_node(v, **{str(key): str(v) for key, v in v_data.items()})
+        ng.add_edge(n, v, str(k), **{str(key): str(v) for key, v in d.items()})
     return ng
 
 def _adj_list(G, output=None):
@@ -35,13 +37,6 @@ def _gml(G, output=None):
     else:
         return nx.write_gml(G, output)
 
-def _graphml(G, output=None):
-    G = _stringify_graph(G)
-    if output is None:
-        return "\n".join(nx.generate_graphml(G))
-    else:
-        return nx.write_graphml(G, output)
-
 def _cytoscape(G, output=None):
     js = nx.cytoscape_data(G)
     if output is None:
@@ -53,7 +48,6 @@ save_map = {
     "adj-list": _adj_list,
     "gexf": _gexf,
     "gml": _gml,
-    "graphml": _graphml,
     "cytoscape": _cytoscape,
 }
 
@@ -64,10 +58,10 @@ class ViewGraph:
         self._graph = graph if graph is not None else nx.MultiDiGraph()
 
     def resolve_node(func):
-        def inner(self,n=None):
+        def inner(self,n=None,reserved=True):
             if isinstance(n,Node):
                 n = n.id
-            return func(self,n)
+            return func(self,n,reserved=reserved)
         return inner
         
     def __len__(self):
@@ -84,67 +78,89 @@ class ViewGraph:
         for n in self._graph.nodes:
             yield n
 
-    def nodes(self):
+    def _node(self,labels,id=None,properties=None,reserved=False):
+        if properties is None:
+            props = {}
+        else:
+            props = properties
+        if reserved:
+            return ReservedNode(labels,id=id,**props)
+        else:
+            return Node(labels,id=id,**props)
+    
+    def _edge(self,n,v,e,properties=None,reserved=False):
+        if properties is None:
+            props = {}
+        else:
+            props = properties
+        if reserved:
+            return ReservedEdge(n,v,e,**props)
+        else:
+            return Edge(n,v,e,**props)
+
+    def nodes(self,reserved=False):
         for n,data in self._graph.nodes(data=True):
             props = data.copy()
             labels = props["key"]
             del props["key"]
-            yield Node(labels,id=n,**props)
+            yield self._node(labels,id=n,properties=props,reserved=reserved)
 
-    def has_edge(self,edge):
-        return self._graph.has_edge(edge.n.id,edge.v.id,key=edge.get_type())
-    
-    def get_node(self,n=None):
+    @resolve_node
+    def edges(self,n=None,reserved=False):
+        for n,v,e,d in self._graph.edges(n,keys=True,data=True):
+            props = self._graph.nodes[n].copy()
+            labels = props["key"]
+            del props["key"]
+            n = self._node(labels,id=n,properties=props,reserved=reserved)
+
+            props = self._graph.nodes[v].copy()
+            labels = props["key"]
+            del props["key"]
+            v = self._node(labels,id=v,properties=props,reserved=reserved)
+            yield self._edge(n,v,e,properties=d,reserved=reserved)
+
+    def get_node(self,n=None,reserved=False):
         if n is None:
             return list(self.nodes())
         data = self._graph.nodes[n]
         props = data.copy()
         labels = props["key"]
         del props["key"]
-        return Node(labels,id=n,**props)
-        
-    @resolve_node
-    def edges(self,n=None):
-        for n,v,e,d in self._graph.edges(n,keys=True,data=True):
-            props = self._graph.nodes[n].copy()
-            labels = props["key"]
-            del props["key"]
-            n = Node(labels,id=n,**props)
-
-            props = self._graph.nodes[v].copy()
-            labels = props["key"]
-            del props["key"]
-            v = Node(labels,id=v,**props)
-            yield Edge(n,v,e,**d)
+        return self._node(labels,id=n,properties=props,reserved=reserved)
 
     @resolve_node
-    def in_edges(self, node=None):
+    def in_edges(self, node=None,reserved=False):
         for n,v,e,d in self._graph.in_edges(node,keys=True,data=True):
             props = self._graph.nodes[n].copy()
             labels = props["key"]
             del props["key"]
-            n = Node(labels,id=n,**props)
+            n = self._node(labels,id=n,properties=props,reserved=reserved)
 
             props = self._graph.nodes[v].copy()
             labels = props["key"]
             del props["key"]
-            v = Node(labels,id=v,**props)
-            yield Edge(n,v,e,**d)
+            v = self._node(labels,id=v,properties=props)
+            yield self._edge(n,v,e,properties=d,reserved=reserved)
 
     @resolve_node
-    def out_edges(self, node=None):
+    def out_edges(self, node=None,reserved=False):
         for n,v,e,d in self._graph.out_edges(node,keys=True,data=True):
             props = self._graph.nodes[n].copy()
             labels = props["key"]
             del props["key"]
-            n = Node(labels,id=n,**props)
+            n = self._node(labels,id=n,properties=props,reserved=reserved)
 
             props = self._graph.nodes[v].copy()
             labels = props["key"]
             del props["key"]
-            v = Node(labels,id=v,**props)
-            yield Edge(n,v,e,**d)
-        
+            v = self._node(labels,id=v,properties=props,reserved=reserved)
+            yield self._edge(n,v,e,properties=d,reserved=reserved)
+
+
+
+    def has_edge(self,edge):
+        return self._graph.has_edge(edge.n.id,edge.v.id,key=edge.get_type())
+    
     def add_edge(self, edge):
         self._graph.add_edge(edge.n.id,edge.v.id,key=edge.get_type(),**edge.get_properties())
 
@@ -157,27 +173,25 @@ class ViewGraph:
     def remove_node(self, node):
         self._graph.remove_node(node)
 
-    def merge_nodes(self, subject, nodes):
+    def merge_nodes(self, subject, nodes,reserved=False):
         if not isinstance(subject,Node):
-            if not isinstance(subject,int):
-                subject = int(subject)
-            s_data = self._graph.nodes[subject]
-            subject = Node(id=subject,**s_data)
+            props = self._graph.nodes[subject].copy()
+            labels = props["key"]
+            del props["key"]
+            subject = self._node(labels,id=subject,properties=props,reserved=reserved)
         for node in nodes:
             if isinstance(node,Node):
                 node = node.id
-            if not isinstance(node,int):
-                node = int(node)
             in_edges = list(self.in_edges(node))
             out_edges = list(self.out_edges(node))
             for edge in in_edges:
                 self.remove_edge(edge)
                 if edge.n != subject:
-                    self.add_edge(Edge(edge.n, subject, edge.get_type(), **edge.get_properties()))
+                    self.add_edge(self._edge(edge.n, subject, edge.get_type(), properties=edge.get_properties()))
             for edge in out_edges:
                 self.remove_edge(edge)
                 if edge.v != subject:
-                    self.add_edge(Edge(subject,edge.v, edge.get_type(), **edge.get_properties()))
+                    self.add_edge(self._edge(subject,edge.v, edge.get_type(), properties=edge.get_properties()))
             self.remove_node(node)
 
     def save(self, output=None, d_type="gexf"):
@@ -226,29 +240,33 @@ class ViewGraph:
         return gn_map
 
     @resolve_node
-    def degree(self, node):
+    def degree(self, node,reserved=False):
         return self._graph.degree(node)
 
     @resolve_node
-    def bfs(self, source):
+    def bfs(self, source,reserved=False):
         for n,v in nx.bfs_tree(self._graph, source).edges():
             props = self._graph.nodes[n].copy()
             labels = props["key"]
             del props["key"]
-            n = Node(labels,id=n,**props)
+            n = self._node(labels,id=n,**props)
 
             props = self._graph.nodes[v].copy()
             labels = props["key"]
             del props["key"]
-            v = Node(labels,id=v,**props)
+            v = self._node(labels,id=v,**props)
             yield n,v
 
 
     @resolve_node
-    def dfs(self, source):
+    def dfs(self, source,reserved=False):
         for n,v,e,k in nx.dfs_tree(self._graph, source).edges(keys=True,data=True):
-            yield Edge(n,v,e,**k)
+            yield self._edge(n,v,e,**k)
 
+    @resolve_node
+    def is_isolate(self, node,reserved=False):
+        return nx.is_isolate(self._graph, node)
+    
     def node_connectivity(self):
         return nx.node_connectivity(self._graph)
 
@@ -367,10 +385,6 @@ class ViewGraph:
     def square_clustering(self):
         return nx.square_clustering(self._graph)
 
-    @resolve_node
-    def is_isolate(self, node):
-        return nx.is_isolate(self._graph, node)
-
     def _get_name(self, subject):
         split_subject = self._split(subject)
         if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
@@ -386,7 +400,7 @@ class ViewGraph:
             if attribute in data.values():
                 labels = data["key"].copy()
                 del data["key"]
-                nodes.append(Node(labels,id=n,**data))
+                nodes.append(self._node(labels,id=n,properties=data))
         if nodes == []:
             raise ValueError("Unable to find.")
         return nodes

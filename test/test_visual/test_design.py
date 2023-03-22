@@ -27,6 +27,7 @@ class TestLabels(unittest.TestCase):
             self.visual.set_design_names(self.gn)
             self.visual.set_full_graph_view()
 
+
         @classmethod
         def tearDownClass(self):
             self._wrapper.remove_design(self.gn)
@@ -41,6 +42,7 @@ class TestLabels(unittest.TestCase):
                 self.assertIsNone(labels[index])
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             labels = self.visual.add_node_no_labels()
             nodes = [*view.nodes()]
@@ -67,6 +69,7 @@ class TestLabels(unittest.TestCase):
             _run_test(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_test(view)
                 
@@ -83,6 +86,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
 
@@ -110,6 +114,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
     
@@ -127,6 +132,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
 
@@ -157,6 +163,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
 
@@ -174,6 +181,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
 
@@ -191,6 +199,7 @@ class TestLabels(unittest.TestCase):
             _run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests(view)
 
@@ -224,6 +233,7 @@ class TestColor(unittest.TestCase):
             run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             run_tests(view)
 
@@ -243,6 +253,7 @@ class TestColor(unittest.TestCase):
             run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             run_tests(view)
 
@@ -271,6 +282,7 @@ class TestColor(unittest.TestCase):
             run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             run_tests(view)
 
@@ -298,6 +310,7 @@ class TestColor(unittest.TestCase):
             run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             run_tests(view)
 
@@ -315,6 +328,7 @@ class TestColor(unittest.TestCase):
             run_tests(view)
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             run_tests(view)
 
@@ -326,9 +340,10 @@ class TestColor(unittest.TestCase):
             convert(test_fn,self._wrapper.driver,self.gn)
             self.dg = self._wrapper.get_design(self.gn)
             self.visual = DesignVisual(self._wrapper)
-            self.visual.set_design_names(self.gn)
+            self.visual.set_design_names(self.gn,"Intersection")
             self.visual.set_full_graph_view()
             self._color_list = ColorPicker()
+            self.visual._builder.build()
 
         @classmethod
         def tearDownClass(self):
@@ -336,6 +351,7 @@ class TestColor(unittest.TestCase):
 
         def test_standard(self):
             view = self.visual._builder.view
+            self.assertTrue(len(view),0)
             self.visual.add_standard_edge_color()
             colors = self.visual.add_standard_edge_color()
             edges = [*view.edges()]
@@ -345,6 +361,7 @@ class TestColor(unittest.TestCase):
 
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
 
             view = self.visual._builder.view
             colors = self.visual.add_standard_edge_color()
@@ -374,6 +391,7 @@ class TestColor(unittest.TestCase):
             _run_tests()
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests()
 
@@ -412,6 +430,7 @@ class TestColor(unittest.TestCase):
             _run_tests()
             self.visual.set_hierarchy_view()
             self.visual.set_hierarchy_view()
+            self.visual._builder.build()
             view = self.visual._builder.view
             _run_tests()
        
@@ -463,6 +482,7 @@ class TestShape(unittest.TestCase):
         _run_tests()
         self.visual.set_hierarchy_view()
         self.visual.set_hierarchy_view()
+        self.visual._builder._view_builder.build()
         view = self.visual._builder.view
         _run_tests()
 
@@ -496,6 +516,7 @@ class TestSize(unittest.TestCase):
 
         self.visual.set_hierarchy_view()
         self.visual.set_hierarchy_view()
+        self.visual._builder._view_builder.build()
 
         view = self.visual._builder.view
         sizes = self.visual.add_standard_node_size()
@@ -522,6 +543,7 @@ class TestSize(unittest.TestCase):
         _run_tests(view,node_sizes)
         self.visual.set_hierarchy_view()
         self.visual.set_hierarchy_view()
+        self.visual._builder._view_builder.build()
         node_sizes = self.visual.add_rdf_type_node_size()
         view = self.visual._builder.view
         _run_tests(view,node_sizes)
@@ -548,6 +570,7 @@ class TestSize(unittest.TestCase):
         _run_tests(view,node_sizes)
         self.visual.set_hierarchy_view()
         self.visual.set_hierarchy_view()
+        self.visual._builder._view_builder.build()
         node_sizes = _cen_func()
         view = self.visual._builder.view
         _run_tests(view,node_sizes)

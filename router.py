@@ -1,6 +1,7 @@
 import os
 import shutil
 import uuid
+import time
 
 from flask import Flask
 from flask import session
@@ -29,6 +30,7 @@ root_dir = "app"
 static_dir = os.path.join(root_dir, "assets")
 template_dir = os.path.join(root_dir, "templates")
 sessions_dir = os.path.join(root_dir, "sessions")
+truth_save_dir = os.path.join(root_dir, "truth_saves")
 
 server = Flask(__name__, static_folder=static_dir,
                template_folder=template_dir)
@@ -44,6 +46,7 @@ design_dash.app.enable_dev_tools(debug=True)
 cypher_dash.app.enable_dev_tools(debug=True)
 projection_dash.app.enable_dev_tools(debug=True)
 editor_dash.app.enable_dev_tools(debug=True)
+truth_dash.app.enable_dev_tools(debug=True)
 
 app = DispatcherMiddleware(server, {
     design_dash.pathname: design_dash.app.server,
@@ -70,15 +73,18 @@ def index():
 
 @server.route('/modify-graph', methods=['GET', 'POST'])
 def modify_graph():
+    cf_true = forms.ConnectorFormTrue()
+    cf_false = forms.ConnectorFormFalse()
     upload_graph = forms.UploadGraphForm()
     paste_graph = forms.PasteGraphForm()
     sbh_graph = forms.SynbioGraphForm()
-    enhance_tg = forms.EnhanceTruthGraphForm()
     d_names = graph.get_design_names()
     remove_graph = forms.add_remove_graph_form(d_names)
     export_graph = forms.add_export_graph_form(d_names)
     project_names = graph.driver.project.names()
     drop_projection = forms.add_remove_projection_form(project_names)
+    tg_form = forms.add_truth_graph_form(truth_save_dir)
+
     add_graph_fn = None
     err_string = None
     success_str = None
@@ -93,7 +99,10 @@ def modify_graph():
         add_graph_fn,g_name = form_handlers.handle_paste(paste_graph, session["session_dir"])
         ft = paste_graph.file_type.data
     elif sbh_graph.validate_on_submit():
-        add_graph_fn,g_name = form_handlers.handle_synbiohub(sbh_graph, session["session_dir"], connector)
+        try:
+            add_graph_fn,g_name = form_handlers.handle_synbiohub(sbh_graph, session["session_dir"], connector)
+        except TypeError:
+            add_graph_fn = None
         if add_graph_fn is None:
             err_string = "Unable to find record."
         ft = "sbol"
@@ -127,18 +136,67 @@ def modify_graph():
                 graph.driver.project.drop(n)
         else:
             graph.driver.project.drop(n)
-    elif enhance_tg.validate_on_submit() and enhance_tg.enhance_submit.id in request.form:
-        enhancer.expand_truth_graph()
-        pass
+    elif tg_form.validate_on_submit():
+        if tg_form.tg_save.data:
+            _save_truth_graph()
+            success_str = f'Truth Graph Saved.'
+        elif tg_form.tg_reseed.data:
+            graph.truth.drop()
+            enhancer.seed_truth_graph()
+            success_str = f'Reset Truth Graph'
+        elif tg_form.tg_expand.data:
+            enhancer.expand_truth_graph()
+            success_str = f'Expanded Truth Graph'
+        elif tg_form.tg_restore.data:
+            fn = os.path.join(truth_save_dir,request.form["files"])
+            graph.truth.drop()
+            graph.truth.load(fn)
+            success_str = f'Restored Truth Graph {request.form["files"]}'
     if add_graph_fn is not None:
         if g_name == "":
             g_name = add_graph_fn.split(os.path.sep)[-1].split(".")[0]
-        return _add_graph(add_graph_fn, g_name,ft)
+        if cf_true.cft_submit.data:
+            orig_filename = add_graph_fn
+            dg = connector.connect(add_graph_fn)
+            add_graph_fn = orig_filename.split("/")[-1].split(".")[0] + "_connected.xml"
+            add_graph_fn = os.path.join(session['session_dir'], add_graph_fn)
+            dg.save(add_graph_fn, "xml")
+            os.remove(orig_filename)
+            del session["visual_filename"]
+            del session["graph_name"]
+            del session["ft"]
+
+        elif cf_false.cff_submit.data:
+            add_graph_fn = session["visual_filename"]
+            del session["visual_filename"]
+            del session["graph_name"]
+            del session["ft"]
+
+        elif connector.can_connect(add_graph_fn):
+            session["ft"] = ft
+            session["visual_filename"] = add_graph_fn
+            session["graph_name"] = g_name
+            return render_template('modify_graph.html', upload_graph=upload_graph,
+                                paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
+                                drop_projection=drop_projection, remove_graph=remove_graph,
+                                cf_true=cf_true, cf_false=cf_false)
+
+        elif not os.path.isfile(add_graph_fn):
+            return render_template('modify_graph.html', upload_graph=upload_graph,
+                                paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
+                                drop_projection=drop_projection, remove_graph=remove_graph)
+
+        file_convert(graph.driver,add_graph_fn,g_name,convert_type=ft)
+        return render_template('modify_graph.html', upload_graph=upload_graph,
+                            paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
+                            drop_projection=drop_projection, remove_graph=remove_graph, success_str="Graph Added.")
 
     return render_template('modify_graph.html', upload_graph=upload_graph,
-                           paste_graph=paste_graph, sbh_graph=sbh_graph,enhance_truth_graph=enhance_tg,
-                           remove_graph=remove_graph, drop_projection=drop_projection,
-                           export_graph=export_graph, err_string=err_string, success_str=success_str)
+                           paste_graph=paste_graph, sbh_graph=sbh_graph,
+                           remove_graph=remove_graph,tg_form=tg_form,
+                           drop_projection=drop_projection,
+                           export_graph=export_graph, 
+                           err_string=err_string, success_str=success_str)
 
 
 @server.route('/visualiser', methods=['GET', 'POST'])
@@ -334,8 +392,34 @@ def before_request_func():
         os.makedirs(os.path.join(sessions_dir, session['uid']))
     except FileExistsError:
         pass
+    _handle_restore_dir()
 
+def _save_truth_graph():
+    if not os.path.isdir(truth_save_dir):
+        os.mkdir(truth_save_dir)
+    out_fn = os.path.join(truth_save_dir,time.strftime("%Y%m%d-%H%M%S")+".json")
+    graph.truth.save(out_fn)
 
+def _handle_restore_dir():
+    cur_time = time.time()
+    times = []
+    for fn in os.listdir(truth_save_dir):
+        fn = os.path.join(truth_save_dir,fn)
+        times.append(cur_time - os.path.getmtime(fn))
+    min_t = min(times,key=lambda x:float(x))
+    if min_t > 86400:
+        _save_truth_graph()
+
+    files = os.listdir(truth_save_dir)
+    while len(files) > 5:
+        times = []
+        for fn in files:
+            fn = os.path.join(truth_save_dir,fn)
+            times.append((cur_time - os.path.getmtime(fn),fn))
+        max_t = max(times,key=lambda x:x[0])
+        os.remove(max_t[1])
+        files = os.listdir(truth_save_dir)
+        
 def _upload_graph(upload):
     ft = upload.file_type.data
     fn,gn = form_handlers.handle_upload(upload, session["session_dir"])
@@ -343,55 +427,6 @@ def _upload_graph(upload):
     graph.remove_design(gn)
     file_convert(graph.driver,fn,gn,convert_type=ft)
     return gn, rm
-
-
-def _add_graph(fn, g_name,ft):
-    cf_true = forms.ConnectorFormTrue()
-    cf_false = forms.ConnectorFormFalse()
-    upload_graph = forms.UploadGraphForm()
-    paste_graph = forms.PasteGraphForm()
-    sbh_graph = forms.SynbioGraphForm()
-    d_names = graph.get_design_names()
-    remove_graph = forms.add_remove_graph_form(d_names)
-    project_names = graph.driver.project.names()
-    export_graph = forms.add_export_graph_form(["all"] + d_names)
-    drop_projection = forms.add_remove_projection_form(project_names)
-    if cf_true.cft_submit.data:
-        orig_filename = fn
-        dg = connector.connect(fn)
-        fn = orig_filename.split("/")[-1].split(".")[0] + "_connected.xml"
-        fn = os.path.join(session['session_dir'], fn)
-        dg.save(fn, "xml")
-        os.remove(orig_filename)
-        del session["visual_filename"]
-        del session["graph_name"]
-        del session["ft"]
-
-    elif cf_false.cff_submit.data:
-        fn = session["visual_filename"]
-        del session["visual_filename"]
-        del session["graph_name"]
-        del session["ft"]
-
-    elif connector.can_connect(fn):
-        session["ft"] = ft
-        session["visual_filename"] = fn
-        session["graph_name"] = g_name
-        return render_template('modify_graph.html', upload_graph=upload_graph,
-                               paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
-                               drop_projection=drop_projection, remove_graph=remove_graph,
-                               cf_true=cf_true, cf_false=cf_false)
-
-    elif not os.path.isfile(fn):
-        return render_template('modify_graph.html', upload_graph=upload_graph,
-                               paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
-                               drop_projection=drop_projection, remove_graph=remove_graph)
-
-    file_convert(graph.driver,fn,g_name,convert_type=ft)
-    return render_template('modify_graph.html', upload_graph=upload_graph,
-                           paste_graph=paste_graph, sbh_graph=sbh_graph, export_graph=export_graph,
-                           drop_projection=drop_projection, remove_graph=remove_graph, success_str="Graph Added.")
-
 
 def _get_evaluator_descriptions(feedback):
     descriptions = {}

@@ -14,9 +14,9 @@ class EditorInteractionGeneticViewBuilder(InteractionGeneticViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         genetic_pred = model.identifiers.objects.DNA
-        g = self._subgraph(produce_interaction_graph(self._graph))
+        g = self._subgraph(produce_interaction_graph(self._graph,predicate=predicate))
         g = produce_aggregated_interaction_graph(g,genetic_pred)
         g = self._subgraph(new_graph = g)
         return g

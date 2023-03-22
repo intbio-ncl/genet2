@@ -202,9 +202,11 @@ class Neo4jInterface:
         self.submit()
         logger.remove_graph(graph_name)
 
-
-
-
+    def drop_graph(self,graph_name):
+        if not isinstance(graph_name, list):
+            graph_name = [graph_name]
+        qry = self.qry_builder.remove_graph(graph_name)
+        return self._run(qry)
 
     def node_query(self, identity=None, predicate="ALL", **kwargs):
         qry = self.qry_builder.node_query(identity, predicate=predicate, **kwargs)
@@ -258,9 +260,9 @@ class Neo4jInterface:
     def labels_to_node(self, labels):
         return Node(*self.derive_key_type(labels))
 
-    def get_isolated_nodes(self, **kwargs):
+    def get_isolated_nodes(self, predicate="ALL",**kwargs):
         results = []
-        qry = self.qry_builder.get_isolated_nodes(**kwargs)
+        qry = self.qry_builder.get_isolated_nodes(predicate=predicate,**kwargs)
         for index, record in self._run(qry).iterrows():
             for k, v in record.items():
                 key, r_type = self.derive_key_type(v.labels)
@@ -296,7 +298,7 @@ class Neo4jInterface:
         qry = self.qry_builder.export(graph_name)
         res = self._run(qry)["data"][0]
         return res
-        
+    
     def derive_key_type(self, labels):
         labels = list(labels)
         if "None" in labels:

@@ -1,3 +1,4 @@
+import os
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 from wtforms import TextAreaField
@@ -22,11 +23,23 @@ class UploadForm(FlaskForm):
     submit_upload = SubmitField('Submit')
     upload = FileField('Upload File', validators=[validators.InputRequired()])
 
-class EnhanceTruthGraphForm(FlaskForm):
-    class Meta:
-        csrf = False
-    enhance_submit = SubmitField('Run Enhancement')
 
+def add_truth_graph_form(directory,**kwargs):
+    class ModifyTruthGraphForm(FlaskForm):
+        class Meta:
+            csrf = False
+        tg_save = SubmitField('Save')
+        tg_reseed = SubmitField('Reset (All Information will be lost.)')
+        tg_expand = SubmitField('Expand')
+        tg_restore = SubmitField('Restore')
+    files = []
+    for c in os.listdir(directory):
+        desc = c.split(".")[0]
+        date,time = desc.split("-")
+        desc = f'{date[6:]}/{date[4:6]}/{date[:4]} - {time[:2]} : {time[2:4]}'
+        files.append((c,desc))
+    setattr(ModifyTruthGraphForm, "files", SelectField("Files", choices=files))
+    return ModifyTruthGraphForm(**kwargs)
 
 class PasteForm(FlaskForm):
     class Meta:
@@ -64,11 +77,6 @@ class SynbioGraphForm(FlaskForm):
     pmid = TextAreaField('ID', validators=[validators.InputRequired()])
     graph_name = TextAreaField('Graph Name (Optional)')
 
-
-class PurgeGraphForm(FlaskForm):
-    purge_graph = SubmitField('Reset Graph')
-
-
 class ConnectorFormTrue(FlaskForm):
     class Meta:
         csrf = False
@@ -79,7 +87,6 @@ class ConnectorFormFalse(FlaskForm):
     class Meta:
         csrf = False
     cff_submit = SubmitField('No')
-
 
 def add_remove_graph_form(choices, **kwargs):
     class RemoveGraphForm(FlaskForm):

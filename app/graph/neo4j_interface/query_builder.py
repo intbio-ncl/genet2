@@ -86,6 +86,9 @@ class QueryBuilder:
     def purge(self):
         return "MATCH (n) DETACH DELETE n"
 
+    def remove_graph(self,graph_name):
+        return f"MATCH (n) WHERE ANY(a IN {str(graph_name)} WHERE a IN n.`graph_name`) DETACH DELETE n"
+    
     def node_query(self, identity,predicate="ALL", **kwargs):
         where = ""
         if not isinstance(identity,(list, tuple, set, frozenset)):
@@ -115,7 +118,7 @@ class QueryBuilder:
     def get_edge_properties(self):
         return "MATCH (n)-[r]-(m) RETURN properties(r)"
 
-    def get_isolated_nodes(self,identity=[],**kwargs):
+    def get_isolated_nodes(self,identity=[],predicate="ALL",**kwargs):
         where = ""
         for index, i in enumerate(identity):
             if i is None:
@@ -124,7 +127,7 @@ class QueryBuilder:
             if index < len(identity) - 1:
                 where += " OR "
 
-        where = self._graph_name(kwargs,where,"n","ALL")
+        where = self._graph_name(kwargs,where,"n",predicate)
         return f'''
         match (n {{{self.dict_to_query(kwargs)}}})
         with n
@@ -226,9 +229,10 @@ class QueryBuilder:
 
     def export(self,graph_name):
         return f'''
-        MATCH (n {{graph_name:{graph_name}}})-[e {{graph_name:{graph_name}}}]->()
-        WITH collect(n) as n, collect(e) as e
-        CALL apoc.export.json.data(n,e,null,{{useTypes:true, stream: true}})
+        MATCH (n1) WHERE ANY(a IN {str(graph_name)} WHERE a IN n1.`graph_name`) 
+        OPTIONAL MATCH (n1)-[e]->() WHERE ANY(a IN {str(graph_name)} WHERE a IN e.`graph_name`)
+        WITH collect(n1) as a, collect(e) as b
+        CALL apoc.export.json.data(a, b, null, {{stream: true}})
         YIELD data
         RETURN data
         '''

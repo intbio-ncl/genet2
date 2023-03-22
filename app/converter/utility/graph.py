@@ -172,8 +172,10 @@ class SBOLGraph:
         except (IndexError,TypeError):
             return None
 
-    def get_maps_to(self):
-        return [cd[0] for cd in self.graph.get_instances(identifiers.objects.mapsTo)]
+    def get_maps_to(self,module=None):
+        if module is None:
+            return [cd[0] for cd in self.graph.get_instances(identifiers.objects.mapsTo)]
+        return [mt[2] for mt in self.search((module,identifiers.predicates.maps_to,None))]
 
     def get_local(self,subject):
         return self.get_property(subject,identifiers.predicates.local)
@@ -258,7 +260,7 @@ class SBOLGraph:
         except IndexError:
             return None
             
-    def get_modules(self,md):
+    def get_modules(self,md=None):
         return [sc[2] for sc in self.graph.get_children(md,identifiers.predicates.module)]
     
     def get_sequence_constraints(self,cd=None,data=False):
@@ -271,9 +273,21 @@ class SBOLGraph:
             d_scs.append((sc,triples))
         return d_scs
 
-    def get_sequence_names(self,cd):
-        sequence_objs = [s[2] for s in self.graph.get_object(cd,identifiers.predicates.sequence)] 
-        return sequence_objs
+    def get_sequence_name(self,sequence,duplicates=False):
+        if duplicates:
+            return [cd[0] for cd in self.graph.search((None,identifiers.predicates.elements,sequence))]
+        try:
+            return self.graph.get_subject(identifiers.predicates.elements,sequence)[0][0]
+        except IndexError:
+            return None
+
+    def get_sequence_names(self,cd=None,sequence=None):
+        if cd is not None:
+            sequence_objs = [s[2] for s in self.graph.get_object(cd,identifiers.predicates.sequence)] 
+            return sequence_objs
+        if sequence is not None:
+            sequence_objs = [s[0] for s in self.graph.get_subject(identifiers.predicates.elements,sequence)] 
+            return sequence_objs
     
     def get_sequences(self,cd=None,sequence_names=None):
         if cd is not None:
@@ -494,6 +508,8 @@ class SBOLGraph:
         triples.append((uri,identifiers.predicates.orientation,strand))
         self._add_triples(triples)
 
+    def add_synonym(self,subject,object):
+        self.add_triple((subject,identifiers.predicates.synonym,object))
 
     def remove_component_definition(self,subject):
         for seq in self.get_sequence_names(subject):
@@ -521,11 +537,13 @@ class SBOLGraph:
 
     def remove_sequence(self,subject):
         self._remove_triples(self.search((subject,None,None)))
+        self._remove_triples(self.search((None,None,subject)))
 
     def remove_sequence_annotation(self,subject):
         for r in self.get_locations(subject):
             self.remove_location(r)
         self._remove_triples(self.search((subject,None,None)))
+        self._remove_triples(self.search((None,None,subject)))
 
     def remove_location(self,subject):
         self._remove_triples(self.search((subject,None,None)))
@@ -537,6 +555,7 @@ class SBOLGraph:
         for part in self.get_participants(interaction=subject):
             self.remove_participants(part)
         self._remove_triples(self.search((subject,None,None)))
+        self._remove_triples(self.search((None,None,subject)))
         
     def remove_participants(self,subject):
         fc = self.get_participant(subject)
@@ -546,6 +565,12 @@ class SBOLGraph:
 
     def remove_maps_to(self,subject):
         self._remove_triples(self.search((subject,None,None)) + self.search((None,None,subject))) 
+
+    def remove_module(self,subject):
+        self._remove_triples(self.search((subject,None,None)) + self.search((None,None,subject))) 
+
+    def remove_module_definition(self,subject):
+        self._remove_triples(self.search((subject,None,None)))
 
     def build_children_uri(self,base,addition):
         return URIRef(f'{_get_pid(base)}/{_get_name(addition)}/1')

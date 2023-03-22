@@ -1,9 +1,6 @@
-from genericpath import isfile
 import os
-from posixpath import split
 import re
-
-import rdflib
+from rdflib import Graph,URIRef,Literal
 import requests
 from requests.exceptions import ConnectionError, ReadTimeout
 import json
@@ -39,7 +36,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
             if prune:
                 graph = self._generalise_get_results(graph)
             return graph
-        if not isinstance(identifier,rdflib.URIRef):
+        if not isinstance(identifier,URIRef):
             identifier = self.get_uri(name)
             if identifier is None or len(identifier) == 0:
                 raise ValueError(f'{identifier} not a record.')
@@ -101,7 +98,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
         except requests.exceptions.HTTPError:
             return None
         contents = json.loads(r.content)
-        return {rdflib.URIRef(c["uri"]) : float(c["percentMatch"])/100 for c in contents}
+        return {URIRef(c["uri"]) : float(c["percentMatch"])/100 for c in contents}
         
     def get_metadata_identifiers(self):
         return metadata_predicates
@@ -133,7 +130,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
                 continue
             if "value" not in result["subject"].keys():
                 continue
-            uri = rdflib.URIRef(result["subject"]["value"])
+            uri = URIRef(result["subject"]["value"])
             g_query_results.append(uri)
         return g_query_results 
 
@@ -167,7 +164,7 @@ class AbstractSynBioHubInterface(DatabaseInterface):
             return split_subject[-1]
 
     def _get_collection(self,identifier):
-        if not isinstance(identifier,rdflib.URIRef):
+        if not isinstance(identifier,URIRef):
             return self.get_root_collections()
         uri_split = self._split(identifier)
         if len(uri_split[-1]) == 1 and uri_split[-1].isdigit():
@@ -192,6 +189,129 @@ class SynBioHubInterface(AbstractSynBioHubInterface):
     def __init__(self):
         AbstractSynBioHubInterface.__init__(self,"https://synbiohub.org/","sbh")
         self.id_codes = ["bba_","sbh","synbiohub"]
+
+    def _query(self,qry):
+        qry = requests.utils.quote(qry)
+        response = requests.get(
+            f'https://synbiohub.org/sparql?query={qry}',
+            headers={'Accept': 'application/json'})
+        response = json.loads(response.content)
+        return response["results"]["bindings"]
+    
+    def download_igem_parts(self,out_fn):
+        qry = f"""
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX dcterms: <http://purl.org/dc/terms/>
+        PREFIX dc: <http://purl.org/dc/elements/1.1/>
+        PREFIX sbh: <http://wiki.synbiohub.org/wiki/Terms/synbiohub#>
+        PREFIX prov: <http://www.w3.org/ns/prov#>
+        PREFIX sbol: <http://sbols.org/v2#>
+        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX purl: <http://purl.obolibrary.org/obo/>
+        PREFIX igem: <http://wiki.synbiohub.org/wiki/Terms/igem#>
+        PREFIX igem_pt: <http://wiki.synbiohub.org/wiki/Terms/igem#partType/>
+		PREFIX igem_ex: <http://wiki.synbiohub.org/wiki/Terms/igem#experience/>
+
+        SELECT  distinct ?subject
+        WHERE {{
+        ?subject rdf:type sbol:ComponentDefinition .
+        ?comon sbol:definition ?subject .
+        ?subject igem:discontinued "false" .
+        ?subject sbol:sequence ?seq_n .
+        ?seq_n sbol:elements ?sequence .
+        ?subject sbol:role ?cd_role .
+        VALUES ?cd_role {{ <{identifiers.roles.promoter}>  <{identifiers.roles.rbs}> <{identifiers.roles.cds}> <{identifiers.roles.terminator}> }}
+        FILTER( strlen( ?sequence ) > 1 ) .
+        FILTER ((STRSTARTS(str(?subject), "https://synbiohub.org/public/igem/")))
+        MINUS {{?subject sbol:component ?comp .}} 
+        MINUS {{?subject sbol:role igem_pt:Composite .}}
+        MINUS {{?subject sbol:role igem_pt:Device .}}
+        MINUS {{?subject sbol:role igem_pt:Temporary .}}
+        MINUS {{?subject sbol:role igem_pt:Conjugation .}}
+        MINUS {{?subject sbol:role igem_pt:Protein_Domain .}} 
+        MINUS {{?subject sbol:role igem_pt:Other .}}
+        MINUS {{?subject sbol:role igem_pt:Project .}}
+        MINUS {{?subject sbol:role igem_pt:Cell .}}
+        MINUS {{?subject sbol:role igem_pt:Basic .}}
+        MINUS {{?subject sbol:role igem_pt:Intermediate .}}
+        MINUS {{?subject sbol:role igem_pt:Plasmid .}}
+        MINUS {{?subject sbol:role igem_pt:Plasmid_Backbone .}}
+        MINUS {{?subject sbol:role igem_pt:Primer .}}
+        MINUS {{?subject sbol:role igem_pt:Measurement .}}
+        MINUS {{?subject sbol:role igem_pt:Tag .}}
+        MINUS {{?subject igem:experience igem_ex:Fails .}}
+        MINUS {{?subject igem:experience igem_ex:Issues .}}
+        }}
+        """
+        items = [r["subject"]["value"] for r in self._query(qry)]
+        with open(out_fn, "w") as f:    
+            f.write(json.dumps(items))
+
+    def get_vpr_data(self,out_fn):
+        p_cd = identifiers.objects.component_definition
+        c_md = identifiers.objects.module_definition
+        records = {p_cd : [],
+                   c_md: []}
+        mdquery = f"""PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                    PREFIX sbol: <http://sbols.org/v2#>
+                    SELECT DISTINCT ?md ?int ?i_type
+                    WHERE {{
+                        ?md rdf:type sbol:ModuleDefinition .
+                        ?md sbol:interaction ?int .
+                        ?int sbol:type ?i_type .
+                        MINUS {{?int sbol:type <{identifiers.roles.noncovalent_bonding}>.}}
+                        MINUS {{?int sbol:type <{identifiers.roles.phosphorylation}>.}}
+                        FILTER ((STRSTARTS(str(?md), "https://synbiohub.org/public/bsu/")))}}
+                    LIMIT 100000"""
+        for res in self._query(mdquery):
+            md = res["md"]["value"]
+            i = res["int"]["value"]
+            i_type = URIRef(res["i_type"]["value"])
+            cdquery = f"""
+                    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                    PREFIX sbol: <http://sbols.org/v2#>
+                    SELECT DISTINCT ?part ?p_role ?fc ?def
+                    WHERE {{?md rdf:type sbol:ModuleDefinition .
+                        <{i}> sbol:participation ?part .
+                        ?part sbol:participant ?fc .
+                        ?part sbol:role ?p_role .
+                        ?fc sbol:definition ?def
+                        MINUS {{<{i}> sbol:type <{identifiers.roles.noncovalent_bonding}>.}}
+                        MINUS {{<{i}> sbol:type <{identifiers.roles.phosphorylation}>.}}
+                        FILTER ((STRSTARTS(str(?md), "https://synbiohub.org/public/bsu/")))}}
+                    LIMIT 100000"""
+            parts = []
+            for record in  self._query(cdquery):
+                parts.append({k:URIRef(v["value"]) for k,v in record.items()})
+            if i_type == identifiers.roles.genetic_production:
+                for p in parts:
+                    if p["p_role"] == identifiers.roles.product:
+                        cd = p["def"]
+
+                        icquery = f"""
+                                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                                PREFIX sbol: <http://sbols.org/v2#>
+                                SELECT (COUNT(?i) AS ?count)
+                                WHERE {{
+                                    ?i sbol:participation ?part .
+                                    ?part sbol:participant ?fc .
+                                    ?fc sbol:definition <{str(cd)}> .
+                                    MINUS {{?i sbol:type <{identifiers.roles.noncovalent_bonding}> .}}
+                                    MINUS {{?i sbol:type <{identifiers.roles.genetic_production}> .}}
+                                    FILTER ((STRSTARTS(str(?i), "https://synbiohub.org/public/bsu/")))}}"""
+                        r = int(self._query(icquery)[0]["count"]["value"])
+                        if r != 0:
+                            break
+                else:
+                    continue
+            for v in parts:
+                if v["def"] not in records[p_cd]:
+                    records[p_cd].append(v["def"])
+            records[c_md].append(md)
+        with open(out_fn, "w") as f:    
+            f.write(json.dumps(records))
+        return out_fn
 
 class QueryBuilder:
     def __init__(self):

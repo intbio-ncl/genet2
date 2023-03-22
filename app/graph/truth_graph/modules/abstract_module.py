@@ -64,7 +64,7 @@ class AbstractModule(ABC):
             if modifier > 0:
                 self._add_new_edge(edge)
 
-    def _add_new_edge(self,edge):
+    def _add_new_edge(self,edge,confidence=None):
         nq = self._tg.node_query([edge.n,edge.v])
         if nq != []:
             assert(edge.n in nq or edge.v in nq)
@@ -72,7 +72,9 @@ class AbstractModule(ABC):
                 self._tg.add_node(edge.n)
             if edge.v not in nq:
                 self._tg.add_node(edge.n)
-        self._tg.add_edges(edge,self._standard_modifier)
+        if confidence is None:
+            confidence = self._standard_modifier
+        self._tg.add_edges(edge,confidence)
 
     def _update_confidence(self,edge,modifier):
         conf = edge.get_properties()[confidence]
@@ -100,6 +102,5 @@ class AbstractModule(ABC):
     def _cast_condfidence(self,res):
         for r in res:
             c_val = int(r[confidence])
-            r.update({confidence : c_val})
-            setattr(r,"confidence",c_val)
+            r.set_confidence(c_val)
         return res

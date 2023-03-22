@@ -14,9 +14,9 @@ class PrunedViewBuilder(AbstractViewBuilder):
     def _subgraph(self, edges=[],nodes=[], new_graph=None):
         return ViewGraph(super()._subgraph(edges,nodes,new_graph))
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        for edge in self._graph.edges():
+        for edge in self._graph.edges(predicate=predicate):
             if not edge.get_type() in w_predicates:
                 continue
             edges.append(edge)

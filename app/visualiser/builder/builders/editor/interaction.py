@@ -1,5 +1,4 @@
 from app.visualiser.builder.builders.design.interaction import InteractionViewBuilder
-from app.visualiser.viewgraph.viewgraph import ViewGraph
 from app.visualiser.builder.builders.design.utility import produce_interaction_graph
 from app.graph.utility.model.model import model
 from app.graph.utility.graph_objects.node import Node
@@ -11,10 +10,10 @@ class EditorInteractionViewBuilder(InteractionViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         g = produce_interaction_graph(self._graph)
         g = self._subgraph(new_graph=g)
-        for node in self._graph.get_physicalentity():
+        for node in self._graph.get_physicalentity(predicate=predicate):
             g.add_node(node)
         return g
 

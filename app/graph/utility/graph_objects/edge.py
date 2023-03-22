@@ -5,7 +5,10 @@ class Edge:
     def __init__(self,n,v,type,id=None,**kwargs):
         self.type = str(type)
         self.id=id
-        self.properties = {"name" : _get_name(type)} if "name" not in kwargs else {}
+        if isinstance(type,list):
+            self.properties = {}
+        else:
+            self.properties = {"name" : _get_name(type)} if "name" not in kwargs else {}
         self._update(kwargs)
         self.n = n
         self.v = v

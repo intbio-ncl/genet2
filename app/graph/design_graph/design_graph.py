@@ -32,7 +32,7 @@ def _add_object(obj, subject):
 
 
 class DesignGraph:
-    def __init__(self, driver, name, predicate="ALL"):
+    def __init__(self, driver, name):
         if not isinstance(name, list):
             name = [name]
         self.name = name
@@ -51,8 +51,8 @@ class DesignGraph:
     def nodes(self, n=None, **kwargs):
         return self._node_query(n,**kwargs)
 
-    def edges(self, n=None, v=None, e=None, directed=True, exclusive=False):
-        return self._edge_query(n=n, v=v, e=e, directed=directed, exclusive=exclusive)
+    def edges(self, n=None, v=None, e=None, directed=True, exclusive=False,predicate="ALL"):
+        return self._edge_query(n=n, v=v, e=e, directed=directed, exclusive=exclusive,predicate=predicate)
 
     def add_node(self,key,type,sequence=None,description=None,**kwargs):
         if "graph_name" not in kwargs:
@@ -140,9 +140,9 @@ class DesignGraph:
         self.driver.replace_edge_property(n,v,e,props,{predicate:new})
         self.driver.submit()
         
-    def get_children(self, node):
+    def get_children(self, node,predicate="ALL"):
         cp = model.get_child_predicate()
-        return self._edge_query(n=node, e=cp)
+        return self._edge_query(n=node, e=cp,predicate=predicate)
 
     def get_parents(self, node):
         cp = model.get_child_predicate()
@@ -175,7 +175,7 @@ class DesignGraph:
                 roots.append(node)
         return roots
         
-    def get_interactions(self,node,predicate=None):
+    def get_interactions(self,node=None,predicate=None):
         s = model.identifiers.objects.interaction
         derived = ([s] + [n[1]["key"] for n in model.get_derived(s)])
         return self._edge_query(n=derived,v=node,e=predicate)
@@ -189,13 +189,13 @@ class DesignGraph:
             
         return self._edge_query(n=interaction,e=predicate)
 
-    def get_interaction_io(self, subject):
+    def get_interaction_io(self, subject,predicate="ALL"):
         inputs = []
         outputs = []
         d_predicate = model.identifiers.predicates.direction
         i_predicate = model.identifiers.objects.input
         o_predicate = model.identifiers.objects.output
-        for edge in self._edge_query(n=subject):
+        for edge in self._edge_query(n=subject,predicate=predicate):
             e_type = edge.get_type()
             model_code = model.get_class_code(e_type)
             for d in [d[1] for d in model.search((model_code, d_predicate, None))]:
@@ -217,16 +217,16 @@ class DesignGraph:
         assert(len(idir) == 1)
         return idir[0]
 
-    def get_isolated_nodes(self):
+    def get_isolated_nodes(self,predicate="ALL"):
         if None in self.name:
             return []
-        return self.driver.get_isolated_nodes(graph_name=self.name)
+        return self.driver.get_isolated_nodes(graph_name=self.name,predicate=predicate)
         
-    def resolve_list(self, list_node):
+    def resolve_list(self, list_node,predicate="ANY"):
         elements = []
         next_node = list_node
         while True:
-            res = self._edge_query(n=next_node)
+            res = self._edge_query(n=next_node,predicate=predicate)
             f = [c for c in res if str(RDF.first) in c.get_type()]
             r = [c for c in res if str(RDF.rest) in c.get_type()]
             if len(f) != 1 or len(r) != 1:

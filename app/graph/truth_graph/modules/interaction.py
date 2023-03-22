@@ -10,8 +10,14 @@ class InteractionModule(AbstractModule):
         super().__init__(truth_graph)
     
     def get(self,subject=None,object=None,interaction=None,threshold=90):
-        e = Edge(n=subject,v=object,type=interaction)
-        res = self._tg.edge_query(e=e)
+        if interaction is None:
+            interaction = [str(f[1]["key"]) for f in model.interaction_predicates()]
+        if not isinstance(interaction,list):
+            interaction = [interaction]
+        res = []
+        for i in interaction:
+            e = Edge(n=subject,v=object,type=i)
+            res += self._tg.edge_query(e=e)
         if len(res) != 0:
             return self._cast_condfidence(res)
         return []

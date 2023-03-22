@@ -68,6 +68,12 @@ class DatabaseHandler:
     def get_metadata_identifiers(self):
         return self._db_util.get_metadata_identifiers()
 
+    def download_igem_parts(self,out_fn):
+        return self._db_util.db_mapping_calls["synbiohub"].download_igem_parts(out_fn)
+    
+    def get_vpr_data(self,out_fn):
+        return self._db_util.db_mapping_calls["synbiohub"].get_vpr_data(out_fn)
+    
     def _get_potential_db_names(self,identity):
         potential_codes = self._db_util.get_potential_db_names(identity)
         if len(potential_codes) == 0:

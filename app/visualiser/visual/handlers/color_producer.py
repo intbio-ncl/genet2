@@ -33,6 +33,8 @@ class ColorPicker:
         hsl.s = s
         hsl.l = l
         return str(hsl)
+    
+    
 
     def produce_plot(self,outname):
         hsl_list = self._colors[0:int(len(self._colors)/4)]

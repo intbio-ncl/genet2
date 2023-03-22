@@ -157,7 +157,7 @@
             </div>
         </div>
         {% endif %}
-        
+
         {% if export_graph %}
         <div class="col-md-6">
             <div class="card search-result">
@@ -178,17 +178,31 @@
             </div>
         </div>
         {% endif %}
-        {% if enhance_truth_graph %}
+
+        {% if tg_form %}
         <div class="col-md-6">
             <div class="card search-result">
-                <h2>Enhance Truth Graph</h2>
+                <h2>Truth Graph</h2>
                 <div class="card-body">
-                    <div id="drop_projection">
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {{ enhance_truth_graph.hidden_tag() }}
-                            {{ enhance_truth_graph.enhance_submit(class="btn btn-secondary") }}
-                        </form>
-                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {{ tg_form.hidden_tag() }}
+                        <div class="row gy-5">
+                            <div class="col">
+                                {{ tg_form.tg_save(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.tg_reseed(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.tg_expand(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.files() }}
+                                <br>
+                                {{ tg_form.tg_restore(class="btn btn-secondary") }}
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
