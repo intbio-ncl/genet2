@@ -1,0 +1,67 @@
+<rdf:RDF xmlns:brick="https://brickschema.org/schema/Brick#" xmlns:csvw="http://www.w3.org/ns/csvw#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcam="http://purl.org/dc/dcam/" xmlns:doap="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:odrl="http://www.w3.org/ns/odrl/2/" xmlns:org="http://www.w3.org/ns/org#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:prof="http://www.w3.org/ns/dx/prof/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:qb="http://purl.org/linked-data/cube#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="https://schema.org/" xmlns:sh="http://www.w3.org/ns/shacl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:sosa="http://www.w3.org/ns/sosa/" xmlns:ssn="http://www.w3.org/ns/ssn/" xmlns:time="http://www.w3.org/2006/time#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:void="http://rdfs.org/ns/void#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/activator/1">
+    <sbol:displayId>activator</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activator"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/activated/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activated"/>
+    <sbol:displayId>activated</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ModuleDefinition rdf:about="https://synbiohub.org/public/igem/activated_md/1">
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/igem/activated_md/activated_fc/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activated_md/activated_fc"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/activated/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>activated_fc</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/igem/activation/activator_fc/1">
+        <sbol:displayId>activator_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activation/activator_fc"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/activator/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>activated_md</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activated_md"/>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/igem/activation/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/igem/activation/activated_0000643/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activation/activated_0000643"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>activated_0000643</sbol:displayId>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/igem/activated_md/activated_fc/1"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:displayId>activation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activation"/>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/igem/activation/activator_0000643/1">
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/activation/activator_0000643"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:displayId>activator_0000643</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/igem/activation/activator_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+  </sbol:ModuleDefinition>
+</rdf:RDF>

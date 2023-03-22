@@ -17,7 +17,7 @@ class RDFGraphWrapper:
         else:
             self.graph = rdflib.Graph()
             if graph is not None:
-                self.graph.load(graph)
+                self.graph.parse(graph)
 
     def __iter__(self):
         for x in self.graph:

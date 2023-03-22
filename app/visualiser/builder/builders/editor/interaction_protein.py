@@ -12,9 +12,9 @@ class EditorInteractionProteinViewBuilder(InteractionProteinViewBuilder):
     def __init__(self, graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         pp = model.identifiers.objects.protein
-        g = self._subgraph(produce_interaction_graph(self._graph))
+        g = self._subgraph(produce_interaction_graph(self._graph,predicate=predicate))
         g = produce_aggregated_interaction_graph(g, pp)
         g = self._subgraph(new_graph=g)
         for node in self._graph.get_protein():

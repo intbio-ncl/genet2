@@ -12,13 +12,13 @@ class EditorPrunedViewBuilder(PrunedViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        for edge in self._graph.edges():
+        for edge in self._graph.edges(predicate=predicate):
             if not edge.get_type() in w_predicates:
                 continue
             edges.append(edge)
-        return self._subgraph(edges,self._graph.get_isolated_nodes())
+        return self._subgraph(edges,self._graph.get_isolated_nodes(predicate=predicate))
 
     def get_edge_types(self):
         return w_predicates

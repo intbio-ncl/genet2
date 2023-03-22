@@ -6,7 +6,7 @@ from app.visualiser.builder.builders.editor.utility import produce_interaction_g
 from app.visualiser.builder.builders.editor.common_builds import build_interaction_uri
 from app.visualiser.builder.builders.editor.common_builds import build_properties
 from app.visualiser.builder.builders.editor.common_builds import create_consists_of
-from  app.graph.utility.model.model import model
+from app.graph.utility.model.model import model
 from app.graph.utility.graph_objects.node import Node
 
 
@@ -14,9 +14,9 @@ class EditorInteractionGeneticViewBuilder(InteractionGeneticViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         genetic_pred = model.identifiers.objects.DNA
-        g = self._subgraph(produce_interaction_graph(self._graph))
+        g = self._subgraph(produce_interaction_graph(self._graph,predicate=predicate))
         g = produce_aggregated_interaction_graph(g,genetic_pred)
         g = self._subgraph(new_graph = g)
         return g
@@ -32,7 +32,6 @@ class EditorInteractionGeneticViewBuilder(InteractionGeneticViewBuilder):
 
     def transform(self,n,v,e):
         edges = []
-
         dna_o = str(model.identifiers.objects.dna)
         promoter_o = str(model.identifiers.objects.promoter)
         activation_o = str(model.identifiers.objects.activation)

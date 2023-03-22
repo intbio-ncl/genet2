@@ -5,7 +5,7 @@
         <h1>Admin Panel</h1>
     </div>
     <br>
-    <div class="row">
+    <div class="row gy-5">
         {% if err_string%}
         <h5>
             <font color="red">ERROR: </font><br>{{err_string}}
@@ -15,7 +15,7 @@
         <h5>{{success_str}}</h5>
         {% endif %}
         {% if upload_graph %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <div class="card-body">
                     <h2>Add New Graph</h2>
@@ -52,11 +52,6 @@
                                     <br>
                                 </div>
                                 <div class="form-group">
-                                    {{ upload_graph.mode.label(for="mode") }}
-                                    {{ upload_graph.mode(class="form-control") }}
-                                    <br>
-                                </div>
-                                <div class="form-group">
                                     {{ upload_graph.graph_name.label(for="graph_name") }}
                                     {{ upload_graph.graph_name(class="form-control") }}
                                     <br>
@@ -66,7 +61,7 @@
                             </form>
                         </div>
                         {% endif %}
-        
+
                         {% if paste_graph %}
                         <div id="submit_paste_graph">
                             <form action="" method="post" enctype="multipart/form-data">
@@ -82,23 +77,18 @@
                                     {{ paste_graph.file_type.label(for="file_type") }}
                                     {{ paste_graph.file_type(class="form-control") }}
                                     <br>
-                                <div class="form-group">
-                                    {{ paste_graph.mode.label(for="mode") }}
-                                    {{ paste_graph.mode(class="form-control") }}
-                                    <br>
-                                </div>
-                                <div class="form-group">
-                                    {{ upload_graph.graph_name.label(for="graph_name") }}
-                                    {{ upload_graph.graph_name(class="form-control") }}
-                                    <br>
-                                </div>
+                                    <div class="form-group">
+                                        {{ upload_graph.graph_name.label(for="graph_name") }}
+                                        {{ upload_graph.graph_name(class="form-control") }}
+                                        <br>
+                                    </div>
                                 </div>
                                 {{ paste_graph.submit_paste(class="btn btn-secondary") }}
                                 <br><br>
                             </form>
                         </div>
                         {% endif %}
-        
+
                         {% if sbh_graph %}
                         <div id="submit_sbh_graph">
                             <form action="" method="post" enctype="multipart/form-data">
@@ -111,11 +101,6 @@
                                     {% endfor %}
                                 </div>
                                 <div class="form-group">
-                                    {{ sbh_graph.mode.label(for="mode") }}
-                                    {{ sbh_graph.mode(class="form-control") }}
-                                    <br>
-                                </div>
-                                <div class="form-group">
                                     {{ upload_graph.graph_name.label(for="graph_name") }}
                                     {{ upload_graph.graph_name(class="form-control") }}
                                     <br>
@@ -124,7 +109,7 @@
                             </form>
                         </div>
                         {% endif %}
-        
+
                     </div>
                 </div>
             </div>
@@ -132,7 +117,7 @@
         {% endif %}
 
         {% if remove_graph %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <h2>Remove Graph</h2>
                 <div class="card-body">
@@ -151,9 +136,9 @@
             </div>
         </div>
         {% endif %}
-        
+
         {% if drop_projection %}
-        <div class="col-md">
+        <div class="col-md-6">
             <div class="card search-result">
                 <h2>Drop Projections</h2>
                 <div class="card-body">
@@ -168,6 +153,56 @@
                             {{ drop_projection.submit(class="btn btn-secondary") }}
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if export_graph %}
+        <div class="col-md-6">
+            <div class="card search-result">
+                <h2>Export Graph</h2>
+                <div class="card-body">
+                    <div id="drop_projection">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {{ export_graph.hidden_tag() }}
+                            <div class="form-group">
+                                {{ export_graph.e_graphs.label(for="e_graphs") }}
+                                {{ export_graph.e_graphs(class="form-control") }}
+                                <br>
+                            </div>
+                            {{ export_graph.export(class="btn btn-secondary") }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if tg_form %}
+        <div class="col-md-6">
+            <div class="card search-result">
+                <h2>Truth Graph</h2>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {{ tg_form.hidden_tag() }}
+                        <div class="row gy-5">
+                            <div class="col">
+                                {{ tg_form.tg_save(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.tg_reseed(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.tg_expand(class="btn btn-secondary") }}
+                            </div>
+                            <div class="col">
+                                {{ tg_form.files() }}
+                                <br>
+                                {{ tg_form.tg_restore(class="btn btn-secondary") }}
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -204,7 +239,7 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        {% endif %}
+    </div>
+</div>
+{% endif %}
 {% endblock %}

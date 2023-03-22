@@ -1,10 +1,6 @@
-import re
 
-from rdflib import URIRef,Literal,RDF
-from urllib.error import URLError
-
-from graph.knowledge.data_miner.ontology.mediator import OntologyMediator
-from graph.knowledge.data_miner.ontology.ontology_term_map import Identifiers
+from app.enhancer.data_miner.ontology.mediator import OntologyMediator
+from app.enhancer.data_miner.ontology.ontology_term_map import Identifiers
 
 synonym_subject_type = Identifiers.synonym_subject_type.value
 synonym_predicate = Identifiers.synonym_predicate.value

@@ -7,9 +7,9 @@ class InteractionIoViewBuilder(AbstractViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        i_graph = self._subgraph(new_graph=produce_interaction_graph(self._graph))
+        i_graph = self._subgraph(new_graph=produce_interaction_graph(self._graph,predicate=predicate))
         genetic_pred = model.identifiers.objects.DNA
         d_pred = model.identifiers.predicates.direction
         inputs = []

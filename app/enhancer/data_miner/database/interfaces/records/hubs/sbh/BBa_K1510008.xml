@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/BBa_K1510008/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008"/>
+    <sbol:displayId>BBa_K1510008</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="http://parts.igem.org/Part:BBa_K1510008"/>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/igem/igem2sbol/1"/>
+    <dcterms:title>BBa_K1510008</dcterms:title>
+    <dcterms:description>E.coli Signal sequence YebF</dcterms:description>
+    <dcterms:created>2014-10-05T11:00:00Z</dcterms:created>
+    <dcterms:modified>2015-05-08T01:10:48Z</dcterms:modified>
+    <sbh:mutableProvenance>The promoter, J23100, comes from the 2014 distributed igem kit. The signal sequence, yebF, encoding signal protein exporting recombinant protein extracellular, is from E.coli K-12. By designing primer, we obtain it together with its naturally occurring ribosomal binding site using PCR and extraction. Finally, the terminator B0015 is from 2014 igem distribution.</sbh:mutableProvenance>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/james"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <sbh:mutableDescription>This part is composed with a strong promoter, together with ribosomal binding site and signal sequence yebF, finally a double terminator. As a signal protein, YebF would be secreted outside E.coli. The role of the circuit in our project is basically a control circuit. By contrasting the result of this circuit and the other circuit, containing functional protein, we can assume if the protein works more accurately.</sbh:mutableDescription>
+    <igem:discontinued>false</igem:discontinued>
+    <igem:dominant>false</igem:dominant>
+    <igem:experience rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#experience/None"/>
+    <igem:group_u_list>_1890_</igem:group_u_list>
+    <igem:m_user_id>0</igem:m_user_id>
+    <igem:owner_id>21268</igem:owner_id>
+    <igem:owning_group_id>9</igem:owning_group_id>
+    <igem:sampleStatus>In stock</igem:sampleStatus>
+    <igem:status rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#status/Available"/>
+    <sbh:bookmark>false</sbh:bookmark>
+    <sbh:mutableNotes>To fit igem part standard, the circuit is constructed in backbone pSB1C3, chloramphenicol with EcoR1 and Xba1 in front of the part, and Spe1, Pst1 behind the part.</sbh:mutableNotes>
+    <sbh:star>false</sbh:star>
+    <dc:creator>Chien-Yung Huang</dc:creator>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:role rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#partType/Generator"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/igem/BBa_K1510008/component2396753/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/component2396753"/>
+        <sbol:displayId>component2396753</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>BBa_J23100</dcterms:title>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/1"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/BBa_J23100/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/igem/BBa_K1510008/annotation2396753/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/annotation2396753"/>
+        <sbol:displayId>annotation2396753</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>BBa_J23100</dcterms:title>
+        <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/igem/BBa_K1510008/annotation2396753/range2396753/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/annotation2396753/range2396753"/>
+            <sbol:displayId>range2396753</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/1"/>
+            <igem:direction rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#direction/reverse"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>35</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008/component2396753/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/BBa_J23100/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_J23100"/>
+    <sbol:displayId>BBa_J23100</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="http://parts.igem.org/Part:BBa_J23100"/>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/igem/igem2sbol/1"/>
+    <dcterms:title>BBa_J23100</dcterms:title>
+    <dcterms:description>constitutive promoter family member</dcterms:description>
+    <dcterms:created>2006-08-03T11:00:00Z</dcterms:created>
+    <dcterms:modified>2015-08-31T04:08:40Z</dcterms:modified>
+    <sbh:mutableProvenance>Isolated from library of promoters</sbh:mutableProvenance>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_J23100/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/james"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <igem:partStatus>Released HQ 2013</igem:partStatus>
+    <sbh:mutableDescription>Replace later</sbh:mutableDescription>
+    <igem:discontinued>false</igem:discontinued>
+    <igem:dominant>true</igem:dominant>
+    <igem:experience rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#experience/Works"/>
+    <igem:group_u_list>_52_</igem:group_u_list>
+    <igem:m_user_id>0</igem:m_user_id>
+    <igem:owner_id>483</igem:owner_id>
+    <igem:owning_group_id>95</igem:owning_group_id>
+    <igem:sampleStatus>In stock</igem:sampleStatus>
+    <igem:status rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#status/Available"/>
+    <sbh:bookmark>true</sbh:bookmark>
+    <sbh:mutableNotes>N/A</sbh:mutableNotes>
+    <sbh:star>true</sbh:star>
+    <dc:creator>John Anderson</dc:creator>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:role rdf:resource="http://wiki.synbiohub.org/wiki/Terms/igem#partType/Regulatory"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/igem/BBa_J23100_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/igem/BBa_K1510008_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008_sequence"/>
+    <sbol:displayId>BBa_K1510008_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="http://parts.igem.org/Part:BBa_K1510008"/>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/igem/igem2sbol/1"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_K1510008_sequence/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/james"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <sbol:elements>ttgacggctagctcagtcctaggtacagtgctagc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/igem/BBa_J23100_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_J23100_sequence"/>
+    <sbol:displayId>BBa_J23100_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="http://parts.igem.org/Part:BBa_J23100"/>
+    <prov:wasGeneratedBy rdf:resource="https://synbiohub.org/public/igem/igem2sbol/1"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/BBa_J23100_sequence/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/james"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <sbol:elements>ttgacggctagctcagtcctaggtacagtgctagc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <prov:Activity rdf:about="https://synbiohub.org/public/igem/igem2sbol/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/igem2sbol"/>
+    <sbol:displayId>igem2sbol</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>iGEM to SBOL conversion</dcterms:title>
+    <dcterms:description>Conversion of the iGEM parts registry to SBOL2.1</dcterms:description>
+    <sbh:topLevel rdf:resource="https://synbiohub.org/public/igem/igem2sbol/1"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/james"/>
+    <sbh:ownedBy rdf:resource="https://synbiohub.org/user/myers"/>
+    <dc:creator>Chris J. Myers</dc:creator>
+    <dc:creator>James Alastair McLaughlin</dc:creator>
+    <prov:endedAtTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-03-06T15:00:00.000Z</prov:endedAtTime>
+  </prov:Activity>
+</rdf:RDF>

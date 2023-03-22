@@ -102,12 +102,12 @@ class ProjectionViewBuilder(AbstractViewBuilder):
                             self._try_remove_edge(edge1, sg)
                 else:
                     # https://github.com/neo4j/graph-data-science/issues/201
-                    n_name = self._get_name(edge.n.get_key())
-                    v_name = self._get_name(edge.v.get_key())
+                    n_name = _get_name(edge.n.get_key())
+                    v_name = _get_name(edge.v.get_key())
                     for e_flt in e_flter:
                         if edge.v.get_type() in e_flt and n_name in e_flt:
                             url = urlparse(e_flt)
-                            parts = self._split(url.path)
+                            parts = _split(url.path)
                             n = self._graph.nodes(name=parts[-2])
                             assert(len(n) == 1)
                             n = n[0]
@@ -121,7 +121,7 @@ class ProjectionViewBuilder(AbstractViewBuilder):
                             # break
                         elif edge.n.get_type() in e_flt and v_name in e_flt:
                             url = urlparse(e_flt)
-                            parts = self._split(url.path)
+                            parts = _split(url.path)
                             n = self._graph.nodes(name=parts[-2])
                             assert(len(n) == 1)
                             n = n[0]
@@ -147,6 +147,25 @@ class ProjectionViewBuilder(AbstractViewBuilder):
             graph.remove_edge(edge)
         except nx.exception.NetworkXError:
             pass
+
+def _get_name(subject):
+    split_subject = _split(subject)
+    if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
+        return split_subject[-2]
+    elif len(split_subject[-1]) == 3 and _isfloat(split_subject[-1]):
+        return split_subject[-2]
+    else:
+        return split_subject[-1]
+
+def _split(uri):
+    return re.split('#|\/|:', uri)
+
+def _isfloat(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
 
 class ViewBuilder(AbstractViewBuilder):
     def __init__(self, graph):

@@ -1,8 +1,9 @@
 import re
-from rdflib import URIRef
+from rdflib import URIRef,DCTERMS
 from app.visualiser.builder.design import DesignBuilder
 from app.graph.utility.model.model import model
-
+from app.enhancer.enhancer import Enhancer
+from app.graph.utility.graph_objects.node import Node
 from app.visualiser.builder.builders.editor.hierarchy import EditorHierarchyViewBuilder
 from app.visualiser.builder.builders.editor.interaction import EditorInteractionViewBuilder
 from app.visualiser.builder.builders.editor.interaction_genetic import EditorInteractionGeneticViewBuilder
@@ -10,10 +11,10 @@ from app.visualiser.builder.builders.editor.interaction_protein import EditorInt
 from app.visualiser.builder.builders.editor.interaction_verbose import EditorInteractionVerboseViewBuilder
 from app.visualiser.builder.builders.editor.pruned import EditorPrunedViewBuilder
 from app.visualiser.builder.builders.editor.full import EditorFullViewBuilder
-
 class EditorBuilder(DesignBuilder):
     def __init__(self, graph):
         super().__init__(graph)
+        self._enhancer = Enhancer(self._graph)
 
     def set_full_view(self):
         self._view_builder = EditorFullViewBuilder(self._dg)
@@ -36,6 +37,21 @@ class EditorBuilder(DesignBuilder):
     def set_interaction_protein_view(self):
         self._view_builder = EditorInteractionProteinViewBuilder(self._dg)
         
+    def is_physical_entity(self,e_type):
+        c = model.get_class_code(e_type)
+        bases = [k[1]["key"] for k in model.get_bases(c)]
+        if model.identifiers.objects.physical_entity in bases:
+            return True
+        return False
+
+    def is_conceptual_entity(self,e_type):
+        c = model.get_class_code(e_type)
+        bases = [k[1]["key"] for k in model.get_bases(c)]
+        if model.identifiers.objects.conceptual_entity in bases:
+            return True
+        return False
+    
+
     def get_io_nodes(self, predicate):
         inputs = {}
         outputs = {}
@@ -130,8 +146,8 @@ class EditorBuilder(DesignBuilder):
         if len(edges) > 0:
             self._dg.add_edges(edges)
 
-    def add_node(self, key, type):
-        self._dg.add_node(key, type, name=_get_name(key))
+    def add_node(self, key, type,**kwargs):
+        self._dg.add_node(key, type, name=_get_name(key),**kwargs)
 
     def _add_props(self,node):
         node.update({"name" :_get_name(node.get_key()),

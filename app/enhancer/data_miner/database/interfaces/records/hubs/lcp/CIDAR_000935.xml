@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/" xmlns:ns0="http://wiki.synbiohub.org/wiki/Terms/ice#">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935"/>
+    <sbol:displayId>CIDAR_000935</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="http://ice.cidarlab.org/entry/CIDAR_000935/1"/>
+    <dcterms:title>DVK_AE_R0040_AB_B0032m_BC_C0080_CD_B0015_DE</dcterms:title>
+    <dcterms:description>JoVe Article 2017</dcterms:description>
+    <dcterms:created>2017-05-29T19:24:35.218Z</dcterms:created>
+    <dcterms:modified>2017-05-29T19:27:00.168Z</dcterms:modified>
+    <ns0:entry rdf:resource="https://ice.cidarlab.org/entry/CIDAR_000935"/>
+    <obo:OBI_0001617>M.</obo:OBI_0001617>
+    <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+    <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+    <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+    <obo:OBI_0001617>e54703</obo:OBI_0001617>
+    <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+    <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+    <obo:OBI_0001617>J.</obo:OBI_0001617>
+    <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+    <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+    <obo:OBI_0001617>L.</obo:OBI_0001617>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+    <obo:ERO_0000316>1</obo:ERO_0000316>
+    <ns0:index>0</ns0:index>
+    <ns0:status>Complete</ns0:status>
+    <ns0:type>STRAIN</ns0:type>
+    <ns0:viewCount>0</ns0:viewCount>
+    <ns0:visible>OK</ns0:visible>
+    <dc:creator>Mary Pavan</dc:creator>
+    <ns0:id>935</ns0:id>
+    <ns0:recordId>822b1622-d8fb-48c8-bf93-32b5f45862ae</ns0:recordId>
+    <ns0:ownerId>51</ns0:ownerId>
+    <ns0:creatorId>51</ns0:creatorId>
+    <ns0:fundingSource>NSF</ns0:fundingSource>
+    <ns0:owner>Marilene Pavan</ns0:owner>
+    <ns0:creatorEmail>mapavan@bu.edu</ns0:creatorEmail>
+    <ns0:ownerEmail>mapavan@bu.edu</ns0:ownerEmail>
+    <ns0:host>undefined</ns0:host>
+    <ns0:principalInvestigator>Doug Densmore</ns0:principalInvestigator>
+    <ns0:genotypePhenotype>undefined</ns0:genotypePhenotype>
+    <ns0:principalInvestigatorId>0</ns0:principalInvestigatorId>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+    <sbol:type rdf:resource="http://wiki.synbiohub.org/wiki/Terms/ice#STRAIN"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation1/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation1"/>
+        <sbol:displayId>annotation1</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>source</dcterms:title>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation1/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation1/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>3367</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000149"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation2/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation2"/>
+        <sbol:displayId>annotation2</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>A</dcterms:title>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation2/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation2/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1096</sbol:start>
+            <sbol:end>1099</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation3/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation3"/>
+        <sbol:displayId>annotation3</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>R0040_AB</dcterms:title>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation3/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation3/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1100</sbol:start>
+            <sbol:end>1153</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation4/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation4"/>
+        <sbol:displayId>annotation4</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>B</dcterms:title>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation4/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation4/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1154</sbol:start>
+            <sbol:end>1157</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation5/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation5"/>
+        <sbol:displayId>annotation5</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>B0032m_BC</dcterms:title>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation5/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation5/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1158</sbol:start>
+            <sbol:end>1179</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000552"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation6/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation6"/>
+        <sbol:displayId>annotation6</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>C</dcterms:title>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation6/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation6/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1180</sbol:start>
+            <sbol:end>1183</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation7/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation7"/>
+        <sbol:displayId>annotation7</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>C0080_CD</dcterms:title>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation7/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation7/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1184</sbol:start>
+            <sbol:end>2098</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation8/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation8"/>
+        <sbol:displayId>annotation8</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>D</dcterms:title>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation8/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation8/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>2099</sbol:start>
+            <sbol:end>2102</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation9/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation9"/>
+        <sbol:displayId>annotation9</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>B0015_DE</dcterms:title>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation9/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation9/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>2103</sbol:start>
+            <sbol:end>2231</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation10/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation10"/>
+        <sbol:displayId>annotation10</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>E</dcterms:title>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation10/location/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation10/location"/>
+            <sbol:displayId>location</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>2232</sbol:start>
+            <sbol:end>2235</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11"/>
+        <sbol:displayId>annotation11</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <dcterms:title>DVK_AE</dcterms:title>
+        <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+        <obo:OBI_0001617>M.</obo:OBI_0001617>
+        <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+        <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+        <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+        <obo:OBI_0001617>J.</obo:OBI_0001617>
+        <obo:OBI_0001617>L.</obo:OBI_0001617>
+        <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+        <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+        <obo:OBI_0001617>e54703</obo:OBI_0001617>
+        <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+        <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+        <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11/locationStart/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11/locationStart"/>
+            <sbol:displayId>locationStart</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>2236</sbol:start>
+            <sbol:end>3367</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11/locationEnd11/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/annotation11/locationEnd11"/>
+            <sbol:displayId>locationEnd11</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+            <obo:OBI_0001617>M.</obo:OBI_0001617>
+            <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+            <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+            <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+            <obo:OBI_0001617>J.</obo:OBI_0001617>
+            <obo:OBI_0001617>L.</obo:OBI_0001617>
+            <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+            <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+            <obo:OBI_0001617>e54703</obo:OBI_0001617>
+            <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+            <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+            <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935/1"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>1095</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000001"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935_sequence"/>
+    <sbol:displayId>CIDAR_000935_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <prov:wasDerivedFrom rdf:resource="https://ice.cidarlab.org/entry/935"/>
+    <dcterms:title>DVK_AE_R0040_AB_B0032m_BC_C0080_CD_B0015_DE sequence</dcterms:title>
+    <obo:OBI_0001617>L.</obo:OBI_0001617>
+    <obo:OBI_0001617>D. M. Automated Robotic Liquid Handling Assembly of Modular DNA Devices. J. Vis. Exp. (130)</obo:OBI_0001617>
+    <obo:OBI_0001617>e54703</obo:OBI_0001617>
+    <obo:OBI_0001617>Densmore</obo:OBI_0001617>
+    <obo:OBI_0001617>Timmons</obo:OBI_0001617>
+    <obo:OBI_0001617>Ortiz</obo:OBI_0001617>
+    <obo:OBI_0001617>M.</obo:OBI_0001617>
+    <obo:OBI_0001617>doi:10.3791/54703 (2017).</obo:OBI_0001617>
+    <obo:OBI_0001617>Pavan</obo:OBI_0001617>
+    <obo:OBI_0001617>McCarthy</obo:OBI_0001617>
+    <obo:OBI_0001617>J.</obo:OBI_0001617>
+    <sbh:ownedBy rdf:resource="https://synbiohub.programmingbiology.org/user/MaryPavan"/>
+    <sbh:topLevel rdf:resource="https://synbiohub.programmingbiology.org/public/BUBDC/CIDAR_000935_sequence/1"/>
+    <sbol:elements>ctgcaatttattcatatcaggattatcaataccatatttttgaaaaagccgtttctgtaatgaaggagaaaactcaccgaggcagttccataggatggcaagatcctggtatcggtctgcgattccgactcgtccaacatcaatacaacctattaatttcccctcgtcaaaaataaggttatcaagtgagaaatcaccatgagtgacgactgaatccggtgagaatggcaaaagcttatgcatttctttccagacttgttcaacaggccagccattacgctcgtcatcaaaatcactcgcatcaaccaaaccgttattcattcgtgattgcgcctgagcgagacgaaatacgcgatcgctgttaaaaggacaattacaaacaggaatcgaatgcaaccggcgcaggaacactgccagcgcatcaacaatattttcacctgaatcaggatattcttctaatacctggaatgctgttttcccggggatcgcagtggtgagtaaccatgcatcatcaggagtacggataaaatgcttgatggtcggaagaggcataaattccgtcagccagtttagtctgaccatctcatctgtaacatcattggcaacgctacctttgccatgtttcagaaacaactctggcgcatcgggcttcccatacaatcgatagattgtcgcacctgattgcccgacattatcgcgagcccatttatacccatataaatcagcatccatgttggaatttaatcgcggcctggagcaagacgtttcccgttgaatatggctcataacaccccttgtattactgtttatgtaagcagacagttttattgttcatgatgatatatttttatcttgtgcaatgtaacatcagagattttgagacacaacgtggctttgttgaataaatcgaacttttgctgagttgaaggatcagctcgagtgccacctgacgtctaagaaaccattattatcatgacattaacctataaaaataggcgtatcacgaggcagaatttcagataaaaaaaatccttagctttcgctaaggatgatttctggaattcgcggccgcttctagagactagtggaagacatggagtccctatcagtgatagagattgacatccctatcagtgatagagatactgagcactactagagtcacacaggaaagtactaaatgatggctgaagcgcaaaatgatcccctgctgccgggatactcgtttaacgcccatctggtggcgggtttaacgccgattgaggccaatggttatctcgatttttttatcgaccgaccgctgggaatgaaaggttatattctcaatctcaccattcgcggtcagggggtggtgaaaaatcagggacgagaatttgtctgccgaccgggtgatattttgctgttcccgccaggagagattcatcactacggtcgtcatccggaggctcgcgaatggtatcaccagtgggtttactttcgtccgcgcgcctactggcatgaatggcttaactggccgtcaatatttgccaatacgggtttctttcgcccggatgaagcgcaccagccgcatttcagcgacctgtttgggcaaatcattaacgccgggcaaggggaagggcgctattcggagctgctggcgataaatctgcttgagcaattgttactgcggcgcatggaagcgattaacgagtcgctccatccaccgatggataatcgggtacgcgaggcttgtcagtacatcagcgatcacctggcagacagcaattttgatatcgccagcgtcgcacagcatgtttgcctgtcgccgtcgcgtctgtcacatcttttccgccagcagttagggattagcgtcttaagctggcgcgaggaccaacgcatcagccaggcgaagctgcttttgagcactacccggatgcctatcgccaccgtcggtcgcaatgttggttttgacgatcaactctatttctcgcgagtatttaaaaaatgcaccggggccagcccgagcgagttccgtgccggttgtgaagaaaaagtgaatgatgtagccgtcaagttgtcagctgcaaacgacgaaaactacgctttagtagcttaataaaggtccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttatagcttatgtcttctactagtagcggccgctgcagtccggcaaaaaagggcaaggtgtcaccaccctgccctttttctttaaaaccgaaaagattacttcgcgttatgcaggcttcctcgctcactgactcgctgcgctcggtcgttcggctgcggcgagcggtatcagctcactcaaaggcggtaatacggttatccacagaatcaggggataacgcaggaaagaacatgtgagcaaaaggccagcaaaaggccaggaaccgtaaaaaggccgcgttgctggcgtttttccacaggctccgcccccctgacgagcatcacaaaaatcgacgctcaagtcagaggtggcgaaacccgacaggactataaagataccaggcgtttccccctggaagctccctcgtgcgctctcctgttccgaccctgccgcttaccggatacctgtccgcctttctcccttcgggaagcgtggcgctttctcatagctcacgctgtaggtatctcagttcggtgtaggtcgttcgctccaagctgggctgtgtgcacgaaccccccgttcagcccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggtaagacacgacttatcgccactggcagcagccactggtaacaggattagcagagcgaggtatgtaggcggtgctacagagttcttgaagtggtggcctaactacggctacactagaagaacagtatttggtatctgcgctctgctgaagccagttaccttcggaaaaagagttggtagctcttgatccggcaaacaaaccaccgctggtagcggtggtttttttgtttgcaagcagcagattacgcgcagaaaaaaaggatctcaagaagatcctttgatcttttctacggggtctgacgctcagtggaacgaaaactcacgttaagggattttggtcatgagattatcaaaaaggatcttcacctagatccttttaaattaaaaatgaagttttaaatcaatctaaagtatatatgagtaaacttggtctgacagctcgagtcccgtcaagtcagcgtaatgctctgccagtgttacaaccaattaaccaattctgattagaaaaactcatcgagcatcaaatgaaa</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>

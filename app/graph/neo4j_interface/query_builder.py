@@ -70,11 +70,15 @@ class QueryBuilder:
         self._add_node(node)
         self.nodes[node].enable_add_label(label)
 
-    def generate(self):
+    def add_replace_node_label(self,node,old,new):
+        self._add_node(node)
+        self.nodes[node].enable_replace_label(old,new)
+
+    def generate(self,log=True):
         for operation in self.nodes.values():
-            yield operation.generate()
+            yield operation.generate(log=log)
         for operation in self.edges.values():
-            yield operation.generate()
+            yield operation.generate(log=log)
         self.nodes.clear()
         self.edges.clear()
         self.index = 1
@@ -82,6 +86,9 @@ class QueryBuilder:
     def purge(self):
         return "MATCH (n) DETACH DELETE n"
 
+    def remove_graph(self,graph_name):
+        return f"MATCH (n) WHERE ANY(a IN {str(graph_name)} WHERE a IN n.`graph_name`) DETACH DELETE n"
+    
     def node_query(self, identity,predicate="ALL", **kwargs):
         where = ""
         if not isinstance(identity,(list, tuple, set, frozenset)):
@@ -111,7 +118,7 @@ class QueryBuilder:
     def get_edge_properties(self):
         return "MATCH (n)-[r]-(m) RETURN properties(r)"
 
-    def get_isolated_nodes(self,identity=[],**kwargs):
+    def get_isolated_nodes(self,identity=[],predicate="ALL",**kwargs):
         where = ""
         for index, i in enumerate(identity):
             if i is None:
@@ -120,7 +127,7 @@ class QueryBuilder:
             if index < len(identity) - 1:
                 where += " OR "
 
-        where = self._graph_name(kwargs,where,"n","ALL")
+        where = self._graph_name(kwargs,where,"n",predicate)
         return f'''
         match (n {{{self.dict_to_query(kwargs)}}})
         with n
@@ -204,11 +211,12 @@ class QueryBuilder:
         items = {k:v for k,v in items.items() if k != "graph_name"}
         f_str = ""
         for index, (k, v) in enumerate(items.items()):
-            if not isinstance(v,list):
-                v = v if isinstance(v, list) else f'"{v}"'
-                f_str += f'`{k}`: {v}'
-                if index != len(items) - 1:
-                    f_str += ","
+            if k == "graph_name":
+                continue
+            v = v if isinstance(v, list) else f'"{v}"'
+            f_str += f'`{k}`: {v}'
+            if index != len(items) - 1:
+                f_str += ","
         return f_str
 
     def list_to_query(self, items):
@@ -218,6 +226,16 @@ class QueryBuilder:
             if index < len(items) - 1:
                 f_str += ":"
         return f_str
+
+    def export(self,graph_name):
+        return f'''
+        MATCH (n1) WHERE ANY(a IN {str(graph_name)} WHERE a IN n1.`graph_name`) 
+        OPTIONAL MATCH (n1)-[e]->() WHERE ANY(a IN {str(graph_name)} WHERE a IN e.`graph_name`)
+        WITH collect(n1) as a, collect(e) as b
+        CALL apoc.export.json.data(a, b, null, {{stream: true}})
+        YIELD data
+        RETURN data
+        '''
 
     def _add_node(self,node):
         if node not in self.nodes:

@@ -31,6 +31,9 @@ class AbstractDesignVisual(AbstractVisual):
 
     def set_design_names(self,names,load_predicate):
         self._builder.set_design_names(names,load_predicate)
+    
+    def get_loaded_design_names(self):
+        return self._builder.get_loaded_design_names()
         
     # ---------------------- View ---------------------    
     def set_pruned_view(self):

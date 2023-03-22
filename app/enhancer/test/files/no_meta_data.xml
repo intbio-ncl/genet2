@@ -1,0 +1,1570 @@
+                        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_sequence/1">
+    <sbol:displayId>all_or_nothing_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:elements>ttaattaaacgttcgtaatcaagccacttcctttttgcattgacgcagggtgtcggaaggcaactcgccgaacgcgctcctatagttttcagcgaagcgtcccaaatgtaagaagccgtagtctagggctatctcagttatactacgcacattggcactgggatcgttcaagcaggcgcggatgctttcgagcttgcggttgcggatgtagttcttcggcgtggtgccggcgtgcttctcgaacaaattgtagagcgagcgtggactcatcatcgccagctccgctaaccgctcaaggctgatattccgtttgagattctcctcaatgaattgaacgactcgctcgaaagacgggttacctttgctgaaaatttcacggctgacattgctgcccagcatttcgagcagcttggaagcgatgatccccgcatagtgctcttggacccgaggcatcgactttgtatgttccgcttcgtcacaaactaacccgagtagattgataaagccatcgagttgctggagattgtgtcgcgcggcgaaacggataccctccctcggcttgtgccaattgttgtcactgcacgcccgatcaaggaccactgagggcaatttaacgataaatttctcgcaatcttctgaataggtcaggtcggcttggtcatccggattgagcagcaatagttcgcccggcgcaaaatagtgctcctggccatggccacgccacaggcaatggcctttgagtattatttgcagatgataacaggtctctaatccaggcgagattaccctcacgctaccgccgtagctgattcgacacagatcgaggcatccgaagattctgtggtgcagcctgcctgccgggcgcccgcccttgggcaggcgaatagagtgcgtaccgacatactggttaacataatcggagactgcatagggctcggcgtggacgaagatctgacttttctcgttcaataagcaaaaatccatagttcacggttctcttattttaatgtgggctgcttggtgtgatgtagaaaggcgccaagtcgatgaaaatgcatctcgacgtgatgcgtatacgggttacccccattgccacgttgcgccatcctttttgcaatcagtgaccacttttccaagcaaaaataacgccaagcagaacgaagacgttctttttaagaagcgagaacaccagaagttcgtgctgtcggggcatggggcgacgaattggcggataaaggggatctgctggatattacggcctttttaaagaccgtaaagaaaaataagcacaagttttatccggcctttattcacattcttgcccgcctgatgaatgctcatccgtaattacgtatggcaatgaaagacggtgagctggtgatatgggatagtgttcacccttgttacaccgttttccatgagcaaactgaaacgttttcatcgctctggagtgaataccacgacgatttccggcagtttctacacatatattcgcaagatgtggcgtgttacggtgaaaacctggcctatttccctaaagggtttattgagaatatgtttttcgtctcagccaatccctgggtgagtttcaccagttttgatttaaacgtggccaatatggacaacttcttcgcccccgttttcaccatgcatgggaattagcttgatctgaccaacgaccggtagcggagctatccaacggcggtataccaggaaaacacacagcaggtacatcagaacagtaccatgactgaagaacaaatagttttttcctgatccataaagcagaacggcctgctccatgacaaatctggctccccaactaatgccccatgcagccagcataaccagcataaagtgcagtgtccggtttgatagggataagtccagccttgcaagaagcggatacaggagtgcaaaaaatggctatctctagtaaggcctaccccttaggctttatgcaacagaaacaataataatggagtcatgaccatgcctaggaggaaaaaacatatggtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagcatcatcaccaccatcattaggatggtggtgatgataatggctagccgtaaaggtgaagaactgttcaccggtgttgttccgatcctggttgaactggatggtgatgttaacggccacaaattctctgttcgtggtgaaggtgaaggtgatgcaaccaacggtaaactgaccctgaaattcatctgcactaccggtaaactgccggttccatggccgactctggtgactaccctgacctatggtgttcagtgtttttctcgttacccggatcacatgaagcagcatgatttcttcaaatctgcaatgccggaaggttatgtacaggagcgcaccatttctttcaaagacgatggcacctacaaaacccgtgcagaggttaaatttgaaggtgatactctggtgaaccgtattgaactgaaaggcattgatttcaaagaggacggcaacatcctgggccacaaactggaatataacttcaactcccataacgtttacatcaccgcagacaaacagaagaacggtatcaaagctaacttcaaaattcgccataacgttgaagacggtagcgtacagctggcggaccactaccagcagaacactccgatcggtgatggtccggttctgctgccggataaccactacctgtccacccagtctaaactgtccaaagacccgaacgaaaagcgcgaccacatggtgctgctggagttcgttactgccgcaggtatcacgcacggcatggatgaactctacaaataagaattcgagctcggtacccggggatcctctagagtcgacctgcaggcatgcaagcttgcggccgcgtcgtgactgggaaaaccctggcgcaaagcccgccgaaaggcgggcttttctgttataaacgcagaaaggcccacccgaaggtgagccagtgtgactctagtagagagcgttcaccgacaaaaacagataaaacgaaaggcccagtctttcgactgagcctttcgttttatttgatgcctggctcgagctcgagaaaaaaagcccggacgactgttcgggcttgtctttttatatgttggaaaatcagtggcaatgcaatggcccaacagaaaatggtgaaaccagtaacgttatactgaatctaagtatcaatgtgagcgctcacaagtcaacactctttttgataaaactagt</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_sequence"/>
+    <sbol:version>1</sbol:version>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/GFP/1">
+    <sbol:displayId>GFP</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/GFP"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s_sequence/1">
+    <sbol:elements>tttatcaaaaagagtgttgacttgtgagcgctcacattgatacttagattcagtataacgttactggtttcaccattttctgttgggccattgcattgccactgattttccaacatataaaaagacaagcccgaacagtcgtccgggctttttttctcgagctcgagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgtttttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttata</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s_sequence"/>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>all_or_nothing_PA1_04s_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/Coupling_sequence/1">
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>Coupling_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Coupling_sequence"/>
+    <sbol:elements>catcatcaccaccatcattaggatggtggtgatgata</sbol:elements>
+    <sbol:version>1</sbol:version>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/T1_TE/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/T1_TE"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>T1_TE</sbol:displayId>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/T1_TE_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/RBS_cassette_sequence/1">
+    <sbol:version>1</sbol:version>
+    <sbol:elements>cctaggagga</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/RBS_cassette_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>RBS_cassette_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/PA1_04s/1">
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/PA1_04s_sequence/1"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PA1_04s"/>
+    <sbol:displayId>PA1_04s</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/1">
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_c/1"/>
+        <sbol:displayId>LacI_cassette_Coupling_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_sequenceAnnotation/LacI_cassetteSequenceAnnotation2Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_sequenceAnnotation/LacI_cassetteSequenceAnnotation2Range"/>
+            <sbol:end>1128</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:displayId>LacI_cassetteSequenceAnnotation2Range</sbol:displayId>
+            <sbol:start>1092</sbol:start>
+            <sbol:version>1</sbol:version>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/Coupling/1"/>
+        <sbol:displayId>LacI_cassette_Coupling_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette_sequence/1"/>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c_i_precedes_LacI_c/1">
+        <sbol:displayId>LacI_cassette_Spacer_c_i_precedes_LacI_c</sbol:displayId>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c/1"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c_i_precedes_LacI_c"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_sequenceAnnotation/1">
+        <sbol:displayId>LacI_cassette_LacI_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_sequenceAnnotation/LacI_cassetteSequenceAnnotation1Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_sequenceAnnotation/LacI_cassetteSequenceAnnotation1Range"/>
+            <sbol:displayId>LacI_cassetteSequenceAnnotation1Range</sbol:displayId>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:start>12</sbol:start>
+            <sbol:end>1091</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c/1">
+        <sbol:displayId>LacI_cassette_Spacer_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/Spacer/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c/1">
+        <sbol:displayId>LacI_cassette_LacI_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/LacI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:displayId>LacI_cassette</sbol:displayId>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c_i_precedes_Coupling_c/1">
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c/1"/>
+        <sbol:displayId>LacI_cassette_LacI_c_i_precedes_Coupling_c</sbol:displayId>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Coupling_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_LacI_c_i_precedes_Coupling_c"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_sequenceAnnotation/LacI_cassetteSequenceAnnotationRange/1">
+            <sbol:displayId>LacI_cassetteSequenceAnnotationRange</sbol:displayId>
+            <sbol:end>11</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:start>1</sbol:start>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/LacI_cassette_Spacer_sequenceAnnotation/LacI_cassetteSequenceAnnotationRange"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>LacI_cassette_Spacer_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/NheI_sequence/1">
+    <sbol:elements>gctagc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>NheI_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/NheI_sequence"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/PBS_F24_sequence/1">
+    <sbol:elements>gtcgtgactgggaaaaccctggcg</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PBS_F24_sequence"/>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>PBS_F24_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/EcoRI_sequence/1">
+    <sbol:elements>gaattc</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>EcoRI_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/EcoRI_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette_sequence/1">
+    <sbol:elements>tataacgttactggtttcaccattttctgttgggccattgcattgccactgattttccaacatataaaaagacaagcccgaacagtcgtccgggctttttttctcgag</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>sRNA_cassette_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette_sequence"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette_sequence/1">
+    <sbol:elements>atggctagccgtaaaggtgaagaactgttcaccggtgttgttccgatcctggttgaactggatggtgatgttaacggccacaaattctctgttcgtggtgaaggtgaaggtgatgcaaccaacggtaaactgaccctgaaattcatctgcactaccggtaaactgccggttccatggccgactctggtgactaccctgacctatggtgttcagtgtttttctcgttacccggatcacatgaagcagcatgatttcttcaaatctgcaatgccggaaggttatgtacaggagcgcaccatttctttcaaagacgatggcacctacaaaacccgtgcagaggttaaatttgaaggtgatactctggtgaaccgtattgaactgaaaggcattgatttcaaagaggacggcaacatcctgggccacaaactggaatataacttcaactcccataacgtttacatcaccgcagacaaacagaagaacggtatcaaagctaacttcaaaattcgccataacgttgaagacggtagcgtacagctggcggaccactaccagcagaacactccgatcggtgatggtccggttctgctgccggataaccactacctgtccacccagtctaaactgtccaaagacccgaacgaaaagcgcgaccacatggtgctgctggagttcgttactgccgcaggtatcacgcacggcatggatgaactctacaaataagaattc</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>gfp_cassette_sequence</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette_sequence"/>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/Spacer/1">
+    <sbol:displayId>Spacer</sbol:displayId>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/Spacer_sequence/1"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Spacer"/>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/PacI/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PacI"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/PacI_sequence/1"/>
+    <sbol:displayId>PacI</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/LacI_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_sequence"/>
+    <sbol:displayId>LacI_sequence</sbol:displayId>
+    <sbol:elements>gtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcag</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_target/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_target"/>
+    <sbol:displayId>sRNA_target</sbol:displayId>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_target_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/SpeI_sequence/1">
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:elements>actagt</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/SpeI_sequence"/>
+    <sbol:displayId>SpeI_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/msfGFP/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/msfGFP"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/msfGFP_sequence/1"/>
+    <sbol:displayId>msfGFP</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/LacI/1">
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI"/>
+    <sbol:displayId>LacI</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/NheI/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>NheI</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/NheI"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/NheI_sequence/1"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/ATG/1">
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/ATG_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>ATG</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/ATG"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/XylSPm_sequence/1">
+    <sbol:displayId>XylSPm_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/XylSPm_sequence"/>
+    <sbol:version>1</sbol:version>
+    <sbol:elements>acgttcgtaatcaagccacttcctttttgcattgacgcagggtgtcggaaggcaactcgccgaacgcgctcctatagttttcagcgaagcgtcccaaatgtaagaagccgtagtctagggctatctcagttatactacgcacattggcactgggatcgttcaagcaggcgcggatgctttcgagcttgcggttgcggatgtagttcttcggcgtggtgccggcgtgcttctcgaacaaattgtagagcgagcgtggactcatcatcgccagctccgctaaccgctcaaggctgatattccgtttgagattctcctcaatgaattgaacgactcgctcgaaagacgggttacctttgctgaaaatttcacggctgacattgctgcccagcatttcgagcagcttggaagcgatgatccccgcatagtgctcttggacccgaggcatcgactttgtatgttccgcttcgtcacaaactaacccgagtagattgataaagccatcgagttgctggagattgtgtcgcgcggcgaaacggataccctccctcggcttgtgccaattgttgtcactgcacgcccgatcaaggaccactgagggcaatttaacgataaatttctcgcaatcttctgaataggtcaggtcggcttggtcatccggattgagcagcaatagttcgcccggcgcaaaatagtgctcctggccatggccacgccacaggcaatggcctttgagtattatttgcagatgataacaggtctctaatccaggcgagattaccctcacgctaccgccgtagctgattcgacacagatcgaggcatccgaagattctgtggtgcagcctgcctgccgggcgcccgcccttgggcaggcgaatagagtgcgtaccgacatactggttaacataatcggagactgcatagggctcggcgtggacgaagatctgacttttctcgttcaataagcaaaaatccatagttcacggttctcttattttaatgtgggctgcttggtgtgatgtagaaaggcgccaagtcgatgaaaatgcatctcgacgtgatgcgtatacgggttacccccattgccacgttgcgccatcctttttgcaatcagtgaccacttttccaagcaaaaataacgccaagcagaacgaagacgttctttttaagaagcgagaacaccagaagttcgtgctgtcggggcatggggcgacgaattggcggataaaggggatctgctggatattacggcctttttaaagaccgtaaagaaaaataagcacaagttttatccggcctttattcacattcttgcccgcctgatgaatgctcatccgtaattacgtatggcaatgaaagacggtgagctggtgatatgggatagtgttcacccttgttacaccgttttccatgagcaaactgaaacgttttcatcgctctggagtgaataccacgacgatttccggcagtttctacacatatattcgcaagatgtggcgtgttacggtgaaaacctggcctatttccctaaagggtttattgagaatatgtttttcgtctcagccaatccctgggtgagtttcaccagttttgatttaaacgtggccaatatggacaacttcttcgcccccgttttcaccatgcatgggaattagcttgatctgaccaacgaccggtagcggagctatccaacggcggtataccaggaaaacacacagcaggtacatcagaacagtaccatgactgaagaacaaatagttttttcctgatccataaagcagaacggcctgctccatgacaaatctggctccccaactaatgccccatgcagccagcataaccagcataaagtgcagtgtccggtttgatagggataagtccagccttgcaagaagcggatacaggagtgcaaaaaatggctatctctagtaaggcctaccccttaggctttatgcaacagaaacaataataatggagtcatgaccatg</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/MCS/1">
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c_i_precedes_PBS_F24_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c_i_precedes_PBS_F24_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c/1"/>
+        <sbol:displayId>MCS_Restriction_sites_c_i_precedes_PBS_F24_c</sbol:displayId>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_sequenceAnnotation/MCSSequenceAnnotation1Range/1">
+            <sbol:version>1</sbol:version>
+            <sbol:end>83</sbol:end>
+            <sbol:start>60</sbol:start>
+            <sbol:displayId>MCSSequenceAnnotation1Range</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_sequenceAnnotation/MCSSequenceAnnotation1Range"/>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>MCS_PBS_F24_sequenceAnnotation</sbol:displayId>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_c/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:displayId>MCS</sbol:displayId>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_sequenceAnnotation/1">
+        <sbol:displayId>MCS_Restriction_sites_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_sequenceAnnotation/MCSSequenceAnnotationRange/1">
+            <sbol:displayId>MCSSequenceAnnotationRange</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_sequenceAnnotation/MCSSequenceAnnotationRange"/>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:end>59</sbol:end>
+            <sbol:start>1</sbol:start>
+            <sbol:version>1</sbol:version>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_sequenceAnnotation"/>
+        <sbol:version>1</sbol:version>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_PBS_F24_c"/>
+        <sbol:displayId>MCS_PBS_F24_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/PBS_F24/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/MCS_sequence/1"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/MCS_Restriction_sites_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/Restriction_sites/1"/>
+        <sbol:displayId>MCS_Restriction_sites_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/T500/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>T500</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/T500"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/T500_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/MCS_sequence/1">
+    <sbol:elements>gagctcggtacccggggatcctctagagtcgacctgcaggcatgcaagcttgcggccgcgtcgtgactgggaaaaccctggcg</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MCS_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>MCS_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/PA1_04s_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PA1_04s_sequence"/>
+    <sbol:displayId>PA1_04s_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:elements>tttatcaaaaagagtgttgacttgtgagcgctcacattgatacttagattcag</sbol:elements>
+    <sbol:version>1</sbol:version>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/SpeI/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/SpeI"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/SpeI_sequence/1"/>
+    <sbol:displayId>SpeI</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/PacI_sequence/1">
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>PacI_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PacI_sequence"/>
+    <sbol:elements>ttaattaa</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ModuleDefinition rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/1">
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i/LacI_i_i_genetic_production_with_coupled_RNA_i_LacI_i_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i/1"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i/LacI_i_i_genetic_production_with_coupled_RNA_i_LacI_i_i_participation_promoter"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:displayId>LacI_i_i_genetic_production_with_coupled_RNA_i_LacI_i_i_participation_promoter</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>LacI_i_i_genetic_production_with_coupled_RNA_i</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i/LacI_i_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:displayId>LacI_i_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product</sbol:displayId>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i/LacI_i_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i_i_genetic_production_with_coupled_RNA_i"/>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:displayId>all_or_nothing_mod</sbol:displayId>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PA1_04s_i/1">
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PA1_04s_i"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/PA1_04s/1"/>
+        <sbol:displayId>PA1_04s_i</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod"/>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylS_i/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylS_i"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>XylS_i</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/XylS/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PM_i/1">
+        <sbol:displayId>PM_i</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PM_i"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/LacI_i"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>LacI_i</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/LacI/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i/coupled_RNA_i_i_genetic_production_with_pLacI_i_coupled_RNA_i_i_participation_promoter/1">
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>coupled_RNA_i_i_genetic_production_with_pLacI_i_coupled_RNA_i_i_participation_promoter</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i/coupled_RNA_i_i_genetic_production_with_pLacI_i_coupled_RNA_i_i_participation_promoter"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:displayId>coupled_RNA_i_i_genetic_production_with_pLacI_i</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i"/>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i/coupled_RNA_i_i_genetic_production_with_pLacI_i_pLacI_i_i_product/1">
+            <sbol:displayId>coupled_RNA_i_i_genetic_production_with_pLacI_i_pLacI_i_i_product</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i/1"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_pLacI_i/coupled_RNA_i_i_genetic_production_with_pLacI_i_pLacI_i_i_product"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i/1">
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i/coupled_RNA_i_i_genetic_production_with_GFP_i_GFP_i_i_product/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i/coupled_RNA_i_i_genetic_production_with_GFP_i_GFP_i_i_product"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/GFP_i/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>coupled_RNA_i_i_genetic_production_with_GFP_i_GFP_i_i_product</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>coupled_RNA_i_i_genetic_production_with_GFP_i</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i/coupled_RNA_i_i_genetic_production_with_GFP_i_coupled_RNA_i_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:displayId>coupled_RNA_i_i_genetic_production_with_GFP_i_coupled_RNA_i_i_participation_promoter</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i/coupled_RNA_i_i_genetic_production_with_GFP_i_coupled_RNA_i_i_participation_promoter"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i_i_genetic_production_with_GFP_i"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i/sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_target_i_i_participation_promoter/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i/sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_target_i_i_participation_promoter"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_target_i_i_participation_promoter</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i/sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_i_i_product/1">
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i_i_genetic_production_with_sRNA_i/sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_i_i_product"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:displayId>sRNA_target_i_i_genetic_production_with_sRNA_i_sRNA_i_i_product</sbol:displayId>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>sRNA_target_i_i_genetic_production_with_sRNA_i</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i/XylSPm_i_i_genetic_production_with_XylS_i_XylS_i_i_product/1">
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i/XylSPm_i_i_genetic_production_with_XylS_i_XylS_i_i_product"/>
+            <sbol:displayId>XylSPm_i_i_genetic_production_with_XylS_i_XylS_i_i_product</sbol:displayId>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylS_i/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i"/>
+        <sbol:displayId>XylSPm_i_i_genetic_production_with_XylS_i</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i/XylSPm_i_i_genetic_production_with_XylS_i_XylSPm_i_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_genetic_production_with_XylS_i/XylSPm_i_i_genetic_production_with_XylS_i_XylSPm_i_i_participation_promoter"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:displayId>XylSPm_i_i_genetic_production_with_XylS_i_XylSPm_i_i_participation_promoter</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/msfGFP/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is"/>
+        <sbol:displayId>msfGFP_is</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/pLacI/1"/>
+        <sbol:displayId>pLacI_i</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i/XylSPm_i_i_stimulation_with_PM_i_PM_i_i_stimulated/1">
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PM_i/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i/XylSPm_i_i_stimulation_with_PM_i_PM_i_i_stimulated"/>
+            <sbol:displayId>XylSPm_i_i_stimulation_with_PM_i_PM_i_i_stimulated</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i"/>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i/XylSPm_i_i_stimulation_with_PM_i_XylSPm_i_i_stimulator/1">
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>XylSPm_i_i_stimulation_with_PM_i_XylSPm_i_i_stimulator</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i_i_stimulation_with_PM_i/XylSPm_i_i_stimulation_with_PM_i_XylSPm_i_i_stimulator"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>XylSPm_i_i_stimulation_with_PM_i</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i/pLacI_i_i_inhibition_with_PA1_04s_i_pLacI_i_i_inhibitor/1">
+            <sbol:displayId>pLacI_i_i_inhibition_with_PA1_04s_i_pLacI_i_i_inhibitor</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i/pLacI_i_i_inhibition_with_PA1_04s_i_pLacI_i_i_inhibitor"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>pLacI_i_i_inhibition_with_PA1_04s_i</sbol:displayId>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i/pLacI_i_i_inhibition_with_PA1_04s_i_PA1_04s_i_i_inhibited/1">
+            <sbol:displayId>pLacI_i_i_inhibition_with_PA1_04s_i_PA1_04s_i_i_inhibited</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i/pLacI_i_i_inhibition_with_PA1_04s_i_PA1_04s_i_i_inhibited"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/PA1_04s_i/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/pLacI_i_i_inhibition_with_PA1_04s_i"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/GFP_i/1">
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/GFP/1"/>
+        <sbol:displayId>GFP_i</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/GFP_i"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i/1">
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i/sRNA_i_i_inhibition_with_coupled_RNA_i_sRNA_i_i_inhibitor/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:displayId>sRNA_i_i_inhibition_with_coupled_RNA_i_sRNA_i_i_inhibitor</sbol:displayId>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i/sRNA_i_i_inhibition_with_coupled_RNA_i_sRNA_i_i_inhibitor"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i/sRNA_i_i_inhibition_with_coupled_RNA_i_coupled_RNA_i_i_inhibited/1">
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1"/>
+            <sbol:displayId>sRNA_i_i_inhibition_with_coupled_RNA_i_coupled_RNA_i_i_inhibited</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i/sRNA_i_i_inhibition_with_coupled_RNA_i_coupled_RNA_i_i_inhibited"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:displayId>sRNA_i_i_inhibition_with_coupled_RNA_i</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i_i_inhibition_with_coupled_RNA_i"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i/1">
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>XylSPm_i</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/XylSPm_i"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/XylSPm/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_target/1"/>
+        <sbol:displayId>sRNA_target_i</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_target_i"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i/1">
+        <sbol:displayId>msfGFP_is_i_genetic_production_with_coupled_RNA_i</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i/msfGFP_is_i_genetic_production_with_coupled_RNA_i_msfGFP_is_i_participation_promoter/1">
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is/1"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i/msfGFP_is_i_genetic_production_with_coupled_RNA_i_msfGFP_is_i_participation_promoter"/>
+            <sbol:displayId>msfGFP_is_i_genetic_production_with_coupled_RNA_i_msfGFP_is_i_participation_promoter</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i/msfGFP_is_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product/1">
+            <sbol:displayId>msfGFP_is_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i/msfGFP_is_i_genetic_production_with_coupled_RNA_i_coupled_RNA_i_i_product"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:participant rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/msfGFP_is_i_genetic_production_with_coupled_RNA_i"/>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/sRNA_i"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA/1"/>
+        <sbol:displayId>sRNA_i</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i/1">
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>coupled_RNA_i</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/coupled_RNA/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_mod/coupled_RNA_i"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+  </sbol:ModuleDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/ATG_sequence/1">
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/ATG_sequence"/>
+    <sbol:elements>atg</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>ATG_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/EcoRI/1">
+    <sbol:version>1</sbol:version>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/EcoRI_sequence/1"/>
+    <sbol:displayId>EcoRI</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/EcoRI"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/Spacer_sequence/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Spacer_sequence"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>Spacer_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:elements>aaaaacatatg</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/Restriction_sites/1">
+    <sbol:displayId>Restriction_sites</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Restriction_sites"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/Restriction_sites_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/1">
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_sequence/1"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:displayId>all_or_nothing_all_or_nothing_PA1_04s_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_sequenceAnnotation/1">
+        <sbol:displayId>all_or_nothing_PacI_sequenceAnnotation</sbol:displayId>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_sequenceAnnotation/all_or_nothingSequenceAnnotation3Range/1">
+            <sbol:end>8</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_sequenceAnnotation/all_or_nothingSequenceAnnotation3Range"/>
+            <sbol:start>1</sbol:start>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:displayId>all_or_nothingSequenceAnnotation3Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_all_or_nothing_Pm_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_sequenceAnnotation/all_or_nothingSequenceAnnotationRange/1">
+            <sbol:start>9</sbol:start>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:end>3975</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_sequenceAnnotation/all_or_nothingSequenceAnnotationRange"/>
+            <sbol:displayId>all_or_nothingSequenceAnnotationRange</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>all_or_nothing_all_or_nothing_Pm_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c_i_precedes_all_or_nothing_PA1_04s_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c_i_precedes_all_or_nothing_PA1_04s_c"/>
+        <sbol:displayId>all_or_nothing_all_or_nothing_Pm_c_i_precedes_all_or_nothing_PA1_04s_c</sbol:displayId>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_sequenceAnnotation"/>
+        <sbol:displayId>all_or_nothing_all_or_nothing_PA1_04s_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_sequenceAnnotation/all_or_nothingSequenceAnnotation1Range/1">
+            <sbol:orientation rdf:resource="http://sbols.org/v2#reverseComplement"/>
+            <sbol:start>3976</sbol:start>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_sequenceAnnotation/all_or_nothingSequenceAnnotation1Range"/>
+            <sbol:end>4270</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>all_or_nothingSequenceAnnotation1Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_c/1"/>
+        <sbol:displayId>all_or_nothing_SpeI_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_sequenceAnnotation/all_or_nothingSequenceAnnotation2Range/1">
+            <sbol:end>4276</sbol:end>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_sequenceAnnotation/all_or_nothingSequenceAnnotation2Range"/>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:displayId>all_or_nothingSequenceAnnotation2Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:start>4271</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_c/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/SpeI/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_c"/>
+        <sbol:displayId>all_or_nothing_SpeI_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c_i_precedes_SpeI_c/1">
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:version>1</sbol:version>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c/1"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_SpeI_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_PA1_04s_c_i_precedes_SpeI_c"/>
+        <sbol:displayId>all_or_nothing_all_or_nothing_PA1_04s_c_i_precedes_SpeI_c</sbol:displayId>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:displayId>all_or_nothing</sbol:displayId>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c/1">
+        <sbol:displayId>all_or_nothing_PacI_c</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/PacI/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:version>1</sbol:version>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c_i_precedes_all_or_nothing_Pm_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c_i_precedes_all_or_nothing_Pm_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_all_or_nothing_Pm_c/1"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing/all_or_nothing_PacI_c/1"/>
+        <sbol:displayId>all_or_nothing_PacI_c_i_precedes_all_or_nothing_Pm_c</sbol:displayId>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/T500_sequence/1">
+    <sbol:elements>caaagcccgccgaaaggcgggcttttctgt</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/T500_sequence"/>
+    <sbol:displayId>T500_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/XylS/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:displayId>XylS</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/XylS"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/T1_TE_sequence/1">
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:elements>ctcgagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgtttttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttata</sbol:elements>
+    <sbol:displayId>T1_TE_sequence</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/T1_TE_sequence"/>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/XylSPm/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/XylSPm_sequence/1"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:displayId>XylSPm</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/XylSPm"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/LacI_cassette_sequence/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette_sequence"/>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>LacI_cassette_sequence</sbol:displayId>
+    <sbol:elements>aaaaacatatggtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagcatcatcaccaccatcattaggatggtggtgatgata</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/pLacI/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/pLacI"/>
+    <sbol:displayId>pLacI</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/PBS_F24/1">
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/PBS_F24_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/PBS_F24"/>
+    <sbol:displayId>PBS_F24</sbol:displayId>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/Restriction_sites_sequence/1">
+    <sbol:displayId>Restriction_sites_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Restriction_sites_sequence"/>
+    <sbol:elements>gagctcggtacccggggatcctctagagtcgacctgcaggcatgcaagcttgcggccgc</sbol:elements>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/1">
+    <sbol:version>1</sbol:version>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c_i_precedes_NheI_c/1">
+        <sbol:displayId>gfp_cassette_ATG_c_i_precedes_NheI_c</sbol:displayId>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c_i_precedes_NheI_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c_i_precedes_msfGFP_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>gfp_cassette_NheI_c_i_precedes_msfGFP_c</sbol:displayId>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c_i_precedes_msfGFP_c"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_c/1"/>
+        <sbol:displayId>gfp_cassette_EcoRI_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_sequenceAnnotation/gfp_cassetteSequenceAnnotation3Range/1">
+            <sbol:displayId>gfp_cassetteSequenceAnnotation3Range</sbol:displayId>
+            <sbol:start>724</sbol:start>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_sequenceAnnotation/gfp_cassetteSequenceAnnotation3Range"/>
+            <sbol:end>729</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_sequenceAnnotation"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_sequenceAnnotation/gfp_cassetteSequenceAnnotation1Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_sequenceAnnotation/gfp_cassetteSequenceAnnotation1Range"/>
+            <sbol:version>1</sbol:version>
+            <sbol:end>9</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:start>4</sbol:start>
+            <sbol:displayId>gfp_cassetteSequenceAnnotation1Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>gfp_cassette_NheI_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_sequenceAnnotation"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette_sequence/1"/>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c_i_precedes_EcoRI_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c_i_precedes_EcoRI_c"/>
+        <sbol:displayId>gfp_cassette_msfGFP_c_i_precedes_EcoRI_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_sequenceAnnotation/gfp_cassetteSequenceAnnotation2Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_sequenceAnnotation/gfp_cassetteSequenceAnnotation2Range"/>
+            <sbol:displayId>gfp_cassetteSequenceAnnotation2Range</sbol:displayId>
+            <sbol:end>723</sbol:end>
+            <sbol:start>10</sbol:start>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>gfp_cassette_msfGFP_sequenceAnnotation</sbol:displayId>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_msfGFP_c"/>
+        <sbol:displayId>gfp_cassette_msfGFP_c</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/msfGFP/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_NheI_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>gfp_cassette_NheI_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/NheI/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:displayId>gfp_cassette</sbol:displayId>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_c/1">
+        <sbol:displayId>gfp_cassette_EcoRI_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/EcoRI/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_EcoRI_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c/1"/>
+        <sbol:displayId>gfp_cassette_ATG_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_sequenceAnnotation/gfp_cassetteSequenceAnnotationRange/1">
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:end>3</sbol:end>
+            <sbol:displayId>gfp_cassetteSequenceAnnotationRange</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_sequenceAnnotation/gfp_cassetteSequenceAnnotationRange"/>
+            <sbol:start>1</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c/1">
+        <sbol:displayId>gfp_cassette_ATG_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/gfp_cassette_ATG_c"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/ATG/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_target/1"/>
+        <sbol:displayId>sRNA_cassette_sRNA_target_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette"/>
+    <sbol:displayId>sRNA_cassette</sbol:displayId>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_sequenceAnnotation/sRNA_cassetteSequenceAnnotationRange/1">
+            <sbol:displayId>sRNA_cassetteSequenceAnnotationRange</sbol:displayId>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:end>23</sbol:end>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_sequenceAnnotation/sRNA_cassetteSequenceAnnotationRange"/>
+            <sbol:start>1</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>sRNA_cassette_sRNA_target_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_sequenceAnnotation"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c_i_precedes_MICc_scaffold_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_sRNA_target_c_i_precedes_MICc_scaffold_c"/>
+        <sbol:displayId>sRNA_cassette_sRNA_target_c_i_precedes_MICc_scaffold_c</sbol:displayId>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_sequenceAnnotation/sRNA_cassetteSequenceAnnotation1Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_sequenceAnnotation/sRNA_cassetteSequenceAnnotation1Range"/>
+            <sbol:start>24</sbol:start>
+            <sbol:end>108</sbol:end>
+            <sbol:displayId>sRNA_cassetteSequenceAnnotation1Range</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_c/1"/>
+        <sbol:displayId>sRNA_cassette_MICc_scaffold_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_sequenceAnnotation"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette_sequence/1"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/sRNA_cassette_MICc_scaffold_c"/>
+        <sbol:displayId>sRNA_cassette_MICc_scaffold_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/MICc_scaffold/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/RBS_cassette/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/RBS_cassette"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/RBS_cassette_sequence/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>RBS_cassette</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/1">
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/MCS/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_MCS_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/T500/1"/>
+        <sbol:displayId>all_or_nothing_Pm_T500_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c/1">
+        <sbol:displayId>all_or_nothing_Pm_LacI_cassette_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/LacI_cassette/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c_i_precedes_gfp_cassette_c/1">
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c/1"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c_i_precedes_gfp_cassette_c"/>
+        <sbol:displayId>all_or_nothing_Pm_LacI_cassette_c_i_precedes_gfp_cassette_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_T500_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation5Range/1">
+            <sbol:start>3938</sbol:start>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation5Range"/>
+            <sbol:end>3967</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotation5Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_sequenceAnnotation"/>
+        <sbol:displayId>all_or_nothing_Pm_MCS_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation4Range/1">
+            <sbol:end>3937</sbol:end>
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotation4Range</sbol:displayId>
+            <sbol:start>3855</sbol:start>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation4Range"/>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c_i_precedes_T500_c/1">
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_T500_c/1"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c_i_precedes_T500_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_MCS_c_i_precedes_T500_c</sbol:displayId>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>all_or_nothing_Pm</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c"/>
+        <sbol:displayId>all_or_nothing_Pm_gfp_cassette_c</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/gfp_cassette/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c_i_precedes_RBS_cassette_c/1">
+        <sbol:displayId>all_or_nothing_Pm_XylSPm_c_i_precedes_RBS_cassette_c</sbol:displayId>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c_i_precedes_RBS_cassette_c"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c"/>
+        <sbol:displayId>all_or_nothing_Pm_XylSPm_c</sbol:displayId>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/XylSPm/1"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/RBS_cassette/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_RBS_cassette_c</sbol:displayId>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c_i_precedes_MCS_c/1">
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c_i_precedes_MCS_c"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_MCS_c/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c/1"/>
+        <sbol:displayId>all_or_nothing_Pm_gfp_cassette_c_i_precedes_MCS_c</sbol:displayId>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c_i_precedes_LacI_cassette_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:displayId>all_or_nothing_Pm_RBS_cassette_c_i_precedes_LacI_cassette_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c_i_precedes_LacI_cassette_c"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c/1"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c/1"/>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_sequenceAnnotation/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_XylSPm_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_sequenceAnnotation/all_or_nothing_PmSequenceAnnotationRange/1">
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_sequenceAnnotation/all_or_nothing_PmSequenceAnnotationRange"/>
+            <sbol:start>1</sbol:start>
+            <sbol:end>1987</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotationRange</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_XylSPm_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm_sequence/1"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_sequenceAnnotation"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_Pm_LacI_cassette_sequenceAnnotation</sbol:displayId>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation2Range/1">
+            <sbol:version>1</sbol:version>
+            <sbol:end>3125</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation2Range"/>
+            <sbol:start>1998</sbol:start>
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotation2Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_LacI_cassette_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_c/1"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation1Range/1">
+            <sbol:start>1988</sbol:start>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation1Range"/>
+            <sbol:end>1997</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotation1Range</sbol:displayId>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:displayId>all_or_nothing_Pm_RBS_cassette_sequenceAnnotation</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_RBS_cassette_sequenceAnnotation"/>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_sequenceAnnotation"/>
+        <sbol:displayId>all_or_nothing_Pm_gfp_cassette_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation3Range/1">
+            <sbol:displayId>all_or_nothing_PmSequenceAnnotation3Range</sbol:displayId>
+            <sbol:start>3126</sbol:start>
+            <sbol:end>3854</sbol:end>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm/all_or_nothing_Pm_gfp_cassette_sequenceAnnotation/all_or_nothing_PmSequenceAnnotation3Range"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/1">
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c_i_precedes_T1_TE_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c_i_precedes_T1_TE_c"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_c/1"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_sRNA_cassette_c_i_precedes_T1_TE_c</sbol:displayId>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_sequenceAnnotation/1">
+        <sbol:displayId>all_or_nothing_PA1_04s_T1_TE_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotation2Range/1">
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotation2Range"/>
+            <sbol:end>295</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>all_or_nothing_PA1_04sSequenceAnnotation2Range</sbol:displayId>
+            <sbol:start>162</sbol:start>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_sequenceAnnotation"/>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_c/1"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:version>1</sbol:version>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/PA1_04s/1"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>all_or_nothing_PA1_04s_PA1_04s_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_c/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/T1_TE/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_T1_TE_c</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_T1_TE_c"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s"/>
+    <sbol:sequenceConstraint>
+      <sbol:SequenceConstraint rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c_i_precedes_sRNA_cassette_c/1">
+        <sbol:object rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c_i_precedes_sRNA_cassette_c"/>
+        <sbol:restriction rdf:resource="http://sbols.org/v2#precedes"/>
+        <sbol:subject rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_PA1_04s_c_i_precedes_sRNA_cassette_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:SequenceConstraint>
+    </sbol:sequenceConstraint>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s_sequence/1"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_sequenceAnnotation/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_sequenceAnnotation"/>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotation1Range/1">
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:version>1</sbol:version>
+            <sbol:start>54</sbol:start>
+            <sbol:displayId>all_or_nothing_PA1_04sSequenceAnnotation1Range</sbol:displayId>
+            <sbol:end>161</sbol:end>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotation1Range"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:version>1</sbol:version>
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_sRNA_cassette_sequenceAnnotation</sbol:displayId>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_cassette/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_sRNA_cassette_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_sRNA_cassette_c"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:displayId>all_or_nothing_PA1_04s</sbol:displayId>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_sequenceAnnotation/1">
+        <sbol:component rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_c/1"/>
+        <sbol:displayId>all_or_nothing_PA1_04s_PA1_04s_sequenceAnnotation</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:location>
+          <sbol:Range rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotationRange/1">
+            <sbol:displayId>all_or_nothing_PA1_04sSequenceAnnotationRange</sbol:displayId>
+            <sbol:start>1</sbol:start>
+            <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_sequenceAnnotation/all_or_nothing_PA1_04sSequenceAnnotationRange"/>
+            <sbol:version>1</sbol:version>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+            <sbol:end>53</sbol:end>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_PA1_04s/all_or_nothing_PA1_04s_PA1_04s_sequenceAnnotation"/>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/msfGFP_sequence/1">
+    <sbol:displayId>msfGFP_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/msfGFP_sequence"/>
+    <sbol:version>1</sbol:version>
+    <sbol:elements>cgtaaaggtgaagaactgttcaccggtgttgttccgatcctggttgaactggatggtgatgttaacggccacaaattctctgttcgtggtgaaggtgaaggtgatgcaaccaacggtaaactgaccctgaaattcatctgcactaccggtaaactgccggttccatggccgactctggtgactaccctgacctatggtgttcagtgtttttctcgttacccggatcacatgaagcagcatgatttcttcaaatctgcaatgccggaaggttatgtacaggagcgcaccatttctttcaaagacgatggcacctacaaaacccgtgcagaggttaaatttgaaggtgatactctggtgaaccgtattgaactgaaaggcattgatttcaaagaggacggcaacatcctgggccacaaactggaatataacttcaactcccataacgtttacatcaccgcagacaaacagaagaacggtatcaaagctaacttcaaaattcgccataacgttgaagacggtagcgtacagctggcggaccactaccagcagaacactccgatcggtgatggtccggttctgctgccggataaccactacctgtccacccagtctaaactgtccaaagacccgaacgaaaagcgcgaccacatggtgctgctggagttcgttactgccgcaggtatcacgcacggcatggatgaactctacaaataa</sbol:elements>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/MICc_scaffold_sequence/1">
+    <sbol:version>1</sbol:version>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:elements>tttctgttgggccattgcattgccactgattttccaacatataaaaagacaagcccgaacagtcgtccgggctttttttctcgag</sbol:elements>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MICc_scaffold_sequence"/>
+    <sbol:displayId>MICc_scaffold_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/sRNA/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Rna"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA"/>
+    <sbol:displayId>sRNA</sbol:displayId>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/MICc_scaffold/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/MICc_scaffold"/>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:displayId>MICc_scaffold</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/MICc_scaffold_sequence/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/Coupling/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>Coupling</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/Coupling"/>
+    <sbol:sequence rdf:resource="https://synbiohub.org/public/Digitalizer/Coupling_sequence/1"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/sRNA_target_sequence/1">
+    <sbol:elements>tataacgttactggtttcaccat</sbol:elements>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>sRNA_target_sequence</sbol:displayId>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/sRNA_target_sequence"/>
+  </sbol:Sequence>
+  <sbol:Sequence rdf:about="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm_sequence/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/all_or_nothing_Pm_sequence"/>
+    <sbol:elements>acgttcgtaatcaagccacttcctttttgcattgacgcagggtgtcggaaggcaactcgccgaacgcgctcctatagttttcagcgaagcgtcccaaatgtaagaagccgtagtctagggctatctcagttatactacgcacattggcactgggatcgttcaagcaggcgcggatgctttcgagcttgcggttgcggatgtagttcttcggcgtggtgccggcgtgcttctcgaacaaattgtagagcgagcgtggactcatcatcgccagctccgctaaccgctcaaggctgatattccgtttgagattctcctcaatgaattgaacgactcgctcgaaagacgggttacctttgctgaaaatttcacggctgacattgctgcccagcatttcgagcagcttggaagcgatgatccccgcatagtgctcttggacccgaggcatcgactttgtatgttccgcttcgtcacaaactaacccgagtagattgataaagccatcgagttgctggagattgtgtcgcgcggcgaaacggataccctccctcggcttgtgccaattgttgtcactgcacgcccgatcaaggaccactgagggcaatttaacgataaatttctcgcaatcttctgaataggtcaggtcggcttggtcatccggattgagcagcaatagttcgcccggcgcaaaatagtgctcctggccatggccacgccacaggcaatggcctttgagtattatttgcagatgataacaggtctctaatccaggcgagattaccctcacgctaccgccgtagctgattcgacacagatcgaggcatccgaagattctgtggtgcagcctgcctgccgggcgcccgcccttgggcaggcgaatagagtgcgtaccgacatactggttaacataatcggagactgcatagggctcggcgtggacgaagatctgacttttctcgttcaataagcaaaaatccatagttcacggttctcttattttaatgtgggctgcttggtgtgatgtagaaaggcgccaagtcgatgaaaatgcatctcgacgtgatgcgtatacgggttacccccattgccacgttgcgccatcctttttgcaatcagtgaccacttttccaagcaaaaataacgccaagcagaacgaagacgttctttttaagaagcgagaacaccagaagttcgtgctgtcggggcatggggcgacgaattggcggataaaggggatctgctggatattacggcctttttaaagaccgtaaagaaaaataagcacaagttttatccggcctttattcacattcttgcccgcctgatgaatgctcatccgtaattacgtatggcaatgaaagacggtgagctggtgatatgggatagtgttcacccttgttacaccgttttccatgagcaaactgaaacgttttcatcgctctggagtgaataccacgacgatttccggcagtttctacacatatattcgcaagatgtggcgtgttacggtgaaaacctggcctatttccctaaagggtttattgagaatatgtttttcgtctcagccaatccctgggtgagtttcaccagttttgatttaaacgtggccaatatggacaacttcttcgcccccgttttcaccatgcatgggaattagcttgatctgaccaacgaccggtagcggagctatccaacggcggtataccaggaaaacacacagcaggtacatcagaacagtaccatgactgaagaacaaatagttttttcctgatccataaagcagaacggcctgctccatgacaaatctggctccccaactaatgccccatgcagccagcataaccagcataaagtgcagtgtccggtttgatagggataagtccagccttgcaagaagcggatacaggagtgcaaaaaatggctatctctagtaaggcctaccccttaggctttatgcaacagaaacaataataatggagtcatgaccatgcctaggaggaaaaaacatatggtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagcatcatcaccaccatcattaggatggtggtgatgataatggctagccgtaaaggtgaagaactgttcaccggtgttgttccgatcctggttgaactggatggtgatgttaacggccacaaattctctgttcgtggtgaaggtgaaggtgatgcaaccaacggtaaactgaccctgaaattcatctgcactaccggtaaactgccggttccatggccgactctggtgactaccctgacctatggtgttcagtgtttttctcgttacccggatcacatgaagcagcatgatttcttcaaatctgcaatgccggaaggttatgtacaggagcgcaccatttctttcaaagacgatggcacctacaaaacccgtgcagaggttaaatttgaaggtgatactctggtgaaccgtattgaactgaaaggcattgatttcaaagaggacggcaacatcctgggccacaaactggaatataacttcaactcccataacgtttacatcaccgcagacaaacagaagaacggtatcaaagctaacttcaaaattcgccataacgttgaagacggtagcgtacagctggcggaccactaccagcagaacactccgatcggtgatggtccggttctgctgccggataaccactacctgtccacccagtctaaactgtccaaagacccgaacgaaaagcgcgaccacatggtgctgctggagttcgttactgccgcaggtatcacgcacggcatggatgaactctacaaataagaattcgagctcggtacccggggatcctctagagtcgacctgcaggcatgcaagcttgcggccgcgtcgtgactgggaaaaccctggcgcaaagcccgccgaaaggcgggcttttctgt</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+    <sbol:displayId>all_or_nothing_Pm_sequence</sbol:displayId>
+  </sbol:Sequence>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/Digitalizer/coupled_RNA/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/Digitalizer/coupled_RNA"/>
+    <sbol:displayId>coupled_RNA</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Rna"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>
+
+                    

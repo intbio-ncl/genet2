@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.join("..","..",".."))
 
 from app.visualiser.builder.design import DesignBuilder
 from app.graph.world_graph import WorldGraph
+from app.converter.sbol_convert import convert
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 test_fn = os.path.join(curr_dir,"..","files","output.xml")
@@ -17,7 +18,7 @@ class TestProjectGraph(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_graph1"
         self._wrapper = WorldGraph()
-        self._wrapper.add_design(test_fn,self.gn)
+        convert(test_fn,self._wrapper.driver,self.gn)
         self._driver = self._wrapper.driver
         b = DesignBuilder(self._wrapper)
         b.set_design_names(self.gn)

@@ -4,6 +4,9 @@
     <div class="row">
         <h1>Validator</h1>
     </div>
+    <div class="row">
+        <h6>It is advised the design is passed through the enhancer before enhancement for the best results.</h6>
+    </div>
     <br>
     <div class="row">
         {% if upload %}
@@ -15,8 +18,8 @@
                         <font color="red">ERROR: </font><br>{{err_string}}
                     </h5>
                     {% endif %}
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('sbol_upload')">SBOL</button>
+                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('sbol_upload')">Upload</button>
                         <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph')">Use Graph</button>
                         <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph_name')">Use Graph Name</button>
                     </div>

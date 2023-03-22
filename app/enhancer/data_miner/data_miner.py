@@ -1,96 +1,81 @@
-from collections import MutableMapping
-
-import re
-
-from urllib.error import URLError
-from graph.knowledge.utility.identifiers import identifiers
-from graph.knowledge.data_miner.language.analyser import LanguageAnalyser
-from graph.knowledge.data_miner.database.handler import DatabaseHandler
-from graph.knowledge.data_miner.ontology.handler import OntologyHandler
-from graph.knowledge.data_miner.graph_miner.graph_miner import GraphMiner
-
+from app.enhancer.data_miner.language.analyser import LanguageAnalyser
+from app.enhancer.data_miner.database.handler import DatabaseHandler
+from app.enhancer.data_miner.ontology.handler import OntologyHandler
+from app.enhancer.data_miner.graph_analyser.analyser import GraphAnalyser
+from app.enhancer.data_miner.utility.identifiers import identifiers
+from rdflib import RDF
+s_seq = identifiers.predicates.sequence
+s_ele = identifiers.predicates.elements
+s_cd = identifiers.objects.component_definition
 
 class DataMiner:
-    def __init__(self,offline=False):
-        self.language = LanguageAnalyser()
-        self.database = DatabaseHandler(offline=offline)
-        self.ontology = OntologyHandler(offline=offline)
-        self.graph_miner = GraphMiner(self.database)
+    def __init__(self):
+        self._database = DatabaseHandler()
+        self._language = LanguageAnalyser()
+        self._ontology = OntologyHandler()
+        self._graph_analyser = GraphAnalyser(self._database)
 
+    def is_reference(self,uri):
+        return self._database.is_record(uri)
 
-    def get_descriptor_aliases(self,descriptor):
-        """Finds aliases for ontology descriptors.
-        Args:
-            descriptor: The descriptor URI. 
-        Returns:
-            List of definite aliases, list of potential aliases.
-        """
-        d_aliases,p_aliases = self.ontology.get_synonyms(descriptor)
-        d_aliases = self.language.get_aliases(d_aliases)
-        p_aliases = self.language.get_aliases(p_aliases)
-        return d_aliases+p_aliases
+    def get_external(self,name,timeout=10,db_name=None):
+        return self._database.get(name,timeout=timeout,db_name=db_name)
+    
+    def get_graph_subject(self,graph,fragments=None):
+        return self._graph_analyser.get_subject(graph,fragments)
 
-    def get_entity_aliases(self,entity,resources=[],graph=None):
-        """Finds aliases for a biological entity.
-        Args:
-            entity: The biological entity URI.
-            graph : Optional rdf graph to extract data.
-        Returns:
-            List of definite aliases, list of potential aliases.
-        """
-        graphs = self.graph_miner.get_related_graphs(entity,resources,graph)
-        texts = [self._get_name(entity)]
-        triples = [t for graph in graphs for t in self.graph_miner.get_metadata(graph)]
-        aliases = self.language.get_aliases(texts,triples=triples)
-        return aliases
+    def query_external(self,query,lazy=False):
+        return self._database.query(query,lazy=lazy)
 
+    def get_descriptors(self,descriptions):
+        return self._language.get_subjects(descriptions)
 
-    def get_entity_descriptions(self,entity,resources=[], graph=None):
-        """Finds descriptions for a biological entity
-        Args:
-            entity: The biological entity URI.
-            graph : Optional rdf graph to extract data.
-        Returns:
-            List of definite descriptions, list of potential descriptions.
-        """
-        graphs = self.graph_miner.get_related_graphs(entity,resources,graph)
-        texts = [self._get_name(entity)]
-        triples = [t for g in graphs for t in self.graph_miner.get_metadata(graph)]
-        descriptions = self.language.get_descriptions(texts,triples=triples)
-        return descriptions
+    def download_igem_parts(self,out_fn):
+        return self._database.download_igem_parts(out_fn)
+    
+    def get_vpr_data(self,out_fn):
+        return self._database.get_vpr_data(out_fn)
+    
+    def full_sequence_match(self,sequence,db_name=None):
+        matches = self._database.sequence_search(sequence,db_name=db_name)
+        if matches is None:
+            return None
+        if len(matches) == 1:
+            return list(matches.keys())[0]
+        # When a part has multiple names of 
+        # is referenced in multiple records.
+        cds = []
+        for uri,match in matches.items():
+            r = self._database.get(uri)
+            cds += r.triples((None,RDF.type,s_cd))
+        return str(max(set(cds), key=cds.count)[0])
 
+    def partial_sequence_match(self,sequence):
+        matches = self._database.sequence_search(sequence,0.8)
+        if matches is None or matches == {}:
+            return {}
+        return matches
 
-    def get_entity_descriptors(self,entity,descriptions):
-        """Finds ontology terms describing the given biological entity.
-        Args:
-            entity: The biological entity URI.
-            graph : A list of descriptions of the biological entity.
-        Returns:
-            List of definite descriptors, list of potential descriptors.
-        """
-        if len(descriptions) == 0:
-            print(f"WARN:: {entity} have been provided to get_entity_descriptor with no descriptions.")
-            return []
-        d_descriptors,p_descriptors = self.ontology.get_descriptor(descriptions)
-        return d_descriptors,p_descriptors
-        
-    def apply_mask(self,identifier):
-        return self.ontology.mask(identifier)
+    def get_root_subjects(self,graphs,e_type=None,fragments=None):
+        return self._graph_analyser.get_roots(graphs,e_type=e_type,fragments=fragments)
 
-    def remove_mask(self,identifier):
-        return self.ontology.unmask(identifier)
+    def get_leaf_subjects(self,graphs,e_type=None,fragments=None):
+        return self._graph_analyser.get_leafs(graphs,e_type=e_type,fragments=fragments)
 
+    def mine_explicit_reference(self,descriptions):
+        '''
+        Very basic mine, only description with a single 
+        word will be taken as a potential reference.
+        '''
+        # I wonder if a general trash word prune from the langauge object could be used.
+        for description in descriptions:
+            if len(description.split(" ")) != 1:
+                continue
+            record = self._database.get(description)
+            if record is not None:
+                return self.get_graph_subject(record,[description])
+        return None
 
-    def _get_name(self,entity):
-        return self._split_name(entity)
+    def mine_implicit_reference(self,descriptions):
+        pass
 
-
-    def _split_name(self,subject):
-        split_subject = self._split(subject)
-        if len(split_subject[-1]) == 1 and split_subject[-1].isdigit():
-            return split_subject[-2]
-        else:
-            return split_subject[-1]
-
-    def _split(self,uri):
-        return re.split('#|\/|:', str(uri))

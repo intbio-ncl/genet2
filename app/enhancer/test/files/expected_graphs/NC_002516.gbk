@@ -1,0 +1,171 @@
+LOCUS       NC_002516            6264404 bp    DNA     circular CON 24-JAN-2019
+DEFINITION  Pseudomonas aeruginosa PAO1, complete genome.
+ACCESSION   NC_002516
+VERSION     NC_002516.2
+DBLINK      BioProject: PRJNA57945
+            Assembly: GCF_000006765.1
+KEYWORDS    RefSeq.
+SOURCE      Pseudomonas aeruginosa PAO1
+  ORGANISM  Pseudomonas aeruginosa PAO1
+            Bacteria; Proteobacteria; Gammaproteobacteria; Pseudomonadales;
+            Pseudomonadaceae; Pseudomonas.
+REFERENCE   1  (bases 1 to 6264404)
+  AUTHORS   Winsor,G.L., Van Rossum,T., Lo,R., Khaira,B., Whiteside,M.D.,
+            Hancock,R.E. and Brinkman,F.S.
+  TITLE     Pseudomonas Genome Database: facilitating user-friendly,
+            comprehensive comparisons of microbial genomes
+  JOURNAL   Nucleic acids Res. 37 (DATABASE ISSUE), D483-D488 (2009)
+   PUBMED   18978025
+REFERENCE   2  (bases 1 to 6264404)
+  AUTHORS   Cirz,R.T., O'Neill,B.M., Hammond,J.A., Head,S.R. and Romesberg,F.E.
+  TITLE     Defining the Pseudomonas aeruginosa SOS response and its role in
+            the global response to the antibiotic ciprofloxacin
+  JOURNAL   J. Bacteriol. 188 (20), 7101-7110 (2006)
+   PUBMED   17015649
+REFERENCE   3  (bases 1 to 6264404)
+  AUTHORS   Palmer,K.L., Mashburn,L.M., Singh,P.K. and Whiteley,M.
+  TITLE     Cystic fibrosis sputum supports growth and cues key aspects of
+            Pseudomonas aeruginosa physiology
+  JOURNAL   J. Bacteriol. 187 (15), 5267-5277 (2005)
+   PUBMED   16030221
+REFERENCE   4  (bases 1 to 6264404)
+  AUTHORS   Salunkhe,P., Smart,C.H., Morgan,J.A., Panagea,S., Walshaw,M.J.,
+            Hart,C.A., Geffers,R., Tummler,B. and Winstanley,C.
+  TITLE     A cystic fibrosis epidemic strain of Pseudomonas aeruginosa
+            displays enhanced virulence and antimicrobial resistance
+  JOURNAL   J. Bacteriol. 187 (14), 4908-4920 (2005)
+   PUBMED   15995206
+REFERENCE   5  (bases 1 to 6264404)
+  AUTHORS   Filiatrault,M.J., Wagner,V.E., Bushnell,D., Haidaris,C.G.,
+            Iglewski,B.H. and Passador,L.
+  TITLE     Effect of anaerobiosis and nitrate on gene expression in
+            Pseudomonas aeruginosa
+  JOURNAL   Infect. Immun. 73 (6), 3764-3772 (2005)
+   PUBMED   15908409
+REFERENCE   6  (bases 1 to 6264404)
+  AUTHORS   Rasmussen,T.B., Bjarnsholt,T., Skindersoe,M.E., Hentzer,M.,
+            Kristoffersen,P., Kote,M., Nielsen,J., Eberl,L. and Givskov,M.
+  TITLE     Screening for quorum-sensing inhibitors (QSI) by use of a novel
+            genetic system, the QSI selector
+  JOURNAL   J. Bacteriol. 187 (5), 1799-1814 (2005)
+   PUBMED   15716452
+REFERENCE   7  (bases 1 to 6264404)
+  AUTHORS   Winsor,G.L., Lo,R., Sui,S.J., Ung,K.S., Huang,S., Cheng,D.,
+            Ching,W.K., Hancock,R.E. and Brinkman,F.S.
+  TITLE     Pseudomonas aeruginosa Genome Database and PseudoCap: facilitating
+            community-based, continually updated, genome annotation
+  JOURNAL   Nucleic acids Res. 33 (DATABASE ISSUE), D338-D343 (2005)
+   PUBMED   15608211
+REFERENCE   8  (bases 1 to 6264404)
+  AUTHORS   Wagner,V.E., Bushnell,D., Passador,L., Brooks,A.I. and
+            Iglewski,B.H.
+  TITLE     Microarray analysis of Pseudomonas aeruginosa quorum-sensing
+            regulons: effects of growth phase and environment
+  JOURNAL   J. Bacteriol. 185 (7), 2080-2095 (2003)
+   PUBMED   12644477
+REFERENCE   9  (bases 1 to 6264404)
+  AUTHORS   Schuster,M., Lostroh,C.P., Ogi,T. and Greenberg,E.P.
+  TITLE     Identification, timing, and signal specificity of Pseudomonas
+            aeruginosa quorum-controlled genes: a transcriptome analysis
+  JOURNAL   J. Bacteriol. 185 (7), 2066-2079 (2003)
+   PUBMED   12644476
+REFERENCE   10 (bases 1 to 6264404)
+  AUTHORS   Stover,C.K., Pham,X.Q., Erwin,A.L., Mizoguchi,S.D., Warrener,P.,
+            Hickey,M.J., Brinkman,F.S., Hufnagle,W.O., Kowalik,D.J., Lagrou,M.,
+            Garber,R.L., Goltry,L., Tolentino,E., Westbrock-Wadman,S., Yuan,Y.,
+            Brody,L.L., Coulter,S.N., Folger,K.R., Kas,A., Larbig,K., Lim,R.,
+            Smith,K., Spencer,D., Wong,G.K., Wu,Z., Paulsen,I.T., Reizer,J.,
+            Saier,M.H., Hancock,R.E., Lory,S. and Olson,M.V.
+  TITLE     Complete genome sequence of Pseudomonas aeruginosa PA01, an
+            opportunistic pathogen
+  JOURNAL   Nature 406 (6799), 959-964 (2000)
+   PUBMED   10984043
+REFERENCE   11 (bases 1 to 6264404)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (06-OCT-2010) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   12 (bases 1 to 6264404)
+  AUTHORS   Winsor,G.L., Hancock,R.E. and Brinkman,F.S.
+  CONSRTM   Pseudomonas aeruginosa Community Annotation Project (PseudoCap)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-SEP-2010) Department of Molecular Biology and
+            Biochemisry, Simon Fraser University, 8888 University Dr., Burnaby,
+            British Columbia V5A 1S6, Canada
+  REMARK    protein update by submitter
+REFERENCE   13 (bases 1 to 6264404)
+  AUTHORS   Winsor,G.L., Hancock,R.E. and Brinkman,F.S.
+  CONSRTM   Pseudomonas aeruginosa Community Annotation Project (PseudoCap)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-OCT-2008) Department of Molecular Biology and
+            Biochemisry, Simon Fraser University, 8888 University Dr., Burnaby,
+            British Columbia V5A 1S6, Canada
+  REMARK    protein update by submitter
+REFERENCE   14 (bases 1 to 6264404)
+  AUTHORS   Winsor,G.L., Hancock,R.E. and Brinkman,F.S.
+  CONSRTM   Pseudomonas aeruginosa Community Annotation Project (PseudoCap)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (05-JUL-2006) Department of Molecular Biology and
+            Biochemisry, Simon Fraser University, 8888 University Dr., Burnaby,
+            British Columbia V5A 1S6, Canada
+  REMARK    Sequence update by submitter
+REFERENCE   15 (bases 1 to 6264404)
+  AUTHORS   Ung,K.S., Hancock,R.E. and Brinkman,F.S.
+  CONSRTM   Pseudomonas aeruginosa Community Annotation Project (PseudoCap)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-FEB-2003) Department of Molecular Biology and
+            Biochemistry, Simon Fraser University, 8888 University Dr.,
+            Burnaby, British Columbia V5A 1S6, Canada
+REFERENCE   16 (bases 1 to 6264404)
+  AUTHORS   Stover,C.K., Pham,X.-Q.T., Erwin,A.L., Mizoguchi,S.D., Warrener,P.,
+            Hickey,M.J., Brinkman,F.S.L., Hufnagle,W.O., Kowalik,D.J.,
+            Lagrou,M., Garber,R.L., Goltry,L., Tolentino,E.,
+            Westbrock-Wadman,S., Yuan,Y., Brody,L.L., Coulter,S.N.,
+            Folger,K.R., Kas,A., Larbig,K., Lim,R.M., Smith,K.A., Spencer,D.H.,
+            Wong,G.K.-S., Wu,Z., Paulsen,I.T., Reizer,J., Saier,M.H.,
+            Hancock,R.E.W., Lory,S. and Olson,M.V.
+  CONSRTM   Pseudomonas aeruginosa Community Annotation Project (PseudoCap)
+  TITLE     Direct Submission
+  JOURNAL   Submitted (16-MAY-2000) Department of Medicine and Genetics,
+            University of Washington Genome Center, University Of Washington,
+            Box 352145, Seattle, WA 98195, USA
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence is identical to AE004091.
+            On Jul 24, 2006 this sequence version replaced NC_002516.1.
+            RefSeq Category: Reference Genome
+                        FGS: First Genome sequenced
+                        MOD: Model Organism
+                        UPR: UniProt Genome
+            -----------------------------------------------------------------
+            This represents the Sept 08, 2010 version of the continually
+            updated, reviewed, Pseudomonas aeruginosa PAO1 genome annotation
+            from PseudoCap (see http://www.pseudomonas.com for the latest
+            updates and links to alternate annotations). This update includes
+            updated base pair coordinates and new features. PseudoCap is
+            coordinated by Fiona S.L. Brinkman (Simon Fraser University,
+            Canada) and Robert E.W. Hancock (University of British Columbia,
+            Canada) with database development by Geoff Winsor (Simon Fraser
+            University). We welcome submission through
+            www.pseudomonas.com of any proposed changes.
+            'protein name confidence' is used to rate our confidence of the
+            accuracy of the protein name.
+            class 1: Function experimentally demonstrated in P. aeruginosa.
+            class 2: Function of highly similar gene experimentally
+            demonstrated in another organism (and gene context consistent in
+            terms of pathways its involved in, if known).
+            class 3: Function proposed based on presence of conserved amino
+            acid motif, structural feature or limited sequence similarity to an
+            experimentally studied gene.
+            class 4: Homologs of previously reported genes of unknown function,
+            or no similarity to any previously reported sequences.
+            ------------------------------------------------------------------.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..6264404
+                     /organism="Pseudomonas aeruginosa PAO1"
+                     /mol_type="genomic DNA"
+                     /strain="PAO1"
+                     /db_xref="taxon:208964"
+CONTIG      join(AE004091.2:1..6264404)
+//
+

@@ -9,15 +9,15 @@ class InteractionExplicitViewBuilder(AbstractViewBuilder):
     def _subgraph(self, edges=[], nodes=[],new_graph=None):
         return ViewGraph(super()._subgraph(edges,nodes,new_graph))
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        for interaction in self._graph.get_interaction():
-            consistsOf = self._graph.get_consistsof(interaction)
+        for interaction in self._graph.get_interaction(predicate=predicate):
+            consistsOf = self._graph.get_consistsof(interaction,predicate=predicate)
             if consistsOf == []:
                 raise NotImplementedError("Not Implemented.")
             consistsOf = consistsOf[0]
-            consistsOf = self._graph.resolve_list(consistsOf.v)
-            inputs, outputs = self._graph.get_interaction_io(interaction)
+            consistsOf = self._graph.resolve_list(consistsOf.v,predicate=predicate)
+            inputs, outputs = self._graph.get_interaction_io(interaction,predicate=predicate)
             for index, n in enumerate(consistsOf):
                 if index == len(consistsOf) - 1:
                     for obj_e in outputs:

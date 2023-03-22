@@ -6,9 +6,9 @@ class EditorFullViewBuilder(FullViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
-        g = super().build()
-        iso_nodes = self._graph.get_isolated_nodes()
+    def build(self,predicate="ALL"):
+        g = super().build(predicate=predicate)
+        iso_nodes = self._graph.get_isolated_nodes(predicate=predicate)
         for node in iso_nodes:
             g.add_node(node)
         return g

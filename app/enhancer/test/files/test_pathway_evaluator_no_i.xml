@@ -1,0 +1,476 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p1/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>p1</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#c1/1">
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#c1"/>
+    <sbol:displayId>c1</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#c4/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#c4"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>c4</sbol:displayId>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pr3/1">
+    <sbol:displayId>pr3</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pr3"/>
+  </sbol:ComponentDefinition>
+  <sbol:ModuleDefinition rdf:about="http://shortbol.org/v2#md/1">
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>c4_fc_i_genetic_production_with_pr4_fc</sbol:displayId>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc/c4_fc_i_genetic_production_with_pr4_fc_c4_fc_i_participation_promoter/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc/c4_fc_i_genetic_production_with_pr4_fc_c4_fc_i_participation_promoter"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c4_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>c4_fc_i_genetic_production_with_pr4_fc_c4_fc_i_participation_promoter</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc/c4_fc_i_genetic_production_with_pr4_fc_pr4_fc_i_product/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr4_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>c4_fc_i_genetic_production_with_pr4_fc_pr4_fc_i_product</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c4_fc_i_genetic_production_with_pr4_fc/c4_fc_i_genetic_production_with_pr4_fc_pr4_fc_i_product"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc/p2_fc_i_stimulation_with_c2_fc_c2_fc_i_stimulated/1">
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:displayId>p2_fc_i_stimulation_with_c2_fc_c2_fc_i_stimulated</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c2_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc/p2_fc_i_stimulation_with_c2_fc_c2_fc_i_stimulated"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>p2_fc_i_stimulation_with_c2_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc/p2_fc_i_stimulation_with_c2_fc_p2_fc_i_stimulator/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+            <sbol:version>1</sbol:version>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p2_fc_i_stimulation_with_c2_fc/p2_fc_i_stimulation_with_c2_fc_p2_fc_i_stimulator"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p2_fc/1"/>
+            <sbol:displayId>p2_fc_i_stimulation_with_c2_fc_p2_fc_i_stimulator</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/c1_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#c1/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>c1_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c1_fc"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/p3_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p3/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>p3_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/pr3_fc/1">
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr3_fc"/>
+        <sbol:displayId>pr3_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pr3/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc/pr2_fc_i_inhibition_with_p3_fc_p3_fc_i_inhibited/1">
+            <sbol:displayId>pr2_fc_i_inhibition_with_p3_fc_p3_fc_i_inhibited</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p3_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc/pr2_fc_i_inhibition_with_p3_fc_p3_fc_i_inhibited"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc/pr2_fc_i_inhibition_with_p3_fc_pr2_fc_i_inhibitor/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc/pr2_fc_i_inhibition_with_p3_fc_pr2_fc_i_inhibitor"/>
+            <sbol:displayId>pr2_fc_i_inhibition_with_p3_fc_pr2_fc_i_inhibitor</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr2_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>pr2_fc_i_inhibition_with_p3_fc</sbol:displayId>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr2_fc_i_inhibition_with_p3_fc"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:displayId>md</sbol:displayId>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc/1">
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc/c2_fc_i_genetic_production_with_pr2_fc_pr2_fc_i_product/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:displayId>c2_fc_i_genetic_production_with_pr2_fc_pr2_fc_i_product</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr2_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc/c2_fc_i_genetic_production_with_pr2_fc_pr2_fc_i_product"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc/c2_fc_i_genetic_production_with_pr2_fc_c2_fc_i_participation_promoter/1">
+            <sbol:displayId>c2_fc_i_genetic_production_with_pr2_fc_c2_fc_i_participation_promoter</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c2_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc/c2_fc_i_genetic_production_with_pr2_fc_c2_fc_i_participation_promoter"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c2_fc_i_genetic_production_with_pr2_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>c2_fc_i_genetic_production_with_pr2_fc</sbol:displayId>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc/p3_fc_i_stimulation_with_c3_fc_p3_fc_i_stimulator/1">
+            <sbol:displayId>p3_fc_i_stimulation_with_c3_fc_p3_fc_i_stimulator</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc/p3_fc_i_stimulation_with_c3_fc_p3_fc_i_stimulator"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p3_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc/p3_fc_i_stimulation_with_c3_fc_c3_fc_i_stimulated/1">
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c3_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c3_fc/p3_fc_i_stimulation_with_c3_fc_c3_fc_i_stimulated"/>
+            <sbol:displayId>p3_fc_i_stimulation_with_c3_fc_c3_fc_i_stimulated</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>p3_fc_i_stimulation_with_c3_fc</sbol:displayId>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/pr4_fc/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pr4/1"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr4_fc"/>
+        <sbol:displayId>pr4_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/c4_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#c4/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:displayId>c4_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c4_fc"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md"/>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc/c3_fc_i_genetic_production_with_pr3_fc_pr3_fc_i_product/1">
+            <sbol:displayId>c3_fc_i_genetic_production_with_pr3_fc_pr3_fc_i_product</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc/c3_fc_i_genetic_production_with_pr3_fc_pr3_fc_i_product"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr3_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+        <sbol:displayId>c3_fc_i_genetic_production_with_pr3_fc</sbol:displayId>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc/c3_fc_i_genetic_production_with_pr3_fc_c3_fc_i_participation_promoter/1">
+            <sbol:displayId>c3_fc_i_genetic_production_with_pr3_fc_c3_fc_i_participation_promoter</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c3_fc_i_genetic_production_with_pr3_fc/c3_fc_i_genetic_production_with_pr3_fc_c3_fc_i_participation_promoter"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c3_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/c2_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>c2_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c2_fc"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#c2/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/pr1_fc/1">
+        <sbol:displayId>pr1_fc</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr1_fc"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pr1/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/p1_fc/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p1_fc"/>
+        <sbol:displayId>p1_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p1/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/pr2_fc/1">
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr2_fc"/>
+        <sbol:displayId>pr2_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#pr2/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/p2_fc/1">
+        <sbol:definition rdf:resource="http://shortbol.org/v2#p2/1"/>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p2_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:displayId>p2_fc</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc/1">
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc/c1_fc_i_genetic_production_with_pr1_fc_pr1_fc_i_product/1">
+            <sbol:displayId>c1_fc_i_genetic_production_with_pr1_fc_pr1_fc_i_product</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr1_fc/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc/c1_fc_i_genetic_production_with_pr1_fc_pr1_fc_i_product"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc/c1_fc_i_genetic_production_with_pr1_fc_c1_fc_i_participation_promoter/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c1_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c1_fc_i_genetic_production_with_pr1_fc/c1_fc_i_genetic_production_with_pr1_fc_c1_fc_i_participation_promoter"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>c1_fc_i_genetic_production_with_pr1_fc_c1_fc_i_participation_promoter</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>c1_fc_i_genetic_production_with_pr1_fc</sbol:displayId>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc/1">
+        <sbol:displayId>pr3_fc_i_inhibition_with_p1_fc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc/pr3_fc_i_inhibition_with_p1_fc_p1_fc_i_inhibited/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc/pr3_fc_i_inhibition_with_p1_fc_p1_fc_i_inhibited"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p1_fc/1"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>pr3_fc_i_inhibition_with_p1_fc_p1_fc_i_inhibited</sbol:displayId>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc/pr3_fc_i_inhibition_with_p1_fc_pr3_fc_i_inhibitor/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr3_fc_i_inhibition_with_p1_fc/pr3_fc_i_inhibition_with_p1_fc_pr3_fc_i_inhibitor"/>
+            <sbol:displayId>pr3_fc_i_inhibition_with_p1_fc_pr3_fc_i_inhibitor</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr3_fc/1"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc/pr1_fc_i_inhibition_with_p2_fc_pr1_fc_i_inhibitor/1">
+            <sbol:displayId>pr1_fc_i_inhibition_with_p2_fc_pr1_fc_i_inhibitor</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc/pr1_fc_i_inhibition_with_p2_fc_pr1_fc_i_inhibitor"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/pr1_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc/pr1_fc_i_inhibition_with_p2_fc_p2_fc_i_inhibited/1">
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p2_fc/1"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/pr1_fc_i_inhibition_with_p2_fc/pr1_fc_i_inhibition_with_p2_fc_p2_fc_i_inhibited"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>pr1_fc_i_inhibition_with_p2_fc_p2_fc_i_inhibited</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>pr1_fc_i_inhibition_with_p2_fc</sbol:displayId>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:functionalComponent>
+      <sbol:FunctionalComponent rdf:about="http://shortbol.org/v2#md/c3_fc/1">
+        <sbol:displayId>c3_fc</sbol:displayId>
+        <sbol:direction rdf:resource="http://sbols.org/v2#inout"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/c3_fc"/>
+        <sbol:version>1</sbol:version>
+        <sbol:definition rdf:resource="http://shortbol.org/v2#c3/1"/>
+      </sbol:FunctionalComponent>
+    </sbol:functionalComponent>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc/1">
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc/p3_fc_i_stimulation_with_c4_fc_c4_fc_i_stimulated/1">
+            <sbol:displayId>p3_fc_i_stimulation_with_c4_fc_c4_fc_i_stimulated</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c4_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc/p3_fc_i_stimulation_with_c4_fc_c4_fc_i_stimulated"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:version>1</sbol:version>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:displayId>p3_fc_i_stimulation_with_c4_fc</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc/p3_fc_i_stimulation_with_c4_fc_p3_fc_i_stimulator/1">
+            <sbol:displayId>p3_fc_i_stimulation_with_c4_fc_p3_fc_i_stimulator</sbol:displayId>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc/p3_fc_i_stimulation_with_c4_fc_p3_fc_i_stimulator"/>
+            <sbol:version>1</sbol:version>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p3_fc/1"/>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p3_fc_i_stimulation_with_c4_fc"/>
+      </sbol:Interaction>
+    </sbol:interaction>
+    <sbol:interaction>
+      <sbol:Interaction rdf:about="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc/1">
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc"/>
+        <sbol:type rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc/p1_fc_i_stimulation_with_c1_fc_p1_fc_i_stimulator/1">
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc/p1_fc_i_stimulation_with_c1_fc_p1_fc_i_stimulator"/>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/p1_fc/1"/>
+            <sbol:displayId>p1_fc_i_stimulation_with_c1_fc_p1_fc_i_stimulator</sbol:displayId>
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+            <sbol:version>1</sbol:version>
+          </sbol:Participation>
+        </sbol:participation>
+        <sbol:displayId>p1_fc_i_stimulation_with_c1_fc</sbol:displayId>
+        <sbol:participation>
+          <sbol:Participation rdf:about="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc/p1_fc_i_stimulation_with_c1_fc_c1_fc_i_stimulated/1">
+            <sbol:role rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+            <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#md/p1_fc_i_stimulation_with_c1_fc/p1_fc_i_stimulation_with_c1_fc_c1_fc_i_stimulated"/>
+            <sbol:version>1</sbol:version>
+            <sbol:displayId>p1_fc_i_stimulation_with_c1_fc_c1_fc_i_stimulated</sbol:displayId>
+            <sbol:participant rdf:resource="http://shortbol.org/v2#md/c1_fc/1"/>
+          </sbol:Participation>
+        </sbol:participation>
+      </sbol:Interaction>
+    </sbol:interaction>
+  </sbol:ModuleDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pr4/1">
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:displayId>pr4</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pr4"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#c2/1">
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>c2</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#c2"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p3/1">
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p3"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:displayId>p3</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pr2/1">
+    <sbol:version>1</sbol:version>
+    <sbol:displayId>pr2</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pr2"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#pr1/1">
+    <sbol:displayId>pr1</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#pr1"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#c3/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#c3"/>
+    <sbol:displayId>c3</sbol:displayId>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#p2/1">
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#p2"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>p2</sbol:displayId>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

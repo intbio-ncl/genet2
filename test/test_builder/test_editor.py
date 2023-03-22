@@ -10,23 +10,22 @@ from app.visualiser.builder.editor import EditorBuilder
 from app.graph.world_graph import WorldGraph
 from  app.graph.utility.model.model import model
 from app.graph.utility.graph_objects.node import Node
+from app.converter.sbol_convert import convert
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 test_fn = os.path.join(curr_dir,"..","files","nor_full.xml")
 
 class TestEditor(unittest.TestCase):
-    @classmethod
-    def setUpClass(self):
+    def setUp(self):
         self.gn = "test_builder_views"
         self.wg = WorldGraph()
         self.wg.remove_design(self.gn)
-        self.dg = self.wg.get_design(self.gn,"ANY")
-        self.dg = self.wg.add_design(test_fn,self.gn)
+        convert(test_fn,self.wg.driver,self.gn)
+        self.dg = self.wg.get_design(self.gn)
         self.builder = EditorBuilder(self.wg)
         self.builder.set_design(self.dg)
 
-    @classmethod
-    def tearDownClass(self):
+    def tearDown(self):
         self.wg.remove_design(self.gn)
     
     def test_add_node(self):
@@ -236,7 +235,8 @@ class TestEditor(unittest.TestCase):
         gn = "test_interaction_advanced"
         fn = os.path.join(curr_dir,"..","files","two_nodes_interaction.xml")
         self.wg.remove_design(gn)
-        dg = self.wg.add_design(fn,gn)
+        convert(fn,self.wg.driver,gn)
+        dg = self.wg.get_design(gn)
         self.builder.set_design(dg)
         pe = dg.get_physicalentity()
         ints = dg.get_interaction()

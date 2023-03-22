@@ -18,7 +18,11 @@ class DesignBuilder(AbstractBuilder):
         super().__init__(graph)
         self._dg = self._graph.get_design(None)
         self._view_builder = FullViewBuilder(self._dg)
+        self._predicate = "ALL"
     
+    def build(self,*args,**kwargs):
+        super().build(*args,predicate=self._predicate,**kwargs)
+        
     def set_full_view(self):
         self._view_builder = FullViewBuilder(self._dg)
 
@@ -48,6 +52,9 @@ class DesignBuilder(AbstractBuilder):
 
     def get_design_names(self):
         return self._graph.get_design_names()
+
+    def get_loaded_design_names(self):
+        return self._dg.name
     
     def get_load_predicates(self):
         return predicates.keys()
@@ -55,11 +62,12 @@ class DesignBuilder(AbstractBuilder):
     def set_design_names(self,names,load_predicate):
         if load_predicate not in predicates:
             raise ValueError(f'{load_predicate} not valid load predicate, choices are: {str(predicates.keys())}')
-        self.set_design(self._graph.get_design(names,predicates[load_predicate]))
-    
-    def set_design(self,design):
+        self.set_design(self._graph.get_design(names),predicates[load_predicate])
+        
+    def set_design(self,design,predicate):
         self._dg = design
         self._view_builder.set_graph(design)
+        self._predicate = predicate
 
     def get_children(self,node):
         return self._dg.get_children(node)

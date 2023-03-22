@@ -1,0 +1,11 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#" xmlns:ns0="http://purl.org/dc/terms/" xmlns:ns1="http://shortbol.org/v2#">
+  <sbol:ComponentDefinition rdf:about="http://shortbol.org/v2#ADH1/1">
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:version>1</sbol:version>
+    <ns0:description>common terminator in yeast.</ns0:description>
+    <sbol:displayId>ADH1</sbol:displayId>
+    <ns1:mutable_desc>ADH1 terminator from S. cerevisiae</ns1:mutable_desc>
+    <sbol:persistentIdentity rdf:resource="http://shortbol.org/v2#ADH1"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

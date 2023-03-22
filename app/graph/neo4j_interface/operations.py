@@ -1,3 +1,5 @@
+from app.utility.change_log.logger import logger
+
 update_clauses = ["CREATE", "SET"]
 
 class Operations:
@@ -7,7 +9,7 @@ class Operations:
         self.ops = {self.create: None, self.match: None,
                     self.set: None, self.replace: None,
                     self.remove:None,self.remove_properties:None,
-                    self.add_label:None}
+                    self.add_label:None, self.replace_label: None}
         self.use_properties = use_properties
 
     def enable_create(self):
@@ -31,18 +33,20 @@ class Operations:
     def enable_add_label(self,label):
         self.ops[self.add_label] = label
 
-    def generate(self, code):
+    def enable_replace_label(self,old,new):
+        self.ops[self.replace_label] = [old,new]
+
+    def generate(self, code,log=True):
         qry_str = ""
         for k, v in self.ops.items():
             if v is  None:
                 continue
             elif v is True:
-                qry_str += k()
+                qry_str += k(log=log)
             elif isinstance(v,list):
-                qry_str += k(*v)
+                qry_str += k(*v,log=log)
             else:
-                qry_str += k(v)
-
+                qry_str += k(v,log=log)
         if qry_str == "":
             return qry_str
         if not any(ext in qry_str for ext in update_clauses):
@@ -54,8 +58,10 @@ class Operations:
         n_id = f'{code}{self.index}'
         for c_index, (k, v) in enumerate(new_props.items()):
             if isinstance(v, list):
-                for ele in v:
-                    set += f' {n_id}.`{k}` =  {n_id}.`{k}` + "{ele}",'
+                if not hasattr(self.graph_object,k):
+                    set += f' {n_id}.`{k}` =  {v},'
+                else:
+                    set += f' {n_id}.`{k}` =  {n_id}.`{k}` + {v},'
                 set = set[:-1]
             else:
                 set += f' {n_id}.`{k}` = "{v}"'
@@ -94,6 +100,9 @@ class Operations:
                 set += "\n"
         set = set[:-1]
         return set
+
+    def replace_label(self,old,new):
+        pass
 
     def get_properties(self,graph_object = None,add_lists=True):
         if self.use_properties:
@@ -137,15 +146,13 @@ class Operations:
             if where != "":
                 where += " AND "
             where += f" ID(n{self.index}) = {self.graph_object.id} "
+        
+        gn = self.graph_object.graph_name
+        if len(where) > 0:
+            where += " AND "
+        where += f'ALL(a IN {gn} WHERE a IN n{self.index}.`graph_name`)'
 
-        props = self.graph_object.get_properties()
-        for index,(k,v) in enumerate({k:v for k,v in props.items() if isinstance(v,(set,list,tuple))}.items()):
-            if where == "":
-                where = "WHERE "
-            elif index < len(props) - 1 or index == 0:
-                where += " AND "
-
-            where += f'ALL(a IN {v} WHERE a IN n{self.index}.`{k}`)'
+            
         return where
 
 
@@ -153,37 +160,51 @@ class NodeOperations(Operations):
     def __init__(self, graph_object, index, use_properties=True):
         super().__init__(graph_object, index, use_properties)
 
-    def generate(self):
-        return super().generate("n")
+    def generate(self,log=True):
+        return super().generate("n",log=log)
 
-    def create(self):
+    def create(self,log=True):
         qry = f'CREATE (n{self.index}:{self.list_to_query(self.graph_object.get_labels())} '
         qry += f'{{{self.get_properties()}}})'
+        if log:
+            logger.add_node(self.graph_object,self.graph_object.graph_name)
         return qry
 
-    def match(self,use_id=False):
+    def match(self,use_id=False,log=True):
         return f"""MATCH (n{self.index} {{{self.get_properties(add_lists=False)}}}) WHERE {self._where(use_id)}"""
 
-    def set(self, new_props):
+    def set(self, new_props,log=True):
         qry = super().set(new_props,"n")
         self.graph_object.update(new_props)
+        if log:
+            logger.replace_node_property(self.graph_object,
+                new_props,self.graph_object.graph_name)
         return qry
 
-    def replace(self, new_props):
+    def replace(self, new_props,log=True):
         self.graph_object.replace(new_props)
+        if log:
+            logger.replace_node_property(self.graph_object,new_props,self.graph_object.graph_name)
         return super().replace(new_props,"n")
 
-    def remove(self):
+    def remove(self,log=True):
+        if log:
+            logger.remove_node(self.graph_object,self.graph_object.graph_name)
         return super().remove("n")
 
-    def add_label(self,label):
+    def add_label(self,label,log=True):
         return super().add_label("n",label)
 
-    def remove_properties(self,remove_props):
+    def remove_properties(self,remove_props,log=True):
         qry = super().remove_properties(remove_props,"n")
         self.graph_object.remove(remove_props)
         return qry
 
+    def replace_label(self, old, new,log=True):
+        if log:
+            logger.replace_node(old,new,self.graph_object.graph_name)
+        return f'''REMOVE n{self.index}:`{old}`
+                   SET n{self.index}:`{new}`'''
     
 
 class EdgeOperations(Operations):
@@ -192,10 +213,10 @@ class EdgeOperations(Operations):
         self.n_index = n_index
         self.v_index = v_index
 
-    def generate(self):
-        return super().generate("e")
+    def generate(self,log=True):
+        return super().generate("e",log=log)
 
-    def create(self):
+    def create(self,log=True):
         qry = ""
         n_op = NodeOperations(self.graph_object.n, self.n_index)
         v_op = NodeOperations(self.graph_object.v, self.v_index)
@@ -205,9 +226,11 @@ class EdgeOperations(Operations):
         qry += f'(n{self.n_index})'
         qry += f'-[r{self.index}:{"`"+self.graph_object.get_type()+"`"} {{{self.get_properties()}}}]->'
         qry += f'(n{self.v_index})'
+        if log:
+            logger.add_edge(self.graph_object,self.graph_object.graph_name)
         return qry
 
-    def match(self,use_id):
+    def match(self,use_id,log=True):
         e = f': `{self.graph_object.get_type()}`'
         n_op = NodeOperations(self.graph_object.n, self.n_index)
         v_op = NodeOperations(self.graph_object.v, self.v_index)
@@ -218,21 +241,35 @@ class EdgeOperations(Operations):
         v = f'(n{self.v_index} {{{self.get_properties(self.graph_object.v,add_lists=False)}}})'
         return f"""MATCH {n}-{e}->{v} \n WHERE {n_where} AND \n {v_where} \n"""
 
-    def set(self, new_props):
+    def set(self, new_props,log=True):
         self.graph_object.update(new_props)
+        if log:
+            logger.replace_edge_property(self.graph_object,
+                new_props,self.graph_object.graph_name)
         return super().set(new_props,"e")
 
-    def replace(self, new_props):
+    def replace(self, new_props,log=True):
         self.graph_object.replace(new_props)
+        if log:
+            logger.replace_edge_property(self.graph_object,
+                new_props,self.graph_object.graph_name)
         return super().replace(new_props,"e")
 
-    def remove(self):
+    def remove(self,log=True):
+        if log:
+            logger.remove_edge(self.graph_object,self.graph_object.graph_name)
         return super().remove("e")
 
-    def add_label(self,label):
+    def add_label(self,label,log=True):
         return super().add_label("e",label)
 
-    def remove_properties(self,remove_props):
+    def remove_properties(self,remove_props,log=True):
         qry = super().remove_properties(remove_props,"e")
         self.graph_object.remove(remove_props)
         return qry
+
+    def replace_label(self, old, new,log=True):
+        if log:
+            logger.replace_edge(old,new,self.graph_object.graph_name)
+        return f'''REMOVE e{self.index}:`{old}`
+                   SET e{self.index}:`{new}`'''

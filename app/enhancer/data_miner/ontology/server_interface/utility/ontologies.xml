@@ -1,31 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
    xmlns:ns1="http://ontology_server/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:about="http://ontology_server/SO">
-    <ns1:mask rdf:resource="http://identifiers.org/so"/>
-    <ns1:namespace rdf:resource="http://purl.obolibrary.org/obo"/>
-    <ns1:ontologyCode>SO</ns1:ontologyCode>
-    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://ontology_server/SBO">
-    <ns1:ontologyCode>SBO</ns1:ontologyCode>
-    <ns1:mask rdf:resource="http://identifiers.org/biomodels.sbo"/>
-    <ns1:namespace rdf:resource="http://biomodels.net/SBO"/>
-    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://ontology_server/biopax-level3">
     <ns1:mask rdf:resource="http://www.biopax.org/release/biopax-level3.owl"/>
     <rdf:type rdf:resource="http://ontology_server/Ontology"/>
     <ns1:namespace rdf:resource="http://www.biopax.org/release/biopax-level3.owl"/>
     <ns1:ontologyCode>biopax-level3</ns1:ontologyCode>
   </rdf:Description>
-  <rdf:Description rdf:about="http://ontology_server/GO">
-    <ns1:ontologyCode>GO</ns1:ontologyCode>
-    <ns1:mask rdf:resource="http://identifiers.org/go"/>
-    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
+  <rdf:Description rdf:about="http://ontology_server/SO">
+    <ns1:mask rdf:resource="http://identifiers.org/so"/>
     <ns1:namespace rdf:resource="http://purl.obolibrary.org/obo"/>
+    <ns1:ontologyCode>SO</ns1:ontologyCode>
+    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://ontology_server/EDAM">
     <rdf:type rdf:resource="http://ontology_server/Ontology"/>
@@ -36,6 +24,18 @@
   <rdf:Description rdf:about="http://ontology_server/CHEBI">
     <ns1:mask rdf:resource="http://identifiers.org/chebi"/>
     <ns1:ontologyCode>CHEBI</ns1:ontologyCode>
+    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
+    <ns1:namespace rdf:resource="http://purl.obolibrary.org/obo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology_server/SBO">
+    <ns1:ontologyCode>SBO</ns1:ontologyCode>
+    <ns1:mask rdf:resource="http://identifiers.org/biomodels.sbo"/>
+    <ns1:namespace rdf:resource="http://biomodels.net/SBO"/>
+    <rdf:type rdf:resource="http://ontology_server/Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ontology_server/GO">
+    <ns1:ontologyCode>GO</ns1:ontologyCode>
+    <ns1:mask rdf:resource="http://identifiers.org/go"/>
     <rdf:type rdf:resource="http://ontology_server/Ontology"/>
     <ns1:namespace rdf:resource="http://purl.obolibrary.org/obo"/>
   </rdf:Description>

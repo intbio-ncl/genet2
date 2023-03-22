@@ -1,6 +1,6 @@
-from rdflib import URIRef
+from rdflib import URIRef,Literal
 from identifiers import identifiers
-from datatype.datatype import Input,Output,String
+from datatype.datatype import Input,Output,Integer,String
 
 class Property:
     def __init__(self,range=None,properties=[],equivalents = [],default_value=None):
@@ -24,15 +24,22 @@ class Property:
             
 class Role(Property):
     def __init__(self):
-        super().__init__()
+        props = [Confidence()]
+        super().__init__(properties=props)
 
 class Name(Property):
     def __init__(self):
         super().__init__()
 
+class Alias(Property):
+    def __init__(self,range=None):
+        props = [Confidence()]
+        super().__init__(range,props)
+        
 class HasPart(Property):
     def __init__(self,range=None):
-        super().__init__(range)
+        props = [Confidence()]
+        super().__init__(range,props)
 
 class HasSequence(Property):
     def __init__(self):
@@ -50,4 +57,8 @@ class Direction(Property):
     def __init__(self,value):
         r = [Input(),Output()]
         super().__init__(r,default_value=value)
+
+class Confidence(Property):
+    def __init__(self):
+        super().__init__(Integer,default_value=Literal(50))
     

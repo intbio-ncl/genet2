@@ -22,8 +22,12 @@ class EditorVisual(AbstractDesignVisual):
     def add_edges(self,n,v,e):
         return self._builder.add_edges(n,v,e)
     
-    def add_node(self,key,type):
-        return self._builder.add_node(key,type)
+    def add_node(self,key,type,**kwargs):
+        return self._builder.add_node(key,type,**kwargs)
 
+    def is_physical_entity(self,e_type):
+        return self._builder.is_physical_entity(e_type)
 
+    def is_conceptual_entity(self,e_type):
+        return self._builder.is_conceptual_entity(e_type)
         

@@ -24,7 +24,7 @@ def build_interaction_uri(n,v,e):
     n_str,namespace = _cast_node(n)
     v_str,_ = _cast_node(v)
     e_str = _get_name(e)
-    return f'{namespace}/{n_str}/{e_str}/{v_str}'
+    return f'{namespace}/{n_str}_{e_str}_{v_str}/1'
 
 def build_properties(uri,name):
     return {"name" : _get_name(uri),

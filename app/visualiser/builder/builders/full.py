@@ -7,6 +7,6 @@ class FullViewBuilder(AbstractViewBuilder):
     def _subgraph(self, edges=[], nodes=[],new_graph=None):
         return ViewGraph(super()._subgraph(edges,nodes,new_graph))
         
-    def build(self):
-        edges = self._graph.edges()
+    def build(self,predicate="ALL"):
+        edges = self._graph.edges(predicate=predicate)
         return self._subgraph(edges)

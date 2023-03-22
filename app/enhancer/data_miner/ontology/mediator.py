@@ -1,10 +1,7 @@
 from rdflib import URIRef,Literal
 import re
-
-from SPARQLWrapper.SPARQLExceptions import QueryBadFormed
-
-from graph.knowledge.data_miner.ontology.ontology_term_map import OntologyTermMap,Identifiers
-from graph.knowledge.data_miner.ontology.server_interface.server import OntologyInterface
+from app.enhancer.data_miner.ontology.ontology_term_map import OntologyTermMap,Identifiers
+from app.enhancer.data_miner.ontology.server_interface.server import OntologyInterface
 
 select_threshold = 20
 object_threshold = 5

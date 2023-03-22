@@ -2,10 +2,10 @@ import networkx as nx
 from app.graph.utility.graph_objects.edge import Edge
 from app.graph.utility.model.model import model
 
-def produce_interaction_graph(graph):
+def produce_interaction_graph(graph,predicate="ALL"):
     edges = []
-    for interaction in graph.get_interaction():
-        inputs, outputs = graph.get_interaction_io(interaction)
+    for interaction in graph.get_interaction(predicate=predicate):
+        inputs, outputs = graph.get_interaction_io(interaction,predicate=predicate)
         if len(outputs) == 0:
             continue
         for inp in inputs:

@@ -7,6 +7,8 @@ sys.path.insert(0, os.path.join("..",".."))
 sys.path.insert(0, os.path.join("..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..",".."))
 from neo4j_interface.interface import Neo4jInterface
+from app.graph.utility.graph_objects.node import Node
+from app.graph.utility.graph_objects.edge import Edge
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
 class TestProjectGDS(unittest.TestCase):
@@ -15,9 +17,20 @@ class TestProjectGDS(unittest.TestCase):
         self.interface = Neo4jInterface()
         self.project = self.interface.project
 
+        self.nodes = [Node("node"+ str(i),graph_name=["TestProjectGDS"]) for i in range(0,5)]
+        self.edges = []
+        for index,node in enumerate(self.nodes):
+            if index == len(self.nodes) - 1:
+                continue
+            nn = self.nodes[index+1]
+            edge = Edge(node,nn,f'{node} - {nn}',**{"graph_name" : ["TestProjectGDS"] })
+            self.edges.append(edge)
+            res = self.interface.add_edge(edge.n,edge.v,edge.get_type(),**edge.get_properties())
+            self.interface.submit()
+
     @classmethod
     def tearDownClass(self):
-        pass
+        self.interface.remove_graph("TestProjectGDS")
 
     def test_project(self):
         gn = "test_project"
@@ -36,10 +49,6 @@ class TestProjectGDS(unittest.TestCase):
 
     def test_sub_graph(self):
         gn = "test_sub_graph"
-        in_edges = [("key","key1","e_type"),("key2","key3","e_type1")]
-        for n,v,e in in_edges:
-            res = self.interface.add_edge(n,v,e,graph_name = [gn])
-            self.interface.submit()
         gn2 = "test2"
         gn = "test1"
         try:
@@ -47,8 +56,14 @@ class TestProjectGDS(unittest.TestCase):
             self.project.drop(gn2)
         except Exception:
             pass
-        g,data = self.project.project(gn,["key","key1","key2","key3"],["e_type","e_type1"])
-        res = self.project.sub_graph(gn,gn2,["key","key1"],["e_type"])
+        edge0 = self.edges[0]
+        node00 = edge0.n
+        node01 = edge0.v
+        edge1 = self.edges[1]
+        node10 = edge1.n
+        node11 = edge1.v
+        g,data = self.project.project(gn,[node00,node01,node10,node11],[edge0.get_type(),edge1.get_type()])
+        res = self.project.sub_graph(gn,gn2,[node00,node01],[edge0.get_type()])
         self.assertEqual(res.node_count(),2)
         self.assertEqual(res.relationship_count(),1)
         self.project.drop(gn)
@@ -56,28 +71,24 @@ class TestProjectGDS(unittest.TestCase):
 
     def test_mutate(self):
         gn = "test_mutate"
-        nodes = ["node" + str(i) for i in range(0,5)]
-        edges = []
         paths = []
 
-        for node in nodes:
-            self.interface.add_node(node,graph_name=[gn])
-        for index,node in enumerate(nodes):
-            if index == len(nodes) - 1:
-                continue
-            nn = nodes[index+1]
-            edges.append((node,nn,f'{node} - {nn}'))
-            paths.append(f'{node} - {nn}')
-        for n,v,e in edges:
-            res = self.interface.add_edge(n,v,e,graph_name=[gn])
-            self.interface.submit()
+        for edge in self.edges:
+            paths.append(f'{edge.n} - {edge.v}')
 
         try:
             self.project.drop(gn)
         except ValueError:
             pass
-        res = self.project.project(gn,nodes,paths)
-        pr = self.project.mutate(gn,paths,"mut")
+        for e in self.interface.edge_query():
+            print(e)
+        print("\n")
+        for n in self.nodes:
+            print(n)
+        print("\n")
+        print(paths)
+        res = self.project.project(gn,self.nodes,paths)
+        pr = self.project.mutate(gn,[paths],"mut")
         self.assertEqual(len(pr["relationshipsWritten"]),1)
         self.project.drop(gn)
         self.interface.remove_graph(gn)
@@ -88,33 +99,33 @@ class TestGDSProcedures(unittest.TestCase):
         self.interface = Neo4jInterface()
         self.project = self.interface.project
         self.procedures = self.interface.procedures
+        self.nodes = [Node("node"+ str(i),graph_name=["TestGDSProcedures"]) for i in range(0,5)]
+        self.edges = []
+        self.paths = []
+        for index,node in enumerate(self.nodes):
+            if index == len(self.nodes) - 1:
+                continue
+            nn = self.nodes[index+1]
+            edge = Edge(node,nn,f'{node} - {nn}{index}',**{"graph_name" : ["TestGDSProcedures"] })
+            self.edges.append(edge)
+            e_t = f'{edge.n} - {edge.v}'
+            res = self.interface.add_edge(edge.n,edge.v,e_t,**edge.get_properties())
+            self.interface.submit()
+            self.paths.append(e_t)
+
 
     @classmethod
     def tearDownClass(self):
-        pass
+        self.interface.remove_graph("TestGDSProcedures")
 
     def _setup(self,gn):
-        nodes = ["node" + str(i) for i in range(0,5)]
-        edges = []
-        paths = []
-
-        for node in nodes:
-            self.interface.add_node(node,graph_name=[gn])
-        for index,node in enumerate(nodes):
-            if index == len(nodes) - 1:
-                continue
-            nn = nodes[index+1]
-            edges.append((node,nn,f'{node} - {nn}'))
-            paths.append(f'{node} - {nn}')
-        for n,v,e in edges:
-            res = self.interface.add_edge(n,v,e,graph_name=[gn])
-            self.interface.submit()
-
         try:
             self.project.drop(gn)
         except ValueError:
             pass
-        res = self.project.project(gn,nodes,paths)
+        res = self.project.project(gn,self.nodes,self.paths)
+        self.assertTrue(res[1]["nodeCount"] > 0)
+        self.assertTrue(res[1]["relationshipCount"] > 0)
         return res
 
     def _teardown(self,gn):
@@ -271,7 +282,7 @@ class TestGDSProcedures(unittest.TestCase):
     def test_delta_all_shortest_paths(self):
         gn = "delta_asp"
         res = self._setup(gn)
-        pr = self.procedures.path_finding.delta_asp(gn,"node0")
+        pr = self.procedures.path_finding.delta_asp(gn,self.nodes[0].get_key())
         self.assertTrue(len(pr)>1)
         for path in pr:
             self.assertIn("path",path)
@@ -283,7 +294,7 @@ class TestGDSProcedures(unittest.TestCase):
     def test_dijkstra_all_shortest_paths(self):
         gn = "dijkstra_asp"
         res = self._setup(gn)
-        pr = self.procedures.path_finding.dijkstra_asp(gn,"node0")
+        pr = self.procedures.path_finding.dijkstra_asp(gn,self.nodes[0])
         self.assertTrue(len(pr)>1)
         for path in pr:
             self.assertIn("path",path)

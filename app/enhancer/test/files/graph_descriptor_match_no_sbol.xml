@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://genbank2graph/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://genbank2graph/XM_037352412">
+    <ns1:taxonomy>Fusarium_fujikuroi_species_complex</ns1:taxonomy>
+    <ns1:taxonomy>Pezizomycotina</ns1:taxonomy>
+    <ns1:data_file_division>PLN</ns1:data_file_division>
+    <ns1:size>849</ns1:size>
+    <ns1:comment>PROVISIONAL REFSEQ: This record has not yet been subject to final
+NCBI review. This record is derived from an annotated genomic
+sequence (NW_023501211).
+COMPLETENESS: incomplete on both ends.</ns1:comment>
+    <ns1:keywords>RefSeq</ns1:keywords>
+    <ns1:taxonomy>Eukaryota</ns1:taxonomy>
+    <ns1:taxonomy>Hypocreomycetidae</ns1:taxonomy>
+    <ns1:taxonomy>Fungi</ns1:taxonomy>
+    <ns1:references>Correction_to:_Identification_and_distribution_of_gene_clusters_required_for_synthesis_of_sphingolipid_metabolism_inhibitors_in_diverse_species_of_the_filamentous_fungus_Fusarium</ns1:references>
+    <ns1:taxonomy>Dikarya</ns1:taxonomy>
+    <ns1:residue_type>mRNA    linear</ns1:residue_type>
+    <ns1:definition>Fusarium tjaetaba TIP41-negatively regulates the TOR signaling pathway (FTJAE_586), partial mRNA</ns1:definition>
+    <ns1:taxonomy>Fusarium</ns1:taxonomy>
+    <ns1:features>"TIP41-negatively_regulates_the_TOR_signaling_pathway"</ns1:features>
+    <ns1:features>"Fusarium_tjaetaba"</ns1:features>
+    <ns1:taxonomy>Ascomycota</ns1:taxonomy>
+    <ns1:taxonomy>Nectriaceae</ns1:taxonomy>
+    <ns1:version>XM_037352412.1</ns1:version>
+    <ns1:accession>XM_037352412</ns1:accession>
+    <ns1:references>Direct_Submission</ns1:references>
+    <ns1:taxonomy>Hypocreales</ns1:taxonomy>
+    <ns1:features>"holotype_of_Fusarium_tjaetaba"</ns1:features>
+    <ns1:organism>Fusarium tjaetaba</ns1:organism>
+    <ns1:source>Fusarium tjaetaba</ns1:source>
+    <ns1:taxonomy>Sordariomycetes</ns1:taxonomy>
+    <ns1:features>"mRNA"</ns1:features>
+  </rdf:Description>
+</rdf:RDF>

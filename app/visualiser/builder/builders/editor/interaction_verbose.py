@@ -10,11 +10,11 @@ class EditorInteractionVerboseViewBuilder(InteractionVerboseViewBuilder):
     def __init__(self,graph):
         super().__init__(graph)
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
         nodes = []
-        for interaction in self._graph.get_interaction():
-            inputs, outputs = self._graph.get_interaction_io(interaction)
+        for interaction in self._graph.get_interaction(predicate=predicate):
+            inputs, outputs = self._graph.get_interaction_io(interaction,predicate=predicate)
             for obj in inputs:
                 edges.append((Edge(obj.v, interaction, obj.get_type(), **obj.get_properties())))
             for obj in outputs:

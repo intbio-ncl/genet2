@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/lacIq_Ptrc/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc"/>
+    <sbol:displayId>lacIq_Ptrc</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>lacIq_Ptrc</dcterms:title>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc/1"/>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sevahub.es/public/Canonical/lacIq_Ptrc/lacIq_Ptrc/1">
+        <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc/lacIq_Ptrc"/>
+        <sbol:displayId>lacIq_Ptrc</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc/1"/>
+        <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sevahub.es/public/Canonical/lacIq_Ptrc/lacIq_Ptrc/r/1">
+            <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc/lacIq_Ptrc/r"/>
+            <sbol:displayId>r</sbol:displayId>
+            <sbol:version>1</sbol:version>
+            <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc/1"/>
+            <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+            <sbol:start>9</sbol:start>
+            <sbol:end>1571</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc_seq/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/lacIq_Ptrc_seq/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc_seq"/>
+    <sbol:displayId>lacIq_Ptrc_seq</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/lacIq_Ptrc_seq/1"/>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbol:elements>TTAATTAATTGACACCATCGAATGGTGCAAAACCTTTCGCGGTATGGCATGATAGCGCCCGGAAGAGAGTCAATTCAGGGTGGTGAATGTGAAACCAGTAACGTTATACGATGTCGCAGAGTATGCCGGTGTCTCTTATCAGACCGTTTCCCGCGTGGTGAACCAGGCCAGCCACGTTTCTGCGAAAACGCGGGAAAAAGTGGAAGCGGCGATGGCGGAGCTGAATTACATTCCCAACCGCGTGGCACAACAACTGGCGGGCAAACAGTCGTTGCTGATTGGCGTTGCCACCTCCAGTCTGGCCCTGCACGCGCCGTCGCAAATTGTCGCGGCGATTAAATCTCGCGCCGATCAACTGGGTGCCAGCGTGGTGGTGTCGATGGTAGAACGAAGCGGCGTCGAAGCCTGTAAAGCGGCGGTGCACAATCTTCTCGCGCAACGCGTCAGTGGGCTGATCATTAACTATCCGCTGGATGACCAGGATGCCATTGCTGTGGAAGCTGCCTGCACTAATGTTCCGGCGTTATTTCTTGATGTCTCTGACCAGACACCCATCAACAGTATTATTTTCTCCCATGAAGACGGTACGCGACTGGGCGTGGAGCATCTGGTCGCATTGGGTCACCAGCAAATCGCGCTGTTAGCGGGCCCATTAAGTTCTGTCTCGGCGCGTCTGCGTCTGGCTGGCTGGCATAAATATCTCACTCGCAATCAAATTCAGCCGATAGCGGAACGGGAAGGCGACTGGAGTGCCATGTCCGGTTTTCAACAAACCATGCAAATGCTGAATGAGGGCATCGTTCCCACTGCGATGCTGGTTGCCAACGATCAGATGGCGCTGGGCGCAATGCGCGCCATTACCGAGTCCGGGCTGCGCGTTGGTGCGGATATCTCGGTAGTGGGATACGACGATACCGAAGACAGCTCATGTTATATCCCGCCGTTAACCACCATCAAACAGGATTTTCGCCTGCTGGGGCAAACCAGCGTGGACCGCTTGCTGCAACTCTCTCAGGGCCAGGCGGTGAAGGGCAATCAGCTGTTGCCCGTCTCACTGGTGAAAAGAAAAACCACCCTGGCGCCCAATACGCAAACCGCCTCTCCCCGCGCGTTGGCCGATTCATTAATGCAGCTGGCACGACAGGTTTCCCGACTGGAAAGCGGGCAGTGAGCGCAACGCAATTAATGTAAGTTAGCGCGAATTGATCTGGTTTGACAGCTTATCATCGACTGCACGGTGCACCAATGCTTCTGGCGTCAGGCAGCCATCGGAAGCTGTGGTATGGCTGTGCAGGTCGTAAATCACTGCATAATTCGTGTCGCTCAAGGCGCACTCCCGTTCTGGATAATGTTTTTTGCGCCGACATCATAACGGTTCTGGCAAATATTCTGAAATGAGCTGTTGACAATTAATCATCCGGCTCGTATAATGTGTGGAATTGTGAGCGGATAACAATTTCACACCCTAGGCCGCGGCCGCGCGAATTCGAGCTCGGTACCCGGGGATCCTCTAGAGTCGACCTGCAGGCATGCAAGCTTGCGGCCGCGTCGTGACTGGGAAAACCCTGGCGACTAGT</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>

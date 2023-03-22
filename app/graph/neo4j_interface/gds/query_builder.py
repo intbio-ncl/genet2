@@ -84,18 +84,14 @@ class GDSQueryBuilder:
         pass
         
     def cypher_project(self,name,nodes=None,edges=None):
-        def _where(n):
-            where = ""
+        where = " WHERE "
+        def _where(n):    
             if n is not None:
                 if not isinstance(n,list):
                     n = [n]
-                where = ""
                 w_inner = ""
                 v_inner = ""
                 for index, i in enumerate(n):
-                    if index == 0:
-                        where = " WHERE "
-
                     if isinstance(i,Node):
                         w_inner += f' (n:`{i.get_key()}`' if i.get_key() != "None" else ""
                         w_inner += f' AND n:`{i.get_type()}`' if i.get_type() != "None" else ""
@@ -110,16 +106,18 @@ class GDSQueryBuilder:
                     if index < len(n) - 1:
                         w_inner += " OR "
                         v_inner += " OR "
-                return f'{where} {w_inner} {"AND" if len(w_inner+v_inner)>0 else ""} {v_inner}'
+                return f'{where} {w_inner} {"AND" if len(w_inner+v_inner)>0 else ""} {v_inner} '
             return where
         
         ewhere = _where(nodes)
+        all_gns = list(set([item for sublist in nodes for item in sublist.graph_name]))
         e = ""
         if edges is not None and len(edges) > 0:
             e = ":" + "" + ""+"|".join(["`" + str(edge) + "`" for edge in edges])
-            
-        n_str = f"MATCH (n)-[r{e}]-(v) {ewhere} RETURN id(n) AS id, labels(n) AS labels"
-        e_str = f"MATCH (n)-[r{e}]->(v) {ewhere} RETURN id(n) AS source, id(v) AS target, type(r) AS type"
+        
+        gnwhere = f'{"AND" if len(ewhere) != where else ""} ANY(a IN {str(all_gns)} WHERE a IN r.`graph_name`)' if len(ewhere)+len(nodes)>0 else ''
+        n_str = f"MATCH (n)-[r{e}]-(v) {ewhere}  {gnwhere} RETURN id(n) AS id, labels(n) AS labels"
+        e_str = f"MATCH (n)-[r{e}]->(v) {ewhere} {gnwhere} RETURN id(n) AS source, id(v) AS target, type(r) AS type"
         return f'''
         CALL gds.graph.project.cypher(
         "{name}",
@@ -131,8 +129,8 @@ class GDSQueryBuilder:
 
     def mutate(self,name,types,mutate_type,node_labels=None):
         sb = StringBuilder()
-        sb.CALL("gds.alpha.collapsePath",name,"mutate")
-        sb.PARAMETER("relationshipTypes",types)
+        sb.CALL("gds.beta.collapsePath",name,"mutate")
+        sb.PARAMETER("pathTemplates",types)
         sb.PARAMETER("mutateRelationshipType",mutate_type)
         sb.PARAMETER("allowSelfLoops",False)
         if node_labels:
@@ -363,24 +361,28 @@ class GDSQueryBuilder:
         sb.RETURN(["totalCost","nodes(path) as path"])
         return sb.BUILD()
 
-    def dfs(self,name,source,dest,mode="stream"):
+    def dfs(self,name,source,dest=None,mode="stream"):
         sb = StringBuilder()
         sb.MATCH("source",source)
-        sb.MATCH("dest",dest)
+        if dest is not None:
+            sb.MATCH("dest",dest)
         sb.CALL("gds.dfs",name,mode)
         sb.PARAMETER("sourceNode", "source")
-        sb.PARAMETER("targetNodes","dest")
+        if dest is not None:
+            sb.PARAMETER("targetNodes","dest")
         sb.YIELD("path")
         sb.RETURN("path")
         return sb.BUILD()
 
-    def bfs(self,name,source,dest,mode="stream"):
+    def bfs(self,name,source,dest=None,mode="stream"):
         sb = StringBuilder()
         sb.MATCH("source",source)
-        sb.MATCH("dest",dest)
+        if dest is not None:
+            sb.MATCH("dest",dest)
         sb.CALL("gds.bfs",name,mode)
         sb.PARAMETER("sourceNode", "source")
-        sb.PARAMETER("targetNodes","dest")
+        if dest is not None:
+            sb.PARAMETER("targetNodes","dest")
         sb.YIELD("path")
         sb.RETURN("path")
         return sb.BUILD()

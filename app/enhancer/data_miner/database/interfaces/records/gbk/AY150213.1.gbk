@@ -1,0 +1,117 @@
+LOCUS       AY150213                2249 bp    DNA     linear   BCT 29-JUL-2004
+DEFINITION  Salmonella typhi transposon Tn10d TetA (tetA) and TetR (tetR)
+            genes, complete cds.
+ACCESSION   AY150213
+VERSION     AY150213.1
+KEYWORDS    .
+SOURCE      Salmonella enterica subsp. enterica serovar Typhi (Salmonella
+            typhi)
+  ORGANISM  Salmonella enterica subsp. enterica serovar Typhi
+            Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacterales;
+            Enterobacteriaceae; Salmonella.
+REFERENCE   1  (bases 1 to 2249)
+  AUTHORS   Hidalgo,A.A., Trombert,A.N., Castro-Alonso,J.C., Santiviago,C.A.,
+            Tesser,B.R., Youderian,P. and Mora,G.C.
+  TITLE     Insertions of mini-Tn10 transposon T-POP in Salmonella enterica sv.
+            typhi
+  JOURNAL   Genetics 167 (3), 1069-1077 (2004)
+   PUBMED   15280224
+REFERENCE   2  (bases 1 to 2249)
+  AUTHORS   Hidalgo,A.A., Castro-Alonso,J.C., Trombert,N., Santiviago,C.A. and
+            Mora,G.C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-SEP-2002) Laboratorio de Microbiologia, Departamento
+            de Genetica Molecular y Microbiologia, P. Universidad Catolica de
+            Chile, Alameda 340, Santiago, Chile
+FEATURES             Location/Qualifiers
+     source          1..2249
+                     /organism="Salmonella enterica subsp. enterica serovar
+                     Typhi"
+                     /mol_type="genomic DNA"
+                     /strain="STH2370"
+                     /serovar="Typhi"
+                     /sub_species="enterica"
+                     /db_xref="taxon:90370"
+                     /country="Chile"
+     mobile_element  1..2249
+                     /note="T-POP"
+                     /mobile_element_type="transposon:Tn10d"
+     repeat_region   1..23
+                     /rpt_type=inverted
+     gene            complement(269..1474)
+                     /gene="tetA"
+     CDS             complement(269..1474)
+                     /gene="tetA"
+                     /note="tetracycline exporter; tetracycline resistance"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="TetA"
+                     /protein_id="AAN77728.1"
+                     /translation="MNSSTKIALVITLLDAMGIGLIMPVLPTLLREFIASEDIANHFG
+                     VLLALYALMQVIFAPWLGKMSDRFGRRPVLLLSLIGASLDYLLLAFSSALWMLYLGRL
+                     LSGITGATGAVAASVIADTTSASQRVKWFGWLGASFGLGLIAGPIIGGFAGEISPHSP
+                     FFIAALLNIVTFLVVMFWFRETKNTRDNTDTEVGVETQSNSVYITLFKTMPILLIIYF
+                     SAQLIGQIPATVWVLFTENRFGWNSMMVGFSLAGLGLLHSVFQAFVAGRIATKWGEKT
+                     AVLLGFIADSSAFAFLAFISEGWLVFPVLILLAGGGIALPALQGVMSIQTKSHQQGAL
+                     QGLLVSLTNATGVIGPLLFAVIYNHSLPIWDGWIWIIGLAFYCIIILLSMTFMLTPQA
+                     QGSKQETSA"
+     misc_feature    1475..1552
+                     /note="intergenic region containing the tetA promotor,
+                     operator sequences and the tetR promotor"
+     gene            1553..2179
+                     /gene="tetR"
+     CDS             1553..2179
+                     /gene="tetR"
+                     /note="transcriptional regulator; transcriptional
+                     repressor of tetA and tetR genes"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="TetR"
+                     /protein_id="AAN77729.1"
+                     /translation="MMSRLDKSKVINSALELLNEVGIEGLTTRKLAQKLGVEQPTLYW
+                     HVKNKRALLDALAIEMLDRHHTHFCPLEGESWQDFLRNNAKSFRCALLSHRDGAKVHL
+                     GTRPTEKQYETLENQLAFLCQQGFSLENALYALSAVGHFTLGCVLEDQEHQVAKEERE
+                     TPTTDSMPPLLRQAIELFDHQGAEPAFLFGLELIICGLEKQLKCESGS"
+     repeat_region   2227..2249
+                     /rpt_type=inverted
+ORIGIN      
+        1 ctgatgaatc ccctaatgat tttggtaaaa atcattaagt taaggtggat acacatcttg
+       61 tcatatgatc tcgggaaaag cgttggtgac caaaggtgcc ttttatcatc actttaaaaa
+      121 taaaaaacaa ttactcagtg cctgttataa gcagcaatta attatgattg atgcctacat
+      181 aaatcttctt tatcgtaaaa aatgccctct tgggttatca agagggtcat tatatttcgc
+      241 ggaataacat catttggtga cgaaataact aagcacttgt ctcctgttta ctcccctgag
+      301 cttgaggggt taacatgaag gtcatcgata gcaggataat aatacagtaa aacgctaaac
+      361 caataatcca aatccagcca tcccaaattg gtagtgaatg attataaata acagcaaaca
+      421 gtaatgggcc aataacaccg gttgcattgg taaggctcac caataatccc tgtaaagcac
+      481 cttgctgatg actctttgtt tggatagaca tcactccctg taatgcaggt aaagcgatcc
+      541 caccaccagc caataaaatt aaaacaggga aaactaacca accttcagat ataaacgcta
+      601 aaaaggcaaa tgcactacta tctgcaataa atccgagcag tactgccgtt ttttcgcccc
+      661 atttagtggc tattcttcct gccacaaagg cttggaatac tgagtgtaaa agaccaagac
+      721 ccgctaatga aaagccaacc atcatgctat tccatccaaa acgattttcg gtaaatagca
+      781 cccacaccgt tgcgggaatt tggcctatca attgcgctga aaaataaata atcaacaaaa
+      841 tgggcatcgt tttaaataaa gtgatgtata ccgaattcga ttgcgtctca acccctactt
+      901 cggtatctgt attatcacgt gtatttttgg tttcacggaa ccaaaacata accacaagga
+      961 aagtgacaat atttagcaac gcagcgataa aaaagggact atgcggtgaa atctctcctg
+     1021 caaaaccacc aataataggc cccgctatta aaccaagccc aaaacttgcc cctaaccaac
+     1081 cgaaccactt cacgcgttga gaagctgagg tggtatcggc aatgaccgat gccgcgacag
+     1141 ccccagtagc tcctgtgatc cctgaaagca aacggcctaa atacagcatc caaagcgcac
+     1201 ttgaaaaagc cagcaataag taatccagcg atgcgcctat taatgacaac aacagcactg
+     1261 ggcgccgacc aaatcggtca gacatttttc caagccaagg agcaaagata acctgcatta
+     1321 acgcataaag tgcaagcaat acgccaaagt ggttagcgat atcttccgaa gcaataaatt
+     1381 cacgtaataa cgttggcaag actggcatga taaggccaat ccccatggca tcgagtaacg
+     1441 taattaccaa tgcgatcttt gtcgaactat tcatttcact tttctctatc actgataggg
+     1501 agtggtaaaa taactctatc aatgatagag tgtcaacaaa aattaggaat taatgatgtc
+     1561 tagattagat aaaagtaaag tgattaacag cgcattagag ctgcttaatg aggtcggaat
+     1621 cgaaggttta acaacccgta aactcgccca gaagctaggt gtagagcagc ctacattgta
+     1681 ttggcatgta aaaaataagc gggctttgct cgacgcctta gccattgaga tgttagatag
+     1741 gcaccatact cacttttgcc ctttagaagg ggaaagctgg caagattttt tacgtaataa
+     1801 cgctaaaagt tttagatgtg ctttactaag tcatcgcgat ggagcaaaag tacatttagg
+     1861 tacacggcct acagaaaaac agtatgaaac tctcgaaaat caattagcct ttttatgcca
+     1921 acaaggtttt tcactagaga atgcattata tgcactcagc gctgtggggc attttacttt
+     1981 aggttgcgta ttggaagatc aagagcatca agtcgctaaa gaagaaaggg aaacacctac
+     2041 tactgatagt atgccgccat tattacgaca agctatcgaa ttatttgatc accaaggtgc
+     2101 agagccagcc ttcttattcg gccttgaatt gatcatatgc ggattagaaa aacaacttaa
+     2161 atgtgaaagt gggtcttaaa agcagcataa cctttttccg tgatggtaac cttaatgatt
+     2221 ttgataaaaa tcattagggg attcatcag
+//
+

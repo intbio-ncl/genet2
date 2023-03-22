@@ -1,0 +1,6 @@
+COMPOSE_PROJECT_NAME=genet2
+PYTHONBUFFERED=true
+NEO4J_AUTH=neo4j/Radeon12300
+FLASK_APP=router.py
+FLASK_DEBUG=1
+NEO4J_PLUGINS=["graph-data-science","apoc"]

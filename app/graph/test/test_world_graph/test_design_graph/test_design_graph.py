@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.join("..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..","..",".."))
 from world_graph import WorldGraph
+from converter.sbol_convert import convert
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 
 fn = os.path.join(curr_dir,"..","..","files","nor_full.xml")
@@ -16,7 +17,8 @@ class TestDesignGraph(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_dg"
         self.wg = WorldGraph()
-        self.dg = self.wg.add_design(fn,self.gn)
+        convert(fn,self.wg.driver,self.gn)
+        self.dg = self.wg.get_design(self.gn)
 
     @classmethod
     def tearDownClass(self):
@@ -27,7 +29,8 @@ class TestDesignGraph(unittest.TestCase):
         dg = self.wg.get_design(self.gn)
         self.assertEqual(dg.nodes(),[])
         self.assertEqual(dg.edges(),[])
-        self.wg.add_design(fn,self.gn)
+        convert(fn,self.wg.driver,self.gn)
+        
 
     def test_get_children(self):
         pes = self.dg.get_physicalentity()

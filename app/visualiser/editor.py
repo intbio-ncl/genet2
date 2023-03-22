@@ -1,13 +1,12 @@
 import re
 from inspect import signature, getargspec
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output
 from dash.exceptions import PreventUpdate
 from dash import callback_context
 
 from app.visualiser.abstract_dashboard.utility.callback_structs import *
 from app.visualiser.visual.editor import EditorVisual
 from app.visualiser.abstract_dashboard.abstract import AbstractDash
-
 assets_ignore = '.*bootstrap.*'
 
 class EditorDash(AbstractDash):
@@ -26,7 +25,6 @@ class EditorDash(AbstractDash):
                self.create_dropdown(load_editor_states["load_predicate"].component_id,lp,placeholder="Load Predicate") +
                self.create_line_break(10) + self.create_button(load_editor_input.component_id,"Load Graph"))
 
-
         editor = self._create_editor()
         mg = self.create_div("editor",editor)
         acc_elements = [("Load Design", inp), ("Modify Graph",mg)]
@@ -36,8 +34,10 @@ class EditorDash(AbstractDash):
         options = self.create_sidebar(not_modifier_identifiers["sidebar_id"], "Options", form_div, className="col sidebar")
         figure = self.visualiser.empty_graph(graph_id)
         graph = self.create_div(e_update_o["graph_id"].component_id, [figure])
-        graph = self.create_div(modify_graph_output["graph_container"].component_id, graph,className="col")
+        graph = self.create_div(modify_graph_o["graph_container"].component_id, graph,className="col")
         legend = self.create_div(e_update_o["legend_id"].component_id,[], className="col sidebar")
+
+
         elements = options + graph + legend
         container = self.create_div("row-main", elements, className="row flex-nowrap no-gutters")
         self.app.layout = self.create_div("main", load_accordion+container, className="container-fluid")[0]
@@ -48,20 +48,23 @@ class EditorDash(AbstractDash):
         def load_inner(click,gns,lp):
             return self.load(click,gns,lp)
 
-        def modify_graph_inner(n_click,e_click,n_key,n_type,e_subj,e_pred,e_obj):
-            return self.modify_graph(n_click,e_click,n_key,n_type,e_subj,e_pred,e_obj)
+        def modify_graph_inner(n_select,e_click,n_data,n_type,metadata,e_subj,e_pred,e_obj):
+            return self.modify_graph(n_select,e_click,n_data,n_type,metadata,e_subj,e_pred,e_obj)
 
         def select_node_inner(aes_c,aeo_c,predicate,elements,data,es_values,eo_values):
             return self.select_node(aes_c,aeo_c,predicate,elements,data,es_values,eo_values)
+        
+        def add_node_properties_inner(o_type):
+            return self.add_node_properties(o_type)
 
         def update_graph_inner(*args):
             return self.update_graph(args)
 
         self.add_callback(update_inputs_inner, [update_i_i], [update_i_o])
         self.add_callback(load_inner, [load_editor_input], load_editor_output,load_editor_states.values())
-        
-        self.add_callback(select_node_inner, select_node_inputs.values(), select_node_outputs.values(),select_node_states.values())
-        self.add_callback(modify_graph_inner, modify_graph_input.values(), modify_graph_output.values(),modify_graph_states.values())
+        self.add_callback(add_node_properties_inner, properties_node_i.values(), properties_node_o.values())
+        self.add_callback(select_node_inner, select_node_i.values(), select_node_o.values(),select_node_s.values())
+        self.add_callback(modify_graph_inner, modify_graph_i.values(), modify_graph_o.values(),modify_graph_s.values())
         self.add_callback(update_graph_inner, e_update_i.values(), e_update_o.values())
         self.build()
 
@@ -105,7 +108,7 @@ class EditorDash(AbstractDash):
         #try:
         graph = self.visualiser.build(graph_id=graph_id)
         graph = self.create_div(e_update_o["graph_id"].component_id, graph, className="col")
-        graph = self.create_div(modify_graph_output["graph_container"].component_id, graph, className="col")
+        graph = self.create_div(modify_graph_o["graph_container"].component_id, graph, className="col")
 
         node_types = self.visualiser.get_view_node_types()
         edge_types = self.visualiser.get_view_edge_types()
@@ -127,15 +130,15 @@ class EditorDash(AbstractDash):
             return [],[],hidden,hidden
         if data is not None and data != []:
             changed_id = [p['prop_id'] for p in callback_context.triggered][0]
-            if select_node_inputs["edge_subject"].component_id in changed_id:
+            if select_node_i["edge_subject"].component_id in changed_id:
                 for node in data:
-                    nid = int(node["id"])
+                    nid = node["id"]
                     res = self.visualiser.get_view_nodes(nid)
                     for e in es_values:
                         e["props"]["value"] = res.get_key()
-            elif select_node_inputs["edge_object"].component_id in changed_id:
+            elif select_node_i["edge_object"].component_id in changed_id:
                 for node in data:
-                    nid = int(node["id"])
+                    nid = node["id"]
                     res = self.visualiser.get_view_nodes(nid)
                     for e in eo_values:
                         e["props"]["value"] = res.get_key()
@@ -155,17 +158,44 @@ class EditorDash(AbstractDash):
         else:
             return [],[],hidden,hidden
 
-    def modify_graph(self,n_click,e_click,n_key,n_type,e_subj,e_pred,e_obj):
+    def add_node_properties(self,v_type):
+        if v_type == "" or v_type is None:
+            raise PreventUpdate()
+        if self.visualiser.is_physical_entity(v_type):
+            meta_data = self.create_input("sequence",placeholder="sequence")
+            meta_data += self.create_input("descriptions",placeholder="descriptions")
+            meta_data = self.create_div("metadata",meta_data)
+            return meta_data
+        elif self.visualiser.is_conceptual_entity(v_type):
+            meta_data = self.create_input("descriptions",placeholder="descriptions")
+            meta_data = self.create_div("metadata",meta_data)
+            return meta_data
+        else:
+            meta_data = self.create_div("metadata",[])
+            return meta_data
+    
+    
+    def modify_graph(self,n_select,e_click,n_key,n_type,metadata,e_subj,e_pred,e_obj):
         changed_id = [p['prop_id'] for p in callback_context.triggered][0]
-        if modify_graph_input["add_node_submit"].component_id in changed_id:
-            if n_key is None or n_type is None:
+        if None in self.visualiser.get_loaded_design_names():
+            raise PreventUpdate()
+        if modify_graph_i["submit_am"].component_id in changed_id:
+            if n_key == "" or n_type is None:
                 raise PreventUpdate()
-            self.visualiser.add_node(n_key,n_type)
+            
+            md_dict = {}
+            for field in metadata["props"]["children"]:
+                val = field["props"]["value"]
+                if val == "":
+                    continue
+                md_dict[field["props"]["id"]] = val
+
+            self.visualiser.add_node(n_key,n_type,**md_dict)
             figure = self.visualiser.build(graph_id=graph_id)
             graph = self.create_div(e_update_o["graph_id"].component_id, figure)
-            graph = self.create_div(modify_graph_output["graph_container"].component_id, graph, className="col")
+            graph = self.create_div(modify_graph_o["graph_container"].component_id, graph, className="col")
             return graph
-        elif modify_graph_input["add_edge_submit"].component_id in changed_id:
+        if modify_graph_i["add_edge_submit"].component_id in changed_id:
             s_vals = {}
             e_vals = {}
             for s in e_subj:
@@ -181,46 +211,45 @@ class EditorDash(AbstractDash):
             self.visualiser.add_edges(s_vals,e_vals,e_pred)
             figure = self.visualiser.build(graph_id=graph_id) 
             graph = self.create_div(e_update_o["graph_id"].component_id, figure)
-            graph = self.create_div(modify_graph_output["graph_container"].component_id, graph, className="col")
+            graph = self.create_div(modify_graph_o["graph_container"].component_id, graph, className="col")
             return graph
         else:
             raise PreventUpdate()
             
     def _create_editor(self):
-        nkey = self.create_input(modify_graph_states["node_key"].component_id, placeholder="Node Key")
+        nkey = self.create_input(modify_graph_s["node_key"].component_id, placeholder="Node Key")
         add_node =  self.create_div("a_n_key", nkey, className="col") 
         ntype = self.create_dropdown(e_update_o["node_type"].component_id, [], placeholder="Node Type")
         add_node +=  self.create_div("a_n_type", ntype, className="col") 
-        sub_a_n = self.create_button(modify_graph_input["add_node_submit"].component_id, "Add Node")
+        sub_a_n = self.create_button(modify_graph_i["submit_am"].component_id, "Add Node")
+        add_node += self.create_line_break(10)
         add_node +=  self.create_div("a_n_submit", sub_a_n, className="col")
+        meta_data_t = self.create_heading_5("node_metadata","Metadata (Optional)")
+        meta_data =  self.create_div(properties_node_o["p_list"].component_id, [])
+        add_node += self.create_div("node_metadata_div",meta_data_t + meta_data,className="col")
 
-        subj_i = self.create_div(modify_graph_states["edge_subject"].component_id,[],className="col")
-        subj_i_an = self.create_button(select_node_inputs["edge_subject"].component_id,"Add Selected Nodes")
+        subj_i = self.create_div(modify_graph_s["edge_subject"].component_id,[],className="col")
+        subj_i_an = self.create_button(select_node_i["edge_subject"].component_id,"Add Selected Nodes")
         subj_i_an = self.create_div("edge_subject_an_div",subj_i_an,className="col")
-        subj_i = self.create_div(select_node_outputs["node_subject_div"].component_id,subj_i + subj_i_an,className="row",style={"display" : "none"})
+        subj_i = self.create_div(select_node_o["node_subject_div"].component_id,subj_i + subj_i_an,className="row",style={"display" : "none"})
         add_edge =  self.create_div("a_e_subject", subj_i, className="col")
-
         pred_i = self.create_dropdown(e_update_o["edge_predicate"].component_id, [], placeholder="Predicate")
         add_edge += self.create_div("a_e_pred", pred_i, className="col") 
 
-        obj_i = self.create_div(modify_graph_states["edge_object"].component_id,[],className="col")
-        obj_i_an = self.create_button(select_node_inputs["edge_object"].component_id,"Add Selected Nodes")
+        obj_i = self.create_div(modify_graph_s["edge_object"].component_id,[],className="col")
+        obj_i_an = self.create_button(select_node_i["edge_object"].component_id,"Add Selected Nodes")
         obj_i_an = self.create_div("edge_object_an_div",obj_i_an,className="col")
-        obj_i = self.create_div(select_node_outputs["node_object_div"].component_id,obj_i + obj_i_an,className="row",style={"display" : "none"})
+        obj_i = self.create_div(select_node_o["node_object_div"].component_id,obj_i + obj_i_an,className="row",style={"display" : "none"})
         add_edge +=  self.create_div("a_e_obj", obj_i, className="col")
 
-        sub_i = self.create_button(modify_graph_input["add_edge_submit"].component_id, "Add Edge")
+        sub_i = self.create_button(modify_graph_i["add_edge_submit"].component_id, "Add Edge")
         add_edge +=  self.create_div("a_e_submit", sub_i, className="col")
+        add_edge += self.create_line_break(10)
 
-        editor = self.create_heading_4("add_node","Add Node")
-
-        editor += self.create_div("add_node_div",add_node,className="row")
-        editor += self.create_horizontal_row()
-        editor += self.create_heading_4("add_edge","Add Edge")
-        editor += self.create_div("add_edge_div",add_edge,className="row")
-        editor += self.create_line_break(10) 
-
-        return editor
+        add_node = self.create_div("add_node_div",add_node,className="row")
+        add_edge = self.create_div("add_edge_div",add_edge,className="row")
+        acc_elements = [("Add Node", add_node), ("Add Edge",add_edge)]
+        return self.create_accordion("editor_accordion", acc_elements)
 
     def _create_form_elements(self, visualiser, style={}, id_prefix=""):
             default_options = [visualiser.set_network_mode,
@@ -326,7 +355,13 @@ class EditorDash(AbstractDash):
                                "get_load_predicates",
                                "add_node",
                                "get_view_node",
-                               "get_io_nodes"]
+                               "get_io_nodes",
+                               "get_standardised_nodes",
+                                "get_loaded_design_names",
+                                "get_view_edge_types",
+                                "get_view_node_types",
+                                "is_physical_entity",
+                                "is_conceptual_entity"]
 
         options = {"view": {},
                    "layout": {}}

@@ -4,37 +4,102 @@
     <div class="row">
         <h1>Enhancer</h1>
     </div>
+    <div class="row">
+        <h6>It is advised the design is passed through the canonicaliser before enhancement for the best results.</h6>
+        <h6>Running all pipelines in automated mode will apply enhancements at the end of each pipeline while
+            semi-automated will request feedback at the end of each pipelines before proceeding.</h6>
+    </div>
     <br>
     <div class="row">
-        {% if upload %}
         <div class="col-md">
             <div class="card search-result">
                 <div class="card-body">
-                    <div id="submit_upload">
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {{ upload.hidden_tag() }}
-                            <div class="form-group">
-                                {{ upload.upload.label(for="upload") }}<br>
-                                {{ upload.upload(class="form-control-file") }}<br>
-                                {% for error in upload.upload.errors %}
-                                <span style="color: red;">[{{ error }}]</span>
-                                {% endfor %}
-                                <br>
-                            </div>
-                            <div class="form-group">
-                                {{ upload.file_type.label(for="file_type") }}
-                                {{ upload.file_type(class="form-control") }}
-                                <br>
-                            </div>
-                            {{ upload.submit_upload(class="btn btn-secondary") }}
-                            <br><br>
-                        </form>
+                    {% if err_string%}
+                    <h5>
+                        <font color="red">ERROR: </font><br>{{err_string}}
+                    </h5>
+                    {% endif %}
+                    <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="handle_submit_input('sbol_upload')">Upload</button>
+                        <button type="button" class="btn btn-secondary" onclick="handle_submit_input('use_graph')">Use
+                            Graph</button>
+                    </div>
+                    <div id="submit_forms">
+                        <br>
+                        {% if err %}
+                        <h5>
+                            <font color="red">ERROR: </font><br>{{err}}
+                        </h5>
+                        {% endif %}
+                        {% if upload %}
+                        <div id="sbol_upload">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ upload.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ upload.upload.label(for="upload") }}<br>
+                                    {{ upload.upload(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.file_type.label(for="file_type") }}
+                                    {{ upload.file_type(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.run_mode.label(for="run_mode") }}
+                                    {{ upload.run_mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ upload.pipelines.label(for="pipelines") }}
+                                    {{ upload.pipelines(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ upload.submit_upload(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
+
+                        {% if cg %}
+                        <div id="use_graph">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {{ cg.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ cg.graphs.label(for="cg") }}<br>
+                                    {{ cg.graphs(class="form-control-file") }}<br>
+                                    {% for error in upload.upload.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ cg.run_mode.label(for="run_mode") }}
+                                    {{ cg.run_mode(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ cg.pipelines.label(for="pipelines") }}
+                                    {{ cg.pipelines(class="form-control") }}
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    {{ cg.pipelines.label(for="pipelines") }}
+                                    {{ cg.pipelines(class="form-control") }}
+                                    <br>
+                                </div>
+                                {{ cg.submit(class="btn btn-secondary") }}
+                                <br><br>
+                            </form>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
-
-
     {% endblock %}

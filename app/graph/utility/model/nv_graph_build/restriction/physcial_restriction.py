@@ -18,7 +18,7 @@ class PromoterRoleRestriction(RoleRestriction):
 
 class RBSRoleRestriction(RoleRestriction):
     def __init__(self):
-        super().__init__(identifiers.roles.rbs)  
+        super().__init__(identifiers.roles.rbs)
 
 class CDSRoleRestriction(RoleRestriction):
     def __init__(self):

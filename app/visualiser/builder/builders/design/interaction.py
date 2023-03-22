@@ -9,6 +9,6 @@ class InteractionViewBuilder(AbstractViewBuilder):
     def _subgraph(self, new_graph):
         return ViewGraph(super()._subgraph(new_graph=new_graph))
 
-    def build(self):
-        g = produce_interaction_graph(self._graph)
+    def build(self,predicate="ALL"):
+        g = produce_interaction_graph(self._graph,predicate=predicate)
         return self._subgraph(g)

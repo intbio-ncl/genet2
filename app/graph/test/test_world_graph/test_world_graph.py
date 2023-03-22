@@ -7,8 +7,9 @@ sys.path.insert(0, os.path.join("..",".."))
 sys.path.insert(0, os.path.join("..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..",".."))
 from world_graph import WorldGraph
+from converter.sbol_convert import convert
 curr_dir = os.path.dirname(os.path.realpath(__file__))
-fn = os.path.join(curr_dir,"..","..","test","files","output.xml")
+fn = os.path.join(curr_dir,"..","..","test","files","nor_full.xml")
 
 class TestWorldGraph(unittest.TestCase):
     
@@ -16,7 +17,8 @@ class TestWorldGraph(unittest.TestCase):
     def setUpClass(self):
         self.gn = "test_wg"
         self.wg = WorldGraph()
-        self.dg = self.wg.add_design(fn,self.gn)
+        convert(fn,self.wg.driver,self.gn)
+        self.dg = self.wg.get_design(self.gn)
 
     @classmethod
     def tearDownClass(self):
@@ -64,7 +66,8 @@ class TestWorldGraph(unittest.TestCase):
             self.assertIn(n,nodes)
 
 
-        self.wg.add_design(fn,gn2)
+
+        convert(fn,self.wg.driver,gn2)
         dg = self.wg.get_design([self.gn,gn2],predicate="ALL")
         for n in dg.nodes():
             self.assertIn(n,nodes)
@@ -76,7 +79,7 @@ class TestWorldGraph(unittest.TestCase):
 
         gn3 = "test_wg2"
         fn1 = os.path.join(curr_dir,"..","..","test","files","nor_full.xml")
-        self.wg.add_design(fn1,gn3)
+        convert(fn1,self.wg.driver,gn3)
         
         dg = self.wg.get_design([self.gn,gn2],predicate="ALL")
         for n in dg.nodes():
@@ -99,7 +102,7 @@ class TestWorldGraph(unittest.TestCase):
         dg = self.wg.get_design(self.gn)
         self.assertEqual(dg.nodes(),[])
         self.assertEqual(dg.edges(),[])
-        self.wg.add_design(fn,self.gn)
+        convert(fn,self.wg.driver,self.gn)
 
     def test_get_multiple_ALL(self):
         gn1 = "test_wg_get_all1"
@@ -110,9 +113,9 @@ class TestWorldGraph(unittest.TestCase):
         fn2 = os.path.join(curr_dir,"..","..","test","files","0x87.xml")
         fn3 = os.path.join(curr_dir,"..","..","test","files","0x3B.xml")
 
-        self.wg.add_design(fn1,gn1)
-        self.wg.add_design(fn2,gn2)
-        self.wg.add_design(fn3,gn3)
+        convert(fn1,self.wg.driver,gn1)
+        convert(fn2,self.wg.driver,gn2)
+        convert(fn3,self.wg.driver,gn3)
         dg1 = self.wg.get_design([gn1])
         dg2 = self.wg.get_design([gn2])
         dg3 = self.wg.get_design([gn3])
@@ -141,9 +144,9 @@ class TestWorldGraph(unittest.TestCase):
         fn2 = os.path.join(curr_dir,"..","..","test","files","0x87.xml")
         fn3 = os.path.join(curr_dir,"..","..","test","files","0x3B.xml")
 
-        self.wg.add_design(fn1,gn1)
-        self.wg.add_design(fn2,gn2)
-        self.wg.add_design(fn3,gn3)
+        convert(fn1,self.wg.driver,gn1)
+        convert(fn2,self.wg.driver,gn2)
+        convert(fn3,self.wg.driver,gn3)
         dg1 = self.wg.get_design([gn1])
         dg2 = self.wg.get_design([gn2])
         dg3 = self.wg.get_design([gn3])
@@ -172,9 +175,9 @@ class TestWorldGraph(unittest.TestCase):
         fn2 = os.path.join(curr_dir,"..","..","test","files","0x87.xml")
         fn3 = os.path.join(curr_dir,"..","..","test","files","0x3B.xml")
 
-        self.wg.add_design(fn1,gn1)
-        self.wg.add_design(fn2,gn2)
-        self.wg.add_design(fn3,gn3)
+        convert(fn1,self.wg.driver,gn1)
+        convert(fn2,self.wg.driver,gn2)
+        convert(fn3,self.wg.driver,gn3)
         dg1 = self.wg.get_design([gn1])
         dg2 = self.wg.get_design([gn2])
         dg3 = self.wg.get_design([gn3])

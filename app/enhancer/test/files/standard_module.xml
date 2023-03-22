@@ -1,0 +1,73 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/double_terminator/1">
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/double_terminator"/>
+    <sbol:displayId>double_terminator</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000141"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/Elowitz_rbs/1">
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000139"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>Elowitz_rbs</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/Elowitz_rbs"/>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/PLlac/1">
+    <sbol:displayId>PLlac</sbol:displayId>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/PLlac"/>
+    <sbol:version>1</sbol:version>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000167"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/LacI/1">
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:displayId>LacI</sbol:displayId>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+    <sbol:version>1</sbol:version>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/LacI"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://synbiohub.org/public/igem/BBa_Q04121/1">
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_LacI_c/1">
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/LacI/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_LacI_c"/>
+        <sbol:displayId>BBa_Q04121_LacI_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_double_terminator_c/1">
+        <sbol:displayId>BBa_Q04121_double_terminator_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/double_terminator/1"/>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_double_terminator_c"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_Q04121"/>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_PLlac_c/1">
+        <sbol:displayId>BBa_Q04121_PLlac_c</sbol:displayId>
+        <sbol:version>1</sbol:version>
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_PLlac_c"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/PLlac/1"/>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:component>
+      <sbol:Component rdf:about="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_Elowitz_rbs_c/1">
+        <sbol:persistentIdentity rdf:resource="https://synbiohub.org/public/igem/BBa_Q04121/BBa_Q04121_Elowitz_rbs_c"/>
+        <sbol:displayId>BBa_Q04121_Elowitz_rbs_c</sbol:displayId>
+        <sbol:access rdf:resource="http://sbols.org/v2#public"/>
+        <sbol:definition rdf:resource="https://synbiohub.org/public/igem/Elowitz_rbs/1"/>
+        <sbol:version>1</sbol:version>
+      </sbol:Component>
+    </sbol:component>
+    <sbol:displayId>BBa_Q04121</sbol:displayId>
+    <sbol:version>1</sbol:version>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

@@ -30,9 +30,17 @@ class DatabaseInterface:
     def is_record(self,identity):
         pass
     
+    @abstractmethod
+    def sequence(self,sequence,similarity=None):
+        pass
+    
+    @abstractmethod
+    def get_uri(self,name):
+        pass
+    
     def _load_graph(self,fn):
         record_graph = rdflib.Graph()
-        record_graph.load(fn)
+        record_graph.parse(fn)
         return record_graph
         
     def _store_record(self,target,record):

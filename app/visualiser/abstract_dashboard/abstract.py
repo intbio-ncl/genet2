@@ -348,18 +348,16 @@ class AbstractDash:
         else:
             return [sequence_box]
 
-    def create_complex_table(self, identifier, columns, data, add=False, **kwargs):
+    def create_complex_table(self, identifier, columns, data=None, add=False, **kwargs):
         table = dash_table.DataTable(
             id=identifier,
             columns=columns,
             data=data,
-            editable=True,
             filter_action="native",
             sort_action="native",
             sort_mode="multi",
             column_selectable="single",
-            row_selectable="multi",
-            row_deletable=True,
+            row_selectable="single",
             selected_columns=[],
             selected_rows=[],
             page_action="native",
@@ -401,7 +399,7 @@ class AbstractDash:
             return [sum_tag]
 
     def create_modal(self, identifier, close_identifier, name, contents, submit_button=None, add=False, **kwargs):
-        modal_header = dbc.ModalHeader(name)
+        modal_header = self.create_heading_3(name,name)
         modal_body = dbc.ModalBody(contents)
         if submit_button is not None:
             submit_button = [dbc.Button(
@@ -410,8 +408,8 @@ class AbstractDash:
             submit_button = []
         modal_footer = dbc.ModalFooter(
             submit_button + [dbc.Button("Close", id=close_identifier, className="ml-auto")])
-        modal = dbc.Modal(id=identifier, children=[
-                          modal_header, modal_body, modal_footer], size="xl", **kwargs)
+        modal = dbc.Modal(id=identifier, children=modal_header+[
+                          modal_body, modal_footer], size="xl", **kwargs)
         if add:
             return self._create_element(modal)
         else:

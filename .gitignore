@@ -132,3 +132,6 @@ dmypy.json
 app/sessions/*
 app/utility/sbol_connector/interfaces/hubs/*.xml
 app/utility/sbol_connector/interfaces/hubs/*/*.xml
+app/utility/change_log/logs/*
+app/enhancer/data_miner/database/interfaces/records/hubs/*/*.xml
+app/enhancer/seeder/*.xml

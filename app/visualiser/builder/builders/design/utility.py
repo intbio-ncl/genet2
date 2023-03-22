@@ -1,21 +1,29 @@
 import networkx as nx
 from app.graph.utility.graph_objects.edge import Edge
 from app.graph.utility.model.model import model
+from app.graph.utility.graph_objects.reserved_node import ReservedNode
+from app.graph.utility.model.identifiers import  KnowledgeGraphIdentifiers
+ids = KnowledgeGraphIdentifiers()
 
-def produce_interaction_graph(graph):
+def _get_conf(n,v):
+    return {str(ids.external.confidence) : int((n.confidence + v.confidence)/2)}
+
+def produce_interaction_graph(graph,predicate="ALL"):
     edges = []
-    for interaction in graph.get_interaction():
-        inputs, outputs = graph.get_interaction_io(interaction)
+    for interaction in graph.get_interaction(predicate=predicate):
+        inputs, outputs = graph.get_interaction_io(interaction,predicate=predicate)
         if len(outputs) == 0:
             continue
         for inp in inputs:
             for out in outputs:
+                if isinstance(interaction,ReservedNode):
+                    interaction.update(_get_conf(inp,out))
                 edges.append(Edge(inp.v, out.v, interaction.get_type(),**interaction.get_properties()))
     return _subgraph(edges)
 
-def produce_aggregated_interaction_graph(i_graph, predicate, first_pred=False):
+def produce_aggregated_interaction_graph(i_graph, i_type, first_pred=False):
     edges = []
-    g_code = [model.get_class_code(predicate)]
+    g_code = [model.get_class_code(i_type)]
     for node in i_graph.nodes():
         n_type = node.get_type()
         if n_type == "None":

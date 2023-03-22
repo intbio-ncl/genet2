@@ -12,10 +12,10 @@ class InteractionVerboseViewBuilder(AbstractViewBuilder):
     def _subgraph(self, edges=[], nodes=[],new_graph=None):
         return ViewGraph(super()._subgraph(edges,nodes,new_graph))
 
-    def build(self):
+    def build(self,predicate="ALL"):
         edges = []
-        for interaction in self._graph.get_interaction():
-            inputs, outputs = self._graph.get_interaction_io(interaction)
+        for interaction in self._graph.get_interaction(predicate=predicate):
+            inputs, outputs = self._graph.get_interaction_io(interaction,predicate=predicate)
             for obj in inputs:
                 edges.append((Edge(obj.v, interaction, obj.get_type(), **obj.get_properties())))
             for obj in outputs:

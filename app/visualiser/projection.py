@@ -88,7 +88,7 @@ class ProjectionDash(AbstractDash):
             proc_elements.append((name,self.create_accordion(name+"acc",pt_eles)))
         proc_acc = self.create_accordion(project_load_o["procs"].component_id,proc_elements,style={"display":"none"})
         ni = self.create_div(project_load_o["info"].component_id,[])
-        procedure_out = self.create_div(procedure_o[0].component_id,[])
+        procedure_out = self.create_div(procedure_o["table"].component_id,[])
         # Top-Level 
         acc_elements = [("Node Information", ni), 
                         ("Run Procedures", proc_acc),
@@ -144,9 +144,10 @@ class ProjectionDash(AbstractDash):
         self.add_callback(project_inner, project_i.values(), project_o.values(), project_s.values())
         self.add_callback(load_inner, [project_load_i], list(project_load_o.values())+plo_i_box)
         self.add_callback(update_graph_inner, update_inputs.values(), update_o.values())
-        self.add_callback(procedure_inner, procedure_i, procedure_o, procedure_s)
+        self.add_callback(procedure_inner, procedure_i, list(procedure_o.values()), procedure_s)
         self.app.layout = self.create_div("main", accordion+graph+datatable, className="container min-vw-100 py-4")[0]
         self.build()
+
 
     def _create_datatable(self,id,struct):
         return self.create_complex_table(id, [{"name": str(i), "id": str(i)} for i in struct[0].keys()], struct)
@@ -232,12 +233,14 @@ class ProjectionDash(AbstractDash):
         if not isinstance(self.visualiser, ProjectionVisual):
             raise PreventUpdate()
         ci = [p['prop_id'] for p in callback_context.triggered][0].split(".")[0]
+
         if len(ci) == 0:
             raise PreventUpdate()
         parts = ci.split("/")
         assert(len(parts) == 2)
         module,func = parts
         args = args[0]
+
         states_arg = args[len(procedure_i):]
         params = {}
         for index,arg in enumerate(states_arg):

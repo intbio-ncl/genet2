@@ -1,18 +1,21 @@
 import re
 import validators
+from urllib.parse import urlparse
 class Node:
-    def __init__(self,key,type=None,id=None, **kwargs): 
+    def __init__(self,key,type=None,id=None, **kwargs):
         self.key = str(key)
         self.type = str(type)
         self.id=id
         self.properties = {}
+        if "name" not in kwargs:
+            kwargs["name"] = _get_name(key)
         self._update(kwargs)
 
     def duplicate(self):
         return self.__class__(self.key,self.type,**self.properties)
         
     def __eq__(self, obj):
-        if not isinstance(obj, self.__class__):
+        if not isinstance(obj, Node):
             return False
         if obj.key == self.key:
             return True
@@ -56,6 +59,10 @@ class Node:
 
     def remove(self,items):
         for k,v in items.items():
+            try:
+                self[k]
+            except KeyError:
+                continue
             if validators.url(k):
                 setattr(self,_get_name(k),v)
             elif isinstance(v,(set,list,tuple)) and hasattr(self,_get_name(k)):
@@ -71,19 +78,22 @@ class Node:
                     continue
                 if isinstance(v,(set,list,tuple)):
                     self.properties[k] = [n for n in self.properties[k] if n not in v]
+                    if self.properties[k] == []:
+                        del self.properties[k]
                 else:
                     del self.properties[k]
                     self.properties[k] = v
 
     def _update(self,items):
         for k,v in items.items():
-            if validators.url(k):
+            up = urlparse(k)
+            if up.netloc != "":
                 setattr(self,_get_name(k),v)
             elif isinstance(v,(set,list,tuple)) and hasattr(self,_get_name(k)):
                 if isinstance(self[k],list):
-                    setattr(self, k, self[k]+v)
+                    setattr(self, k, list(set(self[k]+v)))
                 else:
-                    setattr(self,k,[self[k]] + v)
+                    setattr(self,k,list(set([self[k]] + v)))
             else:
                 setattr(self, k, v)
             if k != "id":

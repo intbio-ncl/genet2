@@ -6,7 +6,7 @@ import rdflib
 from Bio import Entrez
 from Bio import GenBank
 
-from graph.knowledge.data_miner.database.interfaces.db_interface import DatabaseInterface
+from app.enhancer.data_miner.database.interfaces.db_interface import DatabaseInterface
 
 Entrez.email = "m.crowther1@ncl.ac.uk"
 target_dbs = ['nuccore','protein']
@@ -20,7 +20,7 @@ class GenBankInterface(DatabaseInterface):
         self.id_codes = [".-","nuccore","ncbi"]
         
 
-    def get(self,identifier):
+    def get(self,identifier,timeout=10):
         if isinstance(identifier,rdflib.URIRef):
             dbs = [self._get_db_name(identifier)]
             identifier = self._get_name(identifier)
@@ -44,10 +44,10 @@ class GenBankInterface(DatabaseInterface):
         return record
 
 
-    def query(self,query,search_limit=5):
+    def query(self,query,limit=5):
         query = f'"{query}"'
         for db in target_dbs:
-            handle = Entrez.esearch(db=db, term=query,retmax=search_limit,idtype="acc")
+            handle = Entrez.esearch(db=db, term=query,retmax=limit,idtype="acc")
             results = Entrez.read(handle)
             if results["Count"] != 0:
                 return self._generalise_query_results(results)
@@ -68,6 +68,15 @@ class GenBankInterface(DatabaseInterface):
                     continue
         return count
 
+    def is_record(self,uri):
+        return False
+    
+    def sequence(self,sequence,similarity=None):
+        return {}
+
+    def get_uri(self,name):
+        return []
+        
     def get_metadata_identifiers(self):
         return [rdflib.URIRef("http://genbank2graph/features"),
                 rdflib.URIRef("http://genbank2graph/taxonomy"),

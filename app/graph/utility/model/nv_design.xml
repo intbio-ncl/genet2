@@ -1,581 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:nv="http://www.nv_ontology.org/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasPart">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="Nf79445d16589452096a373071a5e40bb">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredRegion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovBindingSite"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Gene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Operator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Terminator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/CDS"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Promoter"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredGene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/StartCodon"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredTag"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Tag"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RBS"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N6be211adfee24d7ab8d040b2221de806">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/reactant">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="Nb3777be693b246d48046b209defd1327">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Hydrolysis"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N1b4881a18f0c419bbdbed107eb8278ac">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction>
+      <rdfs:Datatype rdf:about="http://www.nv_ontology.org/Input"/>
+    </nv:direction>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/repressor">
     <rdfs:domain>
-      <owl:Class rdf:nodeID="N453c69bef87049b59df3a53783f7965e">
+      <owl:Class rdf:nodeID="N79bca2d527fa4141ac8c19f6e1eb719a">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range>
-      <owl:Class rdf:nodeID="Nbd64774f4ef24b8c832a95c1f908e076">
+      <owl:Class rdf:nodeID="N945f4790d5024086b8ac9ae1c5db520c">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:range>
-    <nv:direction>
-      <rdfs:Datatype rdf:about="http://www.nv_ontology.org/Input"/>
-    </nv:direction>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasSequence">
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/repressed">
     <rdfs:domain>
-      <owl:Class rdf:nodeID="N22c03e49ce1c48a5b57a09d18ba305c1">
+      <owl:Class rdf:nodeID="N55ea3f91f47c4aeb8179f19d632d2be8">
         <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range>
-      <owl:Class rdf:nodeID="Nb7603614431f459faefd53613bfa18c8">
+      <owl:Class rdf:nodeID="N29663ccf0d014bdbb81bbecb6c137922">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction>
+      <rdfs:Datatype rdf:about="http://www.nv_ontology.org/Output"/>
+    </nv:direction>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasSequence">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="N5ee8211250124fa3a5c63e4e6ce5c3a8">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredRegion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovBindingSite"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Gene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Operator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Terminator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/CDS"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Promoter"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredGene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/StartCodon"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredTag"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Tag"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RBS"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N182d29ab056c490d8f70a8ff0813eedc">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:range>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/activated">
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/alias">
     <rdfs:domain>
-      <owl:Class rdf:nodeID="N8a9bd53f27c9425a82229628741f38f2">
+      <owl:Class rdf:nodeID="N9446e567769844759756762fe70d5be9">
         <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Operator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredGene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Hydrolysis"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/StartCodon"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredTag"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Complex"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RBS"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/TranscriptionFactor"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Protein"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Effector"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/EngineeredRegion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Terminator"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Entity"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/ConceptualEntity"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/SmallMolecule"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/mRNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovBindingSite"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Gene"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/sgRNA"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/CDS"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Promoter"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Tag"/>
           <rdf:Description rdf:about="http://www.nv_ontology.org/Activation"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range>
-      <owl:Class rdf:nodeID="Ncc2b3bfcc4f04a208277cb91b552ed80">
+      <owl:Class rdf:nodeID="N11d03e3e5ccc4fde827e7f62001ca443">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Entity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/modifier">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="Nfa9c40b833df4414abf4e8a0ac640776">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N73e69e37041942399ceb9e8f574c3a88">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:range>
-    <nv:direction>
-      <rdfs:Datatype rdf:about="http://www.nv_ontology.org/Output"/>
-    </nv:direction>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000019"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/product">
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/template">
     <rdfs:domain>
-      <owl:Class rdf:nodeID="N12e79331de5c4cd29b653092de161e55">
+      <owl:Class rdf:nodeID="N9db02900156547beab36037edec02916">
         <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
           <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
           <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range>
-      <owl:Class rdf:nodeID="N40a1b988119c4b7b8e68217d8c424a99">
+      <owl:Class rdf:nodeID="N3967468a57ae4caf8b3a7709b02d68ce">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/product">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="Ndbc05aae45ab48f4ab910e51f4016c7c">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Hydrolysis"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="Nab389781966e47f987e038ced0c5ebf7">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
     <nv:direction rdf:resource="http://www.nv_ontology.org/Output"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000011"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000644"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/reactant">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="N55f58e55a945446da3ee559263d97660">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N9353865a0d9945c69df1c15e939dafba">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000010"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000020"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/modifier">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="N582fb54b46db4aa0b95aac8913b8bd45">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N46b4b2dc4e964ef7aee132f9bd0ab294">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000019"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/repressed">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="Ne477f640defa48cdb25082f114e4b13f">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N395e6963d7e84f4e98356c05da373f45">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <nv:direction rdf:resource="http://www.nv_ontology.org/Output"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000642"/>
-  </owl:ObjectProperty>
-  <owl:Class rdf:about="http://www.nv_ontology.org/TranscriptionFactor">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nd9306daf27bf422f9dbdabbd96374b2c">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Protein"/>
-          <owl:Class rdf:nodeID="N4cca91e089c04a06ac58846e556f9a29">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nad57a8d2e0384052b9910546ee3f2e31">
-                <owl:onProperty>
-                  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/role"/>
-                </owl:onProperty>
-                <owl:hasValue rdf:resource="http://identifiers.org/go/GO:0003700"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Protein"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/template">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="N73c82c9bd684401f89f41a0f06fd5c9b">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N7a80ebb37f9d4d92b2eab79e3675808d">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-    <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000645"/>
-    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000598"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasPart">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="Nee18269eafe9498e8d4efe9ae4cbcf6c">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N76f43ca347074c01a52232a1c7c77a2e">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/activator">
     <rdfs:domain>
-      <owl:Class rdf:nodeID="Neea25cc7595f4160a0e9afae377f7330">
+      <owl:Class rdf:nodeID="Ne6494960296e4cd7961fdb41857dd47b">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Activation"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range>
-      <owl:Class rdf:nodeID="N1f520bde94c34ab9a38443b5d0d3fec8">
+      <owl:Class rdf:nodeID="Nf1fa99dd9f774b3885dc244732cf6e5a">
         <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
     <nv:direction rdf:resource="http://www.nv_ontology.org/Input"/>
     <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000459"/>
   </owl:ObjectProperty>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Effector">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Neb0ccd17700643c08d3eaa87f9f670f3">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/SmallMolecule"/>
-          <owl:Class rdf:nodeID="N256ce36cdfc848118ab038165c3639b2">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N9fe6b1f033b54843ab7a0fd32ab56010">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/chebi/CHEBI:35224"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/activated">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="N86f811212fe6476fa4c43921b379b24c">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Activation"/>
+        </owl:unionOf>
       </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Hydrolysis">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nd74919bf506e454d8402b2b6392ebdc6">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
-          <owl:Class rdf:nodeID="N84388cceb564413995495db14e673f81">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nee958f4b08f34c7b8d5145349c9cfc84">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000376"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Dissociation"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Transcription">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N6542a46127924b12ad46c71782cf392f">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <owl:Class rdf:nodeID="N9b1350e92ade4c4085e733a21284085e">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N571a654a82cb47cda759470b74ec31bc">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000183"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Reaction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Translation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovalentBonding"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/BiochemicalReaction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/RNA">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N524d6d11c36f4f76a1473e6ed75a9ff1">
-        <owl:intersectionOf rdf:parseType="Collection">
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N01e9c2f5894b4317968e7df41d56bf34">
+        <owl:unionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-          <owl:Class rdf:nodeID="Ne0bd5ece2c4e4b5898f1aae9a588b8d8">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N3ce0fa02628f414ab1e5146a9e5769ff">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#RnaRegion"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
+        </owl:unionOf>
       </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Conversion">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Ne0aa6b1f4b57405dad46497834b229b1">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="Nb0586bc433f2450492ea283ab7170842">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nfee5f37e70bc472983ea72f3017c6d69">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="N0ab9853dcee344a38057a8fc6d00032e">
-        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
-        <owl:hasValue>
-          <rdf:Description rdf:nodeID="N4f2b9048fb1f4dbbb90a5d86d5288b7d">
-            <owl:members rdf:parseType="Collection">
-              <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
-            </owl:members>
-          </rdf:Description>
-        </owl:hasValue>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Terminator">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Ned1b8412b5fe4ebd9f20e97675ef16db">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="Naefce0c000b94b7f9b8b85599ab60cef">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N139f8491d167494f989add652ec94633">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000141"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Operator">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Na41d68d054a44e1ba265af523fe0a7bc">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N3ee49b08dc8849638fe6c143dd53f0d1">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N93800c9a9be54472a501847bee202d63">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000057"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredRegion">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N21487743cb7c4c519febd407c88ba5e5">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N0db989747ad7471b8650f5f00bcf4716">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nc572ecc575064ad39c250fd75ab2e16f">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/sgRNA">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N9b65f1a4627a44089f0d9cb79eb51873">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/RNA"/>
-          <owl:Class rdf:nodeID="Nfb602d7ed3754acbab95a32801c3d9e4">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nb6e6cdacf1594b41b026dd905047c55f">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0001998"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/mRNA"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredTag">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N3c999d8328564562807610c98cb1c4f5">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N2e26e6e616114c6291e13b80d78e69b4">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N105ae29aad0b4661ba8ab8af8fe2c55b">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/mRNA">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N9225fb6de9c24e5185a6bffba7eb637e">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/RNA"/>
-          <owl:Class rdf:nodeID="N5d09a00d30104d9b8f345a2be8a690db">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N4e922e8cdb344228811b858d42073ba1">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000234"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/sgRNA"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Repression">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N08d95a54c7a84795b7232e940586de59">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="N168dd007fdd941d882852f2bac06c459">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N4d1175484f574823914ebbf8cd96697b">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="N1e900d095f0c4a7e9a2c444966379ca3">
-        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
-        <owl:hasValue>
-          <rdf:Description rdf:nodeID="N6ef671ec6fe54560a9ed3ba2f4c91b62">
-            <owl:members rdf:parseType="Collection">
-              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
-            </owl:members>
-          </rdf:Description>
-        </owl:hasValue>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Binds">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N82c24638445546a990ea90065c60f504">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="N596a9c684aae4571a7a986d126c337a6">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N206d90b793844c0bbfe876210ea91799">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000177"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="Ncde4a28ecabe4bf2abac6a6e9b0f17d8">
-        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
-        <owl:hasValue>
-          <rdf:Description rdf:nodeID="N9790afd75407447ab5fdda51f03dcbff">
-            <owl:members rdf:parseType="Collection">
-              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
-            </owl:members>
-          </rdf:Description>
-        </owl:hasValue>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
-  </owl:Class>
+    </rdfs:range>
+    <nv:confidence rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</nv:confidence>
+    <nv:direction rdf:resource="http://www.nv_ontology.org/Output"/>
+    <owl:equivalentProperty rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000643"/>
+  </owl:ObjectProperty>
   <owl:Class rdf:about="http://www.nv_ontology.org/Tag">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N30bdf83d0deb4a69be33fdd57699ef9d">
+      <owl:Class rdf:nodeID="N4dd0713ce8714c688b10003025df323e">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N9d352b9550234aff907970ff4bc12290">
+          <owl:Class rdf:nodeID="N47f691f6d3554f19b48a2ba486e6055e">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Ne6f40b73b1a944c39a584a4e5a8932f1">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+              <owl:Restriction rdf:nodeID="Nf9aa9cbdd5b248488d1e6edd23bd88be">
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/role"/>
+                </owl:onProperty>
                 <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000324"/>
               </owl:Restriction>
             </owl:unionOf>
@@ -596,166 +328,14 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Promoter">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N53220fb4e6054b168d427f08dbc39ad5">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N5c596a63f94d46038f15f60ee3c90028">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N917ec51ec45e4aed8d6d53d58c838462">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000167"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Reaction">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N7d088b3aaf1a40d0a527d47c7be1e238">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/ConceptualEntity"/>
-          <owl:Class rdf:nodeID="N2cdf42fcfe60463fa9d3e98cf04b5253">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N817b85eb15744d7a9e3e7b013e87c274">
-                <owl:onProperty>
-                  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasCharacteristic"/>
-                </owl:onProperty>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Interaction"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Interaction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredGene">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Ncb77f6a61d9e481e8698a53dce6480f4">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N508847dff1e14303801214e3e7a08c17">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N889575b50afc4972a27efffcd1f0a78b">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/BiochemicalReaction">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Ndc4fa0bee9ea49a7b12e4e56e08db9c4">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <owl:Class rdf:nodeID="Nf42e2841bf27463492b3c150d6efe6c6">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N52d3f577f8464102ae05b751de371d7b">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Reaction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Transcription"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Translation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovalentBonding"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/SmallMolecule">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N21d5a98857204322a2d2ca8810d83421">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-          <owl:Class rdf:nodeID="N9df331d3a8904c08bf53ef6b6afeec9d">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N4b2d62222ba04c1a82a4c2b4c2dfffe8">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Gene">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N4e1e20f3f1514c038459a86897941072">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="Nfcf23f18f9a248b4b694fe65fda9133f">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nbd21a42871f64e27a760e8ca8d92e4a9">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000704"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/StartCodon">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N49e5094f30414ba1a6da0337d5644ec8">
+      <owl:Class rdf:nodeID="Nee58af38597d41c2bf84f38ffdb21b10">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N06be11b1fcbd4b1693fd74e3cbf03fc8">
+          <owl:Class rdf:nodeID="Na729db8616e242c6b4e5f52a0007dc70">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nee2b9564ccc04ebeaea8237bdf75b6a8">
+              <owl:Restriction rdf:nodeID="Nca70c8d29bbe4da7b166aaac8571d99a">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000318"/>
               </owl:Restriction>
@@ -777,90 +357,16 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
-  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/consistsOf">
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="Nafeeaaf9a50d4f618679a5e25e60f54c">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Activation"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range>
-      <owl:Class rdf:nodeID="N0658c30163fe45f8b66079166ddc431a">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:range>
-  </owl:ObjectProperty>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Protein">
+  <owl:Class rdf:about="http://www.nv_ontology.org/Degradation">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nc4ff263db8cb4a4bab03f84d8ea2ebc4">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-          <owl:Class rdf:nodeID="Nf5f5512d515c4940a976f5a77a8fe11b">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N25704a11b99f468f9150cff7820436e3">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/RBS">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nee65ecf41666402aa2cabe3d6e38e188">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="N7b98f997eb01484594db385f502319b8">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N9fa0d353ed564447a07648c0b1dbc387">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000139"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/GeneticProduction">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N4a64d16e1b8a4ed98f559370c6c7e8f0">
+      <owl:Class rdf:nodeID="N4091a0b2c4db48d5af4c64a9f72f986c">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="N22347919aedd42c2a5d2ef96781b5a1c">
+          <owl:Class rdf:nodeID="Na53e699ffe3d4051ae55a2a48afe7981">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nd920dadfdc1d418583ec8d3b6175df73">
+              <owl:Restriction rdf:nodeID="N831cbf931cb34e678eafe440e59866f1">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000179"/>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
@@ -869,13 +375,12 @@
     </owl:equivalentClass>
     <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
     <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="N67e5bfdd80bd4222a5628aecec9620b9">
+      <owl:Restriction rdf:nodeID="N6c547ac401d14a21b62a90b81f805255">
         <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
         <owl:hasValue>
-          <rdf:Description rdf:nodeID="N8a46308f78714b40890ce36b76b49eae">
+          <rdf:Description rdf:nodeID="N131cea1a470e4cd7bf3e16d0ee682225">
             <owl:members rdf:parseType="Collection">
-              <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
-              <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
+              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
             </owl:members>
           </rdf:Description>
         </owl:hasValue>
@@ -883,18 +388,18 @@
     </rdfs:subClassOf>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/NonCovBindingSite">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N02c5917270ed4188933a91917dd48bb4">
+      <owl:Class rdf:nodeID="Na7e72b78392144668b79939ffb7067a5">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="Nb1c7e00d4d574e01824a9403d79f660f">
+          <owl:Class rdf:nodeID="N356f9a74ab2843999c0a971db624d539">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Naa51cd0d71364bdf91ea107f5894e21c">
+              <owl:Restriction rdf:nodeID="Ne3cd348d75a94a3b9256308d48773c02">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0001091"/>
               </owl:Restriction>
@@ -916,16 +421,16 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Complex">
+  <owl:Class rdf:about="http://www.nv_ontology.org/Protein">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N000a8449ef984ed6a882d34aee23cd6b">
+      <owl:Class rdf:nodeID="N28ccc59af4664b718ee2c2c20e0fabd7">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-          <owl:Class rdf:nodeID="Nb0a77314b4514e65a171037689c5f105">
+          <owl:Class rdf:nodeID="N177351bd84af47e9bca336a1c811a652">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N1c63514018a54f47b68b4570151c4ee4">
+              <owl:Restriction rdf:nodeID="N0c68be80805f489ca601d4719dbfe1c1">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Complex"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Protein"/>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
@@ -934,20 +439,20 @@
     </owl:equivalentClass>
     <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Activation">
+  <owl:Class rdf:about="http://www.nv_ontology.org/Binds">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N43f0906931be429b9e17ddc3697e888f">
+      <owl:Class rdf:nodeID="N3766213132254a78acc0946297828afb">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="N2ad4683d4977491ba2a9f8baca06fe13">
+          <owl:Class rdf:nodeID="Ne534ef2ed30a48ca9417ceb95a4399ab">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N250cb4384c2f47308a6ceb4a00bf23cd">
+              <owl:Restriction rdf:nodeID="N0545d201ba414201ac28bee9a982d64d">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000177"/>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
@@ -956,10 +461,10 @@
     </owl:equivalentClass>
     <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
     <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="Ndab648e9edc549c68b4d8dd0de2589d1">
+      <owl:Restriction rdf:nodeID="N89252f64e2fa4a3d943798637e809e75">
         <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
         <owl:hasValue>
-          <rdf:Description rdf:nodeID="N9950a27c193e435b8abab1124c112679">
+          <rdf:Description rdf:nodeID="Na000515d2bf24034a197802fc4afed13">
             <owl:members rdf:parseType="Collection">
               <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
             </owl:members>
@@ -967,46 +472,20 @@
         </owl:hasValue>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/DNA">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N0594bba9448a489283a469059c8e5d3a">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
-          <owl:Class rdf:nodeID="N44d79f947b254c99ab0a9ec30b837db1">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Nebc9869e02414846a97341c69c440e4a">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
-              </owl:Restriction>
-              <owl:Restriction rdf:nodeID="N2d0f09f0140d4a47ba677cadd1f42cf1">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/CDS">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N7eaf5647d85546d1a13666a061f864bb">
+      <owl:Class rdf:nodeID="N0b753c1dd96e48979352ff3c1d084337">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
-          <owl:Class rdf:nodeID="Na52471a030494880a9256d1f2f78ecd9">
+          <owl:Class rdf:nodeID="N7299286b7d13463b91a5ef22f681da6b">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N72e0f9094ec644c295e6c4180939c9e9">
+              <owl:Restriction rdf:nodeID="N8dc52b5885734c558b846c05bf86d105">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000316"/>
               </owl:Restriction>
@@ -1028,14 +507,93 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredRegion">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N1f8827e1d3ea401ca12f6e7bbf3a3ff7">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="Naa011dd075f94a5e8109958d79891c60">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Nde6bcf2dddbf4e85b3be914a6c663f31">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Interaction">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N37fbfb4762be4dd9b338bc6d9ad1c531">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/ConceptualEntity"/>
+          <owl:Class rdf:nodeID="Naabfcf841a3a436a98f1bbab0bb9f441">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Ncc932f2da3f84df4a5ad7431d8a28e91">
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/hasCharacteristic"/>
+                </owl:onProperty>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Interaction"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Reaction"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredGene">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N89538b563c2e4775810ddb957ea0ca97">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N27d361df938b4ba39bf6fe3be1561049">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N73be8ee248ab4c29acf8ae968c2faff2">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+  </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/Translation">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nbd71a1893ebc4d4db513b9926f9f72d5">
+      <owl:Class rdf:nodeID="Nc58d5f0be789448ba24f7e77781cfc93">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <owl:Class rdf:nodeID="N1a4d2d46e08b4fc9a850fefe9068b888">
+          <owl:Class rdf:nodeID="N1ffdab40f1d24ab1b263e8591f129345">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Naca2a94780d6462398a882a39824bd0c">
+              <owl:Restriction rdf:nodeID="N31cc3b3f98284926bd916327c1b818ce">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000184"/>
               </owl:Restriction>
@@ -1050,34 +608,78 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/BiochemicalReaction"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Entity"/>
-  <owl:Class rdf:about="http://www.nv_ontology.org/PhysicalEntity">
+  <owl:Class rdf:about="http://www.nv_ontology.org/Conversion">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N9282aeaa93664b1497b6e3976d28b09c">
+      <owl:Class rdf:nodeID="Nca398398d00f4af08d86185650a3f406">
         <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Entity"/>
-          <owl:Class rdf:nodeID="Nbed736d7372b4eca90d8a93bb3e8ca66">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <owl:Class rdf:nodeID="N7ab0cca0b1b04f6e80d9ae184269f49d">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Na9cc30640369430aa287c896f8f5ba7f">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/hasCharacteristic"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#PhysicalEntity"/>
+              <owl:Restriction rdf:nodeID="Nd1aabc6e6fea4607a30e1ec18d999e12">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Entity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Na03a2ee2eb8c4d699c4bd7629371273f">
+        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
+        <owl:hasValue>
+          <rdf:Description rdf:nodeID="N39d3e504cfaa448a96e3874eb2c936ca">
+            <owl:members rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.nv_ontology.org/BiochemicalReaction"/>
+            </owl:members>
+          </rdf:Description>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Gene">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N21918c24f3a0458bba630f41072ac4b5">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N2433fef0b8e44723b23adf8e735b34c7">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N54d9f0668ff444d3a2f98913400c8716">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000704"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/Dissociation">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nd8eda01968b049238924bf1a3107d7cb">
+      <owl:Class rdf:nodeID="N4cb6a5e066c14e2faea03493a94c3175">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <owl:Class rdf:nodeID="N711f02cb98cc423c87e877759ae0f9f9">
+          <owl:Class rdf:nodeID="Ne8c86f6355654ceb82244250f66ee317">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N02813ed9580e4b13bc45f6e25d155d0d">
+              <owl:Restriction rdf:nodeID="Na35b598c87fb48d380376c51eab6ce0c">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000180"/>
               </owl:Restriction>
@@ -1092,14 +694,215 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovalentBonding"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/BiochemicalReaction"/>
   </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Activation">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Ne2ff6d7dbc54441c8e42925c21c7996d">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <owl:Class rdf:nodeID="N93d3a9e6d9e84bd782c3d421929ef08d">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Ne32f55c5996a4a0f9cbebfa47d3465e5">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000170"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N7f49e666d1eb4451aab26039af076b0a">
+        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
+        <owl:hasValue>
+          <rdf:Description rdf:nodeID="Nb67331d564664b409e2b6e831408e1f0">
+            <owl:members rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
+            </owl:members>
+          </rdf:Description>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Promoter">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N0027c5c7aeac426f875eb6d75727a119">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N0a3701764161488c9ce4f20fcc580374">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Nf6486ef4c5274eac9814a9d9fefa6f0c">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000167"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/GeneticProduction">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Ne0b681b5a05c4925934905cc37ba43e0">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <owl:Class rdf:nodeID="Nd89bd258d952400084b5511965365bc5">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N28b9f95b76cf4a80ad32a1472ce2bf47">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000589"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N9d2c635c8c464c0fa51911e9b032796d">
+        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
+        <owl:hasValue>
+          <rdf:Description rdf:nodeID="N3a0adf307afb407eb4fedb075ac1b49f">
+            <owl:members rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.nv_ontology.org/Transcription"/>
+              <rdf:Description rdf:about="http://www.nv_ontology.org/Translation"/>
+            </owl:members>
+          </rdf:Description>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/sgRNA">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N4e76bbcd106e44c6a4ff0a3c33d27674">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RNA"/>
+          <owl:Class rdf:nodeID="Nc6453291c490416d96482f3a57fb3273">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N600c4babd353431fab91428626a38133">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0001998"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/RNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/mRNA"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Repression">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N68b1eb0ffd224f819f7695b19d368ad8">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <owl:Class rdf:nodeID="N6ac1b581cb39485ebf173eb915b5f7d9">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Nbada662d316d4f0699c0e17473a3fbaf">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000169"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N283fc87ca19e4cd69a02a86fd840f770">
+        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
+        <owl:hasValue>
+          <rdf:Description rdf:nodeID="N54d569a68ef14226a29a3daf26b31570">
+            <owl:members rdf:parseType="Collection">
+              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
+            </owl:members>
+          </rdf:Description>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Degradation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/EngineeredTag">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N709b2a2402754e7f98a47c875b4a7b6b">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N62ae2c4684034842aa489c6992ee5f07">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N57c0c90dd1d44d16a8df15acd39046c7">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000280"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Effector">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Ne53a5fcce8474dafadd46bf9d8bc2e9a">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/SmallMolecule"/>
+          <owl:Class rdf:nodeID="N92ab1f003e1b480da31f7cac00687d68">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N3342243bef934fe59368c4c16c4b9da4">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/chebi/CHEBI:35224"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
+  </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/NonCovalentBonding">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N2946377516ae4563a3a4063308d379ce">
+      <owl:Class rdf:nodeID="N9f07d83f66594a5cb48e8738ef4b6637">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
-          <owl:Class rdf:nodeID="N03f7842e450a4869befa79e6e843f3f2">
+          <owl:Class rdf:nodeID="N6e9433d91f484f92ada3d0c27f031d96">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N4a680f1569044079bbc6b2f12cf18797">
+              <owl:Restriction rdf:nodeID="Na1f344ab130d43e98e9a852ffdd7c49f">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
                 <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#ComplexAssembly"/>
               </owl:Restriction>
@@ -1114,68 +917,163 @@
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/BiochemicalReaction"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Interaction">
+  <owl:Class rdf:about="http://www.nv_ontology.org/SmallMolecule">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N6feddc381c964124b4e5febd6caaca91">
+      <owl:Class rdf:nodeID="N25df06ae398b4d96b87fc3aaf0e04efa">
         <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/ConceptualEntity"/>
-          <owl:Class rdf:nodeID="N8f5efcc75d4c41d8a068e33a61f93142">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+          <owl:Class rdf:nodeID="Nd4d677b7b03d4eb3b1f01a7d167bb9d8">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N581397191dc74b48b25402c2bf4a5c73">
-                <owl:onProperty rdf:resource="http://www.nv_ontology.org/hasCharacteristic"/>
-                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Interaction"/>
-              </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Reaction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.nv_ontology.org/Degradation">
-    <owl:equivalentClass>
-      <owl:Class rdf:nodeID="N0815487f1ac943ea9a4f28ebc71945a7">
-        <owl:intersectionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
-          <owl:Class rdf:nodeID="N1aa185fb5223495688fcd1aa70f7df97">
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="Na5bf62c2845c4ae8980da825b7d00df7">
+              <owl:Restriction rdf:nodeID="Na40b09aff4174a54b64c2b67a968ba49">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
-                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000179"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#SmallMolecule"/>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Interaction"/>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="N25a0da13f5ba407a9c0189d27c97fde1">
-        <owl:onProperty rdf:resource="http://www.nv_ontology.org/consistsOf"/>
-        <owl:hasValue>
-          <rdf:Description rdf:nodeID="N9d54e1f57c944186b38aa2280a0c2c81">
-            <owl:members rdf:parseType="Collection">
-              <rdf:Description rdf:about="http://www.nv_ontology.org/NonCovalentBonding"/>
-            </owl:members>
-          </rdf:Description>
-        </owl:hasValue>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Activation"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Repression"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/GeneticProduction"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Binds"/>
-    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Conversion"/>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/RNA">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Nbd78cd3c36184d4c84f0dee2ce1b7163">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+          <owl:Class rdf:nodeID="Nfb97f63fe53145b3a3a86c788d17925b">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N13ce852b2a074511b1a2b5fa5d133d5e">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#RnaRegion"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Operator">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Nb9c52f2e299d41bbbbf05b792d4aeb79">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N8c0aa1b1efca4a449c6e0ffa22878396">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Nc8f352f1e9ed4034b3d1db59bb08bf49">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000057"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Terminator">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N67e5704c6840498fa2aed79a856c6596">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="Nfc81973f56114f7f9a97fd55345e3e29">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N07402a5d222840ada81b2b2059f11be8">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000141"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RBS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/TranscriptionFactor">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Ndeb9cf5444ef4a3b992a2b8b3cfc17c5">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Protein"/>
+          <owl:Class rdf:nodeID="Ne5e69cc5b5704c3d811b8a8b2c69316d">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N992ed054d788493eb919df8962e41a61">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/go/GO:0003700"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Protein"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/RBS">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N4781da4b57ef44dc93755492597d7a51">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/DNA"/>
+          <owl:Class rdf:nodeID="N9a8dabb261be4c929c25d37e77d933ac">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Ndee3648be3e54194a214bc3d8666482e">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000139"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Promoter"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/CDS"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Terminator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Gene"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Operator"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredRegion"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredTag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/StartCodon"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Tag"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovBindingSite"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/EngineeredGene"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.nv_ontology.org/ConceptualEntity">
     <owl:equivalentClass>
-      <owl:Class rdf:nodeID="Nf83fe38d63014c488fff048ba03e1b80">
+      <owl:Class rdf:nodeID="N1a6fa828ef834fc5928cc411f819f8fe">
         <owl:intersectionOf rdf:parseType="Collection">
           <rdf:Description rdf:about="http://www.nv_ontology.org/Entity"/>
-          <owl:Class rdf:nodeID="N1683e64f78a542dcac33a6dd8e057515">
+          <owl:Class rdf:nodeID="Nc65e1d15b5dc41318a268873553ebf07">
             <owl:unionOf rdf:parseType="Collection">
-              <owl:Restriction rdf:nodeID="N0b41c65af8df413fbe2cfa19cb6c0c6c">
+              <owl:Restriction rdf:nodeID="N03fd6f3d13cd4f198fcf77cdf1b3cb30">
                 <owl:onProperty rdf:resource="http://www.nv_ontology.org/hasCharacteristic"/>
                 <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Interaction"/>
               </owl:Restriction>
@@ -1187,4 +1085,199 @@
     <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Entity"/>
     <owl:disjointWith rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
   </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/DNA">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Nab4f3460bb2b4cf39c85950b9ea4647f">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+          <owl:Class rdf:nodeID="N17ccf7c8090c48d495cece3ac0c11f95">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N48cb7d303ec242e6970f339a1d44d85c">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Dna"/>
+              </owl:Restriction>
+              <owl:Restriction rdf:nodeID="Nf756480785c147538115df97b0b95841">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Complex"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Entity"/>
+  <owl:ObjectProperty rdf:about="http://www.nv_ontology.org/consistsOf">
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="N2eb9bee9c14a42de86cbf2b3f3395e2a">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Binds"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/GeneticProduction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Degradation"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Conversion"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Repression"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Activation"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="N3166cf2a5df043488b60682c7f8b05d2">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Interaction"/>
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Transcription">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N10088af705c04b8e9ada7e032e3dacd1">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
+          <owl:Class rdf:nodeID="N9b1371e939c7489a937a8d94f5d00a29">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N57b5058d90d3462eb9b0b55ecea40b48">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000183"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Reaction"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Translation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovalentBonding"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/BiochemicalReaction"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/BiochemicalReaction">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N6fabe380c529470ea2e5ec98f9041ae6">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Reaction"/>
+          <owl:Class rdf:nodeID="N4cc5e5a70ad1471e91028744dcf1a29e">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N9a024cc3704d421c8d7a38283f37a526">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000176"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Reaction"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Transcription"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Translation"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/NonCovalentBonding"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Dissociation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Reaction">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Nfa89dcae96bc43c3a85a9ae511077ddd">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/ConceptualEntity"/>
+          <owl:Class rdf:nodeID="N477b3d9924a5454a81880d68cd148c66">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Nf68e6e8e91cc431c8ef43094e7fab28b">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/hasCharacteristic"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Interaction"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Interaction"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/PhysicalEntity">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N02a8be3e0549416598caf457809afe62">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Entity"/>
+          <owl:Class rdf:nodeID="Ned80f2622b874e419474e48095c01630">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N831b3992f0024beb851b4efeb677714a">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/hasCharacteristic"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#PhysicalEntity"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Entity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/ConceptualEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Complex">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N54a166ed6e9f414da40e145d73f6251b">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/PhysicalEntity"/>
+          <owl:Class rdf:nodeID="Nc964e1571a514888bd8d34cdaf236745">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N76665facf1db4a40b3a9f9dd4ef686fb">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://www.biopax.org/release/biopax-level3.owl#Complex"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/PhysicalEntity"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/DNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/RNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/Protein"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/SmallMolecule"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/Hydrolysis">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="Neae6aa8bb051459d9072f48935176e3e">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/Dissociation"/>
+          <owl:Class rdf:nodeID="Na04e6e97390b4b22a1e5c864f5d03556">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="N48f283abbe3a464d9189f46fdddaa6ec">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000376"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/Dissociation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.nv_ontology.org/mRNA">
+    <owl:equivalentClass>
+      <owl:Class rdf:nodeID="N1f2d112d8c36459eb349a104339374e7">
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.nv_ontology.org/RNA"/>
+          <owl:Class rdf:nodeID="N41e5bfe115494628912dc3d269410e8f">
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction rdf:nodeID="Ne87dbcf20788448d88805473089773f7">
+                <owl:onProperty rdf:resource="http://www.nv_ontology.org/role"/>
+                <owl:hasValue rdf:resource="http://identifiers.org/so/SO:0000234"/>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.nv_ontology.org/RNA"/>
+    <owl:disjointWith rdf:resource="http://www.nv_ontology.org/sgRNA"/>
+  </owl:Class>
+  <rdf:Description rdf:nodeID="Nea25b38e6e894969855d6a52508e1459">
+    <rdf:first rdf:nodeID="N92ab1f003e1b480da31f7cac00687d68"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
 </rdf:RDF>

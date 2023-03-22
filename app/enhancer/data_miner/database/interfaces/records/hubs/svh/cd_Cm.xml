@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:sbol="http://sbols.org/v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#dateTime/" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/" xmlns:synbiohub="http://synbiohub.org#" xmlns:sbh="http://wiki.synbiohub.org/wiki/Terms/synbiohub#" xmlns:sybio="http://www.sybio.ncl.ac.uk#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:ncbi="http://www.ncbi.nlm.nih.gov#" xmlns:igem="http://wiki.synbiohub.org/wiki/Terms/igem#" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:gbconv="http://sbols.org/genBankConversion#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:obo="http://purl.obolibrary.org/obo/">
+  <sbol:ComponentDefinition rdf:about="http://sevahub.es/public/Canonical/cd_Cm/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/cd_Cm"/>
+    <sbol:displayId>cd_Cm</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <dcterms:title>Chloramfenicol</dcterms:title>
+    <dcterms:description>Seva Chloramfenicol</dcterms:description>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/cd_Cm/1"/>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000704"/>
+    <sbol:sequence rdf:resource="http://sevahub.es/public/Canonical/seq_seqCm/1"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://sevahub.es/public/Canonical/seq_seqCm/1">
+    <sbol:persistentIdentity rdf:resource="http://sevahub.es/public/Canonical/seq_seqCm"/>
+    <sbol:displayId>seq_seqCm</sbol:displayId>
+    <sbol:version>1</sbol:version>
+    <sbh:ownedBy rdf:resource="http://sevahub.es/user/sevahub"/>
+    <sbh:topLevel rdf:resource="http://sevahub.es/public/Canonical/seq_seqCm/1"/>
+    <sbol:elements>TGGCGAAAATGAGACGTTGATCGGCACGTAAGAGGTTCCAACTTTCACCATAATGAAATAAGATCACTACCGGGCGTATTTTTTGAGTTATCGAGATTTTCAGGAGCTAAGGAAGCTAAAATGGAGAAAAAAATCACTGGATATACCACCGTTGATATATCCCAATGGCATCGTAAAGAACATTTTGAGGCATTTCAGTCAGTTGCTCAATGTACCTATAACCAGACCGTTCAGCTGGATATTACGGCCTTTTTAAAGACCGTAAAGAAAAATAAGCACAAGTTTTATCCGGCCTTTATTCACATTCTTGCCCGCCTGATGAATGCTCATCCGGAATTTCGTATGGCAATGAAAGACGGTGAGCTGGTGATATGGGATAGTGTTCACCCTTGTTACACCGTTTTCCATGAGCAAACTGAAACGTTTTCATCGCTCTGGAGTGAATACCACGACGATTTCCGGCAGTTTCTACACATATATTCGCAAGATGTGGCGTGTTACGGTGAAAACCTGGCCTATTTCCCTAAAGGGTTTATTGAGAATATGTTTTTCGTCTCAGCCAATCCCTGGGTGAGTTTCACCAGTTTTGATTTAAACGTGGCCAATATGGACAACTTCTTCGCCCCCGTTTTCACCATGGGCAAATATTATACGCAAGGCGACAAGGTGCTGATGCCGCTGGCGATTCAGGTTCATCATGCCGTTTGTGATGGCTTCCATGTCGGCAGAATGCTTAATGAATTACAACAGTACTGCGATGAGTGGCAGGGCGGGGCGTAATTT</sbol:elements>
+    <sbol:encoding rdf:resource="http://seva.cnb.csic.eshttp//seva.cnb.csic.es/"/>
+  </sbol:Sequence>
+</rdf:RDF>

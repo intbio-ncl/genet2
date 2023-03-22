@@ -8,18 +8,74 @@ sys.path.insert(0, os.path.join("..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..",".."))
 sys.path.insert(0, os.path.join("..","..","..","..",".."))
 from world_graph import WorldGraph
+from app.graph.truth_graph.modules.abstract_module import AbstractModule
+from app.graph.truth_graph.modules.synonym import SynonymModule
+from app.graph.truth_graph.modules.interaction import InteractionModule
+from app.graph.truth_graph.modules.derivative import DerivativeModule
 from app.graph.utility.graph_objects.edge import Edge
 from app.graph.utility.graph_objects.node import Node
 from app.graph.utility.model.model import model
 
+curr_dir = os.path.dirname(os.path.realpath(__file__))
+dfn = os.path.join(curr_dir,"..","..","files","nor_full.xml")
 confidence = str(model.identifiers.external.confidence)
 
 class TestTruthGraph(unittest.TestCase):
-    
     @classmethod
     def setUpClass(self):
         self.wg = WorldGraph()
         self.tg = self.wg.truth
+        self.module = AbstractModule(self.tg)
+
+    @classmethod
+    def tearDownClass(self):
+        pass
+
+    def test_export_load(self):
+        out_fn = "output.xml"
+        pre_nodes = self.tg.nodes()
+        pre_edges = self.tg.edges()
+
+        self.tg.export(out_fn)
+
+        self.wg.remove_design(self.tg.name)
+        self.assertEqual(self.tg.nodes(),[])
+        self.assertEqual(self.tg.edges(),[])
+
+        self.tg.load(out_fn)
+
+        post_nodes = self.tg.nodes()
+        post_edges = self.tg.edges()
+
+        ndiff = list(set(post_nodes) - set(pre_nodes))
+        ediff = list(set(post_edges) - set(pre_edges))
+
+        self.assertEqual(ndiff,[])
+        self.assertEqual(ediff,[])
+
+    def test_export_load(self):
+        test_fn = "test_export_load.json"
+        pre_nodes = self.tg.nodes()
+        pre_edges = self.tg.edges()
+        self.tg.export(test_fn)
+        self.tg.drop()
+        mid_nodes = self.tg.nodes()
+        mid_edges = self.tg.edges()
+        self.assertEqual(mid_nodes,[])
+        self.assertEqual(mid_edges,[])
+        self.tg.load(test_fn)
+        post_nodes = self.tg.nodes()
+        post_edges = self.tg.edges()
+        self.assertCountEqual(pre_nodes,post_nodes)
+        self.assertCountEqual(pre_edges,post_edges)
+        os.remove(test_fn)
+
+class TestModule(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.wg = WorldGraph()
+        self.tg = self.wg.truth
+        self.module = AbstractModule(self.tg)
 
     @classmethod
     def tearDownClass(self):
@@ -28,14 +84,15 @@ class TestTruthGraph(unittest.TestCase):
     def setUp(self):
         pe = model.identifiers.objects.physical_entity
         i = model.identifiers.objects.interaction
-        self.n1 = Node("PE1",pe)
-        self.n2 = Node("I1",i)
-        self.n3 = Node("PE2",pe)
-        self.n4 = Node("I2",i)
-        self.n5 = Node("I2_syn",i)
-        self.n6 = Node("PE3",pe)
-        self.n7 = Node("PE4",pe)
-        self.n8 = Node(model.identifiers.objects.dna)
+        self.props = {"graph_name" : self.tg.name}
+        self.n1 = Node("PE1",pe,**self.props)
+        self.n2 = Node("I1",i,**self.props)
+        self.n3 = Node("PE2",pe,**self.props)
+        self.n4 = Node("I2",i,**self.props)
+        self.n5 = Node("I2_syn",i,**self.props)
+        self.n6 = Node("PE3",pe,**self.props)
+        self.n7 = Node("PE4",pe,**self.props)
+        self.n8 = Node(model.identifiers.objects.dna,**self.props)
 
         self.edge = Edge(self.n1,self.n2,model.identifiers.predicates.repressor)
         self.edge2 = Edge(self.n3,self.n2,model.identifiers.predicates.repressed)
@@ -51,7 +108,7 @@ class TestTruthGraph(unittest.TestCase):
         self.edge9 = Edge(self.n7,self.n8,model.identifiers.external.type)
         
         self.edges = [self.edge,self.edge2,self.edge3,self.edge4,
-                      self.edge5,self.edge6,self.edge7,self.edge8,self.edge9]
+                    self.edge5,self.edge6,self.edge7,self.edge8,self.edge9]
         for e in self.edges:
             self.tg.driver.remove_edge(e)
             self.tg.driver.remove_node(e.n)
@@ -66,206 +123,467 @@ class TestTruthGraph(unittest.TestCase):
         self.tg.driver.submit()
 
 
+    def _edge_equal(self,actual,expected):
+        expected.n.properties["graph_name"] = self.tg.name
+        expected.n.graph_name = self.tg.name
+        expected.v.properties["graph_name"] = self.tg.name
+        expected.v.graph_name = self.tg.name
+        expected.properties["graph_name"] = self.tg.name
+        expected.graph_name = self.tg.name
+        self.assertEqual(actual,expected)
+
+
     def test_positive(self):
-        self.tg.positive(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.positive(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
     
     def test_positive_increment(self):
-        self.tg.positive(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.positive(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
 
-        self.tg.positive(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.positive(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm*2)
+        self.assertEqual(conf,self.module._standard_modifier*2)
 
-        self.tg.positive(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.positive(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm*3)
+        self.assertEqual(conf,self.module._standard_modifier*3)
 
     def test_positive_node_only(self):
-        self.tg.positive(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.positive(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
 
 
-        self.tg.positive(self.edge2)
-        e = self.tg.get(self.edge2)
+        self.module.positive(self.edge2)
+        e = self.module.get(self.edge2)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge2)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
 
-        self.tg.positive(self.edge3)
-        e = self.tg.get(self.edge3)
+        self.module.positive(self.edge3)
+        e = self.module.get(self.edge3)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge3)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
 
-        self.tg.positive(self.edge4)
-        e = self.tg.get(self.edge4)
+        self.module.positive(self.edge4)
+        e = self.module.get(self.edge4)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge4)
         conf = e[confidence]
-        self.assertEqual(conf,self.tg._scm)
+        self.assertEqual(conf,self.module._standard_modifier)
         
-
     def test_negative(self):
-        self.tg.negative(self.edge)
-        e = self.tg.get(self.edge)
+        self.module.negative(self.edge)
+        e = self.module.get(self.edge)
         self.assertIsNone(e)
 
         conf_count = 0
         for i in range(0,5):
-            self.tg.positive(self.edge)
-            conf_count += self.tg._scm
+            self.module.positive(self.edge)
+            conf_count += self.module._standard_modifier
 
-        self.tg.negative(self.edge)
-        conf_count -= self.tg._scm
-        e = self.tg.get(self.edge)
+        self.module.negative(self.edge)
+        conf_count -= self.module._standard_modifier
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
     
     def test_negative_increment(self):        
         conf_count = 0
         for i in range(0,5):
-            self.tg.positive(self.edge)
-            conf_count += self.tg._scm
+            self.module.positive(self.edge)
+            conf_count += self.module._standard_modifier
 
-        self.tg.negative(self.edge)
-        conf_count -= self.tg._scm
-        e = self.tg.get(self.edge)
+        self.module.negative(self.edge)
+        conf_count -= self.module._standard_modifier
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
 
-        self.tg.negative(self.edge)
-        conf_count -= self.tg._scm
-        e = self.tg.get(self.edge)
+        self.module.negative(self.edge)
+        conf_count -= self.module._standard_modifier
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
 
-        self.tg.negative(self.edge)
-        conf_count -= self.tg._scm
-        e = self.tg.get(self.edge)
+        self.module.negative(self.edge)
+        conf_count -= self.module._standard_modifier
+        e = self.module.get(self.edge)
         self.assertIsInstance(e,Edge)
-        self.assertEqual(e,self.edge)
+        self._edge_equal(e,self.edge)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
     
     def test_negative_node_only(self):        
         conf_count = 0
         for i in range(0,2):
-            self.tg.positive(self.edge)
-            self.tg.positive(self.edge2)
-            self.tg.positive(self.edge3)
-            self.tg.positive(self.edge4)
-            conf_count += self.tg._scm
-        conf_count -= self.tg._scm
+            self.module.positive(self.edge)
+            self.module.positive(self.edge2)
+            self.module.positive(self.edge3)
+            self.module.positive(self.edge4)
+            conf_count += self.module._standard_modifier
+        conf_count -= self.module._standard_modifier
 
 
-        self.tg.negative(self.edge2)
-        e = self.tg.get(self.edge2)
+        self.module.negative(self.edge2)
+        e = self.module.get(self.edge2)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge2)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
 
-        self.tg.negative(self.edge3)
-        e = self.tg.get(self.edge3)
+        self.module.negative(self.edge3)
+        e = self.module.get(self.edge3)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge3)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
 
-        self.tg.negative(self.edge4)
-        e = self.tg.get(self.edge4)
+        self.module.negative(self.edge4)
+        e = self.module.get(self.edge4)
         self.assertIsInstance(e,Edge)
         self.assertEqual(e,self.edge4)
         conf = e[confidence]
         self.assertEqual(conf,conf_count)
 
     def test_lower_threshold(self):
-        self.tg.positive(self.edge)
-        self.tg.negative(self.edge)
+        d = self.wg.get_design("test_lower_threshold")
+        n = self.edge.n.duplicate()
+        v = self.edge.v.duplicate()
+        n.remove(self.props)
+        v.remove(self.props)
+        edges = [(n,v,self.edge.get_type(),{})]
+        d.add_edges(edges)
+        self.module.positive(self.edge)
+        self.module.negative(self.edge)
 
-        e = self.tg.get(self.edge4)
+        e = self.module.get(self.edge)
         self.assertIsNone(e)
-        res = self.tg.driver.node_query([self.edge.n,self.edge.v])
-        self.assertEqual(len(res),0)
+        res = d.edges(edges[0][0],edges[0][1],edges[0][2])
+        self.assertEqual(len(res),1)
+        self.assertEqual(self.edge,res[0])
+        self.wg.remove_design("test_lower_threshold")
 
-    def test_upper_threshold_synonym(self):
-        conf_count = 0
-        while conf_count < self.tg._upper_threshold:
-            self.tg.positive(self.edge5)
-            conf_count += self.tg._scm
-        self.assertEqual(self.tg.driver.edge_query(e_props={"graph_name" : self.tg.name}),[])
-        res1 = self.tg.driver.node_query([self.edge5.n,self.edge5.v])
-        res2 = self.tg.driver.node_query(self.edge5.v)
-        res3 = self.tg.driver.node_query(self.edge5.v)
-        self.assertEqual(res1,res2)
-        self.assertEqual(res2,res3)
+    def test_with_designs(self):
+        self.wg.remove_design("test_with_designs")
+        dg = self.wg.get_design("test_with_designs")
+        edges = []
+        for e in self.edges:
+            n = e.n.duplicate()
+            v = e.v.duplicate()
+            n.remove(self.props)
+            v.remove(self.props)
+            edges.append((n,v,e.get_type(),{}))
+        dg.add_edges(edges)
+        pn = dg.nodes()
+        self.module.positive(self.edge)
+        self.module.negative(self.edge)
+        pon = dg.nodes()
+        self.assertCountEqual(pn,pon)
 
-    def test_upper_threshold_synonym_nodes_with_edges(self):
-        for i in range(0,1):
-            self.tg.positive(self.edge)
-            self.tg.positive(self.edge2)
-            self.tg.positive(self.edge3)
-            self.tg.positive(self.edge4)
-            self.tg.positive(self.edge5)
-            self.tg.positive(self.edge6)
-            self.tg.positive(self.edge7)
-            self.tg.positive(self.edge8)
-            self.tg.positive(self.edge9)
-        conf_count = 10
+        res = self.module.get(self.edge)
+        self.assertIsNone(res)
 
-        pre_edges = (self.tg.driver.edge_query(n=self.edge5.n,e_props={"graph_name" : self.tg.name},directed=False) + 
-                    self.tg.driver.edge_query(n=self.edge5.v,e_props={"graph_name" : self.tg.name},directed=False))
+        self.wg.remove_design("test_with_designs")
 
-        while conf_count <= self.tg._upper_threshold:
-            self.tg.positive(self.edge5)
-            conf_count += self.tg._scm
+class TestSynonymModule(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.wg = WorldGraph()
+        self.tg = self.wg.truth
+        self.module = SynonymModule(self.tg)
 
-        edges = self.tg.driver.edge_query(n=self.edge5.n,e_props={"graph_name" : self.tg.name},directed=False)
-        merge_nodes = edges[0].n
-        for e in pre_edges:
-            if e.get_type() == str(model.identifiers.external.synonym):
-                continue
-            e.n = merge_nodes
-            self.assertTrue(e in edges)
+    @classmethod
+    def tearDownClass(self):
+        pass
 
-    def test_upper_threshold_type(self):
-        conf_count = 0
-        while conf_count < self.tg._upper_threshold:
-            self.tg.positive(self.edge9)
-            conf_count += self.tg._scm
+    def setUp(self):
+        pass
 
-        self.assertEqual(self.tg.driver.edge_query(e_props={"graph_name" : self.tg.name}),[])
-        res1 = self.tg.driver.node_query([self.edge5.n,self.edge5.v])
-        res2 = self.tg.driver.node_query(self.edge5.v)
-        res3 = self.tg.driver.node_query(self.edge5.v)
-        self.assertEqual(res1,res2)
-        self.assertEqual(res2,res3)
+    def tearDown(self):
+        pass
 
+    def _edge_equal(self,actual,expected):
+        expected.n.properties["graph_name"] = self.tg.name
+        expected.n.graph_name = self.tg.name
+        expected.v.properties["graph_name"] = self.tg.name
+        expected.v.graph_name = self.tg.name
+        expected.properties["graph_name"] = self.tg.name
+        expected.graph_name = self.tg.name
+        self.assertEqual(actual,expected)
+    
+    def _assert_edge_count_equal(self,actuals,expecteds):
+        for e in expecteds:
+            e.n.properties["graph_name"] = self.tg.name
+            e.n.graph_name = self.tg.name
+            e.v.properties["graph_name"] = self.tg.name
+            e.v.graph_name = self.tg.name
+            e.properties["graph_name"] = self.tg.name
+            e.graph_name = self.tg.name
+
+    def test_synonym_positive(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",model.identifiers.objects.physical_entity)
+        vertex = Node("pveg")
+        edge = Edge(node,vertex,model.identifiers.external.synonym)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+        
+
+        self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertTrue(len(res) == 1)
+        res = res[0]
+        self._edge_equal(res,edge)
+        self.assertEqual(res.confidence,5)
+        self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertTrue(len(res) == 1)
+        res = res[0]
+        self._edge_equal(res,edge)
+        self.assertEqual(res.confidence,10)
+
+        node1 = Node("https://synbiohub.org/public/igem/pveg/1",name="pveg")
+        vertex1 = Node("BBa_K823003")
+        self.module.positive(node1,vertex1)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertTrue(len(res) == 1)
+        res = res[0]
+        self._edge_equal(res,edge)
+        self.assertEqual(res.confidence,15)
+
+        self.module.negative(node,vertex)
+        self.module.negative(node,vertex)
+        self.module.negative(node,vertex)
+
+    def test_synonym_get(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",model.identifiers.objects.physical_entity)
+        vertex = Node("pveg")
+        edge = Edge(node,vertex,model.identifiers.external.synonym)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+        
+
+        self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self._edge_equal(res[0],edge)
+
+        node1 = Node("https://synbiohub.org/public/igem/test/1",model.identifiers.objects.physical_entity)
+        vertex1 = Node("tes")
+        edge1 = Edge(node1,vertex1,model.identifiers.external.synonym)
+        self.module.positive(node1,vertex1)
+
+        self._assert_edge_count_equal(res,[edge,edge1])
+
+    def test_synonym_negative(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",model.identifiers.objects.physical_entity)
+        vertex = Node("pveg")
+        edge = Edge(node,vertex,model.identifiers.external.synonym)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+
+        for i in range(0,2):
+            self.module.positive(node,vertex)
+
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertTrue(len(res),1)
+        res = res[0]
+        self.assertEqual(res.confidence,10)
+
+        for i in range(0,2):
+            self.module.negative(node,vertex)
+        
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual(res,[])
+
+        self.module.negative(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual(res,[])
+
+    def test_get_synonym_subject(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",model.identifiers.objects.physical_entity)
+        vertex = Node("pveg")
+        edge = Edge(node,vertex,model.identifiers.external.synonym)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+
+        for i in range(0,2):
+            self.module.positive(node,vertex)
+
+        res = self.module.get(synonym=vertex)
+        self.assertTrue(len(res),1)
+        res = res[0]
+        self.assertEqual(res.confidence,10)
+
+class TestInteractionModule(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.wg = WorldGraph()
+        self.tg = self.wg.truth
+        self.module = InteractionModule(self.tg)
+
+    @classmethod
+    def tearDownClass(self):
+        pass
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def _edge_equal(self,actual,expected):
+        expected.n.properties["graph_name"] = self.tg.name
+        expected.n.graph_name = self.tg.name
+        expected.v.properties["graph_name"] = self.tg.name
+        expected.v.graph_name = self.tg.name
+        expected.properties["graph_name"] = self.tg.name
+        expected.graph_name = self.tg.name
+        self.assertEqual(actual,expected)
+    
+    def _assert_edge_count_equal(self,actuals,expecteds):
+        for e in expecteds:
+            e.n.properties["graph_name"] = self.tg.name
+            e.n.graph_name = self.tg.name
+            e.v.properties["graph_name"] = self.tg.name
+            e.v.graph_name = self.tg.name
+            e.properties["graph_name"] = self.tg.name
+            e.graph_name = self.tg.name
+
+    def test_interaction_positive(self):
+        node = Node("https://synbiohub.org/public/igem/tetR/1",model.identifiers.objects.dna)
+        vertex = Node("https://synbiohub.org/public/igem/repression/1",model.identifiers.objects.repression)
+        edge = Edge(vertex,node,model.identifiers.predicates.repressor)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+        
+        self.module.positive(edge)
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self.assertTrue(len(res) == 1)
+        res = res[0]
+        self._edge_equal(res,edge)
+        self.assertEqual(res.confidence,5)
+        self.module.positive(edge)
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self.assertTrue(len(res) == 1)
+        res = res[0]
+        self._edge_equal(res,edge)
+        self.assertEqual(res.confidence,10)
+
+        self.module.negative(edge)
+        self.module.negative(edge)
+
+    def test_interaction_get(self):
+        node = Node("https://synbiohub.org/public/igem/tetR/1",model.identifiers.objects.dna)
+        vertex = Node("https://synbiohub.org/public/igem/repression/1",model.identifiers.objects.repression)
+        edge = Edge(vertex,node,model.identifiers.predicates.repressor)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+        
+        self.module.positive(edge)
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self._edge_equal(res[0],edge)
+
+    def test_synonym_negative(self):
+        node = Node("https://synbiohub.org/public/igem/tetR/1",model.identifiers.objects.dna)
+        vertex = Node("https://synbiohub.org/public/igem/repression/1",model.identifiers.objects.repression)
+        edge = Edge(vertex,node,model.identifiers.predicates.repressor)
+        self.tg.remove_edge(edge)
+        self.tg.driver.submit()
+
+        for i in range(0,2):
+            self.module.positive(edge)
+
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self.assertTrue(len(res),1)
+        res = res[0]
+        self.assertEqual(res.confidence,10)
+
+        for i in range(0,2):
+            self.module.negative(edge)
+        
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self.assertEqual(res,[])
+
+        self.module.negative(edge)
+        res = self.module.get(edge.n,edge.v,edge.get_type(),threshold=5)
+        self.assertEqual(res,[])
+
+class TestDerivativeModule(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        self.wg = WorldGraph()
+        self.tg = self.wg.truth
+        self.module = DerivativeModule(self.tg)
+
+    def test_get(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",
+                    model.identifiers.objects.physical_entity)
+        vertex = Node("https://synbiohub.org/public/igem/BBa_K823004/1")
+        edge = Edge(node,vertex,model.identifiers.external.derivative)
+        self.tg.remove_edges(edge)
+        self.tg.driver.submit()
+        self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual([edge],res)
+
+    def test_positive(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",
+                    model.identifiers.objects.physical_entity)
+        vertex = Node("https://synbiohub.org/public/igem/BBa_K823004/1")
+        edge = Edge(node,vertex,model.identifiers.external.derivative)
+        self.tg.remove_edges(edge)
+        self.tg.driver.submit()
+        for a in range(0,5):
+            self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual([edge],res)
+        self.assertEqual(res[0].confidence,25)
+
+
+    def test_negative(self):
+        node = Node("https://synbiohub.org/public/igem/BBa_K823003/1",
+                    model.identifiers.objects.physical_entity)
+        vertex = Node("https://synbiohub.org/public/igem/BBa_K823004/1")
+        edge = Edge(node,vertex,model.identifiers.external.derivative)
+        self.tg.remove_edges(edge)
+        self.tg.driver.submit()
+        for a in range(0,5):
+            self.module.positive(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual([edge],res)
+        self.assertEqual(res[0].confidence,25)
+        for a in range(0,4):
+            self.module.negative(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual([edge],res)
+        self.assertEqual(res[0].confidence,5)
+        self.module.negative(node,vertex)
+        res = self.module.get(node,vertex,threshold=5)
+        self.assertEqual([],res)
